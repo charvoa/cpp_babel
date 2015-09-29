@@ -7,6 +7,8 @@ QMAKE_CXXFLAGS += -std=c++11
 HEADERS = MyWidget.hh
 HEADERS += Home.hh
 HEADERS += Contact.hh
+HEADERS += Conversation.hh
 SOURCES = MyWidget.cpp
 SOURCES += Contact.cpp
 SOURCES += Home.cpp
+SOURCES += Conversation.cpp
