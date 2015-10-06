@@ -5,11 +5,11 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sun Sep 20 20:19:52 2015 Nicolas Charvoz
-// Last update Sun Sep 20 20:26:52 2015 Nicolas Charvoz
+// Last update Tue Oct  6 15:25:20 2015 Nicolas Charvoz
 //
 
-#include "../core/MyApplication.hpp"
-#include "../core/MyWidget.hh"
+#include "../gui/MyApplication.hpp"
+#include "../gui/MyWidget.hh"
 
 
 int		main(int ac, char **av)

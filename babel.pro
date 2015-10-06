@@ -1,8 +1,8 @@
 TEMPLATE = subdirs
 CONFIG += ordered
-SUBDIRS = core
+SUBDIRS = gui
 SUBDIRS += app
-app.depends = core
+app.depends = gui
 
 clean.target = clean
 clean.commands = rm -f */*.o
