@@ -5,5 +5,5 @@ QMAKE_CXXFLAGS += -std=c++11
 QT+=widgets
 SOURCES = main.cpp
 
-LIBS = ../gui/libcore.a
+LIBS = ../gui/libgui.a
 TARGET = ../babelUI
