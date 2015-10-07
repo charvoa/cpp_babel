@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
+RESOURCES += resources.qrc
 CONFIG += ordered
 SUBDIRS = gui
 SUBDIRS += app

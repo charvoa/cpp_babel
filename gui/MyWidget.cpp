@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Tue Oct  6 11:42:37 2015 Nicolas Charvoz
+// Last update Wed Oct  7 23:16:23 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
@@ -15,15 +15,17 @@
 
 MyWidget::MyWidget(QWidget *parent) : QWidget(parent)
 {
+  QVBoxLayout *mainLayout = new QVBoxLayout;
   int conv = 4;
 
   setFixedSize(1920, 1200);
+  setWindowTitle(tr("Babel"));
 
   _tabWidget = new QTabWidget;
+
   _tabWidget->addTab(new Home(), tr("Home"));
   _tabWidget->addTab(new Contact(), tr("Contact"));
 
-  _tabWidget->setTabPosition(QTabWidget::West);
   std::ostringstream oss;
   while (conv >= 0)
     {
@@ -34,9 +36,18 @@ MyWidget::MyWidget(QWidget *parent) : QWidget(parent)
       _tabWidget->addTab(new Conversation(var), tr(var.c_str()));
       conv--;
     }
+  _tabWidget->setTabsClosable(true);
 
-  QVBoxLayout *mainLayout = new QVBoxLayout;
+  connect(_tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
+
+  //  _tabWidget->setTabPosition(QTabWidget::West);
   mainLayout->addWidget(_tabWidget);
   setLayout(mainLayout);
-  setWindowTitle(tr("Babel"));
+}
+
+void MyWidget::closeTab(int index)
+{
+  _tabWidget->removeTab(index);
+
+  delete _tabWidget->widget(index);
 }
