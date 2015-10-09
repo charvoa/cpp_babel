@@ -18,7 +18,7 @@ QTabBar::tab {
 
 
     background-color: #F5FCFE;
-    border: 2px solid #C4C4C3;
+/*    border: 2px solid #C4C4C3;*/
     border-bottom-color: #C2C7CB; /* same as the pane color */
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -26,6 +26,7 @@ QTabBar::tab {
     padding: 2px;
     height: 60px;
     width: 200px;
+    margin: 10px;
 }
 
 QTabBar::tab:selected, QTabBar::tab:hover {
