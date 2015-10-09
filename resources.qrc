@@ -1,6 +1,6 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
-     <qresource prefix="/">
-	<file>gui/stylesheet.css</file>
+     <qresource>
+	<file>./gui/stylesheet.qss</file>
      </qresource>
 </RCC>

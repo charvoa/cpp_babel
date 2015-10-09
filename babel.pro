@@ -18,7 +18,7 @@ QMAKE_EXTRA_TARGETS += clean
 
 fclean.target = fclean
 fclean.commands = rm -f */*.o
-fclean.commands = rm -f */*.a
+fclean.commands += rm -f */*.a
 fclean.commands += rm -f */*/*.o
 fclean.commands += rm -f */*~
 fclean.commands += rm -f */*/*~
