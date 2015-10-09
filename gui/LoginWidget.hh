@@ -5,11 +5,11 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Fri Oct  9 14:44:03 2015 Nicolas Charvoz
+// Last update Fri Oct  9 14:20:40 2015 Nicolas Charvoz
 //
 
-#ifndef MYWIDGET_HH_
-# define MYWIDGET_HH_
+#ifndef LOGINWIDGET_HH_
+# define LOGINWIDGET_HH_
 
 # include <QApplication>
 # include <QObject>
@@ -24,22 +24,20 @@
 # include <QTabWidget>
 # include <QDialogButtonBox>
 # include <QVBoxLayout>
-# include <QGridLayout>
 # include <QHBoxLayout>
 # include <QFile>
 # include <sstream>
 # include <iostream>
 # include <fstream>
 
-class MyWidget : public QWidget {
+class LoginWidget : public QWidget {
 Q_OBJECT
 public:
-  explicit MyWidget(QWidget *parent = 0);
+  explicit LoginWidget(QWidget *parent = 0);
 
 public slots:
-  void closeTab(int);
+  void checkLogin();
 private:
-  QTabWidget *_tabWidget;
 };
 
 #endif

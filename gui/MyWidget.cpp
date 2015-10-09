@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct  7 23:16:23 2015 Nicolas Charvoz
+// Last update Fri Oct  9 13:50:34 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
@@ -36,9 +36,10 @@ MyWidget::MyWidget(QWidget *parent) : QWidget(parent)
       _tabWidget->addTab(new Conversation(var), tr(var.c_str()));
       conv--;
     }
-  _tabWidget->setTabsClosable(true);
-
+  //  _tabWidget->setTabsClosable(true);
   connect(_tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
+
+  _tabWidget->setFocusPolicy(Qt::NoFocus);
 
   //  _tabWidget->setTabPosition(QTabWidget::West);
   mainLayout->addWidget(_tabWidget);
