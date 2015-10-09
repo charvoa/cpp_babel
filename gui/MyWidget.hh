@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Fri Oct  9 14:44:03 2015 Nicolas Charvoz
+// Last update Fri Oct  9 15:37:21 2015 Nicolas Charvoz
 //
 
 #ifndef MYWIDGET_HH_
@@ -22,6 +22,7 @@
 # include <QTextStream>
 # include <QLabel>
 # include <QTabWidget>
+# include <QTabBar>
 # include <QDialogButtonBox>
 # include <QVBoxLayout>
 # include <QGridLayout>
