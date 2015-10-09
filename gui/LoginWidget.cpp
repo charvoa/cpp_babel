@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Fri Oct  9 14:50:12 2015 Nicolas Charvoz
+// Last update Fri Oct  9 15:08:15 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -16,24 +16,22 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   QGridLayout *mainLayout = new QGridLayout;
   QLabel *labelPassword;
   QLabel *labelUsername;
-  QLineEdit *editUsername;
-  QLineEdit *editPassword;
   QDialogButtonBox *buttons;
 
   setFixedSize(800, 600);
   setWindowTitle(tr("Login to Babel"));
 
-  editUsername = new QLineEdit(this);
+  _editUsername = new QLineEdit(this);
 
-  editPassword = new QLineEdit(this);
-  editPassword->setEchoMode(QLineEdit::Password);
+  _editPassword = new QLineEdit(this);
+  _editPassword->setEchoMode(QLineEdit::Password);
 
   labelUsername = new QLabel(this);
   labelPassword = new QLabel(this);
   labelUsername->setText(tr("Username"));
-  labelUsername->setBuddy(editUsername);
+  labelUsername->setBuddy(_editUsername);
   labelPassword->setText(tr("Password"));
-  labelPassword->setBuddy(editPassword);
+  labelPassword->setBuddy(_editPassword);
 
   buttons = new QDialogButtonBox(this);
   buttons->addButton(QDialogButtonBox::Ok);
@@ -47,9 +45,9 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 	  this, SLOT(checkLogin()));
 
   mainLayout->addWidget(labelUsername, 0, 0);
-  mainLayout->addWidget(editUsername, 0, 1);
+  mainLayout->addWidget(_editUsername, 0, 1);
   mainLayout->addWidget(labelPassword, 1, 0);
-  mainLayout->addWidget(editPassword, 1, 1);
+  mainLayout->addWidget(_editPassword, 1, 1);
   mainLayout->addWidget(buttons, 2, 0, 1, 2);
   setLayout(mainLayout);
 }
@@ -58,7 +56,19 @@ void LoginWidget::checkLogin()
 {
   MyWidget *widget = new MyWidget();
 
+  _user = _editUsername->text();
+  _pass = _editPassword->text();
+
+  _userString = _user.toUtf8().constData();
+  _passString = _pass.toUtf8().constData();
+
+  std::cout << "username : " << _userString
+	    << " password : " << _passString
+	    << std::endl;
   widget->setAttribute(Qt::WA_DeleteOnClose);
-  widget->show();
-  deleteLater();
+  if (_userString == "toto" && _passString == "toto")
+    {
+      widget->show();
+      deleteLater();
+    }
 }
