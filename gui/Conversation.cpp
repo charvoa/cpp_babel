@@ -5,16 +5,16 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Fri Oct  9 14:25:48 2015 Nicolas Charvoz
+// Last update Mon Oct 12 12:24:20 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
 
-Conversation::Conversation(const std::string &contact, QWidget *parent)
+Conversation::Conversation(const std::string &contact,
+			   QWidget *parent)
   : QWidget(parent), _contact(contact)
 {
   QVBoxLayout *mainLayout = new QVBoxLayout;
-
   QLabel *fileNameLabel = new QLabel(tr(_contact.c_str()));
 
   mainLayout->addWidget(fileNameLabel);

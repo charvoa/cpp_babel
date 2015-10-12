@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Mon Oct 12 07:51:59 2015 Nicolas Charvoz
+// Last update Mon Oct 12 12:27:42 2015 Nicolas Charvoz
 //
 
 #ifndef MAINWIDGET_HH_
@@ -36,6 +36,7 @@ class MainWidget : public QWidget {
 Q_OBJECT
 public:
   explicit MainWidget(QWidget *parent = 0);
+  void addTab(const std::string&);
 
 public slots:
   void closeTab(int);

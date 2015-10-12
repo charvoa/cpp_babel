@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 12 07:55:26 2015 Nicolas Charvoz
+// Last update Mon Oct 12 12:27:56 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
@@ -19,7 +19,7 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
   QVBoxLayout *mainLayout = new QVBoxLayout;
   QTabBar *tb;
-  int conv = 17;
+  int conv = 3;
 
   _tabWidget = new QTabWidget;
   tb = _tabWidget->tabBar();
@@ -28,7 +28,7 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
   setWindowTitle(tr("Babel"));
 
   _tabWidget->addTab(new Home(), tr("Home"));
-  _tabWidget->addTab(new Contact(), tr("Contact"));
+  _tabWidget->addTab(new Contact(this), tr("Contact"));
 
   std::ostringstream oss;
   while (conv >= 0)
@@ -55,6 +55,9 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 void MainWidget::closeTab(int index)
 {
   _tabWidget->removeTab(index);
+}
 
-  delete _tabWidget->widget(index);
+void MainWidget::addTab(const std::string &name)
+{
+  _tabWidget->addTab(new Conversation(name), tr(name.c_str()));
 }
