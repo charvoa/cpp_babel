@@ -5,11 +5,11 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sun Sep 20 20:19:52 2015 Nicolas Charvoz
-// Last update Fri Oct  9 14:36:56 2015 Nicolas Charvoz
+// Last update Mon Oct 12 07:52:51 2015 Nicolas Charvoz
 //
 
 #include "../gui/MyApplication.hpp"
-#include "../gui/MyWidget.hh"
+#include "../gui/MainWidget.hh"
 #include "../gui/LoginWidget.hh"
 
 
