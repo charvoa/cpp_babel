@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 12 07:52:10 2015 Nicolas Charvoz
+// Last update Mon Oct 12 07:55:26 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
@@ -19,7 +19,7 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
   QVBoxLayout *mainLayout = new QVBoxLayout;
   QTabBar *tb;
-  int conv = 4;
+  int conv = 17;
 
   _tabWidget = new QTabWidget;
   tb = _tabWidget->tabBar();
