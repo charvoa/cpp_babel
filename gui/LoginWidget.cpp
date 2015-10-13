@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 12 07:52:23 2015 Nicolas Charvoz
+// Last update Mon Oct 12 16:35:08 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"

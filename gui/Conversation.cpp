@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Mon Oct 12 12:24:20 2015 Nicolas Charvoz
+// Last update Tue Oct 13 14:40:29 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -14,9 +14,13 @@ Conversation::Conversation(const std::string &contact,
 			   QWidget *parent)
   : QWidget(parent), _contact(contact)
 {
-  QVBoxLayout *mainLayout = new QVBoxLayout;
+  //  QVBoxLayout *mainLayout = new QVBoxLayout;
   QLabel *fileNameLabel = new QLabel(tr(_contact.c_str()));
+  QTextEdit *messageZone = new QTextEdit;
+  QGridLayout *gridMessage = new QGridLayout;
+  QPushButton *sendMessage = new QPushButton(tr("Send"));
 
-  mainLayout->addWidget(fileNameLabel);
+
+  gridMessage->addWidget();
   setLayout(mainLayout);
 }

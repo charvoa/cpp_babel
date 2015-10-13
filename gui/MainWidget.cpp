@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 12 12:27:56 2015 Nicolas Charvoz
+// Last update Mon Oct 12 16:30:29 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
@@ -24,7 +24,7 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
   _tabWidget = new QTabWidget;
   tb = _tabWidget->tabBar();
 
-  setFixedSize(1920, 1200);
+  setFixedSize(1024, 768);
   setWindowTitle(tr("Babel"));
 
   _tabWidget->addTab(new Home(), tr("Home"));
