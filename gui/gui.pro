@@ -4,12 +4,12 @@ CONFIG += qt
 QT+=widgets
 QMAKE_CXX = g++-4.9
 QMAKE_CXXFLAGS += -std=c++11
-HEADERS = MyWidget.hh
+HEADERS = MainWidget.hh
 HEADERS += Home.hh
 HEADERS += Contact.hh
 HEADERS += Conversation.hh
 HEADERS += LoginWidget.hh
-SOURCES = MyWidget.cpp
+SOURCES = MainWidget.cpp
 SOURCES += Contact.cpp
 SOURCES += Home.cpp
 SOURCES += Conversation.cpp

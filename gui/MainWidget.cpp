@@ -1,33 +1,34 @@
 //
-// MyWidget.cpp for  in /home/nicolaschr/TP/qt
+// MainWidget.cpp for  in /home/nicolaschr/TP/qt
 //
 // Made by Nicolas Charvoz
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Fri Oct  9 15:38:11 2015 Nicolas Charvoz
+// Last update Mon Oct 12 16:30:29 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
 #include "Home.hh"
 #include "Conversation.hh"
-#include "MyWidget.hh"
+#include "MainWidget.hh"
 
 class QTabBar;
 
-MyWidget::MyWidget(QWidget *parent) : QWidget(parent)
+MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
   QVBoxLayout *mainLayout = new QVBoxLayout;
-  int conv = 4;
-
-  setFixedSize(1920, 1200);
-  setWindowTitle(tr("Babel"));
+  QTabBar *tb;
+  int conv = 3;
 
   _tabWidget = new QTabWidget;
-  QTabBar *tb = _tabWidget->tabBar();
+  tb = _tabWidget->tabBar();
+
+  setFixedSize(1024, 768);
+  setWindowTitle(tr("Babel"));
 
   _tabWidget->addTab(new Home(), tr("Home"));
-  _tabWidget->addTab(new Contact(), tr("Contact"));
+  _tabWidget->addTab(new Contact(this), tr("Contact"));
 
   std::ostringstream oss;
   while (conv >= 0)
@@ -51,9 +52,12 @@ MyWidget::MyWidget(QWidget *parent) : QWidget(parent)
   setLayout(mainLayout);
 }
 
-void MyWidget::closeTab(int index)
+void MainWidget::closeTab(int index)
 {
   _tabWidget->removeTab(index);
+}
 
-  delete _tabWidget->widget(index);
+void MainWidget::addTab(const std::string &name)
+{
+  _tabWidget->addTab(new Conversation(name), tr(name.c_str()));
 }

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Tue Sep 29 20:34:11 2015 Nicolas Charvoz
+// Last update Mon Oct 12 12:24:36 2015 Nicolas Charvoz
 //
 
 #ifndef CONVERSATION_HH_
@@ -36,10 +36,8 @@ public:
   explicit Conversation(const std::string &contact, QWidget *parent = 0);
 
 public slots:
-
 private:
   std::string _contact;
-
 };
 
 

@@ -1,7 +1,30 @@
 QWidget {
-
     background-color: #F5FCFE;
+}
 
+QPushButton {
+    background-color: #F5FCFE;
+    border: 2px solid #F5FCFE;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-radius:10px;
+    min-width: 8ex;
+    padding: 2px;
+    height: 60px;
+    width: 200px;
+    margin: 10px;
+}
+
+QPushButton:hover {
+    background-color: #CFEFFC;
+    border-bottom-color: #CFEFFC; /* same as the pane color */
+}
+
+QLineEdit {
+
+    background-color: white;
+    border: 2px solid black;
 }
 
 QTabWidget::pane { /* The tab widget frame */

@@ -5,11 +5,11 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Fri Oct  9 15:08:15 2015 Nicolas Charvoz
+// Last update Mon Oct 12 16:35:08 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
-#include "MyWidget.hh"
+#include "MainWidget.hh"
 
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 {
@@ -54,17 +54,21 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 
 void LoginWidget::checkLogin()
 {
-  MyWidget *widget = new MyWidget();
+  std::cout << "1L" << std::endl;
+  MainWidget *widget;
 
-  _user = _editUsername->text();
-  _pass = _editPassword->text();
+  std::cout << "3L" << std::endl;
+  QString _user = _editUsername->text();
+  QString _pass = _editPassword->text();
 
-  _userString = _user.toUtf8().constData();
-  _passString = _pass.toUtf8().constData();
+  std::cout << "7L" << std::endl;
+  std::string _userString = _user.toUtf8().constData();
+  std::string _passString = _pass.toUtf8().constData();
 
   std::cout << "username : " << _userString
 	    << " password : " << _passString
 	    << std::endl;
+  widget = new MainWidget();
   widget->setAttribute(Qt::WA_DeleteOnClose);
   if (_userString == "toto" && _passString == "toto")
     {
