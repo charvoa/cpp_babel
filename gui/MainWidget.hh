@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Mon Oct 12 12:27:42 2015 Nicolas Charvoz
+// Last update Tue Oct 13 16:26:04 2015 Nicolas Charvoz
 //
 
 #ifndef MAINWIDGET_HH_
@@ -14,6 +14,7 @@
 # include <QApplication>
 # include <QObject>
 # include <QFont>
+# include <QMovie>
 # include <QPushButton>
 # include <QRadioButton>
 # include <QWidget>

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 12 16:30:29 2015 Nicolas Charvoz
+// Last update Tue Oct 13 15:43:46 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"

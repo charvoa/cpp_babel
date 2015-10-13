@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 12 16:35:08 2015 Nicolas Charvoz
+// Last update Tue Oct 13 17:14:42 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -13,7 +13,7 @@
 
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 {
-  QGridLayout *mainLayout = new QGridLayout;
+  _mainLayout = new QGridLayout;
   QLabel *labelPassword;
   QLabel *labelUsername;
   QDialogButtonBox *buttons;
@@ -44,33 +44,55 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   connect(buttons->button(QDialogButtonBox::Ok), SIGNAL(released()),
 	  this, SLOT(checkLogin()));
 
-  mainLayout->addWidget(labelUsername, 0, 0);
-  mainLayout->addWidget(_editUsername, 0, 1);
-  mainLayout->addWidget(labelPassword, 1, 0);
-  mainLayout->addWidget(_editPassword, 1, 1);
-  mainLayout->addWidget(buttons, 2, 0, 1, 2);
-  setLayout(mainLayout);
+  _mainLayout->addWidget(labelUsername, 0, 0);
+  _mainLayout->addWidget(_editUsername, 0, 1);
+  _mainLayout->addWidget(labelPassword, 1, 0);
+  _mainLayout->addWidget(_editPassword, 1, 1);
+  _mainLayout->addWidget(buttons, 2, 0, 1, 2);
+  setLayout(_mainLayout);
+}
+
+void LoginWidget::clearLayout(QLayout *layout)
+{
+  QLayoutItem *item;
+
+  while((item = layout->takeAt(0))) {
+    if (item->layout()) {
+      clearLayout(item->layout());
+      delete item->layout();
+    }
+    if (item->widget()) {
+      delete item->widget();
+    }
+    delete item;
+  }
 }
 
 void LoginWidget::checkLogin()
 {
-  std::cout << "1L" << std::endl;
-  MainWidget *widget;
+  MainWidget *widget = new MainWidget();
+  QString user = _editUsername->text();
+  QString pass = _editPassword->text();
+  QMovie *movie = new QMovie("./gui/loader.gif");
+  QLabel *processLabel = new QLabel(this);
+  std::string userString;
+  std::string passString;
 
-  std::cout << "3L" << std::endl;
-  QString _user = _editUsername->text();
-  QString _pass = _editPassword->text();
+  processLabel->setMovie(movie);
+  movie->start();
 
-  std::cout << "7L" << std::endl;
-  std::string _userString = _user.toUtf8().constData();
-  std::string _passString = _pass.toUtf8().constData();
+  userString = user.toUtf8().constData();
+  passString = pass.toUtf8().constData();
 
-  std::cout << "username : " << _userString
-	    << " password : " << _passString
-	    << std::endl;
-  widget = new MainWidget();
+  /* CLEAR THE LAYOUT TO DISPLAY THE LOADER */
+  // this->clearLayout(_mainLayout);
+  // _mainLayout->addWidget(processLabel, 0, 1);
+  // setLayout(_mainLayout);
+  /* _______ */
+
   widget->setAttribute(Qt::WA_DeleteOnClose);
-  if (_userString == "toto" && _passString == "toto")
+
+  if (userString == "toto" && passString == "toto")
     {
       widget->show();
       deleteLater();
