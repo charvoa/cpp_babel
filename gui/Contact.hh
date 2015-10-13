@@ -5,12 +5,13 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Tue Sep 29 17:01:45 2015 Nicolas Charvoz
+// Last update Mon Oct 12 12:26:46 2015 Nicolas Charvoz
 //
 
 #ifndef CONTACT_HH_
 # define CONTACT_HH_
 
+# include "MainWidget.hh"
 # include <QApplication>
 # include <QObject>
 # include <QFont>
@@ -33,12 +34,13 @@ class Contact : public QWidget {
 Q_OBJECT
 
 public:
-  explicit Contact(QWidget *parent = 0);
+  explicit Contact(MainWidget*, QWidget *parent = 0);
 
 public slots:
+  void addTab();
 
 private:
-
+  MainWidget *_main;
 
 };
 

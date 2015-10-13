@@ -5,11 +5,11 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Fri Oct  9 15:37:21 2015 Nicolas Charvoz
+// Last update Mon Oct 12 12:27:42 2015 Nicolas Charvoz
 //
 
-#ifndef MYWIDGET_HH_
-# define MYWIDGET_HH_
+#ifndef MAINWIDGET_HH_
+# define MAINWIDGET_HH_
 
 # include <QApplication>
 # include <QObject>
@@ -32,10 +32,11 @@
 # include <iostream>
 # include <fstream>
 
-class MyWidget : public QWidget {
+class MainWidget : public QWidget {
 Q_OBJECT
 public:
-  explicit MyWidget(QWidget *parent = 0);
+  explicit MainWidget(QWidget *parent = 0);
+  void addTab(const std::string&);
 
 public slots:
   void closeTab(int);

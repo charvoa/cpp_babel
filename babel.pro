@@ -28,6 +28,7 @@ fclean.commands += rm -f *.o
 fclean.commands += rm -f moc_*
 fclean.commands += rm -f babelUI
 fclean.commands += rm -f */Makefile
+fclean.commands += rm -f Makefile
 
 QMAKE_EXTRA_TARGETS += fclean
 
