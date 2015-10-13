@@ -3,4 +3,7 @@
      <qresource>
 	<file>./gui/stylesheet.qss</file>
      </qresource>
+     <qresource>
+	<file>./gui/ajax-loader.gif</file>
+     </qresource>
 </RCC>
