@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Tue Oct 13 16:26:04 2015 Nicolas Charvoz
+// Last update Tue Oct 13 18:00:39 2015 Nicolas Charvoz
 //
 
 #ifndef MAINWIDGET_HH_

@@ -5,11 +5,12 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Tue Oct 13 17:14:42 2015 Nicolas Charvoz
+// Last update Tue Oct 13 18:01:59 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
 #include "MainWidget.hh"
+#include "../app/User/PTUser.hh"
 
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 {
@@ -68,6 +69,18 @@ void LoginWidget::clearLayout(QLayout *layout)
   }
 }
 
+void LoginWidget::validateLogin(int error)
+{
+  if (error == 0)
+    std::cout << "Login bon" << std::endl;
+}
+
+void validateLogin2(int error)
+{
+  if (error == 0)
+    std::cout << "Login bon" << std::endl;
+}
+
 void LoginWidget::checkLogin()
 {
   MainWidget *widget = new MainWidget();
@@ -84,7 +97,7 @@ void LoginWidget::checkLogin()
   userString = user.toUtf8().constData();
   passString = pass.toUtf8().constData();
 
-  /* CLEAR THE LAYOUT TO DISPLAY THE LOADER */
+    /* CLEAR THE LAYOUT TO DISPLAY THE LOADER */
   // this->clearLayout(_mainLayout);
   // _mainLayout->addWidget(processLabel, 0, 1);
   // setLayout(_mainLayout);
