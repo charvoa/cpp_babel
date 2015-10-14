@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Tue Oct 13 17:58:15 2015 Nicolas Charvoz
+// Last update Wed Oct 14 19:10:41 2015 Nicolas Charvoz
 //
 
 #ifndef LOGINWIDGET_HH_
@@ -45,7 +45,7 @@ private:
   QGridLayout *_mainLayout;
   QLineEdit *_editUsername;
   QLineEdit *_editPassword;
-
+  QLineEdit *_editIp;
 };
 
 #endif

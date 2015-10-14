@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 14 03:19:14 2015 Antoine Garcia
+// Last update Wed Oct 14 19:13:16 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -14,11 +14,12 @@
 
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 {
-  _mainLayout = new QGridLayout;
-  QLabel *labelPassword;
-  QLabel *labelUsername;
-  QDialogButtonBox *buttons;
+  QLabel *labelPassword = new QLabel(this);
+  QLabel *labelUsername = new QLabel(this);
+  QLabel *labelIp = new QLabel(this);
+  QDialogButtonBox *buttons = new QDialogButtonBox(this);
 
+  _mainLayout = new QGridLayout;
   setFixedSize(800, 600);
   setWindowTitle(tr("Login to Babel"));
 
@@ -27,14 +28,15 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   _editPassword = new QLineEdit(this);
   _editPassword->setEchoMode(QLineEdit::Password);
 
-  labelUsername = new QLabel(this);
-  labelPassword = new QLabel(this);
+  _editIp = new QLineEdit(this);
+
   labelUsername->setText(tr("Username"));
   labelUsername->setBuddy(_editUsername);
   labelPassword->setText(tr("Password"));
   labelPassword->setBuddy(_editPassword);
+  labelIp->setText(tr("IP"));
+  labelIp->setBuddy(_editIp);
 
-  buttons = new QDialogButtonBox(this);
   buttons->addButton(QDialogButtonBox::Ok);
   buttons->addButton(QDialogButtonBox::Cancel);
   buttons->button(QDialogButtonBox::Ok)->setText(tr("Login"));
@@ -49,7 +51,10 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   _mainLayout->addWidget(_editUsername, 0, 1);
   _mainLayout->addWidget(labelPassword, 1, 0);
   _mainLayout->addWidget(_editPassword, 1, 1);
-  _mainLayout->addWidget(buttons, 2, 0, 1, 2);
+  _mainLayout->addWidget(labelIp, 2, 0);
+  _mainLayout->addWidget(_editIp, 2, 1);
+
+  _mainLayout->addWidget(buttons, 3, 0, 1, 2);
   setLayout(_mainLayout);
 }
 
