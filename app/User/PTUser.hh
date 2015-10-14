@@ -24,6 +24,8 @@ public:
   void signup(Callback func);
   void	test();
   User&		currentUser();
+  template<typename T>
+  void logUser(T obj, void(T::*call)(int));
 };
 
 extern PTUser g_PTUser;

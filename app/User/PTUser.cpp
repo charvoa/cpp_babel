@@ -23,6 +23,13 @@ void	PTUser::logIn(Callback func)
   func(1);
 }
 
+template<typename T>
+void	PTUser::logUser(T obj, void(T::*call)(int))
+{
+  std::cout << "PROCESSING LOGIN USER..." << std::endl;
+  (obj.*call)(1);
+}
+
 PTUser::User::User()
 {
   std::cout << "User Create" << std::endl;
