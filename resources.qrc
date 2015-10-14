@@ -6,4 +6,7 @@
      <qresource>
 	<file>./gui/ajax-loader.gif</file>
      </qresource>
+     <qresource>
+	<file>./gui/profilep.jpg</file>
+     </qresource>
 </RCC>

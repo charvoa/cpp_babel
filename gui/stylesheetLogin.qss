@@ -1,0 +1,58 @@
+QWidget {
+    background-color: #1DAEF1;
+}
+
+QPushButton {
+    background-color: #F5FCFE;
+    border: 2px solid #F5FCFE;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-radius:10px;
+    min-width: 8ex;
+    padding: 2px;
+    height: 60px;
+    width: 200px;
+    margin: 10px;
+}
+
+QPushButton:hover {
+    background-color: #CFEFFC;
+    border-bottom-color: #CFEFFC; /* same as the pane color */
+}
+
+QLineEdit {
+
+    background-color: white;
+    border: 2px solid black;
+}
+
+QTabWidget::pane { /* The tab widget frame */
+    border-top: 2px solid #C2C7CB;
+    position: absolute;
+    top: 0.5em;
+    background-color: #FFFEFF;
+}
+
+QTabWidget::tab-bar {
+    alignment: center;
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+    background-color: #F5FCFE;
+    border: 2px solid #F5FCFE;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-width: 8ex;
+    padding: 2px;
+    height: 60px;
+    width: 200px;
+    margin: 10px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background-color: #CFEFFC;
+}

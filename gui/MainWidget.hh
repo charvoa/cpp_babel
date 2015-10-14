@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Tue Oct 13 18:00:39 2015 Nicolas Charvoz
+// Last update Wed Oct 14 14:30:35 2015 Nicolas Charvoz
 //
 
 #ifndef MAINWIDGET_HH_
@@ -22,6 +22,7 @@
 # include <QTextEdit>
 # include <QTextStream>
 # include <QLabel>
+# include <QImage>
 # include <QTabWidget>
 # include <QTabBar>
 # include <QDialogButtonBox>
