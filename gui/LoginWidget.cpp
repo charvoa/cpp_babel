@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Tue Oct 13 18:01:59 2015 Nicolas Charvoz
+// Last update Wed Oct 14 12:00:46 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -102,6 +102,7 @@ void LoginWidget::checkLogin()
   // _mainLayout->addWidget(processLabel, 0, 1);
   // setLayout(_mainLayout);
   /* _______ */
+  g_PTUser.logUser(this, &LoginWidget::validateLogin);
 
   widget->setAttribute(Qt::WA_DeleteOnClose);
 
