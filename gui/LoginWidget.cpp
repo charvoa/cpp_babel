@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 14 12:01:43 2015 Nicolas Charvoz
+// Last update Wed Oct 14 03:19:14 2015 Antoine Garcia
 //
 
 #include "LoginWidget.hh"
@@ -71,6 +71,7 @@ void LoginWidget::clearLayout(QLayout *layout)
 
 void LoginWidget::validateLogin(int error)
 {
+  std::cout << "VALIDATE LOGIN" << std::endl;
   if (error == 0)
     std::cout << "Login bon" << std::endl;
 }
@@ -97,6 +98,7 @@ void LoginWidget::checkLogin()
   userString = user.toUtf8().constData();
   passString = pass.toUtf8().constData();
 
+  g_PTUser.logUser(*this, &LoginWidget::validateLogin);
     /* CLEAR THE LAYOUT TO DISPLAY THE LOADER */
   // this->clearLayout(_mainLayout);
   // _mainLayout->addWidget(processLabel, 0, 1);

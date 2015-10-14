@@ -1,6 +1,7 @@
 #ifndef PTUSER_HH_
 # define PTUSER_HH_
 
+#include <iostream>
 #include <string>
 
 typedef void (*Callback)(int error);
@@ -25,7 +26,11 @@ public:
   void	test();
   User&		currentUser();
   template<typename T>
-  void logUser(T obj, void(T::*call)(int));
+  void logUser(T &obj, void(T::*call)(int))
+  {
+    std::cout << "PROCESSING LOGIN USER..." << std::endl;
+    (obj.*call)(1);
+  }
 };
 
 extern PTUser g_PTUser;
