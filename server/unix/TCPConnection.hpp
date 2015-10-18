@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Wed Oct 14 00:24:18 2015 Nicolas Girardot
+// Last update Wed Oct 14 11:57:30 2015 Nicolas Charvoz
 //
 
 #ifndef TCPCONNECTION_HPP_

@@ -5,19 +5,23 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Tue Oct 13 17:14:42 2015 Nicolas Charvoz
+// Last update Sun Oct 18 10:43:02 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
 #include "MainWidget.hh"
+#include "Loader.hpp"
+#include "../app/User/PTUser.hh"
 
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 {
-  _mainLayout = new QGridLayout;
-  QLabel *labelPassword;
-  QLabel *labelUsername;
-  QDialogButtonBox *buttons;
+  QLabel *labelPassword = new QLabel(this);
+  QLabel *labelUsername = new QLabel(this);
+  QLabel *labelIp = new QLabel(this);
+  QDialogButtonBox *buttons = new QDialogButtonBox(this);
 
+  _login = false;
+  _mainLayout = new QGridLayout;
   setFixedSize(800, 600);
   setWindowTitle(tr("Login to Babel"));
 
@@ -26,14 +30,15 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   _editPassword = new QLineEdit(this);
   _editPassword->setEchoMode(QLineEdit::Password);
 
-  labelUsername = new QLabel(this);
-  labelPassword = new QLabel(this);
+  _editIp = new QLineEdit(this);
+
   labelUsername->setText(tr("Username"));
   labelUsername->setBuddy(_editUsername);
   labelPassword->setText(tr("Password"));
   labelPassword->setBuddy(_editPassword);
+  labelIp->setText(tr("IP"));
+  labelIp->setBuddy(_editIp);
 
-  buttons = new QDialogButtonBox(this);
   buttons->addButton(QDialogButtonBox::Ok);
   buttons->addButton(QDialogButtonBox::Cancel);
   buttons->button(QDialogButtonBox::Ok)->setText(tr("Login"));
@@ -48,7 +53,10 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   _mainLayout->addWidget(_editUsername, 0, 1);
   _mainLayout->addWidget(labelPassword, 1, 0);
   _mainLayout->addWidget(_editPassword, 1, 1);
-  _mainLayout->addWidget(buttons, 2, 0, 1, 2);
+  _mainLayout->addWidget(labelIp, 2, 0);
+  _mainLayout->addWidget(_editIp, 2, 1);
+
+  _mainLayout->addWidget(buttons, 3, 0, 1, 2);
   setLayout(_mainLayout);
 }
 
@@ -56,16 +64,33 @@ void LoginWidget::clearLayout(QLayout *layout)
 {
   QLayoutItem *item;
 
-  while((item = layout->takeAt(0))) {
-    if (item->layout()) {
-      clearLayout(item->layout());
-      delete item->layout();
-    }
-    if (item->widget()) {
-      delete item->widget();
-    }
+  while((item = layout->takeAt(0)))
+    {
+    if (item->layout())
+      {
+	clearLayout(item->layout());
+	delete item->layout();
+      }
+    if (item->widget())
+      {
+	delete item->widget();
+      }
     delete item;
-  }
+    }
+}
+
+void LoginWidget::validateLogin(int error)
+{
+  if (error == 1)
+    {
+      _login = true;
+      std::cout << "Login bon" << std::endl;
+    }
+  else
+    {
+      _login = false;
+      std::cout << "Login fail" << std::endl;
+    }
 }
 
 void LoginWidget::checkLogin()
@@ -75,14 +100,16 @@ void LoginWidget::checkLogin()
   QString pass = _editPassword->text();
   QMovie *movie = new QMovie("./gui/loader.gif");
   QLabel *processLabel = new QLabel(this);
-  std::string userString;
-  std::string passString;
+  QThread *thread = new QThread;
+  Loader *loader = new Loader();
 
   processLabel->setMovie(movie);
   movie->start();
 
-  userString = user.toUtf8().constData();
-  passString = pass.toUtf8().constData();
+  _userString = user.toUtf8().constData();
+  _passString = pass.toUtf8().constData();
+
+  g_PTUser.logUser(*this, &LoginWidget::validateLogin);
 
   /* CLEAR THE LAYOUT TO DISPLAY THE LOADER */
   // this->clearLayout(_mainLayout);
@@ -90,9 +117,17 @@ void LoginWidget::checkLogin()
   // setLayout(_mainLayout);
   /* _______ */
 
+  loader->moveToThread(thread);
+  connect(loader, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
+  connect(thread, SIGNAL(started()), loader, SLOT(process()));
+  connect(loader, SIGNAL(finished()), thread, SLOT(quit()));
+  connect(loader, SIGNAL(finished()), loader, SLOT(deleteLater()));
+  connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+  thread->start();
+
   widget->setAttribute(Qt::WA_DeleteOnClose);
 
-  if (userString == "toto" && passString == "toto")
+  if (_login)
     {
       widget->show();
       deleteLater();

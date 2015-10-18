@@ -4,7 +4,6 @@ CONFIG += ordered
 SUBDIRS = gui
 SUBDIRS += app
 app.depends = gui
-
 clean.target = clean
 clean.commands = rm -f */*.o
 clean.commands += rm -f */*/*.o

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Tue Oct 13 16:26:04 2015 Nicolas Charvoz
+// Last update Sun Oct 18 10:30:03 2015 Nicolas Charvoz
 //
 
 #ifndef MAINWIDGET_HH_
@@ -22,6 +22,7 @@
 # include <QTextEdit>
 # include <QTextStream>
 # include <QLabel>
+# include <QImage>
 # include <QTabWidget>
 # include <QTabBar>
 # include <QDialogButtonBox>
@@ -29,6 +30,7 @@
 # include <QGridLayout>
 # include <QHBoxLayout>
 # include <QFile>
+# include <QThread>
 # include <sstream>
 # include <iostream>
 # include <fstream>
