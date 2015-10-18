@@ -27,7 +27,7 @@ public:
   ~PTUser();
   User&		currentUser();
   template<typename T>
-  void logUser(T &obj, void(T::*call)(int))
+  void logUser(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
   {
     std::cout << "PROCESSING LOGIN USER..." << std::endl;
     if (server.start("google.caca", 80) == -1)
