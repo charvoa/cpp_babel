@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Sun Oct 18 10:36:48 2015 Nicolas Charvoz
+// Last update Sun Oct 18 14:18:32 2015 Nicolas Charvoz
 //
 
 #ifndef LOGINWIDGET_HH_
@@ -53,6 +53,7 @@ private:
   bool _login;
   std::string _userString;
   std::string _passString;
+  std::string _ipString;
 };
 
 #endif
