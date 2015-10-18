@@ -5,12 +5,11 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Oct 18 11:31:54 2015 Nicolas Charvoz
+// Last update Sun Oct 18 13:37:32 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
 #include "MainWidget.hh"
-#include "Loader.hpp"
 #include "../app/User/PTUser.hh"
 
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
@@ -100,8 +99,6 @@ void LoginWidget::checkLogin()
   QString pass = _editPassword->text();
   QMovie *movie = new QMovie("./gui/loader.gif");
   QLabel *processLabel = new QLabel(this);
-  QThread *thread = new QThread;
-  Loader *loader = new Loader();
 
   processLabel->setMovie(movie);
   movie->start();
@@ -116,14 +113,6 @@ void LoginWidget::checkLogin()
   // _mainLayout->addWidget(processLabel, 0, 1);
   // setLayout(_mainLayout);
   /* _______ */
-
-  loader->moveToThread(thread);
-  connect(loader, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
-  connect(thread, SIGNAL(started()), loader, SLOT(process(*this)));
-  connect(loader, SIGNAL(finished()), thread, SLOT(quit()));
-  connect(loader, SIGNAL(finished()), loader, SLOT(deleteLater()));
-  connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
-  thread->start();
 
   widget->setAttribute(Qt::WA_DeleteOnClose);
 
