@@ -6,17 +6,14 @@
 class			Sender
 {
 
-  Sender();
+  Sender(Response &response);
   ~Sender();
 
-  static void	       	success();
-  static void	       	error();
-  static void	       	contactList(std::vector<std::string>);
-  static void	       	contactInfo(Account &Account);
+  static void	       	send();
 
 private:
 
 
 };
 
-#endif /* !ACCOUNT_HH_ */
+#endif /* !SENDER_HH_ */
