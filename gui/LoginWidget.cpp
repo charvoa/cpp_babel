@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Oct 18 10:43:02 2015 Nicolas Charvoz
+// Last update Sun Oct 18 11:31:54 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -119,7 +119,7 @@ void LoginWidget::checkLogin()
 
   loader->moveToThread(thread);
   connect(loader, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
-  connect(thread, SIGNAL(started()), loader, SLOT(process()));
+  connect(thread, SIGNAL(started()), loader, SLOT(process(*this)));
   connect(loader, SIGNAL(finished()), thread, SLOT(quit()));
   connect(loader, SIGNAL(finished()), loader, SLOT(deleteLater()));
   connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sun Oct 18 10:18:18 2015 Nicolas Charvoz
-// Last update Sun Oct 18 11:11:56 2015 Nicolas Charvoz
+// Last update Sun Oct 18 11:30:53 2015 Nicolas Charvoz
 //
 
 #ifndef LOADER_HH_
@@ -23,12 +23,7 @@ public:
 
 public slots:
 
-  void process();
-  // template <typename T>
-  // void process(T &c)
-  // {
-  //   std::cout << typeid(c).name() << "\t" << "c" << std::endl;
-  // }
+  void process(QWidget *o);
 
 signals:
   void finished();

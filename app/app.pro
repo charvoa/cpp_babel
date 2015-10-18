@@ -6,6 +6,6 @@ QT+=widgets
 QT+=network
 SOURCES = main.cpp
 SOURCES += User/PTUser.cpp
-SOURCES += Network/NetworkServerHandler.cpp
+#SOURCES += Network/NetworkServerHandler.cpp
 LIBS = ../gui/libgui.a
 TARGET = ../babelUI
