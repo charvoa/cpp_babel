@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 22:15:25 2015 Nicolas Girardot
-// Last update Sun Oct 18 12:17:32 2015 Nicolas Girardot
+// Last update Sun Oct 18 14:53:54 2015 Nicolas Girardot
 //
 
 #ifndef TCPSERVER_HPP_
@@ -48,7 +48,7 @@ private:
   {
     if (!error)
       {
-	newConnection->start();
+	newConnection->asyncWrite("JIOLE");
 	startAccept();
       }
   }

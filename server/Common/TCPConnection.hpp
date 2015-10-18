@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Sun Oct 18 13:48:52 2015 Nicolas Girardot
+// Last update Sun Oct 18 16:56:18 2015 Nicolas Girardot
 //
 
 #ifndef TCPCONNECTION_HPP_
@@ -23,8 +23,9 @@ class TCPConnection : public boost::enable_shared_from_this<TCPConnection>
 {
 private:
   boost::asio::ip::tcp::socket _socket;
-  boost::asio::streambuf _response;
   std::string _readMessage;
+  boost::asio::streambuf _response;
+
 public:
   typedef boost::shared_ptr<TCPConnection> pointer;
 
@@ -38,33 +39,23 @@ public:
     return _socket;
   }
 
-  //Ecriture Async sur le SOCKET
-
-
-  void start()
-  {
-    std::string _message = "Bienvenue sur le serveur!";
-
-    boost::asio::async_write(_socket, boost::asio::buffer(_message),
-			     boost::bind(&TCPConnection::handleWrite, shared_from_this(),
-					 boost::asio::placeholders::error)
-			     );
-  }
-
   void	asyncWrite(const std::string &message)
   {
     boost::asio::async_write(_socket,
 			     boost::asio::buffer(message),
 			     boost::bind(&TCPConnection::handleWrite, shared_from_this(),
 					 boost::asio::placeholders::error));
-    std::cout << "test" << std::endl;
   }
 
   void asyncRead()
   {
-    boost::asio::async_read(_socket, _response,
-			    boost::bind(&TCPConnection::handleRead, shared_from_this(),
-					boost::asio::placeholders::error));
+    boost::asio::async_read_until(_socket,
+				 _response,
+				 "\n",
+				 boost::bind(&TCPConnection::handleRead,
+					     shared_from_this(),
+					     boost::asio::placeholders::error)
+				 );
   }
 
   void close()
@@ -89,7 +80,13 @@ private:
   {
     if (!error)
       {
+	std::cout << &_response;
 	asyncRead();
+      }
+    else
+      {
+	std::cout << &error << std::endl;
+	_socket.close();
       }
     //CREATE SENDER(RSEPONSE::ERROR)
   }
