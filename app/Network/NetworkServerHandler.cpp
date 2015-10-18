@@ -5,10 +5,12 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Oct 18 01:32:55 2015 Antoine Garcia
+// Last update Sun Oct 18 11:09:57 2015 Nicolas Charvoz
 //
 
 #include "NetworkServerHandler.hh"
+#include <QtNetwork>
+#include <QTcpSocket>
 
 NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
 {

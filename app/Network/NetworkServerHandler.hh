@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Oct 18 11:08:24 2015 Nicolas Charvoz
+// Last update Sun Oct 18 11:10:51 2015 Nicolas Charvoz
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -13,7 +13,8 @@
 
 #include <QObject>
 #include <QString>
-#include <QTcpSocket>
+
+class QTcpSocket;
 
 class NetworkServerHandler : public QObject
 {
