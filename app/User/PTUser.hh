@@ -14,24 +14,27 @@ private:
   {
     std::string _username;
     std::string _password;
+    std::string _objectId;
   public:
     User();
     ~User();
   };
   User	_currentUser;
   NetworkServerHandler server;
+  std::string _ipServer;
 public:
   PTUser();
   ~PTUser();
-  void logIn(Callback func);
-  void signup(Callback func);
-  void	test();
   User&		currentUser();
   template<typename T>
   void logUser(T &obj, void(T::*call)(int))
   {
     std::cout << "PROCESSING LOGIN USER..." << std::endl;
-    (obj.*call)(1);
+    if (server.start("google.caca", 80) == -1)
+      (obj.*call)(0);
+    else{
+      (obj.*call)(1);
+    }
   }
 };
 
