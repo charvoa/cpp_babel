@@ -28,7 +28,7 @@ public:
   void logUser(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
   {
     std::cout << "PROCESSING LOGIN USER..." << std::endl;
-    if (server.start("localhost", 4046) == -1)
+    if (server.start("localhost", 4040) == -1)
       (obj.*call)(0);
     else{
       (obj.*call)(1);

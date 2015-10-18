@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Oct 18 05:03:27 2015 Antoine Garcia
+// Last update Sun Oct 18 07:58:49 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -54,5 +54,5 @@ void	NetworkServerHandler::readyRead()
 
 void	NetworkServerHandler::connected()
 {
-
+  _socket->write("coucou\n");
 }
