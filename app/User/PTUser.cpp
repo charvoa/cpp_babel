@@ -4,23 +4,12 @@
 PTUser g_PTUser;
 PTUser::PTUser()
 {
-  std::cout << "Coucou" << std::endl;
+  std::cout << "PTUSER CREATED" << std::endl;
 }
 
 PTUser::~PTUser()
 {
   std::cout << "Destroy" << std::endl;
-}
-
-void	PTUser::test()
-{
-  std::cout << "TESTOR" << std::endl;
-}
-
-void	PTUser::logIn(Callback func)
-{
-  std::cout << "Process LOGIN" << std::endl;
-  func(1);
 }
 
 PTUser::User::User()

@@ -5,8 +5,6 @@
 #include <string>
 #include "../Network/NetworkServerHandler.hh"
 
-typedef void (*Callback)(int error);
-
 class PTUser
 {
 private:
@@ -14,24 +12,27 @@ private:
   {
     std::string _username;
     std::string _password;
+    std::string _objectId;
   public:
     User();
     ~User();
   };
   User	_currentUser;
   NetworkServerHandler server;
+  std::string _ipServer;
 public:
   PTUser();
   ~PTUser();
-  void logIn(Callback func);
-  void signup(Callback func);
-  void	test();
   User&		currentUser();
   template<typename T>
-  void logUser(T &obj, void(T::*call)(int))
+  void logUser(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
   {
     std::cout << "PROCESSING LOGIN USER..." << std::endl;
-    (obj.*call)(1);
+    if (server.start("localhost", 4046) == -1)
+      (obj.*call)(0);
+    else{
+      (obj.*call)(1);
+    }
   }
 };
 

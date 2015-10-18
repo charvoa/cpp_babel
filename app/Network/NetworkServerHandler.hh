@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Oct 18 03:17:11 2015 Antoine Garcia
+// Last update Sun Oct 18 04:53:47 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -27,7 +27,7 @@ private:
 public:
   NetworkServerHandler(QObject *parent = 0);
   ~NetworkServerHandler();
-  void start(const std::string &host, unsigned int port);
+  int start(const std::string &host, unsigned int port);
   void setHost(const std::string &);
   void setPort(unsigned int);
 private slots:
