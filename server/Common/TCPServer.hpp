@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 22:15:25 2015 Nicolas Girardot
-// Last update Wed Oct 14 00:25:03 2015 Nicolas Girardot
+// Last update Sun Oct 18 12:17:32 2015 Nicolas Girardot
 //
 
 #ifndef TCPSERVER_HPP_
@@ -47,8 +47,10 @@ private:
   void handleAccept(TCPConnection::pointer newConnection, const boost::system::error_code& error)
   {
     if (!error)
-      newConnection->start();
-    startAccept();
+      {
+	newConnection->start();
+	startAccept();
+      }
   }
 };
 
