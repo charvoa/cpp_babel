@@ -19,6 +19,7 @@ private:
     ~User();
   };
   User	_currentUser;
+  NetworkServerHandler server;
 public:
   PTUser();
   ~PTUser();

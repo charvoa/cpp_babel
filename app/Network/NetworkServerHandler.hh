@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Oct 18 11:10:51 2015 Nicolas Charvoz
+// Last update Sun Oct 18 03:03:24 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -19,7 +19,6 @@ class QTcpSocket;
 class NetworkServerHandler : public QObject
 {
   Q_OBJECT
-
 private:
   QObject *parent;
   QTcpSocket *_socket;
