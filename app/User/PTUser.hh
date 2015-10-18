@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "../Network/NetworkServerHandler.hh"
 
 typedef void (*Callback)(int error);
 
@@ -18,6 +19,7 @@ private:
     ~User();
   };
   User	_currentUser;
+  NetworkServerHandler server;
 public:
   PTUser();
   ~PTUser();

@@ -1,0 +1,100 @@
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage{color}
+
+\interlinepenalty 10000
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\title{Spyke (Babel Project)}
+\author{La Pintade}
+\date{5 Octobre 2015 - 8 Novembre 2015}
+
+\begin{document}
+
+  \maketitle
+  \tableofcontents
+
+
+  \newpage
+  \section{About}
+    This document is a technical documentation about Spyke.
+    Skype is a software developped by the La Pintade team, based in Nice.
+  \newpage
+
+  \section{GUI}
+  In this section we will see the main classes used in order to display the GUI of Spyke.
+
+  \begin{lstlisting}
+    int		main(int ac, char **av)
+    {
+      MyApplication app(ac, av);
+      LoginWidget *login;
+
+      login = new LoginWidget;
+
+      QFile File2("./gui/stylesheetLogin.qss");
+      File2.open(QFile::ReadOnly);
+      QString StyleSheet2 = QLatin1String(File2.readAll());
+
+      /* Applying it */
+      login->setStyleSheet(StyleSheet2);
+
+      [...]
+
+      /* Show login window */
+      login->setAttribute(Qt::WA_DeleteOnClose);
+      login->show();
+
+      return app.exec();
+    }
+  \end{lstlisting}
+
+  First we load stylsheets for each widgets. And we display the login widget.
+
+  \begin{lstlisting}
+    void LoginWidget::checkLogin()
+    {
+      MainWidget *widget = new MainWidget();
+      QString user = _editUsername->text();
+      QString pass = _editPassword->text();
+
+      _userString = user.toUtf8().constData();
+      _passString = pass.toUtf8().constData();
+
+      g_PTUser.logUser(*this, &LoginWidget::validateLogin);
+
+      widget->setAttribute(Qt::WA_DeleteOnClose);
+      if (_login)
+        {
+          widget->show();
+          deleteLater();
+        }
+    }
+
+  \end{lstlisting}
+
+  The user has to log himself in the system in order to use Spyke. 
+
+\end{document}

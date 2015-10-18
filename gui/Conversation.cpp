@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 14 17:35:35 2015 Nicolas Charvoz
+// Last update Sun Oct 18 13:27:30 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -14,7 +14,7 @@ Conversation::Conversation(const std::string &contact,
 			   QWidget *parent)
   : QWidget(parent), _contact(contact)
 {
-  QLabel *name = new QLabel(tr("Miranda Kerr"), this);
+  QLabel *name = new QLabel(tr(contact.c_str()), this);
   QLineEdit *textZone = new QLineEdit(this);
 
   QPushButton *sendButton = new QPushButton(tr("Send"), this);

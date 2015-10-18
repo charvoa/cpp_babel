@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Wed Oct 14 19:10:41 2015 Nicolas Charvoz
+// Last update Sun Oct 18 10:36:48 2015 Nicolas Charvoz
 //
 
 #ifndef LOGINWIDGET_HH_
@@ -37,15 +37,22 @@ public:
   explicit LoginWidget(QWidget *parent = 0);
   void clearLayout(QLayout*);
   void validateLogin(int);
+
 public slots:
 
   void checkLogin();
+  void errorString(QString er) {
+    std::cout << "Error : " << er.toUtf8().constData() << std::endl;
+  }
 private:
 
   QGridLayout *_mainLayout;
   QLineEdit *_editUsername;
   QLineEdit *_editPassword;
   QLineEdit *_editIp;
+  bool _login;
+  std::string _userString;
+  std::string _passString;
 };
 
 #endif
