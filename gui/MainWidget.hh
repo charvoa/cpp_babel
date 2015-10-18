@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Wed Oct 14 14:30:35 2015 Nicolas Charvoz
+// Last update Sun Oct 18 10:30:03 2015 Nicolas Charvoz
 //
 
 #ifndef MAINWIDGET_HH_
@@ -30,6 +30,7 @@
 # include <QGridLayout>
 # include <QHBoxLayout>
 # include <QFile>
+# include <QThread>
 # include <sstream>
 # include <iostream>
 # include <fstream>

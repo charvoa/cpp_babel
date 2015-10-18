@@ -5,19 +5,21 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Oct 18 01:57:52 2015 Antoine Garcia
+// Last update Sun Oct 18 11:08:24 2015 Nicolas Charvoz
 //
 
 #ifndef NETWORKHANDLER_HH_
 # define NETWORKHANDLER_HH_
 
-#include <Qt/QtNetwork>
 #include <QObject>
 #include <QString>
 #include <QTcpSocket>
 
 class NetworkServerHandler : public QObject
 {
+  Q_OBJECT
+
+private:
   QObject *parent;
   QTcpSocket *_socket;
   std::string _host;
