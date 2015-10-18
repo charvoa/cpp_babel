@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "../Network/NetworkServerHandler.hh"
 
 typedef void (*Callback)(int error);
 
