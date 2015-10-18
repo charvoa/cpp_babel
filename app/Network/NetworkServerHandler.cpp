@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Oct 18 11:09:57 2015 Nicolas Charvoz
+// Last update Sun Oct 18 03:16:22 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -37,4 +37,14 @@ void	NetworkServerHandler::setHost(const std::string &host)
 void	NetworkServerHandler::setPort(unsigned int port)
 {
   _port = port;
+}
+
+void	NetworkServerHandler::readyRead()
+{
+
+}
+
+void	NetworkServerHandler::connected()
+{
+
 }

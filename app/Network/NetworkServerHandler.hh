@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Oct 18 03:03:24 2015 Antoine Garcia
+// Last update Sun Oct 18 03:17:11 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -30,6 +30,9 @@ public:
   void start(const std::string &host, unsigned int port);
   void setHost(const std::string &);
   void setPort(unsigned int);
+private slots:
+  void	readyRead();
+  void	connected();
 };
 
 #endif
