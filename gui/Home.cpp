@@ -5,17 +5,17 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Tue Oct 13 15:42:59 2015 Nicolas Charvoz
+// Last update Sun Oct 18 13:35:09 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
 
 Home::Home(QWidget *parent) : QWidget(parent)
 {
-  QVBoxLayout *mainLayout = new QVBoxLayout;
+  QPixmap profilPicture("./gui/miranda2.jpg");
+  QLabel *imgP = new QLabel(this);
 
-  QLabel *homeMessage = new QLabel(tr("Welcome in the babel"));
 
-  mainLayout->addWidget(homeMessage);
-  setLayout(mainLayout);
+  imgP->setPixmap(profilPicture.scaled(120, 120, Qt::KeepAspectRatio));
+  imgP->setGeometry(0, 0, 120, 120);
 }
