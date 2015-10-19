@@ -27,7 +27,7 @@ class		        Request : PTObject
   Request(std::string &stringRequest);
   ~Request();
 
-  REQUEST::type	       	getRequestType();  
+  REQUEST::type	       	getRequestType();
 
 private:
 

@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Sun Oct 18 16:56:18 2015 Nicolas Girardot
+// Last update Mon Oct 19 10:21:00 2015 Nicolas Girardot
 //
 
 #ifndef TCPCONNECTION_HPP_
@@ -81,11 +81,11 @@ private:
     if (!error)
       {
 	std::cout << &_response;
+	Command *command = new Command(&_response);
 	asyncRead();
       }
     else
       {
-	std::cout << &error << std::endl;
 	_socket.close();
       }
     //CREATE SENDER(RSEPONSE::ERROR)
