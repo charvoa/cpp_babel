@@ -1,26 +1,37 @@
+//
+// Requests.hh for babel in /home/nicolas/rendu/cpp_babel/server/Common
+//
+// Made by Nicolas Girardot
+// Login   <girard_s@epitech.net>
+//
+// Started on  Mon Oct 19 10:51:38 2015 Nicolas Girardot
+// Last update Mon Oct 19 10:52:01 2015 Nicolas Girardot
+//
+
+
 #ifndef _REQUESTS_HH
 # define _REQUESTS_HH
 
-  typedef enum	        type
-    {
-      SIGN_UP,
-      SIGN_IN,
-      CALL,
-      MUTE,
-      HANG_UP,
-      SEND_TEXT,
-      SEND_FILE,
-      ADD_PARTICIPANT,
-      ADD_CONTACT,
-      GET_CONTACT,
-      REMOVE_CONTACT,
-      MODIFY_PROFIL_PICTURE,
-      MODIFY_STATUS,
-      MODIFY_LOGIN,
-      MODIFY_LOCATION,
-      ADD_NICKNAME,
-      LISTEN_TO_MAIL
-    }			type;
+typedef enum	        type
+  {
+    SIGN_UP,
+    SIGN_IN,
+    CALL,
+    MUTE,
+    HANG_UP,
+    SEND_TEXT,
+    SEND_FILE,
+    ADD_PARTICIPANT,
+    ADD_CONTACT,
+    GET_CONTACT,
+    REMOVE_CONTACT,
+    MODIFY_PROFIL_PICTURE,
+    MODIFY_STATUS,
+    MODIFY_LOGIN,
+    MODIFY_LOCATION,
+    ADD_NICKNAME,
+    LISTEN_TO_MAIL
+  }			type;
 
 typedef struct	Requests
 {
