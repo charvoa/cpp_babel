@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Mon Oct 19 12:41:37 2015 Antoine Garcia
+// Last update Mon Oct 19 13:43:00 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -14,6 +14,7 @@
 #include <QObject>
 #include <QString>
 #include "INetwork.hh"
+#include "TCPProtolHelper.hh"
 
 class QTcpSocket;
 

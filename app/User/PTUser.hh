@@ -1,7 +1,9 @@
 #ifndef PTUSER_HH_
 # define PTUSER_HH_
+
 #include <cstdlib>
 #include <iostream>
+#include <list>
 #include <string>
 #include "../Network/NetworkServerHandler.hh"
 
@@ -24,6 +26,7 @@ private:
   User	_currentUser;
   NetworkServerHandler server;
   std::string _ipServer;
+  void initProtolConnection();
 public:
   PTUser();
   ~PTUser();
