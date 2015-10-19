@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Mon Oct 19 10:21:00 2015 Nicolas Girardot
+// Last update Mon Oct 19 11:36:20 2015 Nicolas Girardot
 //
 
 #ifndef TCPCONNECTION_HPP_
@@ -18,6 +18,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
+//#include "../Demand.hh"
 
 class TCPConnection : public boost::enable_shared_from_this<TCPConnection>
 {
@@ -70,10 +71,7 @@ private:
   void	handleWrite(const boost::system::error_code& error)
   {
     if (!error)
-      {
-	asyncRead();
-      }
-    //SEE WHAT TO DO IN CASE OF ERROR
+      asyncRead();
   }
 
   void handleRead(const boost::system::error_code& error)
@@ -81,14 +79,17 @@ private:
     if (!error)
       {
 	std::cout << &_response;
-	Command *command = new Command(&_response);
+	std::ostringstream ss;
+	ss << &_response;
+	std::string s = ss.str();
+	std::cout << s;
+	//	Demand *demand = new Demand(s);
 	asyncRead();
       }
     else
       {
 	_socket.close();
       }
-    //CREATE SENDER(RSEPONSE::ERROR)
   }
 
 };

@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 22:15:25 2015 Nicolas Girardot
-// Last update Sun Oct 18 14:53:54 2015 Nicolas Girardot
+// Last update Mon Oct 19 11:27:57 2015 Nicolas Girardot
 //
 
 #ifndef TCPSERVER_HPP_
@@ -48,7 +48,7 @@ private:
   {
     if (!error)
       {
-	newConnection->asyncWrite("JIOLE");
+	newConnection->asyncWrite("Welcome to Spyke, a revolutionary way to communicate with your loved ones\n");
 	startAccept();
       }
   }
