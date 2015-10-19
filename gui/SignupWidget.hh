@@ -5,7 +5,7 @@
 // Signup   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Mon Oct 19 10:44:24 2015 Nicolas Charvoz
+// Last update Mon Oct 19 11:43:44 2015 Nicolas Charvoz
 //
 
 #ifndef SIGNUPWIDGET_HH_
@@ -29,7 +29,6 @@
 # include <sstream>
 # include <iostream>
 # include <fstream>
-# include <unistd.h>
 
 class SignupWidget : public QWidget {
 Q_OBJECT
