@@ -10,5 +10,11 @@ HEADERS = Network/NetworkServerHandler.hh
 SOURCES = main.cpp
 SOURCES += User/PTUser.cpp
 SOURCES += Network/NetworkServerHandler.cpp
+
+unix {
 LIBS = ../gui/libgui.a
+}
+win32 {
+LIBS = ../gui/gui.lib
+}
 TARGET = ../babelUI
