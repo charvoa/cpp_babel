@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 19 10:46:17 2015 Nicolas Charvoz
+// Last update Mon Oct 19 11:05:27 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -39,7 +39,6 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   labelIp->setText(tr("IP"));
   labelIp->setBuddy(_editIp);
 
-
   _mainLayout->addWidget(labelUsername, 0, 0);
   _mainLayout->addWidget(_editUsername, 0, 1);
   _mainLayout->addWidget(labelPassword, 1, 0);
@@ -50,7 +49,6 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   this->displayButton();
   setLayout(_mainLayout);
 }
-
 
 void LoginWidget::displayButton()
 {
@@ -74,10 +72,18 @@ void LoginWidget::displayButton()
 
 void LoginWidget::signup()
 {
-  SignupWidget *sW;
+  SignupWidget *sW = new SignupWidget();
 
-  sW = new SignupWidget();
+  QFile File("./gui/stylesheetLogin.qss");
+  File.open(QFile::ReadOnly);
+  QString StyleSheet = QLatin1String(File.readAll());
+
+  /* Applying it */
+  sW->setStyleSheet(StyleSheet);
+
+  sW->setAttribute(Qt::WA_DeleteOnClose);
   sW->show();
+  deleteLater();
 }
 
 void LoginWidget::clearLayout(QLayout *layout)
@@ -134,7 +140,7 @@ void LoginWidget::checkLogin()
 
   _editPassword->clear();
 
-  _mainLayout->addWidget(processLabel, 0, 1);
+  _mainLayout->addWidget(processLabel, 0, 3);
 
   g_PTUser.logUser(*this, &LoginWidget::validateLogin, _userString,
 		   _passString, _ipString);
