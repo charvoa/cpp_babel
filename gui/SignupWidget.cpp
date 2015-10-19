@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 19 10:49:41 2015 Nicolas Charvoz
+// Last update Mon Oct 19 14:20:14 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -30,6 +30,7 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
   _editPassword->setEchoMode(QLineEdit::Password);
 
   _editC = new QLineEdit(this);
+  _editC->setEchoMode(QLineEdit::Password);
 
   labelUsername->setText(tr("Username"));
   labelUsername->setBuddy(_editUsername);

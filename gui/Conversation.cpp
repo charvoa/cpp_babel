@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sun Oct 18 13:27:30 2015 Nicolas Charvoz
+// Last update Mon Oct 19 17:52:52 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -18,9 +18,12 @@ Conversation::Conversation(const std::string &contact,
   QLineEdit *textZone = new QLineEdit(this);
 
   QPushButton *sendButton = new QPushButton(tr("Send"), this);
-  QWidget *messageZoneTmp = new QWidget(this);
-  messageZoneTmp->setStyleSheet("background-color:black;");
+  QTextEdit *messageZoneTmp = new QTextEdit(this);
 
+  messageZoneTmp->setStyleSheet("background-color:white;");
+  messageZoneTmp->setReadOnly(true);
+
+  messageZoneTmp->append(tr("14h28 : \nSalut beau gosse"));
   /* Image */
   QPixmap profilPicture("./gui/miranda2.jpg");
   QLabel *imgP = new QLabel(this);

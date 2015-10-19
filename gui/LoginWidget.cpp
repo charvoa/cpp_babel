@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 19 12:45:32 2015 Nicolas Charvoz
+// Last update Mon Oct 19 14:19:55 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -174,7 +174,7 @@ void LoginWidget::checkLogin()
   _editPassword->clear();
 
   this->clearLayout(_mainLayout);
-  //  _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
+  _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
 
   g_PTUser.logUser(*this, &LoginWidget::validateLogin, _userString,
 		   _passString, _ipString);
