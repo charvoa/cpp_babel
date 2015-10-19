@@ -4,7 +4,7 @@
 PTUser g_PTUser;
 PTUser::PTUser()
 {
-  std::cout << "Coucou" << std::endl;
+  std::cout << "PTUSER CREATED" << std::endl;
 }
 
 PTUser::~PTUser()
@@ -12,17 +12,12 @@ PTUser::~PTUser()
   std::cout << "Destroy" << std::endl;
 }
 
-void	PTUser::test()
+PTUser::User&	PTUser::currentUser()
 {
-  std::cout << "TESTOR" << std::endl;
+  return (_currentUser);
 }
 
-void	PTUser::logIn(Callback func)
-{
-  std::cout << "Process LOGIN" << std::endl;
-  func(1);
-}
-
+//Nested Class User
 PTUser::User::User()
 {
   std::cout << "User Create" << std::endl;
@@ -31,4 +26,14 @@ PTUser::User::User()
 PTUser::User::~User()
 {
   std::cout << "Destroy User" << std::endl;
+}
+
+const std::string	&PTUser::User::getUsername() const
+{
+  return (_username);
+}
+
+const std::string	&PTUser::User::getObjectId() const
+{
+  return (_objectId);
 }

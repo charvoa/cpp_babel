@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Oct 18 11:10:51 2015 Nicolas Charvoz
+// Last update Sun Oct 18 10:58:58 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -19,7 +19,6 @@ class QTcpSocket;
 class NetworkServerHandler : public QObject
 {
   Q_OBJECT
-
 private:
   QObject *parent;
   QTcpSocket *_socket;
@@ -28,9 +27,13 @@ private:
 public:
   NetworkServerHandler(QObject *parent = 0);
   ~NetworkServerHandler();
-  void start(const std::string &host, unsigned int port);
+  int start(const std::string &host, unsigned int port);
   void setHost(const std::string &);
   void setPort(unsigned int);
+  void write(const std::string &);
+private slots:
+  void	readyRead();
+  void	connected();
 };
 
 #endif

@@ -5,12 +5,11 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Oct 18 10:43:02 2015 Nicolas Charvoz
+// Last update Sun Oct 18 14:24:28 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
 #include "MainWidget.hh"
-#include "Loader.hpp"
 #include "../app/User/PTUser.hh"
 
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
@@ -81,10 +80,14 @@ void LoginWidget::clearLayout(QLayout *layout)
 
 void LoginWidget::validateLogin(int error)
 {
+  MainWidget *widget;
+
   if (error == 1)
     {
-      _login = true;
-      std::cout << "Login bon" << std::endl;
+      widget = new MainWidget();
+      widget->setAttribute(Qt::WA_DeleteOnClose);
+      widget->show();
+      deleteLater();
     }
   else
     {
@@ -95,41 +98,28 @@ void LoginWidget::validateLogin(int error)
 
 void LoginWidget::checkLogin()
 {
-  MainWidget *widget = new MainWidget();
   QString user = _editUsername->text();
   QString pass = _editPassword->text();
+  QString ip = _editIp->text();
   QMovie *movie = new QMovie("./gui/loader.gif");
   QLabel *processLabel = new QLabel(this);
-  QThread *thread = new QThread;
-  Loader *loader = new Loader();
 
   processLabel->setMovie(movie);
   movie->start();
 
   _userString = user.toUtf8().constData();
   _passString = pass.toUtf8().constData();
+  _ipString = ip.toUtf8().constData();
 
-  g_PTUser.logUser(*this, &LoginWidget::validateLogin);
+  _editPassword->clear();
+
+  g_PTUser.logUser(*this, &LoginWidget::validateLogin, _userString,
+		   _passString, _ipString);
 
   /* CLEAR THE LAYOUT TO DISPLAY THE LOADER */
-  // this->clearLayout(_mainLayout);
-  // _mainLayout->addWidget(processLabel, 0, 1);
-  // setLayout(_mainLayout);
+  this->clearLayout(_mainLayout);
+  _mainLayout->addWidget(processLabel, 0, 1);
+  setLayout(_mainLayout);
   /* _______ */
 
-  loader->moveToThread(thread);
-  connect(loader, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
-  connect(thread, SIGNAL(started()), loader, SLOT(process()));
-  connect(loader, SIGNAL(finished()), thread, SLOT(quit()));
-  connect(loader, SIGNAL(finished()), loader, SLOT(deleteLater()));
-  connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
-  thread->start();
-
-  widget->setAttribute(Qt::WA_DeleteOnClose);
-
-  if (_login)
-    {
-      widget->show();
-      deleteLater();
-    }
 }
