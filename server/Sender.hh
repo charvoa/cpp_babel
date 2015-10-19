@@ -9,7 +9,7 @@ class			Sender
   Sender(Response &response);
   ~Sender();
 
-  static void	       	send();
+  void		       	send();
 
 private:
 
