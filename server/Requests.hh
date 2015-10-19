@@ -1,6 +1,9 @@
 #ifndef _REQUESTS_HH
 # define _REQUESTS_HH
 
+
+typedef RequestArray std::pair<std::map<Int, REQUESTS::type>:std::map<std::string, bool (*ptrFunc)()> >
+
   typedef enum	        type
     {
       SIGN_UP,
