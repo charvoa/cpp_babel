@@ -2,14 +2,14 @@
 // Widget.hh for  in /home/nicolaschr/TP/qt
 //
 // Made by Nicolas Charvoz
-// Login   <nicolaschr@epitech.net>
+// Signup   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Mon Oct 19 10:35:28 2015 Nicolas Charvoz
+// Last update Mon Oct 19 10:44:24 2015 Nicolas Charvoz
 //
 
-#ifndef LOGINWIDGET_HH_
-# define LOGINWIDGET_HH_
+#ifndef SIGNUPWIDGET_HH_
+# define SIGNUPWIDGET_HH_
 
 # include <QApplication>
 # include <QObject>
@@ -31,30 +31,29 @@
 # include <fstream>
 # include <unistd.h>
 
-class LoginWidget : public QWidget {
+class SignupWidget : public QWidget {
 Q_OBJECT
 public:
-  explicit LoginWidget(QWidget *parent = 0);
+  explicit SignupWidget(QWidget *parent = 0);
   void clearLayout(QLayout*);
-  void validateLogin(int);
+  void validateSignup(int);
   void displayButton();
 public slots:
 
-  void checkLogin();
+  void checkSignup();
   void errorString(QString er) {
     std::cout << "Error : " << er.toUtf8().constData() << std::endl;
   }
-  void signup();
 private:
 
   QGridLayout *_mainLayout;
   QLineEdit *_editUsername;
   QLineEdit *_editPassword;
-  QLineEdit *_editIp;
+  QLineEdit *_editC;
   bool _login;
   std::string _userString;
   std::string _passString;
-  std::string _ipString;
+  std::string _cString;
   QDialogButtonBox *_buttons;
 };
 
