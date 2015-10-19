@@ -3,13 +3,25 @@
 
 class		        Response : PTObject
 {
+    typedef enum	        type
+    {
+      SUCCESS,
+      ERROR,
+      ERROR,
+      ERROR,
+      ERROR,
+      ERROR,
+      ERROR,
+      ERROR,
+      ERROR,
+    }			type;
 
   Response(Request &request);
   ~Response();
 
 private:
 
-
+  
 
 
 };
