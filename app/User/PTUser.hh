@@ -10,7 +10,7 @@ class PTUser
 private:
   class User
   {
-     friend class PTUser;
+    friend class PTUser;
     std::string _username;
     std::string _password;
   protected:
