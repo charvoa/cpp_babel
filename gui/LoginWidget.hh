@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Mon Oct 19 10:35:28 2015 Nicolas Charvoz
+// Last update Mon Oct 19 11:37:26 2015 Nicolas Charvoz
 //
 
 #ifndef LOGINWIDGET_HH_
@@ -29,7 +29,6 @@
 # include <sstream>
 # include <iostream>
 # include <fstream>
-# include <unistd.h>
 
 class LoginWidget : public QWidget {
 Q_OBJECT
