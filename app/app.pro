@@ -15,6 +15,12 @@ unix {
 LIBS = ../gui/libgui.a
 }
 win32 {
-LIBS = ../gui/gui.lib
+LIBS = ..\gui\release\gui.lib
 }
+unix {
 TARGET = ../babelUI
+}
+
+win32 {
+TARGET = ..\babelUI
+}
