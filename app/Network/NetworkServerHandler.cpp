@@ -5,13 +5,14 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Oct 18 11:00:36 2015 Antoine Garcia
+// Last update Mon Oct 19 05:56:34 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
 #include <QtNetwork>
 #include <QTcpSocket>
 #include <iostream>
+
 NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
 {
   _socket = new QTcpSocket(this);
@@ -49,6 +50,7 @@ void	NetworkServerHandler::setPort(unsigned int port)
 
 void	NetworkServerHandler::write(const std::string &str)
 {
+  std::cout << "I SEND" << std::endl;
   _socket->write(str.c_str());
 }
 
@@ -59,5 +61,5 @@ void	NetworkServerHandler::readyRead()
 
 void	NetworkServerHandler::connected()
 {
-  _socket->write("coucou\n");
+
 }
