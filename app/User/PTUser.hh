@@ -31,6 +31,7 @@ public:
   PTUser();
   ~PTUser();
   User&		currentUser();
+  int run(int, char**);
   template<typename T>
   void logUser(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
   {
