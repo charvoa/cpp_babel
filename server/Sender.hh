@@ -6,7 +6,7 @@
 class			Sender
 {
 
-  Sender(Response &response);
+  Sender(AResponse &response);
   ~Sender();
 
   void		       	send();

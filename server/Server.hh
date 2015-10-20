@@ -1,5 +1,5 @@
-#ifndef SERVER_HH_
-# define SERVER_HH_
+#ifndef _SERVER_HH_
+# define _SERVER_HH_
 
 #include <string>
 #include <boost/date_time/posix_time/posix_time.hpp>
@@ -17,3 +17,5 @@ class				Server
   boost::posix_time::ptime     	_date;
 
 };
+
+#endif /* !SERVER_HH_ */

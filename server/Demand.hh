@@ -23,7 +23,7 @@ public:
 
 private:
 
-  Requests::type			_type;
+  type			_type;
   std::string		_data;
 
 };

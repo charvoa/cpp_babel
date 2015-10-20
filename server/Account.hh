@@ -43,19 +43,9 @@ private:
   std::vector<Record*>				_records;
   std::vector<Mail*>				_mails;
 
-
   int						_fd;
 
-
-  /*
-
-     Historic Call
-     Historic Chat
-     
-     AnsweringMachine
-
-
-  */
+  int						_clientVersion;
 
 };
 
