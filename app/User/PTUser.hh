@@ -52,9 +52,10 @@ public:
     }
   }
   template <typename T>
-  void signup(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
+  void signup(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &verify)
   {
     std::cout << "SIGNUP..." << std::endl;
+    (obj.*call)(1);
   }
 };
 
