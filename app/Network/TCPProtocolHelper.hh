@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 19 13:34:10 2015 Antoine Garcia
-// Last update Tue Oct 20 07:06:07 2015 Antoine Garcia
+// Last update Tue Oct 20 07:10:20 2015 Antoine Garcia
 //
 
 #ifndef TCPProtocolHelper_HH_
@@ -42,7 +42,7 @@ class	TCPProtolHelper
 public:
   TCPProtolHelper(const std::string &data = NULL);
   ~TCPProtolHelper();
-  const	writeHead(TCPProtocolHelper type);
+  void	writeHead(TCPProtocolHeader type);
   char		     readHeader(const std::string &);
   const std::string	&getData();
 };
