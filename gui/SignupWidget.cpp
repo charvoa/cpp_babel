@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 19 14:20:14 2015 Nicolas Charvoz
+// Last update Tue Oct 20 16:19:02 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -87,6 +87,33 @@ void SignupWidget::clearLayout(QLayout *layout)
 
 void SignupWidget::validateSignup(int error)
 {
+  QMessageBox msg;
+  bool _okClicked();
+  LoginWidget *login;
+
+  if (error == 1)
+    {
+      msgBox.setText("Yeah ! You're part of the team now :)");
+      int ret = msg.exec();
+      switch (ret)
+	{
+	case QMessageBox::Ok:
+	  _okClicked = true;
+	default:
+	  _okClicked = false;
+	}
+      if (_okClicked)
+	{
+	  login = new LoginWidget();
+	  login->show();
+	  deleteLater();
+	}
+    }
+  else
+    {
+      msgBox.setText("Oh no it didn't work :'(");
+      msg.exec();
+    }
 }
 
 void SignupWidget::checkSignup()
@@ -109,8 +136,7 @@ void SignupWidget::checkSignup()
 
   _mainLayout->addWidget(processLabel, 3, 0);
 
-  // g_PTUser.logUser(*this, &SignupWidget::validateSignup, _userString,
-  // 		   _passString, _cString);
+  g_PTUser.signUpUser(*this, &SignupWidget::validateSignup, _userString,
+  		   _passString, _cString);
 
-  delete(_buttons);
 }
