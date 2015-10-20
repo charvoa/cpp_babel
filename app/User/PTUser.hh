@@ -51,6 +51,11 @@ public:
       (obj.*call)(1);
     }
   }
+  template <typename T>
+  void signup(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
+  {
+    std::cout << "SIGNUP..." << std::endl;
+  }
 };
 
 extern PTUser g_PTUser;
