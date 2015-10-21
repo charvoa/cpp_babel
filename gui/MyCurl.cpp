@@ -5,53 +5,37 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:16:51 2015 Nicolas Charvoz
-// Last update Wed Oct 21 17:29:19 2015 Nicolas Charvoz
+// Last update Wed Oct 21 18:36:22 2015 Nicolas Charvoz
 //
 
 #include "MyCurl.hh"
 
-std::string data;
-
-extern "C" {
-
-  size_t writeFunction(char* buf, size_t size, size_t nmemb, void* up)
-  { //callback must have this declaration
-    //buf is a pointer to the data that curl has for us
-    //size*nmemb is the size of the buffer
-
-    (void) up;
-
-    for (size_t c = 0; c < (size*nmemb); c++)
-      {
-	data.push_back(buf[c]);
-      }
-    return size*nmemb; //tell curl how many bytes we handled
-  }
+MyCurl::MyCurl(QObject *parent) : _parent(parent)
+{
 }
 
-MyCurl::MyCurl()
-{}
+MyCurl::~MyCurl() {}
 
 int MyCurl::exec()
 {
-  CURL* curl; //our curl object
-  char *str = "";
+  QNetworkAccessManager *manager = new QNetworkAccessManager();
+  QNetworkRequest request;
 
+  request.setUrl(QUrl("www.nicolascharvoz.com/"));
 
-  curl_global_init(CURL_GLOBAL_ALL); //pretty obvious
-  curl = curl_easy_init();
+  QNetworkReply *reply = manager->get(request);
 
-  curl_easy_setopt(curl, CURLOPT_URL, pathTo);
-  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, &writeFunction);
-  curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L); //tell curl to output its progress
-
-  curl_easy_perform(curl);
-
-  std::cout << std::endl << data << std::endl;
-  std::cin.get();
-
-  curl_easy_cleanup(curl);
-  curl_global_cleanup();
+  connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
+  connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
+	  this, SLOT(slotError(QNetworkReply::NetworkError)));
+  connect(reply, SIGNAL(sslErrors(QList<QSslError>)),
+	  this, SLOT(slotSslErrors(QList<QSslError>)));
 
   return 0;
+}
+
+
+void MyCurl::slotReadyRead()
+{
+
 }

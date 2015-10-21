@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 21 16:37:00 2015 Nicolas Charvoz
+// Last update Wed Oct 21 17:35:31 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
@@ -33,7 +33,11 @@ Home::Home(QWidget *parent) : QWidget(parent)
 
 int Home::weatherDisplay()
 {
+  MyCurl *mC = new MyCurl();
+
   std::cout << "weather " << std::endl;
+  mC->exec();
+
   return 0;
 }
 

@@ -2,11 +2,12 @@ TEMPLATE = lib
 CONFIG += staticlib
 CONFIG += qt
 QT+=widgets
+QT+=network
+
 unix {
 QMAKE_CXX = g++-4.9
 QMAKE_CXXFLAGS += -std=c++11
 }
-QMAKE_CXXFLAGS += -lcurl
 
 HEADERS = MainWidget.hh
 HEADERS += Home.hh
