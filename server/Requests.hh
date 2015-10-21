@@ -5,12 +5,14 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 19 10:51:38 2015 Nicolas Girardot
-// Last update Mon Oct 19 10:52:01 2015 Nicolas Girardot
+// Last update Mon Oct 19 18:06:15 2015 Nicolas Girardot
 //
 
 
 #ifndef _REQUESTS_HH
 # define _REQUESTS_HH
+
+
 
 typedef enum	        type
   {
