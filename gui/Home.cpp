@@ -5,14 +5,14 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Tue Oct 20 15:54:52 2015 Nicolas Charvoz
+// Last update Wed Oct 21 14:51:16 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
 
 Home::Home(QWidget *parent) : QWidget(parent)
 {
-  QPixmap profilPicture("./gui/miranda2.jpg");
+  QPixmap profilPicture("./gui/img/miranda2.jpg");
   QLabel *imgP = new QLabel(this);
   QLabel *currentName = new QLabel(this);
   QFont f("Calibri", 18, QFont::Bold);
@@ -27,7 +27,6 @@ Home::Home(QWidget *parent) : QWidget(parent)
   currentName->setGeometry(130, 0, 300, 60);
   _addFriend->setGeometry(835, 480, 250, 60);
   add->setGeometry(835, 540, 250, 60);
-
 }
 
 void validateFriend(int error)

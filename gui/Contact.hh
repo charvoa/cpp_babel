@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Mon Oct 12 12:26:46 2015 Nicolas Charvoz
+// Last update Wed Oct 21 11:07:36 2015 Nicolas Charvoz
 //
 
 #ifndef CONTACT_HH_
@@ -38,6 +38,7 @@ public:
 
 public slots:
   void addTab();
+  void displayContact();
 
 private:
   MainWidget *_main;

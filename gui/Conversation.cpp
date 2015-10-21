@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Mon Oct 19 17:52:52 2015 Nicolas Charvoz
+// Last update Wed Oct 21 14:51:33 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -25,7 +25,7 @@ Conversation::Conversation(const std::string &contact,
 
   messageZoneTmp->append(tr("14h28 : \nSalut beau gosse"));
   /* Image */
-  QPixmap profilPicture("./gui/miranda2.jpg");
+  QPixmap profilPicture("./gui/img/miranda2.jpg");
   QLabel *imgP = new QLabel(this);
 
   imgP->setPixmap(profilPicture);
