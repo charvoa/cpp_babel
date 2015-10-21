@@ -5,11 +5,12 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 19 10:49:41 2015 Nicolas Charvoz
+// Last update Tue Oct 20 16:35:13 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
 #include "MainWidget.hh"
+#include "LoginWidget.hh"
 #include "../app/User/PTUser.hh"
 
 SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
@@ -30,6 +31,7 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
   _editPassword->setEchoMode(QLineEdit::Password);
 
   _editC = new QLineEdit(this);
+  _editC->setEchoMode(QLineEdit::Password);
 
   labelUsername->setText(tr("Username"));
   labelUsername->setBuddy(_editUsername);
@@ -48,6 +50,38 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
 
   this->displayButton();
   setLayout(_mainLayout);
+}
+
+void SignupWidget::refreshUI()
+{
+  QLabel *labelPassword = new QLabel(this);
+  QLabel *labelUsername = new QLabel(this);
+  QLabel *labelIp = new QLabel(this);
+  _buttons = new QDialogButtonBox(this);
+
+  _editUsername = new QLineEdit(this);
+
+  _editPassword = new QLineEdit(this);
+  _editPassword->setEchoMode(QLineEdit::Password);
+
+  _editC = new QLineEdit(this);
+  _editC->setEchoMode(QLineEdit::Password);
+
+  labelUsername->setText(tr("Username"));
+  labelUsername->setBuddy(_editUsername);
+  labelPassword->setText(tr("Password"));
+  labelPassword->setBuddy(_editPassword);
+  labelIp->setText(tr("Confirm Password"));
+  labelIp->setBuddy(_editC);
+
+  _mainLayout->addWidget(labelUsername, 0, 0);
+  _mainLayout->addWidget(_editUsername, 0, 1);
+  _mainLayout->addWidget(labelPassword, 1, 0);
+  _mainLayout->addWidget(_editPassword, 1, 1);
+  _mainLayout->addWidget(labelIp, 2, 0);
+  _mainLayout->addWidget(_editC, 2, 1);
+
+  this->displayButton();
 }
 
 void SignupWidget::displayButton()
@@ -86,6 +120,38 @@ void SignupWidget::clearLayout(QLayout *layout)
 
 void SignupWidget::validateSignup(int error)
 {
+  QMessageBox msgBox;
+  bool _okClicked = false;
+  LoginWidget *login;
+  login = new LoginWidget();
+
+  QFile File2("./gui/stylesheetLogin.qss");
+  File2.open(QFile::ReadOnly);
+  QString StyleSheet2 = QLatin1String(File2.readAll());
+
+  /* Applying it */
+  login->setStyleSheet(StyleSheet2);
+
+
+  if (error == 1)
+    {
+      msgBox.setText("Yeah ! You're part of the team now :)");
+      int ret = msgBox.exec();
+      switch (ret)
+	{
+	case QMessageBox::Ok:
+	  _okClicked = true;
+	default:
+	  _okClicked = false;
+	}
+      login->show();
+      deleteLater();
+    }
+  else
+    {
+      msgBox.setText("Oh no it didn't work :'(");
+      msgBox.exec();
+    }
 }
 
 void SignupWidget::checkSignup()
@@ -93,7 +159,7 @@ void SignupWidget::checkSignup()
   QString user = _editUsername->text();
   QString pass = _editPassword->text();
   QString c = _editC->text();
-  QMovie *movie = new QMovie("./gui/ajax-loader.gif");
+  QMovie *movie = new QMovie("./gui/ring.gif");
   QLabel *processLabel = new QLabel(this);
 
   processLabel->setMovie(movie);
@@ -106,10 +172,9 @@ void SignupWidget::checkSignup()
   _editPassword->clear();
   _editC->clear();
 
-  _mainLayout->addWidget(processLabel, 3, 0);
+  this->clearLayout(_mainLayout);
+  _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
 
-  // g_PTUser.logUser(*this, &SignupWidget::validateSignup, _userString,
-  // 		   _passString, _cString);
-
-  delete(_buttons);
+  g_PTUser.signup(*this, &SignupWidget::validateSignup, _userString,
+  		   _passString, _cString);
 }
