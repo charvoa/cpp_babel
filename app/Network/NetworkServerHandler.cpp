@@ -5,17 +5,21 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Mon Oct 19 05:56:34 2015 Antoine Garcia
+// Last update Wed Oct 21 08:42:06 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
 #include <QtNetwork>
 #include <QTcpSocket>
 #include <iostream>
+#include <vector>
+
+#define HEADER_LENGTH 3
 
 NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
 {
   _socket = new QTcpSocket(this);
+  _connected = false;
   connect(_socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
   connect(_socket, SIGNAL(connected()), this, SLOT(connected()));
 }
@@ -54,12 +58,32 @@ void	NetworkServerHandler::write(const std::string &str)
   _socket->write(str.c_str());
 }
 
+void	NetworkServerHandler::handShake()
+{
+  std::string str("BABEL <1.0>\n");
+  QByteArray	block;
+  QDataStream	out(&block, QIODevice::WriteOnly);
+
+  out.setVersion(QDataStream::Qt_4_3);
+  out << quint8(1) << quint16(str.size()) << QString(str.c_str());
+  _socket->write(block);
+}
+
+bool	NetworkServerHandler::getConnectionStatus()
+{
+  return (_connected);
+}
+
 void	NetworkServerHandler::readyRead()
 {
-
+  while (_socket->canReadLine())
+    {
+      QString line = QString::fromUtf8(_socket->readLine()).trimmed();
+      std::cout << line.toUtf8().constData() << std::endl;
+    }
 }
 
 void	NetworkServerHandler::connected()
 {
-
+    handShake();
 }
