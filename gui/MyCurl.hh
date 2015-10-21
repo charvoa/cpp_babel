@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:05:14 2015 Nicolas Charvoz
-// Last update Wed Oct 21 18:36:32 2015 Nicolas Charvoz
+// Last update Wed Oct 21 12:20:51 2015 Antoine Garcia
 //
 
 #ifndef MYCURL_HH_
@@ -19,10 +19,10 @@
 
 class MyCurl : QObject {
 
-Q_OBJECT
-
+  Q_OBJECT
+private:
+  QObject *_parent;
 public:
-
   MyCurl(QObject *parent = 0);
   ~MyCurl();
   int exec();
@@ -30,8 +30,6 @@ public:
 
 public slots:
   void slotReadyRead();
-
-  QObject *_parent;
 };
 
 #endif

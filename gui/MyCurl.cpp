@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:16:51 2015 Nicolas Charvoz
-// Last update Wed Oct 21 18:36:22 2015 Nicolas Charvoz
+// Last update Wed Oct 21 12:20:07 2015 Antoine Garcia
 //
 
 #include "MyCurl.hh"
