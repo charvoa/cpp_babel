@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 21 14:51:16 2015 Nicolas Charvoz
+// Last update Wed Oct 21 16:37:00 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
@@ -27,10 +27,19 @@ Home::Home(QWidget *parent) : QWidget(parent)
   currentName->setGeometry(130, 0, 300, 60);
   _addFriend->setGeometry(835, 480, 250, 60);
   add->setGeometry(835, 540, 250, 60);
+
+  this->weatherDisplay();
 }
 
-void validateFriend(int error)
+int Home::weatherDisplay()
 {
+  std::cout << "weather " << std::endl;
+  return 0;
+}
+
+void Home::validateFriend(int error)
+{
+  (void) error;
 }
 
 void Home::addFriend()

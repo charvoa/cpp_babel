@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 21 14:51:33 2015 Nicolas Charvoz
+// Last update Wed Oct 21 15:31:42 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -19,23 +19,34 @@ Conversation::Conversation(const std::string &contact,
 
   QPushButton *sendButton = new QPushButton(tr("Send"), this);
   QTextEdit *messageZoneTmp = new QTextEdit(this);
+  QFont f("Calibri", 10, QFont::Bold);
+  name->setFont(f);
 
   messageZoneTmp->setStyleSheet("background-color:white;");
   messageZoneTmp->setReadOnly(true);
 
   messageZoneTmp->append(tr("14h28 : \nSalut beau gosse"));
   /* Image */
-  QPixmap profilPicture("./gui/img/miranda2.jpg");
+  QPixmap profilPicture("./gui/img/avatar1.png");
   QLabel *imgP = new QLabel(this);
 
-  imgP->setPixmap(profilPicture);
+  imgP->setPixmap(profilPicture.scaled(432, 432, Qt::KeepAspectRatio));
   /* --- */
 
+
+  int imgHeight = imgP->height();
+  int imgWidth = imgP->width();
+
+  std::cout << "height : " << imgHeight << " width : " << imgWidth << std::endl;
+
+  imgHeight = 432;
+  imgWidth = 432;
+  std::cout << "height : " << imgHeight << " width : " << imgWidth << std::endl;
   /* MOVE */
-  imgP->setGeometry(0, 0, 550, 360);
-  name->setGeometry(0, 360, 160, 50);
-  messageZoneTmp->setGeometry(550, 0, 1370, 920);
-  textZone->setGeometry(550, 920, 1120, 100);
+  imgP->setGeometry(0, 0, imgHeight, imgWidth);
+  name->setGeometry(10, imgHeight + 10, 160, 50);
+  messageZoneTmp->setGeometry(imgWidth, 0, 1370, 920);
+  textZone->setGeometry(imgWidth, 920, 1120, 100);
   sendButton->setGeometry(1660, 920, 100, 100);
   /* --- ¨*/
 

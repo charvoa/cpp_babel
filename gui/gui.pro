@@ -6,12 +6,15 @@ unix {
 QMAKE_CXX = g++-4.9
 QMAKE_CXXFLAGS += -std=c++11
 }
+QMAKE_CXXFLAGS += -lcurl
+
 HEADERS = MainWidget.hh
 HEADERS += Home.hh
 HEADERS += Contact.hh
 HEADERS += Conversation.hh
 HEADERS += LoginWidget.hh
 HEADERS += SignupWidget.hh
+HEADER += MyCurl.hh
 
 SOURCES = MainWidget.cpp
 SOURCES += Contact.cpp
@@ -19,3 +22,4 @@ SOURCES += Home.cpp
 SOURCES += Conversation.cpp
 SOURCES += LoginWidget.cpp
 SOURCES += SignupWidget.cpp
+SOURCES += MyCurl.cpp
