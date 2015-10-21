@@ -35,19 +35,11 @@ public:
   template<typename T>
   void logUser(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
   {
-    char	*log;
-
-    log = (char *)malloc((username.size() + password.size() + 3)  * sizeof(char));
-    log[0] = 0xB;
-    std::string final = username + ";" + password + "\n";
-    strcat(log, final.c_str());
     std::cout << "PROCESSING LOGIN USER..." << std::endl;
-    std::cout << _currentUser._objectId << std::endl;
     if (server.start("localhost", 4040) == -1) {
       (obj.*call)(0);
     }
     else{
-      server.write(log);
       (obj.*call)(1);
     }
   }
