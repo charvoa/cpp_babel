@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Wed Oct  7 14:37:33 2015 Nicolas Charvoz
+// Last update Wed Oct 21 16:34:27 2015 Nicolas Charvoz
 //
 
 #ifndef HOME_HH_
@@ -28,15 +28,20 @@
 # include <sstream>
 # include <iostream>
 # include <fstream>
+# include <curl/curl.h>
 
 class Home : public QWidget {
 Q_OBJECT
 public:
   explicit Home(QWidget *parent = 0);
-
+  void validateFriend(int);
+  int weatherDisplay();
 public slots:
+  void addFriend();
+
 private:
 
+  QLineEdit *_addFriend;
 
 };
 

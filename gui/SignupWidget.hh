@@ -5,7 +5,7 @@
 // Signup   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Mon Oct 19 11:43:44 2015 Nicolas Charvoz
+// Last update Tue Oct 20 16:31:57 2015 Nicolas Charvoz
 //
 
 #ifndef SIGNUPWIDGET_HH_
@@ -37,6 +37,7 @@ public:
   void clearLayout(QLayout*);
   void validateSignup(int);
   void displayButton();
+  void refreshUI();
 public slots:
 
   void checkSignup();

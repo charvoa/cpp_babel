@@ -5,7 +5,11 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
+<<<<<<< HEAD
 // Last update Wed Oct 21 05:35:04 2015 Antoine Garcia
+=======
+// Last update Tue Oct 20 16:20:15 2015 Nicolas Charvoz
+>>>>>>> b4b391075d3452ade76d806abc896820b302fd60
 //
 
 #ifndef NETWORKHANDLER_HH_

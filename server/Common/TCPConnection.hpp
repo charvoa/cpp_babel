@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Mon Oct 19 11:36:20 2015 Nicolas Girardot
+// Last update Wed Oct 21 15:19:54 2015 Nicolas Girardot
 //
 
 #ifndef TCPCONNECTION_HPP_
@@ -18,7 +18,6 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
-//#include "../Demand.hh"
 
 class TCPConnection : public boost::enable_shared_from_this<TCPConnection>
 {

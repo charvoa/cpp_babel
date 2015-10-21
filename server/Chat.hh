@@ -4,7 +4,7 @@
 #include <string>
 #include <pair>
 
-class					Chat : PTObject
+class					Chat
 {
 
   Chat();

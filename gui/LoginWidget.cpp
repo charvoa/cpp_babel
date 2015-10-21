@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 19 14:19:55 2015 Nicolas Charvoz
+// Last update Tue Oct 20 16:28:00 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -55,8 +55,6 @@ void LoginWidget::refreshUI()
   QLabel *labelUsername = new QLabel(this);
   QLabel *labelIp = new QLabel(this);
   _buttons = new QDialogButtonBox(this);
-
-  //  _mainLayout = new QGridLayout;
 
   _editUsername = new QLineEdit(this);
 
