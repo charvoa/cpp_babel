@@ -5,12 +5,33 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 19 10:51:38 2015 Nicolas Girardot
-// Last update Tue Oct 20 06:48:44 2015 Antoine Garcia
+// Last update Wed Oct 21 16:23:46 2015 Nicolas Girardot
 //
 
 
 #ifndef _REQUESTS_HH
 # define _REQUESTS_HH
+
+typedef enum	        type
+  {
+    SIGN_UP,
+    SIGN_IN,
+    CALL,
+    MUTE,
+    HANG_UP,
+    SEND_TEXT,
+    SEND_FILE,
+    ADD_PARTICIPANT,
+    ADD_CONTACT,
+    GET_CONTACT,
+    REMOVE_CONTACT,
+    MODIFY_PROFIL_PICTURE,
+    MODIFY_STATUS,
+    MODIFY_LOGIN,
+    MODIFY_LOCATION,
+    ADD_NICKNAME,
+    LISTEN_TO_MAIL
+  }			type;
 
 typedef struct	Requests
 {

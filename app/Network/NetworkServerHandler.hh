@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Tue Oct 20 16:20:15 2015 Nicolas Charvoz
+// Last update Wed Oct 21 12:17:05 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -26,6 +26,7 @@ private:
   QTcpSocket *_socket;
   std::string _host;
   unsigned int _port;
+  bool		_connected;
 public:
   NetworkServerHandler(QObject *parent = 0);
   ~NetworkServerHandler();
@@ -33,6 +34,8 @@ public:
   void setHost(const std::string &);
   void setPort(unsigned int);
   void write(const std::string &);
+  void	handShake();
+  bool getConnectionStatus();
 private slots:
   void	readyRead();
   void	connected();

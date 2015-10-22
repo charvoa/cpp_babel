@@ -5,30 +5,20 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 20:40:02 2015 Nicolas Girardot
-// Last update Sun Oct 18 14:49:23 2015 Nicolas Girardot
+// Last update Wed Oct 21 15:14:09 2015 Nicolas Girardot
 //
 
 #include <ctime>
 #include <iostream>
 #include <string>
 #include <boost/asio.hpp>
-#include "TCPServer.hpp"
-#include "TCPConnection.hpp"
+#include "Network.hpp"
 
 using boost::asio::ip::tcp;
 
 int main()
 {
-  try
-    {
-      boost::asio::io_service io_service;
-      TCPServer server(io_service);
-      io_service.run();
-    }
-  catch (std::exception& e)
-    {
-      std::cerr << e.what() << std::endl;
-    }
-
+  Network net;
+  net.start();
   return 0;
 }
