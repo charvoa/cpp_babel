@@ -9,12 +9,11 @@ class		        AResponse
   AResponse();
   ~AResponse();
 
-  ProtocolServer        _protocol;
   DataToClient          _data;
 
 private:
 
-
+  bool                  convertToBinaryForm();
 
 
 };
