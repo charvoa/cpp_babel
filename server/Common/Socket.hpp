@@ -5,28 +5,38 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 21 15:39:52 2015 Nicolas Girardot
-// Last update Wed Oct 21 16:13:14 2015 Nicolas Girardot
+// Last update Wed Oct 21 17:31:34 2015 Nicolas Girardot
 //
 
 #ifndef SOCKET_HPP_
 # define SOCKET_HPP_
 
+#include "ISocket.hh"
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 
-class Socket : public ISocket
+class	Socket : public ISocket
 {
 public:
-  boost::asio::ip::tcp::socket &getSocket() const
+  Socket ();
+
+  const boost::asio::ip::tcp::socket &getSocket() const
   {
     return _socket;
   }
 
-  void  setSocket(const boost::asio::ip::tcp::socket &soc)
+  void  setSocket(int soc)
   {
-    _socket = soc;
+    try
+      {
+	_socket.assign(boost::asio::ip::tcp::v4(), soc);
+      }
+    catch(std::exception &e)
+      {
+	std::cerr << e.what() << std::endl;
+      }
   }
 
 private:
