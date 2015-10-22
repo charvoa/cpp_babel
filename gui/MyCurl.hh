@@ -5,17 +5,20 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:05:14 2015 Nicolas Charvoz
-// Last update Wed Oct 21 12:20:51 2015 Antoine Garcia
+// Last update Wed Oct 21 23:14:59 2015 Nicolas Charvoz
 //
 
 #ifndef MYCURL_HH_
 # define MYCURL_HH_
 
+# include "MainWidget.hh"
+# include "rapidjson/document.h"
+# include "rapidjson/writer.h"
+# include "rapidjson/stringbuffer.h"
 # include <iostream>
 # include <string>
 # include <QtNetwork>
-# include <curl/curl.h>
-# include "MainWidget.hh"
+# include <sstream>
 
 class MyCurl : QObject {
 
@@ -26,8 +29,8 @@ public:
   MyCurl(QObject *parent = 0);
   ~MyCurl();
   int exec();
-
-
+  void dataHandle(const std::string &data);
+  int getIntFromString(const std::string&);
 public slots:
   void slotReadyRead();
 };

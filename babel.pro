@@ -42,8 +42,6 @@ fclean.commands += rm -f */*/moc_*
 fclean.commands += rm -f *.o
 fclean.commands += rm -f moc_*
 fclean.commands += rm -f babelUI
-fclean.commands += rm -f */Makefile
-fclean.commands += rm -f Makefile
 }
 
 win32 {
@@ -58,8 +56,6 @@ fclean.commands += del *\*\moc_*
 fclean.commands += del *.o
 fclean.commands += del moc_*
 fclean.commands += del babelUI
-fclean.commands += del *\Makefile
-fclean.commands += del Makefile
 
 }
 
