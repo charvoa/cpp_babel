@@ -9,11 +9,9 @@ class		        AProcotol
   AProcotol();
   ~AProcotol();
 
+  bool  methodChecker(Server &server, AData &data);
+
 private:
-
-  bool  TableChecker(std::string, GameEngine *);
-
-
 
 };
 

@@ -9,7 +9,8 @@ class		        AData
   AData();
   ~AData();
 
-
+  std::string           _format;
+  
 
 private:
 
