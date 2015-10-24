@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Wed Oct 21 15:19:54 2015 Nicolas Girardot
+// Last update Thu Oct 22 20:22:56 2015 Nicolas Girardot
 //
 
 #ifndef TCPCONNECTION_HPP_
@@ -51,7 +51,7 @@ public:
   {
     boost::asio::async_read_until(_socket,
 				 _response,
-				 "\n",
+				 "\0",
 				 boost::bind(&TCPConnection::handleRead,
 					     shared_from_this(),
 					     boost::asio::placeholders::error)

@@ -39,11 +39,11 @@ private:
 
   std::vector<Account*>				_contactsList;
   std::vector<Account*>				_favoritesList;
-  std::vector<Call*>				_callsHistory;
-  std::vector<Record*>				_records;
-  std::vector<Mail*>				_mails;
+  // std::vector<Call*>				_callsHistory;
+  // std::vector<Record*>				_records;
+  // std::vector<Mail*>				_mails;
 
-  int						_fd;
+  Socket										_socket;
 
   int						_clientVersion;
 

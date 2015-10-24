@@ -1,18 +1,19 @@
 #ifndef _ARESPONSE_HH
 # define _ARESPONSE_HH
 
+#include <string>
+
 class		        AResponse
 {
 
-  AResponse(Request &request);
+  AResponse();
   ~AResponse();
 
-  
-
+  DataToClient          _data;
 
 private:
 
-  
+  bool                  convertToBinaryForm();
 
 
 };

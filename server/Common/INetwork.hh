@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 20 15:40:25 2015 Nicolas Girardot
-// Last update Wed Oct 21 14:55:35 2015 Nicolas Girardot
+// Last update Wed Oct 21 16:35:26 2015 Nicolas Girardot
 //
 
 #ifndef INETWORK_HH_
@@ -13,13 +13,14 @@
 
 # include <string>
 # include <iostream>
+# include "Socket.hpp"
 
 class		INetwork
 {
 public:
   virtual ~INetwork() {};
   virtual void start() = 0;
-  virtual void write(const std::string &) = 0;
+  virtual void write(Socket &, const std::string &) = 0;
   virtual void read() = 0;
 };
 
