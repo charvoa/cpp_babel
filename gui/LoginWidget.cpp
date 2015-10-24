@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Tue Oct 20 16:28:00 2015 Nicolas Charvoz
+// Last update Sun Oct 25 01:26:24 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -21,8 +21,8 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   _buttons = new QDialogButtonBox(this);
 
   _mainLayout = new QGridLayout;
-  setFixedSize(800, 600);
-  setWindowTitle(tr("Login to Babel"));
+  setFixedSize(1024, 768);
+  setWindowTitle(tr("Login to Spyke"));
 
   _editUsername = new QLineEdit(this);
 

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Tue Oct 20 16:35:13 2015 Nicolas Charvoz
+// Last update Sun Oct 25 01:24:37 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -20,9 +20,27 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
   QLabel *labelIp = new QLabel(this);
   _buttons = new QDialogButtonBox(this);
 
+  /* COMBO BOX AVATAR */
+  _avatarCombo = new QComboBox(this);
+
+  std::stringstream ss;
+  for (int i = 1; i < 8; i++)
+    {
+      ss << "./gui/img/avatar" << i << ".png";
+      QPixmap pixmap(ss.str().c_str());
+      QIcon icon(pixmap);
+      ss.str("");
+      ss.clear();
+      ss << "Avatar " << i;
+      _avatarCombo->addItem(icon, tr(ss.str().c_str()));
+      ss.str("");
+      ss.clear();
+    }
+  /* END */
+
   _login = false;
   _mainLayout = new QGridLayout;
-  setFixedSize(800, 600);
+  setFixedSize(1024, 768);
   setWindowTitle(tr("Signup to Babel"));
 
   _editUsername = new QLineEdit(this);
@@ -40,13 +58,13 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
   labelIp->setText(tr("Confirm Password"));
   labelIp->setBuddy(_editC);
 
-
-  _mainLayout->addWidget(labelUsername, 0, 0);
-  _mainLayout->addWidget(_editUsername, 0, 1);
-  _mainLayout->addWidget(labelPassword, 1, 0);
-  _mainLayout->addWidget(_editPassword, 1, 1);
-  _mainLayout->addWidget(labelIp, 2, 0);
-  _mainLayout->addWidget(_editC, 2, 1);
+  _mainLayout->addWidget(_avatarCombo, 0, 1);
+  _mainLayout->addWidget(labelUsername, 1, 0);
+  _mainLayout->addWidget(_editUsername, 1, 1);
+  _mainLayout->addWidget(labelPassword, 2, 0);
+  _mainLayout->addWidget(_editPassword, 2, 1);
+  _mainLayout->addWidget(labelIp, 3, 0);
+  _mainLayout->addWidget(_editC, 3, 1);
 
   this->displayButton();
   setLayout(_mainLayout);
@@ -59,8 +77,25 @@ void SignupWidget::refreshUI()
   QLabel *labelIp = new QLabel(this);
   _buttons = new QDialogButtonBox(this);
 
-  _editUsername = new QLineEdit(this);
+  /* COMBO BOX AVATAR */
+  _avatarCombo = new QComboBox(this);
 
+  std::stringstream ss;
+  for (int i = 1; i < 8; i++)
+    {
+      ss << "./gui/img/avatar" << i << ".png";
+      QPixmap pixmap(ss.str().c_str());
+      QIcon icon(pixmap);
+      ss.str("");
+      ss.clear();
+      ss << "Avatar " << i;
+      _avatarCombo->addItem(icon, tr(ss.str().c_str()));
+      ss.str("");
+      ss.clear();
+    }
+  // END
+
+  _editUsername = new QLineEdit(this);
   _editPassword = new QLineEdit(this);
   _editPassword->setEchoMode(QLineEdit::Password);
 
@@ -74,12 +109,13 @@ void SignupWidget::refreshUI()
   labelIp->setText(tr("Confirm Password"));
   labelIp->setBuddy(_editC);
 
-  _mainLayout->addWidget(labelUsername, 0, 0);
-  _mainLayout->addWidget(_editUsername, 0, 1);
-  _mainLayout->addWidget(labelPassword, 1, 0);
-  _mainLayout->addWidget(_editPassword, 1, 1);
-  _mainLayout->addWidget(labelIp, 2, 0);
-  _mainLayout->addWidget(_editC, 2, 1);
+  _mainLayout->addWidget(_avatarCombo, 0, 1);
+  _mainLayout->addWidget(labelUsername, 1, 0);
+  _mainLayout->addWidget(_editUsername, 1, 1);
+  _mainLayout->addWidget(labelPassword, 2, 0);
+  _mainLayout->addWidget(_editPassword, 2, 1);
+  _mainLayout->addWidget(labelIp, 3, 0);
+  _mainLayout->addWidget(_editC, 3, 1);
 
   this->displayButton();
 }
@@ -96,7 +132,7 @@ void SignupWidget::displayButton()
   connect(_buttons->button(QDialogButtonBox::Ok), SIGNAL(released()),
 	  this, SLOT(checkSignup()));
 
-  _mainLayout->addWidget(_buttons, 3, 0, 1, 2);
+  _mainLayout->addWidget(_buttons, 4, 0, 1, 2);
 }
 
 void SignupWidget::clearLayout(QLayout *layout)
@@ -136,14 +172,7 @@ void SignupWidget::validateSignup(int error)
   if (error == 1)
     {
       msgBox.setText("Yeah ! You're part of the team now :)");
-      int ret = msgBox.exec();
-      switch (ret)
-	{
-	case QMessageBox::Ok:
-	  _okClicked = true;
-	default:
-	  _okClicked = false;
-	}
+      msgBox.exec();
       login->show();
       deleteLater();
     }
@@ -171,6 +200,10 @@ void SignupWidget::checkSignup()
 
   _editPassword->clear();
   _editC->clear();
+
+  QString cb = _avatarCombo->currentText();
+
+  std::cout << "He chose " << cb.toUtf8().constData() << std::endl;
 
   this->clearLayout(_mainLayout);
   _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);

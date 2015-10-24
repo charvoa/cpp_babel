@@ -5,7 +5,7 @@
 // Signup   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Tue Oct 20 16:31:57 2015 Nicolas Charvoz
+// Last update Sun Oct 25 01:22:25 2015 Nicolas Charvoz
 //
 
 #ifndef SIGNUPWIDGET_HH_
@@ -26,6 +26,7 @@
 # include <QVBoxLayout>
 # include <QHBoxLayout>
 # include <QFile>
+# include <QComboBox>
 # include <sstream>
 # include <iostream>
 # include <fstream>
@@ -55,6 +56,7 @@ private:
   std::string _passString;
   std::string _cString;
   QDialogButtonBox *_buttons;
+  QComboBox *_avatarCombo;
 };
 
 #endif

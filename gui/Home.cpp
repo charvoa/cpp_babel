@@ -5,13 +5,14 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 21 17:35:31 2015 Nicolas Charvoz
+// Last update Sun Oct 25 00:58:37 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
 
 Home::Home(QWidget *parent) : QWidget(parent)
 {
+  /* MODIFY THIS PICTURE */
   QPixmap profilPicture("./gui/img/miranda2.jpg");
   QLabel *imgP = new QLabel(this);
   QLabel *currentName = new QLabel(this);
@@ -21,6 +22,7 @@ Home::Home(QWidget *parent) : QWidget(parent)
 
   imgP->setPixmap(profilPicture.scaled(120, 120, Qt::KeepAspectRatio));
 
+  /* MODIFY THIS TEXT */
   currentName->setText(tr("Miranda Kerr"));
   imgP->setGeometry(0, 0, 120, 120);
   currentName->setFont(f);
@@ -38,6 +40,20 @@ int Home::weatherDisplay()
   std::cout << "weather " << std::endl;
   mC->exec();
 
+  std::cout << "Condition : " << mC->getCondition()
+	    << " Tmp °C : " << mC->getTmp() << std::endl;
+
+  std::string s = std::to_string(mC->getTmp());
+  char const *pchar = s.c_str();
+
+  QLabel *temp = new QLabel(tr(pchar), this);
+
+  QLabel *imgWeather = new QLabel(this);
+
+  imgWeather->setPixmap(QPixmap::fromImage(mC->getImg()));
+
+  imgWeather->setGeometry(1700, 0, 120, 120);
+  temp->setGeometry(1710, 130, 60, 60);
   return 0;
 }
 

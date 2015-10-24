@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:16:51 2015 Nicolas Charvoz
-// Last update Wed Oct 21 23:18:12 2015 Nicolas Charvoz
+// Last update Sun Oct 25 00:54:47 2015 Nicolas Charvoz
 //
 
 #include "MyCurl.hh"
@@ -31,26 +31,64 @@ int MyCurl::getIntFromString(const std::string &str)
   return asint;
 }
 
+void MyCurl::imgHandle()
+{
+  QNetworkAccessManager *nam = new QNetworkAccessManager(this);
+  QUrl url(_code.c_str());
+  qDebug() << url;
+  QNetworkReply* reply = nam->get(QNetworkRequest(url));
+
+  QEventLoop eventLoop;
+
+  connect(reply,SIGNAL(finished()),&eventLoop,SLOT(quit()));
+  eventLoop.exec();
+
+  if (reply->error() == QNetworkReply::NoError)
+    {
+      QImageReader imageReader(reply);
+      imageReader.setAutoDetectImageFormat (false);
+      _img = imageReader.read();
+    }
+}
+
 void MyCurl::dataHandle(const std::string &data)
 {
-  //  std::cout << data << std::endl;
-
   Document d;
-
   d.Parse(data.c_str());
 
   std::string tempString = d["query"]["results"]["channel"]
     ["item"]["condition"]["temp"].GetString();
-
   std::string condition = d["query"]["results"]["channel"]
     ["item"]["condition"]["text"].GetString();
-
+  std::string codeString = d["query"]["results"]["channel"]
+    ["item"]["condition"]["code"].GetString();
   int temp = this->getIntFromString(tempString);
 
-  int tempC = (temp - 32) * 5.0 / 9;
+  int code = this->getIntFromString(codeString);
 
-  std::cout << "It's " << condition << ". The outside temparature is "
-	    << tempC << std::endl;
+  std::stringstream ss;
+  ss << "http://l.yimg.com/a/i/us/we/52/" << code << ".gif";
+
+  _code = ss.str();
+  _tmp = (temp - 32) * 5.0 / 9;
+  _condition = condition;
+
+  this->imgHandle();
+}
+
+QImage &MyCurl::getImg()
+{
+  return _img;
+}
+
+int MyCurl::getTmp() const
+{
+  return _tmp;
+}
+
+std::string MyCurl::getCondition() const
+{
+  return _condition;
 }
 
 int MyCurl::exec()
@@ -72,7 +110,6 @@ int MyCurl::exec()
   if (reply->error() == QNetworkReply::NoError)
     {
       //success
-      //      qDebug() << "Success" << reply->readAll();
       QString content = reply->readAll();
       this->dataHandle(content.toUtf8().constData());
       delete reply;
@@ -83,12 +120,9 @@ int MyCurl::exec()
       qDebug() << "Failure" << reply->errorString();
       delete reply;
     }
-
   return 0;
 }
 
-
 void MyCurl::slotReadyRead()
 {
-
 }

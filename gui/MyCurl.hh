@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:05:14 2015 Nicolas Charvoz
-// Last update Wed Oct 21 23:14:59 2015 Nicolas Charvoz
+// Last update Sun Oct 25 00:54:54 2015 Nicolas Charvoz
 //
 
 #ifndef MYCURL_HH_
@@ -28,11 +28,21 @@ private:
 public:
   MyCurl(QObject *parent = 0);
   ~MyCurl();
+  std::string getCondition() const;
+  int getTmp() const;
+  QImage &getImg();
   int exec();
   void dataHandle(const std::string &data);
   int getIntFromString(const std::string&);
+  void imgHandle();
 public slots:
   void slotReadyRead();
+
+private:
+  std::string _condition;
+  int _tmp;
+  std::string _code;
+  QImage _img;
 };
 
 #endif
