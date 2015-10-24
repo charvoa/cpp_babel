@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Oct 25 01:26:24 2015 Nicolas Charvoz
+// Last update Sun Oct 25 01:51:56 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -18,11 +18,16 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   QLabel *labelPassword = new QLabel(this);
   QLabel *labelUsername = new QLabel(this);
   QLabel *labelIp = new QLabel(this);
+
   _buttons = new QDialogButtonBox(this);
 
   _mainLayout = new QGridLayout;
   setFixedSize(1024, 768);
   setWindowTitle(tr("Login to Spyke"));
+
+  QPixmap pix("./gui/img/spyke.png");
+  QLabel *logo = new QLabel(this);
+  logo->setPixmap(pix.scaled(250, 250, Qt::KeepAspectRatio));
 
   _editUsername = new QLineEdit(this);
 
@@ -38,6 +43,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   labelIp->setText(tr("IP"));
   labelIp->setBuddy(_editIp);
 
+  logo->setGeometry(387, -75, 250, 250);
   _mainLayout->addWidget(labelUsername, 0, 0);
   _mainLayout->addWidget(_editUsername, 0, 1);
   _mainLayout->addWidget(labelPassword, 1, 0);
@@ -58,6 +64,10 @@ void LoginWidget::refreshUI()
 
   _editUsername = new QLineEdit(this);
 
+  QPixmap pix("./gui/img/spyke.png");
+  QLabel *logo = new QLabel(this);
+  logo->setPixmap(pix.scaled(100, 100, Qt::KeepAspectRatio));
+
   _editPassword = new QLineEdit(this);
   _editPassword->setEchoMode(QLineEdit::Password);
 
@@ -70,6 +80,7 @@ void LoginWidget::refreshUI()
   labelIp->setText(tr("IP"));
   labelIp->setBuddy(_editIp);
 
+  logo->setGeometry(387, -75, 250, 250);
   _mainLayout->addWidget(labelUsername, 0, 0);
   _mainLayout->addWidget(_editUsername, 0, 1);
   _mainLayout->addWidget(labelPassword, 1, 0);
