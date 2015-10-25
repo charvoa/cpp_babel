@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Oct 25 01:51:56 2015 Nicolas Charvoz
+// Last update Sun Oct 25 11:23:10 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -17,7 +17,8 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 {
   QLabel *labelPassword = new QLabel(this);
   QLabel *labelUsername = new QLabel(this);
-  QLabel *labelIp = new QLabel(this);
+  _labelIp = new QLabel(this);
+  _ipDisplayed = false;
 
   _buttons = new QDialogButtonBox(this);
 
@@ -40,17 +41,21 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   labelUsername->setBuddy(_editUsername);
   labelPassword->setText(tr("Password"));
   labelPassword->setBuddy(_editPassword);
-  labelIp->setText(tr("IP"));
-  labelIp->setBuddy(_editIp);
+  _labelIp->setText(tr("IP"));
+  _editIp->setText(tr("51.254.139.53"));
+  _labelIp->setBuddy(_editIp);
+
 
   logo->setGeometry(387, -75, 250, 250);
   _mainLayout->addWidget(labelUsername, 0, 0);
   _mainLayout->addWidget(_editUsername, 0, 1);
   _mainLayout->addWidget(labelPassword, 1, 0);
   _mainLayout->addWidget(_editPassword, 1, 1);
-  _mainLayout->addWidget(labelIp, 2, 0);
+  _mainLayout->addWidget(_labelIp, 2, 0);
   _mainLayout->addWidget(_editIp, 2, 1);
 
+  _editIp->hide();
+  _labelIp->hide();
   this->displayButton();
   setLayout(_mainLayout);
 }
@@ -59,7 +64,7 @@ void LoginWidget::refreshUI()
 {
   QLabel *labelPassword = new QLabel(this);
   QLabel *labelUsername = new QLabel(this);
-  QLabel *labelIp = new QLabel(this);
+  _labelIp = new QLabel(this);
   _buttons = new QDialogButtonBox(this);
 
   _editUsername = new QLineEdit(this);
@@ -77,16 +82,20 @@ void LoginWidget::refreshUI()
   labelUsername->setBuddy(_editUsername);
   labelPassword->setText(tr("Password"));
   labelPassword->setBuddy(_editPassword);
-  labelIp->setText(tr("IP"));
-  labelIp->setBuddy(_editIp);
+  _labelIp->setText(tr("IP"));
+  _labelIp->setBuddy(_editIp);
+  _editIp->setText(tr("51.254.139.53"));
 
   logo->setGeometry(387, -75, 250, 250);
   _mainLayout->addWidget(labelUsername, 0, 0);
   _mainLayout->addWidget(_editUsername, 0, 1);
   _mainLayout->addWidget(labelPassword, 1, 0);
   _mainLayout->addWidget(_editPassword, 1, 1);
-  _mainLayout->addWidget(labelIp, 2, 0);
+  _mainLayout->addWidget(_labelIp, 2, 0);
   _mainLayout->addWidget(_editIp, 2, 1);
+
+  _editIp->hide();
+  _labelIp->hide();
 
   this->displayButton();
 }
@@ -94,9 +103,12 @@ void LoginWidget::refreshUI()
 void LoginWidget::displayButton()
 {
   QPushButton *signupButton = new QPushButton(tr("Sign Up"), this);
+  QPushButton *displayIP = new QPushButton(tr("Expert mode"), this);
 
+  displayIP->setStyleSheet("background-color: #1DAEF1");
   _buttons->addButton(QDialogButtonBox::Ok);
   _buttons->addButton(QDialogButtonBox::Cancel);
+  _buttons->addButton(displayIP, QDialogButtonBox::ActionRole);
   _buttons->addButton(signupButton, QDialogButtonBox::ActionRole);
   _buttons->button(QDialogButtonBox::Ok)->setText(tr("Login"));
   _buttons->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
@@ -107,8 +119,28 @@ void LoginWidget::displayButton()
 	  this, SLOT(checkLogin()));
   connect(signupButton, SIGNAL(released()),
 	  this, SLOT(signup()));
+  connect(displayIP, SIGNAL(released()),
+	  this, SLOT(displayIPFunction()));
 
   _mainLayout->addWidget(_buttons, 3, 0, 1, 2);
+}
+
+void LoginWidget::displayIPFunction()
+{
+  if (_ipDisplayed)
+    {
+      _editIp->hide();
+      _labelIp->hide();
+      _editIp->setText(tr("51.254.139.53"));
+      _ipDisplayed = false;
+    }
+  else
+    {
+      _editIp->show();
+      _labelIp->show();
+      _editIp->setText(tr("51.254.139.53"));
+      _ipDisplayed = true;
+    }
 }
 
 void LoginWidget::signup()

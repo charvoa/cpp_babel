@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Mon Oct 19 12:39:32 2015 Nicolas Charvoz
+// Last update Sun Oct 25 11:22:47 2015 Nicolas Charvoz
 //
 
 #ifndef LOGINWIDGET_HH_
@@ -45,6 +45,7 @@ public slots:
     std::cout << "Error : " << er.toUtf8().constData() << std::endl;
   }
   void signup();
+  void displayIPFunction();
 private:
 
   QGridLayout *_mainLayout;
@@ -55,6 +56,8 @@ private:
   std::string _passString;
   std::string _ipString;
   QDialogButtonBox *_buttons;
+  QLabel *_labelIp;
+  bool _ipDisplayed;
 };
 
 #endif

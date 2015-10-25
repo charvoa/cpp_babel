@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Oct 25 01:24:37 2015 Nicolas Charvoz
+// Last update Sun Oct 25 11:26:52 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -168,7 +168,6 @@ void SignupWidget::validateSignup(int error)
   /* Applying it */
   login->setStyleSheet(StyleSheet2);
 
-
   if (error == 1)
     {
       msgBox.setText("Yeah ! You're part of the team now :)");
@@ -210,4 +209,5 @@ void SignupWidget::checkSignup()
 
   g_PTUser.signup(*this, &SignupWidget::validateSignup, _userString,
   		   _passString, _cString);
+  /* ADD AVATAR CHOICE IN THE FUNCTION */
 }

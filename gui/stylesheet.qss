@@ -9,10 +9,11 @@ QPushButton {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-radius:10px;
-    min-width: 8ex;
+    /* min-width: 8ex; */
+    min-width: 120px;
     padding: 2px;
     height: 60px;
-    width: 200px;
+    width: 120px;
     margin: 10px;
 }
 
