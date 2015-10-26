@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Mon Oct 26 03:18:36 2015 Antoine Garcia
+// Last update Mon Oct 26 07:28:41 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -68,7 +68,7 @@ void	NetworkServerHandler::handShake()
   _socket->write(block);
 }
 
-bool	NetworkServerHandler::getConnectionStatus()
+bool	NetworkServerHandler::getConnectionStatus() const
 {
   return (_connected);
 }

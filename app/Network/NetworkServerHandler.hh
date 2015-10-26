@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Mon Oct 26 03:18:30 2015 Antoine Garcia
+// Last update Mon Oct 26 07:28:25 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -34,7 +34,7 @@ public:
   void setPort(unsigned int);
   void write(const std::string &);
   void	handShake();
-  bool getConnectionStatus();
+  bool getConnectionStatus() const;
 private slots:
   void	readyRead();
   void	connected();
