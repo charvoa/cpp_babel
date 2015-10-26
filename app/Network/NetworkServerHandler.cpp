@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Wed Oct 21 08:42:06 2015 Antoine Garcia
+// Last update Mon Oct 26 03:18:36 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -13,7 +13,6 @@
 #include <QTcpSocket>
 #include <iostream>
 #include <vector>
-
 #define HEADER_LENGTH 3
 
 NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)

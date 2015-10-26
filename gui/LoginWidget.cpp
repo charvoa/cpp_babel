@@ -5,14 +5,14 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Oct 25 11:23:10 2015 Nicolas Charvoz
+// Last update Mon Oct 26 03:23:04 2015 Antoine Garcia
 //
 
 #include "LoginWidget.hh"
 #include "SignupWidget.hh"
 #include "MainWidget.hh"
 #include "../app/User/PTUser.hh"
-
+#include "../app/Thread.hh"
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 {
   QLabel *labelPassword = new QLabel(this);
@@ -216,7 +216,7 @@ void LoginWidget::checkLogin()
 
   this->clearLayout(_mainLayout);
   _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
-
+  Thread thread;
   g_PTUser.logUser(*this, &LoginWidget::validateLogin, _userString,
 		   _passString, _ipString);
 

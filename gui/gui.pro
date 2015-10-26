@@ -3,12 +3,11 @@ CONFIG += staticlib
 CONFIG += qt
 QT+=widgets
 QT+=network
-
+QT+=concurrent
 unix {
 QMAKE_CXX = g++-4.9
 QMAKE_CXXFLAGS += -std=c++11
 }
-
 HEADERS = MainWidget.hh
 HEADERS += Home.hh
 HEADERS += Contact.hh
