@@ -5,26 +5,20 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sun Oct 18 14:30:56 2015 Nicolas Charvoz
-// Last update Sun Oct 18 15:10:57 2015 Nicolas Charvoz
+// Last update Mon Oct 26 03:23:44 2015 Antoine Garcia
 //
 
 #ifndef THREAD_HH_
 # define THREAD_HH_
 
-# include <QThread>
-
-class Thread : class QObject {
-
+#include <QtConcurrent>
+#include <iostream>
+class Thread {
 public:
-
-  Thread();
-  ~Thread();
-
-public slots:
-
-
-private:
-
+  Thread()
+  {
+    std::cout << "THREAD CREATE" << std::endl;
+  }
 };
 
 #endif

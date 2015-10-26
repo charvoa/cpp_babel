@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 19 00:32:40 2015 Antoine Garcia
-// Last update Mon Oct 19 00:45:52 2015 Antoine Garcia
+// Last update Mon Oct 26 07:54:05 2015 Antoine Garcia
 //
 
 #ifndef AUDIO_HH_
@@ -15,7 +15,8 @@
 
 class	Audio
 {
-  PaError	_err;
+  PaStream	*_stream;
+  int		_readBufferSize;
 public:
   Audio()
   ~Audio()

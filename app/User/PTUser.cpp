@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Mon Oct 19 18:39:57 2015 Nicolas Charvoz
+// Last update Mon Oct 26 08:54:05 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -20,8 +20,14 @@ PTUser g_PTUser;
 PTUser::PTUser()
 {
   std::cout << "PTUSER CREATED" << std::endl;
+  connect(&server, SIGNAL(userConnected(int)), this, SLOT(userConnected(int)));
 }
 
+void	PTUser::userConnected(int check)
+{
+  (void)check;
+  std::cout << "SLOT IS CALLED" << std::endl;
+}
 PTUser::~PTUser()
 {
   std::cout << "Destroy" << std::endl;
@@ -81,4 +87,9 @@ const std::string	&PTUser::User::getUsername() const
 const std::string	&PTUser::User::getObjectId() const
 {
   return (_objectId);
+}
+
+const std::list<Contact *>	&PTUser::User::getContacts() const
+{
+  return (_contact);
 }

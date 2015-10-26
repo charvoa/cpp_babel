@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Wed Oct 21 08:42:06 2015 Antoine Garcia
+// Last update Mon Oct 26 09:20:43 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -13,7 +13,6 @@
 #include <QTcpSocket>
 #include <iostream>
 #include <vector>
-
 #define HEADER_LENGTH 3
 
 NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
@@ -60,7 +59,7 @@ void	NetworkServerHandler::write(const std::string &str)
 
 void	NetworkServerHandler::handShake()
 {
-  std::string str("BABEL <1.0>\n");
+  std::string str("BABEL <1.0>");
   QByteArray	block;
   QDataStream	out(&block, QIODevice::WriteOnly);
 
@@ -69,7 +68,7 @@ void	NetworkServerHandler::handShake()
   _socket->write(block);
 }
 
-bool	NetworkServerHandler::getConnectionStatus()
+bool	NetworkServerHandler::getConnectionStatus() const
 {
   return (_connected);
 }
@@ -86,4 +85,5 @@ void	NetworkServerHandler::readyRead()
 void	NetworkServerHandler::connected()
 {
     handShake();
+    emit userConnected(1);
 }
