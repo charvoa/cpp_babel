@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Mon Oct 26 08:54:05 2015 Antoine Garcia
+// Last update Mon Oct 26 10:08:49 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -28,6 +28,7 @@ void	PTUser::userConnected(int check)
   (void)check;
   std::cout << "SLOT IS CALLED" << std::endl;
 }
+
 PTUser::~PTUser()
 {
   std::cout << "Destroy" << std::endl;

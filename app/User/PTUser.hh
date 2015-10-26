@@ -32,6 +32,8 @@ private:
   std::string _ipServer;
 private slots:
   void userConnected(int check);
+signals:
+  void canDisplayHome(int check);
 public:
   PTUser();
   ~PTUser();
@@ -41,9 +43,7 @@ public:
   void logUser(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
   {
     std::cout << "PROCESSING LOGIN USER..." << std::endl;
-    if (server.start("localhost", 4040) == -1) {
-      (obj.*call)(0);
-    }
+    server.start("localhost", 4040);
   }
   template <typename T>
   void signup(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &verify)

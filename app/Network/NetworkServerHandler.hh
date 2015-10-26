@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Mon Oct 26 08:34:34 2015 Antoine Garcia
+// Last update Mon Oct 26 10:04:49 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -13,6 +13,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QAbstractSocket>
 #include "INetwork.hh"
 #include "TCPProtocolHelper.hh"
 
@@ -41,6 +42,7 @@ public:
 private slots:
   void	readyRead();
   void	connected();
+  void	connectionError(QAbstractSocket::SocketError);
 };
 
 #endif
