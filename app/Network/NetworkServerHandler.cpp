@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Mon Oct 26 07:28:41 2015 Antoine Garcia
+// Last update Mon Oct 26 08:40:29 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -85,4 +85,5 @@ void	NetworkServerHandler::readyRead()
 void	NetworkServerHandler::connected()
 {
     handShake();
+    emit userConnected(1);
 }
