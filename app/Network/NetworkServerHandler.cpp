@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Mon Oct 26 08:40:29 2015 Antoine Garcia
+// Last update Mon Oct 26 09:20:43 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -59,7 +59,7 @@ void	NetworkServerHandler::write(const std::string &str)
 
 void	NetworkServerHandler::handShake()
 {
-  std::string str("BABEL <1.0>\n");
+  std::string str("BABEL <1.0>");
   QByteArray	block;
   QDataStream	out(&block, QIODevice::WriteOnly);
 
