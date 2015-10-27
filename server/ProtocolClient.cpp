@@ -1,27 +1,27 @@
 #include "ProtocolClient.hh"
 
-bool	ProtocolClient::handshake(Server &server, DataFromClient &data)
+bool	ProtocolClient::handshake(Server &server, DataFromClient &fromClient)
 {
-  std::string handshake = data.data.at(0);
+  std::string handshake = fromClient._data.at(0);
   short version = handshake.substr(handshake.find("<"), handshake.find(">") - handshake.find("<"));
 
 }
 
-bool	ProtocolClient::success(Server &server, DataFromClient &data)
+bool	ProtocolClient::success(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::error(Server &server, DataFromClient &data)
+bool	ProtocolClient::error(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::signup(Server &server, DataFromClient &data)
+bool	ProtocolClient::signup(Server &server, DataFromClient &fromClient)
 {
-  std::string username = data.data.at(0));
-  std::string passwd = data.data.at(1);
-  short profilePicture = std::to_short(data.data.at(2));
+  std::string username = fromClient._data.at(0));
+  std::string passwd = fromClient._data.at(1);
+  short profilePicture = std::to_short(data._data.at(2));
   if (server.isUsernameExisting(username)
     {
       // create error
@@ -35,10 +35,10 @@ bool	ProtocolClient::signup(Server &server, DataFromClient &data)
     }
 }
 
-bool	ProtocolClient::signin(Server &server, DataFromClient &data)
+bool	ProtocolClient::signin(Server &server, DataFromClient &fromClient)
 {
-  std::string username = data.data.at(0));
-  std::string passwd = data.data.at(1);
+  std::string username = fromClient._data.at(0));
+  std::string passwd = fromClient._data.at(1);
   if (server.isUsernameExisting(username) && server.isPasswdCorrectForAccount(username, passwd) && server.getAccountByUsername(username).getStatus == Account::DISCONNECTED)
     {
       // create success
@@ -52,67 +52,85 @@ bool	ProtocolClient::signin(Server &server, DataFromClient &data)
 
 }
 
-bool	ProtocolClient::callRequest(Server &server, DataFromClient &data)
+bool	ProtocolClient::callRequest(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::hangUp(Server &server, DataFromClient &data)
+bool	ProtocolClient::hangUp(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::sendText(Server &server, DataFromClient &data)
+bool	ProtocolClient::sendText(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::mute(Server &server, DataFromClient &data)
+bool	ProtocolClient::mute(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::addParticipantToCall(Server &server, DataFromClient &data)
+bool	ProtocolClient::addParticipantToCall(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::sendFile(Server &server, DataFromClient &data)
+bool	ProtocolClient::sendFile(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::pong(Server &server, DataFromClient &data)
+bool	ProtocolClient::pong(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::acceptCall(Server &server, DataFromClient &data)
+bool	ProtocolClient::acceptCall(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::declineCall(Server &server, DataFromClient &data)
+bool	ProtocolClient::declineCall(Server &server, DataFromClient &fromClient)
 {
 
 }
 
-bool	ProtocolClient::addContact(Server &server, DataFromClient &data)
+bool	ProtocolClient::addContact(Server &server, DataFromClient &fromClient)
 {
+  std::string id = fromClient._data.at(0);
+  std::string loginAdded = fromClient._data.at(1);
 
 }
 
-bool	ProtocolClient::modifyStatus(Server &server, DataFromClient &data)
+bool	ProtocolClient::acceptInvitation(Server &server, DataFromClient &fromClient)
 {
-  std::string id = data.data.at(0);
-  Account::State state = std::to_int(data.data.at(1));
+  std::string idReceiverInvitation = fromClient._data.at(0);
+  std::string idSenderInvitation = fromClient._data.at(1);
+  server.getAccountByID(idReceiverInvitation).addContact(server.getAccountByID(idSenderInvitation));
+  server.getAccountByID(idSenderInvitation).addContact(server.getAccountByID(idReceiverInvitation));
+  return true;
+}
+
+bool	ProtocolClient::declineInvitation(Server &server, DataFromClient &fromClient)
+{
+  std::string idReceiverInvitation = fromClient._data.at(0);
+  std::string idSenderInvitation = fromClient._data.at(1);
+
+}
+
+bool	ProtocolClient::modifyStatus(Server &server, DataFromClient &fromClient)
+{
+  std::string id = fromClient._data.at(0);
+  Account::State state = std::to_int(data._data.at(1));
   server.getAccountByID(id).setState(state);
 }
 
-bool	ProtocolClient::modifyLogin(Server &server, DataFromClient &data)
+bool	ProtocolClient::modifyLogin(Server &server, DataFromClient &fromClient)
 {
-  std::string id = data.data.at(0);
-  std::string newLogin = data.data.at(1);
+  std::string id = fromClient._data.at(0);
+  std::string newLogin = fromClient._data.at(1);
   if server.isUsernameExisting(newLogin)
     {
       // error
@@ -125,39 +143,51 @@ bool	ProtocolClient::modifyLogin(Server &server, DataFromClient &data)
   }
 }
 
-bool	ProtocolClient::modifyLocation(Server &server, DataFromClient &data)
+bool	ProtocolClient::modifyLocation(Server &server, DataFromClient &fromClient)
 {
-  std::string id = data.data.at(0);
-  std::string newLocation = data.data.at(1);
+  std::string id = fromClient._data.at(0);
+  std::string newLocation = fromClient._data.at(1);
   server.getAccountByID(id).setLocation(newLocation);
 }
 
-bool	ProtocolClient::addToFavorites(Server &server, DataFromClient &data)
+bool	ProtocolClient::addToFavorites(Server &server, DataFromClient &fromClient)
 {
-
+  std::string id = fromClient._data.at(0);
+  std::string idFavorited = fromClient._data.at(1);
+  server.getAccountByID(id).addToFavorites(server.getAccountByID(idFavorited));
+  return true;
 }
 
-bool	ProtocolClient::addNickname(Server &server, DataFromClient &data)
+bool	ProtocolClient::removeFromFavorites(Server &server, DataFromClient &fromClient)
 {
-  std::string id = data.data.at(0);
-  std::string idNicknamed = data.data.at(1);
-  std::string newNickname = data.data.at(2);
+  std::string id = fromClient._data.at(0);
+  std::string idUnfavorited = fromClient._data.at(1);
+  server.getAccountByID(id).removeFromFavorites(idUnfavorited);
+  return true;
+}
+
+bool	ProtocolClient::addNickname(Server &server, DataFromClient &fromClient)
+{
+  std::string id = fromClient._data.at(0);
+  std::string idNicknamed = fromClient._data.at(1);
+  std::string newNickname = fromClient._data.at(2);
   server.getAccountByID(id).getContactByID(idNicknamed).setNickname(newNickname);
 }
 
-bool	ProtocolClient::removeContact(Server &server, DataFromClient &data)
+bool	ProtocolClient::removeContact(Server &server, DataFromClient &fromClient)
 {
-  server.getAccountByID(data.data.at(0)).removeContact(data.data.at(1));
+  server.getAccountByID(data._data.at(0)).removeContact(data._data.at(1));
+  return true;
 }
 
-bool	ProtocolClient::modifyProfilPicture(Server &server, DataFromClient &data)
+bool	ProtocolClient::modifyProfilePicture(Server &server, DataFromClient &fromClient)
 {
-  std::string id = data.data.at(0);
-  short newProfilePicture = std::to_short(data.data.at(1));
+  std::string id = fromClient._data.at(0);
+  short newProfilePicture = std::to_short(data._data.at(1));
   server.getAccountByID(id).setProfilePicture(newProfilePicture);
 }
 
-bool	ProtocolClient::listenToMail(Server &server, DataFromClient &data)
+bool	ProtocolClient::listenToMail(Server &server, DataFromClient &fromClient)
 {
 
 }
@@ -176,24 +206,27 @@ void ProtocolClient::initMethod()
   _functions[C_ACCEPT_CALL] = &ProtocolClient::acceptCall;
   _functions[C_DECLINE_CALL] = &ProtocolClient::declineCall;
   _functions[C_ADD_CONTACT] = &ProtocolClient::addContact;
+  _functions[C_ACCEPT_INVITATION] = &ProtocolClient::acceptInvitation;
+  _functions[C_DECLINE_INVITATION] = &ProtocolClient::declineInvitation;
   _functions[C_MODIFY_STATUS] = &ProtocolClient::modifyStatus;
   _functions[C_MODIFY_LOGIN] = &ProtocolClient::modifyLogin;
   _functions[C_MODIFY_LOCATION] = &ProtocolClient::modifyLocation;
   _functions[C_MUTE] = &ProtocolClient::mute;
   _functions[C_ADD_PARTICIPANT_TO_CALL] = &ProtocolClient::addParticipantToCall;
   _functions[C_ADD_TO_FAVORITES] = &ProtocolClient::addToFavorites;
+  _functions[C_REMOVE_FROM_FAVORITES] = &ProtocolClient::removeFromFavorites;
   _functions[C_ADD_NICKNAME] = &ProtocolClient::addNickname;
   _functions[C_REMOVE_CONTACT] = &ProtocolClient::removeContact;
-  _functions[C_MODIFY_PROFIL_PICTURE] = &ProtocolClient::modifyProfilPicture;
+  _functions[C_MODIFY_PROFIL_PICTURE] = &ProtocolClient::modifyProfilePicture;
   _functions[C_SEND_FILE] = &ProtocolClient::sendFile;
   _functions[C_LISTEN_TO_MAIL] = &ProtocolClient::listenToMail;
 }
 
-void ProtocolClient::methodChecker(Server &server, DataFromClient &data)
+void ProtocolClient::methodChecker(Server &server, DataFromClient &fromClient)
 {
   for (PointersOnFuncs::iterator it = _functions.begin(); it!=_functions.end(); ++it)
     {
       if (it->first == _functions[std::distance(_functions.begin(), it)].first)
-        (*it)(server, data);
+        (*it)(server, fromClient);
     }
 }

@@ -31,12 +31,13 @@ class		        AProcotol
     C_MUTE = 20,
     C_ADD_PARTICIPANT_TO_CALL = 21,
     C_ADD_TO_FAVORITES = 22,
-    C_ADD_NICKNAME = 23,
-    C_REMOVE_CONTACT = 24,
-    C_MODIFY_PROFIL_PICTURE = 25,
+    C_REMOVE_FROM_FAVORITES = 23,
+    C_ADD_NICKNAME = 24,
+    C_REMOVE_CONTACT = 25,
+    C_MODIFY_PROFIL_PICTURE = 26,
     C_SEND_FILE = 30,
     C_LISTEN_TO_MAIL = 31,
-    S_SUCCESS = 101,
+    S_SUCCESS_HANDSHAKE = 101,
     S_SUCCESS_ON_SIGN = 102,
     S_ERROR_UNKNOWN = 103,
     S_ERROR_SIGN = 104,
@@ -55,7 +56,6 @@ class		        AProcotol
   ~AProcotol();
 
   bool  initMethod();
-  bool  initFormat();
   bool  methodChecker(Server &server, AData &data);
 
 private:

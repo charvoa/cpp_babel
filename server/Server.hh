@@ -11,6 +11,7 @@ class				Server
   ~Server();
 
   std::vector<Account*>		_allAccounts;
+  std::vector<Client*>		_allClients;
   std::vector<Call*>		_allCalls;
 
 

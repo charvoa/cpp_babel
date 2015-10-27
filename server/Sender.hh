@@ -9,6 +9,8 @@ class			Sender
   Sender(AResponse &response);
   ~Sender();
 
+  // Abstraction Boost Asio Methods
+
   void		       	send();
 
 private:
