@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Mon Oct 26 08:54:05 2015 Antoine Garcia
+// Last update Tue Oct 27 02:02:37 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -25,9 +25,10 @@ PTUser::PTUser()
 
 void	PTUser::userConnected(int check)
 {
-  (void)check;
   std::cout << "SLOT IS CALLED" << std::endl;
+  emit canDisplayHome(check);
 }
+
 PTUser::~PTUser()
 {
   std::cout << "Destroy" << std::endl;
@@ -66,6 +67,23 @@ int PTUser::run(int ac, char **av)
 PTUser::User&	PTUser::currentUser()
 {
   return (_currentUser);
+}
+
+void	PTUser::logUser(const std::string &username, const std::string &password, const std::string &ip)
+{
+  (void)username;
+  (void)password;
+  (void)ip;
+  std::cout << "PROCESSING LOGIN USER..." << std::endl;
+  server.start("localhost", 4040);
+}
+
+void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify)
+{
+  (void)username;
+  (void)password;
+  (void)verify;
+  std::cout << "SIGNUP..." << std::endl;
 }
 
 //Nested Class User

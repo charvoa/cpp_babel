@@ -12,7 +12,7 @@ QT+=concurrent
 HEADERS += Thread.hh
 HEADERS += Network/NetworkServerHandler.hh
 HEADERS += User/PTUser.hh
-SOURCES = main.cpp
+SOURCES += main.cpp
 SOURCES += User/PTUser.cpp
 SOURCES += Network/NetworkServerHandler.cpp
 unix {

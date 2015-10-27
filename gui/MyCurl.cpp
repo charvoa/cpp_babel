@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:16:51 2015 Nicolas Charvoz
-// Last update Sun Oct 25 00:54:47 2015 Nicolas Charvoz
+// Last update Tue Oct 27 11:26:25 2015 Nicolas Charvoz
 //
 
 #include "MyCurl.hh"
@@ -46,7 +46,6 @@ void MyCurl::imgHandle()
   if (reply->error() == QNetworkReply::NoError)
     {
       QImageReader imageReader(reply);
-      imageReader.setAutoDetectImageFormat (false);
       _img = imageReader.read();
     }
 }
