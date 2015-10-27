@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 19 13:34:10 2015 Antoine Garcia
-// Last update Tue Oct 27 03:27:26 2015 Antoine Garcia
+// Last update Tue Oct 27 09:44:12 2015 Antoine Garcia
 //
 
 #ifndef TCPProtocolHelper_HH_
@@ -15,12 +15,15 @@
 #include <cstdlib>
 #include <QByteArray>
 #include <QDataStream>
+#include <map>
 #include "IProtocolHelper.hh"
 
 class	TCPProtocolHelper
 {
-   typedef QByteArray& (TCPProtocolHelper::*funcPtr)();
-  funcPtr	_funcs[2];
+  typedef QByteArray& (TCPProtocolHelper::*funcPtr)();
+  funcPtr	_ptr;
+  typedef std::map<ProtocolType, funcPtr>	map_funcs;
+  map_funcs	functions;
 public:
   TCPProtocolHelper();
   ~TCPProtocolHelper();

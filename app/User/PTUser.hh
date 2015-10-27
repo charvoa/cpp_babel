@@ -40,7 +40,7 @@ public:
   User&		currentUser();
   int run(int, char**);
   void logUser(const std::string &username, const std::string &password, const std::string &ip);
-  void signup(const std::string &username, const std::string &password, const std::string &verify);
+  void signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &avatar = 0);
 };
 
 extern PTUser g_PTUser;

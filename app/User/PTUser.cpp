@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Tue Oct 27 14:28:34 2015 Nicolas Charvoz
+// Last update Tue Oct 27 09:51:45 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -78,11 +78,12 @@ void	PTUser::logUser(const std::string &username, const std::string &password, c
   server.start("localhost", 4040);
 }
 
-void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify)
+void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &avatar)
 {
   (void)username;
   (void)password;
   (void)verify;
+  (void)avatar;
   std::cout << "SIGNUP..." << std::endl;
 }
 
