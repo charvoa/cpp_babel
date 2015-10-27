@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Mon Oct 26 10:04:49 2015 Antoine Garcia
+// Last update Tue Oct 27 03:11:20 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -27,6 +27,7 @@ private:
   std::string _host;
   unsigned int _port;
   bool		_connected;
+   TCPProtocolHelper	_request;
 signals:
   void	userConnected(int check);
 public:

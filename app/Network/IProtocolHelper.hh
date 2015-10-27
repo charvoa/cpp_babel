@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:25:39 2015 Antoine Garcia
-// Last update Tue Oct 27 02:54:56 2015 Antoine Garcia
+// Last update Tue Oct 27 03:02:41 2015 Antoine Garcia
 //
 
 #ifndef IProtocolHelper_HH_
@@ -34,9 +34,10 @@ typedef enum ProtocolType
     MUTE = 20,
     ADD_PARTICIPANT_TO_CALL = 21,
     ADD_TO_FAVORITES = 22,
-    ADD_NICKNAME = 23,
-    REMOVE_CONTACT = 24,
-    MODIFY_PROFIL_PICTURE = 25,
+    REMOVE_FROM_FAVORITE = 23,
+    ADD_NICKNAME = 24,
+    REMOVE_CONTACT = 25,
+    MODIFY_PROFIL_PICTURE = 26,
     SEND_FILE = 30,
     LISTEN_TO_MAIL = 31,
   }	ProtocolType;
