@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Tue Oct 27 08:34:42 2015 Antoine Garcia
+// Last update Tue Oct 27 10:01:40 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -55,7 +55,9 @@ void	NetworkServerHandler::write(const std::string &str)
 
 void	NetworkServerHandler::handShake()
 {
-  _request.createRequest(HANDSHAKE);
+  QByteArray	array =  _request.createRequest(HANDSHAKE);
+
+  _socket->write(array);
 }
 
 bool	NetworkServerHandler::getConnectionStatus() const
