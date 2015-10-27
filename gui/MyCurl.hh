@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:05:14 2015 Nicolas Charvoz
-// Last update Sun Oct 25 00:54:54 2015 Nicolas Charvoz
+// Last update Tue Oct 27 14:05:39 2015 Nicolas Charvoz
 //
 
 #ifndef MYCURL_HH_
@@ -20,7 +20,7 @@
 # include <QtNetwork>
 # include <sstream>
 
-class MyCurl : QObject {
+class MyCurl : public QObject {
 
   Q_OBJECT
 private:
@@ -36,13 +36,15 @@ public:
   int getIntFromString(const std::string&);
   void imgHandle();
 public slots:
-  void slotReadyRead();
-
+  void slotReadyRead(QNetworkReply*);
+signals:
+  void canDisplayWeather();
 private:
   std::string _condition;
   int _tmp;
   std::string _code;
   QImage _img;
+  QNetworkAccessManager *_mgr;
 };
 
 #endif

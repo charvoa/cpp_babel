@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Wed Oct 21 17:34:48 2015 Nicolas Charvoz
+// Last update Tue Oct 27 17:40:37 2015 Nicolas Charvoz
 //
 
 #ifndef HOME_HH_
@@ -28,7 +28,6 @@
 # include <sstream>
 # include <iostream>
 # include <fstream>
-# include <curl/curl.h>
 # include "MyCurl.hh"
 
 class Home : public QWidget {
@@ -39,11 +38,14 @@ public:
   int weatherDisplay();
 public slots:
   void addFriend();
+  void canDisplayWeather();
 
 private:
-
+  MyCurl *_mC;
   QLineEdit *_addFriend;
-
+  QLabel *_temp;
+  QLabel *_imgWeather;
+  std::string _str;
 };
 
 

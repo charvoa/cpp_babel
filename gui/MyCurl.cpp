@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:16:51 2015 Nicolas Charvoz
-// Last update Tue Oct 27 11:26:25 2015 Nicolas Charvoz
+// Last update Tue Oct 27 13:58:29 2015 Nicolas Charvoz
 //
 
 #include "MyCurl.hh"
@@ -35,7 +35,6 @@ void MyCurl::imgHandle()
 {
   QNetworkAccessManager *nam = new QNetworkAccessManager(this);
   QUrl url(_code.c_str());
-  qDebug() << url;
   QNetworkReply* reply = nam->get(QNetworkRequest(url));
 
   QEventLoop eventLoop;
@@ -94,23 +93,33 @@ int MyCurl::exec()
 {
   const char *query = "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%20614274&format=json";
 
-  QEventLoop eventLoop;
+  //  QEventLoop eventLoop;
 
   // "quit()" the event-loop, when the network request "finished()"
-  QNetworkAccessManager mgr;
-  QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+  _mgr = new QNetworkAccessManager(this);;
+  //  QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+  QObject::connect(_mgr, SIGNAL(finished(QNetworkReply*)), this,
+  		   SLOT(slotReadyRead(QNetworkReply*)));
 
   // the HTTP request
   QNetworkRequest req(QUrl(tr(query)));
-  QNetworkReply *reply = mgr.get(req);
+  QNetworkReply *reply = _mgr->get(req);
 
-  eventLoop.exec(); // blocks stack until "finished()" has been called
+  //  eventLoop.exec(); // blocks stack until "finished()" has been called
 
+  std::cout << "MyCurl::Exec()" << std::endl;
+  return 0;
+}
+
+void MyCurl::slotReadyRead(QNetworkReply *reply)
+{
+  std::cout << "weather called " << std::endl;
   if (reply->error() == QNetworkReply::NoError)
     {
       //success
       QString content = reply->readAll();
       this->dataHandle(content.toUtf8().constData());
+      emit canDisplayWeather();
       delete reply;
     }
   else
@@ -119,9 +128,4 @@ int MyCurl::exec()
       qDebug() << "Failure" << reply->errorString();
       delete reply;
     }
-  return 0;
-}
-
-void MyCurl::slotReadyRead()
-{
 }
