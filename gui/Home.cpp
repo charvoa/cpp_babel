@@ -5,10 +5,11 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sun Oct 25 00:58:37 2015 Nicolas Charvoz
+// Last update Tue Oct 27 17:45:17 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
+#include <QApplication>
 
 Home::Home(QWidget *parent) : QWidget(parent)
 {
@@ -30,30 +31,33 @@ Home::Home(QWidget *parent) : QWidget(parent)
   _addFriend->setGeometry(835, 480, 250, 60);
   add->setGeometry(835, 540, 250, 60);
 
+  _imgWeather = new QLabel(this);
+  _temp = new QLabel(this);
+
+  _imgWeather->setGeometry(1700, 0, 120, 120);
+  _temp->setGeometry(1710, 100, 60, 60);
+
   this->weatherDisplay();
+}
+
+void Home::canDisplayWeather()
+{
+  _str = std::to_string(_mC->getTmp());
+
+  char const *pchar = _str.c_str();
+
+  _temp->setText(tr(pchar));
+
+  _imgWeather->setPixmap(QPixmap::fromImage(_mC->getImg()));
 }
 
 int Home::weatherDisplay()
 {
-  MyCurl *mC = new MyCurl();
+  _mC = new MyCurl();
 
-  std::cout << "weather " << std::endl;
-  mC->exec();
+  _mC->exec();
+  connect(_mC, SIGNAL(canDisplayWeather()), this, SLOT(canDisplayWeather()));
 
-  std::cout << "Condition : " << mC->getCondition()
-	    << " Tmp °C : " << mC->getTmp() << std::endl;
-
-  std::string s = std::to_string(mC->getTmp());
-  char const *pchar = s.c_str();
-
-  QLabel *temp = new QLabel(tr(pchar), this);
-
-  QLabel *imgWeather = new QLabel(this);
-
-  imgWeather->setPixmap(QPixmap::fromImage(mC->getImg()));
-
-  imgWeather->setGeometry(1700, 0, 120, 120);
-  temp->setGeometry(1710, 130, 60, 60);
   return 0;
 }
 
