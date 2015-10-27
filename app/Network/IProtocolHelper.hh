@@ -5,13 +5,13 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:25:39 2015 Antoine Garcia
-// Last update Tue Oct 27 03:02:41 2015 Antoine Garcia
+// Last update Tue Oct 27 03:14:56 2015 Antoine Garcia
 //
 
 #ifndef IProtocolHelper_HH_
 # define IProtocolHelper_HH_
 
-
+#include <QByteArray>
 typedef enum ProtocolType
   {
     HANDSHAKE = 1,
@@ -46,8 +46,8 @@ class	IProtocolHelper
 {
 
 public:
-  virtual ~IProtocolHelper();
-  virtual void createRequest(ProtocolType type);
+  virtual ~IProtocolHelper() = 0;
+  virtual QByteArray &createRequest(ProtocolType type) = 0;
 };
 
 #endif
