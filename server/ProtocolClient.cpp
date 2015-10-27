@@ -1,3 +1,13 @@
+//
+// ProtocolClient.cpp for babel in /home/nicolas/rendu/cpp_babel/server
+//
+// Made by Nicolas Girardot
+// Login   <girard_s@epitech.net>
+//
+// Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
+// Last update Mon Oct 26 11:19:29 2015 Nicolas Girardot
+//
+
 #include "ProtocolClient.hh"
 
 bool	handshake(Server &server, DataFromClient &data)

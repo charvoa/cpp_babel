@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Thu Oct 22 20:22:56 2015 Nicolas Girardot
+// Last update Mon Oct 26 17:38:20 2015 Nicolas Girardot
 //
 
 #ifndef TCPCONNECTION_HPP_
@@ -18,6 +18,8 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
+#include "../VerifyRequest.hh"
+
 
 class TCPConnection : public boost::enable_shared_from_this<TCPConnection>
 {
@@ -77,12 +79,23 @@ private:
   {
     if (!error)
       {
-	std::cout << &_response;
+	std::bitset<16> b_type;
 	std::ostringstream ss;
+	std::cout << "Streambuf size is " << _response.size() << std::endl;
 	ss << &_response;
 	std::string s = ss.str();
-	std::cout << s;
-	//	Demand *demand = new Demand(s);
+	for (int i = 0; i <= 28; i++)
+	  {
+	    if (i % 2 == 1);
+	    else
+	      {
+		b_type = std::bitset<16>(s.at(i));
+		std::cout << "BYTE OF THING " << i << " : " << b_type.to_string() << std::endl;
+	      }
+	  }
+	std::cout << "Request is : " << s << "End of Request" << std::endl;
+      	VerifyRequest *cost = new VerifyRequest(s);
+	(void) cost;
 	asyncRead();
       }
     else

@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 22 21:37:09 2015 Nicolas Girardot
-// Last update Thu Oct 22 21:48:45 2015 Nicolas Girardot
+// Last update Mon Oct 26 15:43:20 2015 Nicolas Girardot
 //
 
 #ifndef VERIFYREQUEST_HH_
@@ -13,6 +13,7 @@
 
 #include <string>
 #include <bitset>
+#include "DataFromClient.hh"
 
 class VerifyRequest
 {
