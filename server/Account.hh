@@ -11,10 +11,11 @@ class		        Account
       CONNECTED = 1,
       AWAY = 2,
       ONCALL = 3,
-      DISCONNECTED = 4
+      OFFLINE = 4,
+      DISCONNECTED = 5
     }			        State;
 
-  Account(short clientVersion);
+  Account(std::string username, std::string passwd, short profilePicture);
   ~Account();
 
   void			setLogin(std::string login);
@@ -27,9 +28,7 @@ class		        Account
   std::vector<Account*>				&getContactList();
   Account::state		      		getState();
   std::string   		      		getID();
-  short                       getClientVersion
-  Socket	              			getSocket();
-  bool                        removeContact(std::string &ID);
+  bool                        removeContact(std::string ID);
 
 private:
 
@@ -40,13 +39,7 @@ private:
   std::vector<std::pair<Account*:std::string>>	_nicknames;
   std::vector<Account*>				_contactsList;
   std::vector<Account*>				_favoritesList;
-
-  std::string                 _id;
-
-  Socket										_socket;
-
-  short						_clientVersion;
-
+  const std::string           _id;
 };
 
 #endif /* !ACCOUNT_HH_ */
