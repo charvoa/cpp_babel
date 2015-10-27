@@ -5,16 +5,17 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Oct 25 11:23:10 2015 Nicolas Charvoz
+// Last update Tue Oct 27 02:00:41 2015 Antoine Garcia
 //
 
 #include "LoginWidget.hh"
 #include "SignupWidget.hh"
 #include "MainWidget.hh"
 #include "../app/User/PTUser.hh"
-
+#include "../app/Thread.hh"
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 {
+  connect(&g_PTUser, SIGNAL(canDisplayHome(int)), this, SLOT(canDisplayHome(int)));
   QLabel *labelPassword = new QLabel(this);
   QLabel *labelUsername = new QLabel(this);
   _labelIp = new QLabel(this);
@@ -58,6 +59,27 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   _labelIp->hide();
   this->displayButton();
   setLayout(_mainLayout);
+}
+
+void LoginWidget::canDisplayHome(int error)
+{
+  MainWidget *widget;
+
+  std::cout << error << std::endl;
+  if (error == 1)
+    {
+      widget = new MainWidget();
+      widget->setAttribute(Qt::WA_DeleteOnClose);
+      widget->show();
+      deleteLater();
+    }
+  else
+    {
+      this->clearLayout(_mainLayout);
+      this->refreshUI();
+      std::cout << "Login fail" << std::endl;
+    }
+  std::cout << "LOGIN WIDGET CAN DISPLAY HOME" << std::endl;
 }
 
 void LoginWidget::refreshUI()
@@ -178,25 +200,6 @@ void LoginWidget::clearLayout(QLayout *layout)
     }
 }
 
-void LoginWidget::validateLogin(int error)
-{
-  MainWidget *widget;
-
-  if (error == 1)
-    {
-      widget = new MainWidget();
-      widget->setAttribute(Qt::WA_DeleteOnClose);
-      widget->show();
-      deleteLater();
-    }
-  else
-    {
-      this->clearLayout(_mainLayout);
-      this->refreshUI();
-      std::cout << "Login fail" << std::endl;
-    }
-}
-
 void LoginWidget::checkLogin()
 {
   QString user = _editUsername->text();
@@ -216,8 +219,7 @@ void LoginWidget::checkLogin()
 
   this->clearLayout(_mainLayout);
   _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
-
-  g_PTUser.logUser(*this, &LoginWidget::validateLogin, _userString,
-		   _passString, _ipString);
+  Thread thread;
+  g_PTUser.logUser(_userString, _passString, _ipString);
 
 }

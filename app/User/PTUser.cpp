@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Mon Oct 19 18:39:57 2015 Nicolas Charvoz
+// Last update Tue Oct 27 02:02:37 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -20,6 +20,13 @@ PTUser g_PTUser;
 PTUser::PTUser()
 {
   std::cout << "PTUSER CREATED" << std::endl;
+  connect(&server, SIGNAL(userConnected(int)), this, SLOT(userConnected(int)));
+}
+
+void	PTUser::userConnected(int check)
+{
+  std::cout << "SLOT IS CALLED" << std::endl;
+  emit canDisplayHome(check);
 }
 
 PTUser::~PTUser()
@@ -62,6 +69,23 @@ PTUser::User&	PTUser::currentUser()
   return (_currentUser);
 }
 
+void	PTUser::logUser(const std::string &username, const std::string &password, const std::string &ip)
+{
+  (void)username;
+  (void)password;
+  (void)ip;
+  std::cout << "PROCESSING LOGIN USER..." << std::endl;
+  server.start("localhost", 4040);
+}
+
+void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify)
+{
+  (void)username;
+  (void)password;
+  (void)verify;
+  std::cout << "SIGNUP..." << std::endl;
+}
+
 //Nested Class User
 PTUser::User::User()
 {
@@ -81,4 +105,9 @@ const std::string	&PTUser::User::getUsername() const
 const std::string	&PTUser::User::getObjectId() const
 {
   return (_objectId);
+}
+
+const std::list<Contact *>	&PTUser::User::getContacts() const
+{
+  return (_contact);
 }

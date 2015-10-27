@@ -5,16 +5,19 @@
 #include <iostream>
 #include <list>
 #include <string>
+#include "../Contact/Contact.hh"
 #include "../Network/NetworkServerHandler.hh"
 
-class PTUser
+class PTUser: public QObject
 {
+Q_OBJECT
 private:
   class User
   {
     friend class PTUser;
     std::string _username;
     std::string _password;
+    std::list<Contact *> _contact;
   protected:
     std::string _objectId;
   public:
@@ -22,33 +25,22 @@ private:
     ~User();
     const std::string &getUsername() const;
     const std::string &getObjectId() const;
+    const std::list<Contact *>& getContacts() const;
   };
   User	_currentUser;
   NetworkServerHandler server;
   std::string _ipServer;
-  void initProtolConnection();
+private slots:
+  void userConnected(int check);
+signals:
+  void canDisplayHome(int check);
 public:
   PTUser();
   ~PTUser();
   User&		currentUser();
   int run(int, char**);
-  template<typename T>
-  void logUser(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
-  {
-    std::cout << "PROCESSING LOGIN USER..." << std::endl;
-    if (server.start("localhost", 4040) == -1) {
-      (obj.*call)(0);
-    }
-    else{
-      (obj.*call)(1);
-    }
-  }
-  template <typename T>
-  void signup(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &verify)
-  {
-    std::cout << "SIGNUP..." << std::endl;
-    (obj.*call)(1);
-  }
+  void logUser(const std::string &username, const std::string &password, const std::string &ip);
+  void signup(const std::string &username, const std::string &password, const std::string &verify);
 };
 
 extern PTUser g_PTUser;

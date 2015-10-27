@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Wed Oct 21 12:17:05 2015 Antoine Garcia
+// Last update Mon Oct 26 10:04:49 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -13,11 +13,11 @@
 
 #include <QObject>
 #include <QString>
+#include <QAbstractSocket>
 #include "INetwork.hh"
 #include "TCPProtocolHelper.hh"
 
 class QTcpSocket;
-
 class NetworkServerHandler : public QObject, public INetwork
 {
   Q_OBJECT
@@ -27,6 +27,8 @@ private:
   std::string _host;
   unsigned int _port;
   bool		_connected;
+signals:
+  void	userConnected(int check);
 public:
   NetworkServerHandler(QObject *parent = 0);
   ~NetworkServerHandler();
@@ -35,10 +37,12 @@ public:
   void setPort(unsigned int);
   void write(const std::string &);
   void	handShake();
-  bool getConnectionStatus();
+  void	logUser();
+  bool getConnectionStatus() const;
 private slots:
   void	readyRead();
   void	connected();
+  void	connectionError(QAbstractSocket::SocketError);
 };
 
 #endif
