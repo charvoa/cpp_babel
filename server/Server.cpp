@@ -30,11 +30,6 @@ bool      Server::isPasswdCorrectForAccount(std::string &username, std::string &
   return false;
 }
 
-bool      Server::setNicknameForUser(std::string &nickname, std::string clientID)
-{
-
-}
-
 bool      Server::addAccount(std::string &login, std::string &passwd, short profilePicture)
 {
   _allAccounts.push_back(new Account(login, passwd, profilePicture));
@@ -66,6 +61,16 @@ Account   &Server::getAccountByUsername(std::string &username)
     {
       if (it->getUsername() == username)
         return it;
+    }
+  return NULL;
+}
+
+Client   &Server::getClientBySocket(Socket &socket)
+{
+  for (std::vector::iterator it = _allClients.begin(); it != _allClients.end(); ++it)
+    {
+      if (it->getSocket() == socket)
+        return _allClients.at(std::distance(_allClients.begin(), it));
     }
   return NULL;
 }
