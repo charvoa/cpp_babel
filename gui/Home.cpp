@@ -5,11 +5,10 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Tue Oct 27 17:45:17 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:26:55 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
-#include <QApplication>
 
 Home::Home(QWidget *parent) : QWidget(parent)
 {
@@ -37,33 +36,40 @@ Home::Home(QWidget *parent) : QWidget(parent)
   _imgWeather->setGeometry(1700, 0, 120, 120);
   _temp->setGeometry(1710, 100, 60, 60);
 
+  connect(add, SIGNAL(released()), this, SLOT(addFriend()));
+  connect(&g_PTUser, SIGNAL(contactAdded()), this, SLOT(contactAdded()));
+
   this->weatherDisplay();
 }
 
 void Home::canDisplayWeather()
 {
-  _str = std::to_string(_mC->getTmp());
+  _str = std::to_string(_dH->getTmp());
 
   char const *pchar = _str.c_str();
 
   _temp->setText(tr(pchar));
 
-  _imgWeather->setPixmap(QPixmap::fromImage(_mC->getImg()));
+  _imgWeather->setPixmap(QPixmap::fromImage(_dH->getImg()));
 }
 
 int Home::weatherDisplay()
 {
-  _mC = new MyCurl();
+  _dH = new DataHandler();
 
-  _mC->exec();
-  connect(_mC, SIGNAL(canDisplayWeather()), this, SLOT(canDisplayWeather()));
+  _dH->exec();
+  connect(_dH, SIGNAL(canDisplayWeather()), this, SLOT(canDisplayWeather()));
 
   return 0;
 }
 
-void Home::validateFriend(int error)
+void Home::contactAdded()
 {
-  (void) error;
+  QMessageBox msgBox;
+
+  msgBox.setText("Yeah ! You added a friend !");
+  msgBox.exec();
+  std::cout << "contact added" << std::endl;
 }
 
 void Home::addFriend()
@@ -73,5 +79,5 @@ void Home::addFriend()
 
   _addFriend->clear();
 
-    // g_PTUser.addFriend();
+  g_PTUser.currentUser().addContact();
 }

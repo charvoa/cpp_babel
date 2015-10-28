@@ -5,11 +5,11 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:17:20 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:37:12 2015 Nicolas Charvoz
 //
 
-#ifndef HOME_HH_
-# define HOME_HH_
+#ifndef UICONTACT_HH_
+# define UICONTACT_HH_
 
 # include <QApplication>
 # include <QObject>
@@ -28,26 +28,23 @@
 # include <sstream>
 # include <iostream>
 # include <fstream>
-# include "DataHandler.hh"
+# include "MainWidget.hh"
 # include "../app/User/PTUser.hh"
 
-class Home : public QWidget {
+class UiContact : public QWidget {
 Q_OBJECT
+
 public:
-  explicit Home(QWidget *parent = 0);
-  void validateFriend(int);
-  int weatherDisplay();
+  explicit UiContact(QWidget *parent = 0);
+
 public slots:
-  void addFriend();
-  void contactAdded();
-  void canDisplayWeather();
+  void addTab();
+  void displayContact();
+  void refreshUI();
 
 private:
-  DataHandler *_dH;
-  QLineEdit *_addFriend;
-  QLabel *_temp;
-  QLabel *_imgWeather;
-  std::string _str;
+  MainWidget *_main;
+
 };
 
 

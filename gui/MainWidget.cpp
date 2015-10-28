@@ -5,10 +5,10 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 14 17:17:40 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:35:19 2015 Nicolas Charvoz
 //
 
-#include "Contact.hh"
+#include "UiContact.hh"
 #include "Home.hh"
 #include "Conversation.hh"
 #include "MainWidget.hh"
@@ -28,7 +28,7 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
   setWindowTitle(tr("Babel"));
 
   _tabWidget->addTab(new Home(), tr("Home"));
-  _tabWidget->addTab(new Contact(this), tr("Contact"));
+  _tabWidget->addTab(new UiContact(), tr("Contact"));
 
   std::ostringstream oss;
   while (conv >= 0)

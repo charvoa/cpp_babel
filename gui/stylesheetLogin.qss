@@ -18,7 +18,6 @@ QPushButton {
 QPushButton:hover {
     color: #FFFFFF;
     background-color: #1DAEF1;
-    cursor: pointer;
 }
 
 QLineEdit {

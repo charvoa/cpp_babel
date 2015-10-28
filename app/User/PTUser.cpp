@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Tue Oct 27 09:51:45 2015 Antoine Garcia
+// Last update Wed Oct 28 07:17:48 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -87,6 +87,10 @@ void	PTUser::signup(const std::string &username, const std::string &password, co
   std::cout << "SIGNUP..." << std::endl;
 }
 
+void	PTUser::contactIsAdd()
+{
+  emit contactAdded();
+}
 //Nested Class User
 PTUser::User::User()
 {
@@ -96,6 +100,11 @@ PTUser::User::User()
 PTUser::User::~User()
 {
   std::cout << "Destroy User" << std::endl;
+}
+
+void	PTUser::User::addContact()
+{
+  g_PTUser.contactIsAdd();
 }
 
 const std::string	&PTUser::User::getUsername() const

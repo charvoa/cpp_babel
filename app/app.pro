@@ -1,14 +1,13 @@
 TEMPLATE = app
 unix {
 QMAKE_CXX = g++-4.9
-QMAKE_CXXFLAGS += -Werror
 }
 
 QMAKE_CXXFLAGS += -std=c++11
 
 QT+=widgets
 QT+=network
-QT+=concurrent
+
 HEADERS += Thread.hh
 HEADERS += Network/NetworkServerHandler.hh
 HEADERS += User/PTUser.hh
@@ -18,8 +17,11 @@ SOURCES  += Network/TCPProtocolHelper.cpp
 SOURCES += main.cpp
 SOURCES += User/PTUser.cpp
 SOURCES += Network/NetworkServerHandler.cpp
+SOURCES += Audio/PTSoundOutput.cpp
 unix {
-LIBS = ../gui/libgui.a
+LIBS += ../gui/libgui.a
+LIBS += ./libs/libportaudio.a
+LIBS +=  -lasound -lpthread -lrt
 }
 win32 {
 LIBS = ..\gui\release\gui.lib
