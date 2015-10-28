@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Tue Oct 27 02:01:26 2015 Antoine Garcia
+// Last update Wed Oct 28 14:20:23 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -15,9 +15,6 @@
 
 SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
 {
-  QLabel *labelPassword = new QLabel(this);
-  QLabel *labelUsername = new QLabel(this);
-  QLabel *labelIp = new QLabel(this);
   _buttons = new QDialogButtonBox(this);
 
   /* COMBO BOX AVATAR */
@@ -48,23 +45,17 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
   _editPassword = new QLineEdit(this);
   _editPassword->setEchoMode(QLineEdit::Password);
 
+  _editUsername->setPlaceholderText(tr("Username"));
+  _editPassword->setPlaceholderText(tr("Password"));
+
   _editC = new QLineEdit(this);
   _editC->setEchoMode(QLineEdit::Password);
+  _editC->setPlaceholderText(tr("Confirm Password"));
 
-  labelUsername->setText(tr("Username"));
-  labelUsername->setBuddy(_editUsername);
-  labelPassword->setText(tr("Password"));
-  labelPassword->setBuddy(_editPassword);
-  labelIp->setText(tr("Confirm Password"));
-  labelIp->setBuddy(_editC);
-
-  _mainLayout->addWidget(_avatarCombo, 0, 1);
-  _mainLayout->addWidget(labelUsername, 1, 0);
-  _mainLayout->addWidget(_editUsername, 1, 1);
-  _mainLayout->addWidget(labelPassword, 2, 0);
-  _mainLayout->addWidget(_editPassword, 2, 1);
-  _mainLayout->addWidget(labelIp, 3, 0);
-  _mainLayout->addWidget(_editC, 3, 1);
+  _mainLayout->addWidget(_avatarCombo, 0, 0);
+  _mainLayout->addWidget(_editUsername, 1, 0);
+  _mainLayout->addWidget(_editPassword, 2, 0);
+  _mainLayout->addWidget(_editC, 3, 0);
 
   this->displayButton();
   setLayout(_mainLayout);
@@ -72,9 +63,6 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
 
 void SignupWidget::refreshUI()
 {
-  QLabel *labelPassword = new QLabel(this);
-  QLabel *labelUsername = new QLabel(this);
-  QLabel *labelIp = new QLabel(this);
   _buttons = new QDialogButtonBox(this);
 
   /* COMBO BOX AVATAR */
@@ -102,20 +90,14 @@ void SignupWidget::refreshUI()
   _editC = new QLineEdit(this);
   _editC->setEchoMode(QLineEdit::Password);
 
-  labelUsername->setText(tr("Username"));
-  labelUsername->setBuddy(_editUsername);
-  labelPassword->setText(tr("Password"));
-  labelPassword->setBuddy(_editPassword);
-  labelIp->setText(tr("Confirm Password"));
-  labelIp->setBuddy(_editC);
+  _editUsername->setPlaceholderText(tr("Username"));
+  _editPassword->setPlaceholderText(tr("Password"));
+  _editC->setPlaceholderText(tr("Confirm Password"));
 
-  _mainLayout->addWidget(_avatarCombo, 0, 1);
-  _mainLayout->addWidget(labelUsername, 1, 0);
-  _mainLayout->addWidget(_editUsername, 1, 1);
-  _mainLayout->addWidget(labelPassword, 2, 0);
-  _mainLayout->addWidget(_editPassword, 2, 1);
-  _mainLayout->addWidget(labelIp, 3, 0);
-  _mainLayout->addWidget(_editC, 3, 1);
+  _mainLayout->addWidget(_avatarCombo, 0, 0);
+  _mainLayout->addWidget(_editUsername, 1, 0);
+  _mainLayout->addWidget(_editPassword, 2, 0);
+  _mainLayout->addWidget(_editC, 3, 0);
 
   this->displayButton();
 }

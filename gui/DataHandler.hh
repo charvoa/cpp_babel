@@ -1,15 +1,15 @@
 //
-// MyCurl.hpp for  in /home/nicolaschr/rendu/cpp_babel/gui
+// DataHandler.hpp for  in /home/nicolaschr/rendu/cpp_babel/gui
 //
 // Made by Nicolas Charvoz
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:05:14 2015 Nicolas Charvoz
-// Last update Tue Oct 27 14:05:39 2015 Nicolas Charvoz
+// Last update Wed Oct 28 14:37:59 2015 Nicolas Charvoz
 //
 
-#ifndef MYCURL_HH_
-# define MYCURL_HH_
+#ifndef DATAHANDLER_HH_
+# define DATAHANDLER_HH_
 
 # include "MainWidget.hh"
 # include "rapidjson/document.h"
@@ -20,14 +20,14 @@
 # include <QtNetwork>
 # include <sstream>
 
-class MyCurl : public QObject {
+class DataHandler : public QObject {
 
   Q_OBJECT
 private:
   QObject *_parent;
 public:
-  MyCurl(QObject *parent = 0);
-  ~MyCurl();
+  DataHandler(QObject *parent = 0);
+  ~DataHandler();
   std::string getCondition() const;
   int getTmp() const;
   QImage &getImg();
