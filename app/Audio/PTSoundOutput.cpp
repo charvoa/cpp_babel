@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 28 02:44:30 2015 Antoine Garcia
-// Last update Wed Oct 28 03:55:40 2015 Antoine Garcia
+// Last update Wed Oct 28 06:25:45 2015 Antoine Garcia
 //
 
 #include <iostream>
@@ -44,12 +44,18 @@ void PTSoundOutput::initOutput()
 
 void PTSoundOutput::start()
 {
-  // PaError	err;
+   PaError	err;
 
-  //err = Pa_OpenStream(&stream, NULL, _params, SoundDevice::sampleRate, 512, PTSoundOutput::playCallback,
+   err = Pa_OpenStream(&_stream, NULL, &_params, SoundDevice::sampleRate, 512, paClipOff, PTSoundOutput::playCallback,this);
 }
 
 void PTSoundOutput::stop()
 {
 
+}
+
+
+int PTSoundOutput::playCallback(const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags,void *userData)
+{
+  return paContinue;
 }

@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 28 01:57:52 2015 Antoine Garcia
-// Last update Wed Oct 28 03:45:43 2015 Antoine Garcia
+// Last update Wed Oct 28 06:47:00 2015 Antoine Garcia
 //
 
 #ifndef ISOUNDDEVICE_HH_
@@ -13,6 +13,7 @@
 
 #include "../libs/portaudio.h"
 
+typedef float SAMPLE;
 namespace SoundDevice {
   const unsigned int channels = 2;
   const double sampleRate = 44100;
