@@ -27,7 +27,7 @@ private:
     const std::string &getUsername() const;
     const std::string &getObjectId() const;
     const std::list<Contact *>& getContacts() const;
-    void		addContact(Contact &contact);
+    void		addContact();
   };
   User	_currentUser;
   NetworkServerHandler server;

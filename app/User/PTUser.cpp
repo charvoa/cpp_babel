@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Wed Oct 28 07:10:04 2015 Antoine Garcia
+// Last update Wed Oct 28 07:14:53 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -102,7 +102,7 @@ PTUser::User::~User()
   std::cout << "Destroy User" << std::endl;
 }
 
-void	PTUser::User::addContact(Contact &contact)
+void	PTUser::User::addContact()
 {
   g_PTUser.contactAdded();
 }
