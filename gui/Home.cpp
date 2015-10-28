@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:15:48 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:23:14 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
@@ -36,6 +36,7 @@ Home::Home(QWidget *parent) : QWidget(parent)
   _imgWeather->setGeometry(1700, 0, 120, 120);
   _temp->setGeometry(1710, 100, 60, 60);
 
+  connect(add, SIGNAL(released()), this, SLOT(addFriend()));
   connect(&g_PTUser, SIGNAL(contactAdded()), this, SLOT(contactAdded()));
 
   this->weatherDisplay();
