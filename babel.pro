@@ -66,7 +66,7 @@ QMAKE_EXTRA_TARGETS += fclean
 
 re.target = re
 unix {
-re.commands = make clean servermake
+re.commands = make clean
 }
 win32 {
 re.commands = nmake clean
