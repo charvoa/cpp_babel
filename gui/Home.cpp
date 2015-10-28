@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:23:14 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:26:55 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
@@ -65,6 +65,10 @@ int Home::weatherDisplay()
 
 void Home::contactAdded()
 {
+  QMessageBox msgBox;
+
+  msgBox.setText("Yeah ! You added a friend !");
+  msgBox.exec();
   std::cout << "contact added" << std::endl;
 }
 

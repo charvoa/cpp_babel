@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 28 14:20:23 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:26:00 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -183,8 +183,6 @@ void SignupWidget::checkSignup()
   _editC->clear();
 
   QString cb = _avatarCombo->currentText();
-
-  std::cout << "He chose " << cb.toUtf8().constData() << std::endl;
 
   this->clearLayout(_mainLayout);
   _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
