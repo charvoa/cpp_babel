@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Mon Oct 26 13:56:14 2015 Antoine Garcia
+// Last update Wed Oct 28 14:15:29 2015 Nicolas Charvoz
 //
 
 #ifndef LOGINWIDGET_HH_
@@ -56,7 +56,6 @@ private:
   std::string _passString;
   std::string _ipString;
   QDialogButtonBox *_buttons;
-  QLabel *_labelIp;
   bool _ipDisplayed;
 };
 
