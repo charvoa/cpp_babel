@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 28 02:41:38 2015 Antoine Garcia
-// Last update Wed Oct 28 03:04:31 2015 Antoine Garcia
+// Last update Wed Oct 28 06:21:17 2015 Antoine Garcia
 //
 
 #include "ISoundDevice.hh"
@@ -16,6 +16,7 @@ private:
   PaStream	*_stream;
   PaStreamParameters	_params;
   void initOutput();
+  static int playCallback(const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags,void *userData);
 public:
   PTSoundOutput();
   ~PTSoundOutput();
