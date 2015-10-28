@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Wed Oct 28 07:14:53 2015 Antoine Garcia
+// Last update Wed Oct 28 07:17:48 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -104,7 +104,7 @@ PTUser::User::~User()
 
 void	PTUser::User::addContact()
 {
-  g_PTUser.contactAdded();
+  g_PTUser.contactIsAdd();
 }
 
 const std::string	&PTUser::User::getUsername() const
