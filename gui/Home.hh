@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Tue Oct 27 17:40:37 2015 Nicolas Charvoz
+// Last update Wed Oct 28 14:41:06 2015 Nicolas Charvoz
 //
 
 #ifndef HOME_HH_
@@ -28,7 +28,7 @@
 # include <sstream>
 # include <iostream>
 # include <fstream>
-# include "MyCurl.hh"
+# include "DataHandler.hh"
 
 class Home : public QWidget {
 Q_OBJECT
@@ -41,7 +41,7 @@ public slots:
   void canDisplayWeather();
 
 private:
-  MyCurl *_mC;
+  DataHandler *_dH;
   QLineEdit *_addFriend;
   QLabel *_temp;
   QLabel *_imgWeather;

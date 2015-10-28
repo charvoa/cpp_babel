@@ -14,7 +14,7 @@ HEADERS += Contact.hh
 HEADERS += Conversation.hh
 HEADERS += LoginWidget.hh
 HEADERS += SignupWidget.hh
-HEADERS += MyCurl.hh
+HEADERS += DataHandler.hh
 
 SOURCES = MainWidget.cpp
 SOURCES += Contact.cpp
@@ -22,4 +22,4 @@ SOURCES += Home.cpp
 SOURCES += Conversation.cpp
 SOURCES += LoginWidget.cpp
 SOURCES += SignupWidget.cpp
-SOURCES += MyCurl.cpp
+SOURCES += DataHandler.cpp

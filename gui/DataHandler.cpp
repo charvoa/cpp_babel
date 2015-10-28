@@ -1,24 +1,24 @@
 //
-// MyCurl.cpp for  in /home/nicolaschr/rendu/cpp_babel/gui
+// DataHandler.cpp for  in /home/nicolaschr/rendu/cpp_babel/gui
 //
 // Made by Nicolas Charvoz
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:16:51 2015 Nicolas Charvoz
-// Last update Tue Oct 27 13:58:29 2015 Nicolas Charvoz
+// Last update Wed Oct 28 14:38:16 2015 Nicolas Charvoz
 //
 
-#include "MyCurl.hh"
+#include "DataHandler.hh"
 
 using namespace rapidjson;
 
-MyCurl::MyCurl(QObject *parent) : _parent(parent)
+DataHandler::DataHandler(QObject *parent) : _parent(parent)
 {
 }
 
-MyCurl::~MyCurl() {}
+DataHandler::~DataHandler() {}
 
-int MyCurl::getIntFromString(const std::string &str)
+int DataHandler::getIntFromString(const std::string &str)
 {
   int asint = 0;
   std::stringstream ss;
@@ -31,7 +31,7 @@ int MyCurl::getIntFromString(const std::string &str)
   return asint;
 }
 
-void MyCurl::imgHandle()
+void DataHandler::imgHandle()
 {
   QNetworkAccessManager *nam = new QNetworkAccessManager(this);
   QUrl url(_code.c_str());
@@ -49,7 +49,7 @@ void MyCurl::imgHandle()
     }
 }
 
-void MyCurl::dataHandle(const std::string &data)
+void DataHandler::dataHandle(const std::string &data)
 {
   Document d;
   d.Parse(data.c_str());
@@ -74,22 +74,22 @@ void MyCurl::dataHandle(const std::string &data)
   this->imgHandle();
 }
 
-QImage &MyCurl::getImg()
+QImage &DataHandler::getImg()
 {
   return _img;
 }
 
-int MyCurl::getTmp() const
+int DataHandler::getTmp() const
 {
   return _tmp;
 }
 
-std::string MyCurl::getCondition() const
+std::string DataHandler::getCondition() const
 {
   return _condition;
 }
 
-int MyCurl::exec()
+int DataHandler::exec()
 {
   const char *query = "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%20614274&format=json";
 
@@ -107,11 +107,11 @@ int MyCurl::exec()
 
   //  eventLoop.exec(); // blocks stack until "finished()" has been called
 
-  std::cout << "MyCurl::Exec()" << std::endl;
+  std::cout << "DataHandler::Exec()" << std::endl;
   return 0;
 }
 
-void MyCurl::slotReadyRead(QNetworkReply *reply)
+void DataHandler::slotReadyRead(QNetworkReply *reply)
 {
   std::cout << "weather called " << std::endl;
   if (reply->error() == QNetworkReply::NoError)
