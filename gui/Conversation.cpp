@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 21 15:31:42 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:09:51 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -26,6 +26,7 @@ Conversation::Conversation(const std::string &contact,
   messageZoneTmp->setReadOnly(true);
 
   messageZoneTmp->append(tr("14h28 : \nSalut beau gosse"));
+
   /* Image */
   QPixmap profilPicture("./gui/img/avatar1.png");
   QLabel *imgP = new QLabel(this);
@@ -33,15 +34,9 @@ Conversation::Conversation(const std::string &contact,
   imgP->setPixmap(profilPicture.scaled(432, 432, Qt::KeepAspectRatio));
   /* --- */
 
+  int imgHeight = 432;
+  int imgWidth = 432;
 
-  int imgHeight = imgP->height();
-  int imgWidth = imgP->width();
-
-  std::cout << "height : " << imgHeight << " width : " << imgWidth << std::endl;
-
-  imgHeight = 432;
-  imgWidth = 432;
-  std::cout << "height : " << imgHeight << " width : " << imgWidth << std::endl;
   /* MOVE */
   imgP->setGeometry(0, 0, imgHeight, imgWidth);
   name->setGeometry(10, imgHeight + 10, 160, 50);

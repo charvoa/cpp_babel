@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Wed Oct 28 14:41:06 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:17:20 2015 Nicolas Charvoz
 //
 
 #ifndef HOME_HH_
@@ -29,6 +29,7 @@
 # include <iostream>
 # include <fstream>
 # include "DataHandler.hh"
+# include "../app/User/PTUser.hh"
 
 class Home : public QWidget {
 Q_OBJECT
@@ -38,6 +39,7 @@ public:
   int weatherDisplay();
 public slots:
   void addFriend();
+  void contactAdded();
   void canDisplayWeather();
 
 private:

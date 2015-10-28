@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 28 14:39:35 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:15:48 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
@@ -36,6 +36,8 @@ Home::Home(QWidget *parent) : QWidget(parent)
   _imgWeather->setGeometry(1700, 0, 120, 120);
   _temp->setGeometry(1710, 100, 60, 60);
 
+  connect(&g_PTUser, SIGNAL(contactAdded()), this, SLOT(contactAdded()));
+
   this->weatherDisplay();
 }
 
@@ -60,9 +62,9 @@ int Home::weatherDisplay()
   return 0;
 }
 
-void Home::validateFriend(int error)
+void Home::contactAdded()
 {
-  (void) error;
+  std::cout << "contact added" << std::endl;
 }
 
 void Home::addFriend()
@@ -72,5 +74,5 @@ void Home::addFriend()
 
   _addFriend->clear();
 
-    // g_PTUser.addFriend();
+  g_PTUser.currentUser().addContact();
 }
