@@ -12,6 +12,7 @@ class PTUser: public QObject
 {
 Q_OBJECT
 private:
+  void	contactIsAdd();
   class User
   {
     friend class PTUser;
@@ -26,6 +27,7 @@ private:
     const std::string &getUsername() const;
     const std::string &getObjectId() const;
     const std::list<Contact *>& getContacts() const;
+    void		addContact(Contact &contact);
   };
   User	_currentUser;
   NetworkServerHandler server;
@@ -34,6 +36,7 @@ private slots:
   void userConnected(int check);
 signals:
   void canDisplayHome(int check);
+  void	contactAdded();
 public:
   PTUser();
   ~PTUser();
