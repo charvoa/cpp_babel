@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 19 13:34:10 2015 Antoine Garcia
-// Last update Tue Oct 27 09:44:12 2015 Antoine Garcia
+// Last update Tue Oct 27 10:05:05 2015 Antoine Garcia
 //
 
 #ifndef TCPProtocolHelper_HH_
@@ -20,16 +20,16 @@
 
 class	TCPProtocolHelper
 {
-  typedef QByteArray& (TCPProtocolHelper::*funcPtr)();
+  typedef QByteArray (TCPProtocolHelper::*funcPtr)();
   funcPtr	_ptr;
   typedef std::map<ProtocolType, funcPtr>	map_funcs;
   map_funcs	functions;
 public:
   TCPProtocolHelper();
   ~TCPProtocolHelper();
-  QByteArray  &createRequest(ProtocolType type);
+  QByteArray  createRequest(ProtocolType type);
 private:
-  QByteArray&	createHandshake();
+  QByteArray	createHandshake();
 };
 
 #endif
