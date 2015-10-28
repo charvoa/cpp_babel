@@ -6,6 +6,9 @@ PaAlsa_InitializeStreamInfo
 PaAlsa_SetLibraryPathName
 PaAlsa_SetNumPeriods
 PaAlsa_SetRetriesBusy
+PaJack_GetClientName
+PaJack_Initialize
+PaJack_SetClientName
 PaOSS_Initialize
 Pa_AbortStream
 Pa_CloseStream
