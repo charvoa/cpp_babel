@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 22:15:25 2015 Nicolas Girardot
-// Last update Wed Oct 21 19:14:55 2015 Nicolas Girardot
+// Last update Wed Oct 28 15:32:33 2015 Nicolas Girardot
 //
 
 #ifndef TCPSERVER_HPP_
@@ -26,7 +26,9 @@ class TCPServer
 {
 private:
   tcp::acceptor _acceptor;
-  TCPConnection::pointer _newConnection;
+  boost::asio::ip::tcp::socket _socket;
+  std::list<boost::asio::ip::tcp::socket>  _socketList;
+
 public:
   TCPServer(boost::asio::io_service& ioService)
     : _acceptor(ioService, tcp::endpoint(tcp::v4(), 4040))
@@ -47,8 +49,9 @@ public:
 private:
   void startAccept()
   {
-    _newConnection = TCPConnection::create(_acceptor.get_io_service());
-    _acceptor.async_accept(_newConnection->getSocket(),
+    _socket = new boost::asio::ip::tcp::socket(_acceptor.get_io_service());
+    _socketList.push_back(_socket)
+    _acceptor.async_accept(_socket,
 			   boost::bind(&TCPServer::handleAccept, this, _newConnection,
 				       boost::asio::placeholders::error));
   }
@@ -58,7 +61,6 @@ private:
   {
     if (!error)
       {
-	newConnection->asyncWrite("Welcome to Spyke, a revolutionary way to communicate with your loved ones\n");
 	startAccept();
       }
   }

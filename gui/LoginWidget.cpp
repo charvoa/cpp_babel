@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Oct 26 03:23:04 2015 Antoine Garcia
+// Last update Tue Oct 27 14:30:57 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -13,8 +13,10 @@
 #include "MainWidget.hh"
 #include "../app/User/PTUser.hh"
 #include "../app/Thread.hh"
+
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
 {
+  connect(&g_PTUser, SIGNAL(canDisplayHome(int)), this, SLOT(canDisplayHome(int)));
   QLabel *labelPassword = new QLabel(this);
   QLabel *labelUsername = new QLabel(this);
   _labelIp = new QLabel(this);
@@ -26,7 +28,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   setFixedSize(1024, 768);
   setWindowTitle(tr("Login to Spyke"));
 
-  QPixmap pix("./gui/img/spyke.png");
+  QPixmap pix("./gui/img/spyke_blue.png");
   QLabel *logo = new QLabel(this);
   logo->setPixmap(pix.scaled(250, 250, Qt::KeepAspectRatio));
 
@@ -60,6 +62,27 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   setLayout(_mainLayout);
 }
 
+void LoginWidget::canDisplayHome(int error)
+{
+  MainWidget *widget;
+
+  std::cout << error << std::endl;
+  if (error == 1)
+    {
+      widget = new MainWidget();
+      widget->setAttribute(Qt::WA_DeleteOnClose);
+      widget->show();
+      deleteLater();
+    }
+  else
+    {
+      this->clearLayout(_mainLayout);
+      this->refreshUI();
+      std::cout << "Login fail" << std::endl;
+    }
+  std::cout << "LOGIN WIDGET CAN DISPLAY HOME" << std::endl;
+}
+
 void LoginWidget::refreshUI()
 {
   QLabel *labelPassword = new QLabel(this);
@@ -69,7 +92,7 @@ void LoginWidget::refreshUI()
 
   _editUsername = new QLineEdit(this);
 
-  QPixmap pix("./gui/img/spyke.png");
+  QPixmap pix("./gui/img/spyke_blue.png");
   QLabel *logo = new QLabel(this);
   logo->setPixmap(pix.scaled(100, 100, Qt::KeepAspectRatio));
 
@@ -178,25 +201,6 @@ void LoginWidget::clearLayout(QLayout *layout)
     }
 }
 
-void LoginWidget::validateLogin(int error)
-{
-  MainWidget *widget;
-
-  if (error == 1)
-    {
-      widget = new MainWidget();
-      widget->setAttribute(Qt::WA_DeleteOnClose);
-      widget->show();
-      deleteLater();
-    }
-  else
-    {
-      this->clearLayout(_mainLayout);
-      this->refreshUI();
-      std::cout << "Login fail" << std::endl;
-    }
-}
-
 void LoginWidget::checkLogin()
 {
   QString user = _editUsername->text();
@@ -217,7 +221,6 @@ void LoginWidget::checkLogin()
   this->clearLayout(_mainLayout);
   _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
   Thread thread;
-  g_PTUser.logUser(*this, &LoginWidget::validateLogin, _userString,
-		   _passString, _ipString);
+  g_PTUser.logUser(_userString, _passString, _ipString);
 
 }

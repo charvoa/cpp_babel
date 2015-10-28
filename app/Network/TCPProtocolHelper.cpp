@@ -4,23 +4,39 @@
 // Made by Antoine Garcia
 // Login   <antoinegarcia@epitech.net>
 //
-// Started on  Tue Oct 20 06:54:26 2015 Antoine Garcia
-// Last update Tue Oct 20 07:06:34 2015 Antoine Garcia
+// Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
+// Last update Tue Oct 27 10:04:42 2015 Antoine Garcia
 //
 
 #include "TCPProtocolHelper.hh"
+#include <iostream>
 
-TCPProtolHelper::TCPProtolHelper(const std::string &data)
+#define BABEL_VERSION "BABEL <1.0>"
+
+TCPProtocolHelper::TCPProtocolHelper()
 {
-  if (data != NULL){
-      _data = data;
-    }
+  functions[HANDSHAKE] = &TCPProtocolHelper::createHandshake;
 }
 
-~TCPProtolHelper()
+TCPProtocolHelper::~TCPProtocolHelper()
 {}
 
-const std::string&	getData()
+QByteArray	TCPProtocolHelper::createRequest(ProtocolType type)
 {
-  return (_data);
+  _ptr = functions[type];
+  return (this->*_ptr)();
+}
+
+//private create Method
+
+QByteArray	TCPProtocolHelper::createHandshake()
+{
+  std::string str(BABEL_VERSION);
+  QByteArray	block;
+  QDataStream	out(&block, QIODevice::WriteOnly);
+
+  out.setVersion(QDataStream::Qt_4_3);
+  out << quint8(1) << quint16(str.size()); //<< QString(str.c_str());
+  out.writeRawData(str.c_str(), str.size());
+  return block;
 }

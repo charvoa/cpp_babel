@@ -39,18 +39,8 @@ public:
   ~PTUser();
   User&		currentUser();
   int run(int, char**);
-  template<typename T>
-  void logUser(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip)
-  {
-    std::cout << "PROCESSING LOGIN USER..." << std::endl;
-    server.start("localhost", 4040);
-  }
-  template <typename T>
-  void signup(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &verify)
-  {
-    std::cout << "SIGNUP..." << std::endl;
-    (obj.*call)(1);
-  }
+  void logUser(const std::string &username, const std::string &password, const std::string &ip);
+  void signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &avatar = 0);
 };
 
 extern PTUser g_PTUser;

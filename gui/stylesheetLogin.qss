@@ -3,28 +3,34 @@ QWidget {
 }
 
 QPushButton {
-    background-color: #F5FCFE;
-    border: 2px solid #F5FCFE;
-    border-bottom-color: #C2C7CB; /* same as the pane color */
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-radius:10px;
+    background-color: #12699F;
+    border-radius:15px;
     min-width: 8ex;
+    font-family:"Avenir";
+    text-transform: uppercase;
+    color: #FFFFFF;
     padding: 2px;
-    height: 60px;
-    width: 200px;
+    height: 30px;
+    width: 180px;
     margin: 10px;
 }
 
 QPushButton:hover {
-    background-color: #CFEFFC;
-    border-bottom-color: #CFEFFC; /* same as the pane color */
+    color: #FFFFFF;
+    background-color: #1DAEF1;
+    cursor: pointer;
 }
 
 QLineEdit {
+    background-color: rgba(200, 230, 255, 1.0);
+    border:none;
+    width: 400px;
+    height: 30px;
+}
 
-    background-color: white;
-    border: 2px solid black;
+QLineEdit:focus {
+    background-color: rgba(255,255,255,1.0);
+    border:none;
 }
 
 QTabWidget::pane { /* The tab widget frame */

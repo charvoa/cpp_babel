@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Sun Oct 25 11:22:47 2015 Nicolas Charvoz
+// Last update Mon Oct 26 13:56:14 2015 Antoine Garcia
 //
 
 #ifndef LOGINWIDGET_HH_
@@ -35,7 +35,6 @@ Q_OBJECT
 public:
   explicit LoginWidget(QWidget *parent = 0);
   void clearLayout(QLayout*);
-  void validateLogin(int);
   void displayButton();
   void refreshUI();
 public slots:
@@ -46,6 +45,7 @@ public slots:
   }
   void signup();
   void displayIPFunction();
+  void	canDisplayHome(int error);
 private:
 
   QGridLayout *_mainLayout;

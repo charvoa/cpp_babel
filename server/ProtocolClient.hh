@@ -12,26 +12,27 @@ class		        ProtocolClient : public AProcotol
 
 private:
 
-  bool	handshake(Server &server, DataFromClient &data);
-  bool	signup(Server &server, DataFromClient &data);
-  bool	signin(Server &server, DataFromClient &data);
-  bool	callRequest(Server &server, DataFromClient &data);
-  bool	sendText(Server &server, DataFromClient &data);
-  bool	mute(Server &server, DataFromClient &data);
-  bool	addParticipantToCall(Server &server, DataFromClient &data);
-  bool	sendFile(Server &server, DataFromClient &data);
-  bool	pong(Server &server, DataFromClient &data);
-  bool	acceptCall(Server &server, DataFromClient &data);
-  bool	declineCall(Server &server, DataFromClient &data);
-  bool	addContact(Server &server, DataFromClient &data);
-  bool	modifyStatus(Server &server, DataFromClient &data);
-  bool	modifyLogin(Server &server, DataFromClient &data);
-  bool	modifyLocation(Server &server, DataFromClient &data);
-  bool	addToFavorites(Server &server, DataFromClient &data);
-  bool	addNickname(Server &server, DataFromClient &data);
-  bool	removeContact(Server &server, DataFromClient &data);
-  bool	modifyProfilPicture(Server &server, DataFromClient &data);
-  bool	listenToMail(Server &server, DataFromClient &data);
+  bool	handshake(Server &server, DataFromClient &fromClient);
+  bool	signup(Server &server, DataFromClient &fromClient);
+  bool	signin(Server &server, DataFromClient &fromClient);
+  bool	callRequest(Server &server, DataFromClient &fromClient);
+  bool	sendText(Server &server, DataFromClient &fromClient);
+  bool	mute(Server &server, DataFromClient &fromClient);
+  bool	addParticipantToCall(Server &server, DataFromClient &fromClient);
+  bool	sendFile(Server &server, DataFromClient &fromClient);
+  bool	pong(Server &server, DataFromClient &fromClient);
+  bool	acceptCall(Server &server, DataFromClient &fromClient);
+  bool	declineCall(Server &server, DataFromClient &fromClient);
+  bool	addContact(Server &server, DataFromClient &fromClient);
+  bool	modifyStatus(Server &server, DataFromClient &fromClient);
+  bool	modifyLogin(Server &server, DataFromClient &fromClient);
+  bool	modifyLocation(Server &server, DataFromClient &fromClient);
+  bool	addToFavorites(Server &server, DataFromClient &fromClient);
+  bool	removeFromFavorites(Server &server, DataFromClient &fromClient);
+  bool	addNickname(Server &server, DataFromClient &fromClient);
+  bool	removeContact(Server &server, DataFromClient &fromClient);
+  bool	modifyProfilePicture(Server &server, DataFromClient &fromClient);
+  bool	listenToMail(Server &server, DataFromClient &fromClient);
 
 };
 

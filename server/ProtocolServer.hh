@@ -12,14 +12,14 @@ class		        ProtocolServer : public AProtocol
 
 private:
 
-  bool	ping(Server &server, DataToClient &data);
-  bool	contactList(Server &server, DataToClient &data);
-  bool	contactInfo(Server &server, DataToClient &data);
-  bool	contactRequest(Server &server, DataToClient &data);
-  bool	callRequest(Server &server, DataToClient &data);
-  bool	sendText(Server &server, DataToClient &data);
-  bool	hangedUp(Server &server, DataToClient &data);
-  bool	sendFile(Server &server, DataToClient &data);
+  bool	ping(Server &server, DataToClient &toData);
+  bool	contactList(Server &server, DataToClient &toData);
+  bool	contactInfo(Server &server, DataToClient &toData);
+  bool	contactRequest(Server &server, DataToClient &toData);
+  bool	callRequest(Server &server, DataToClient &toData);
+  bool	sendText(Server &server, DataToClient &toData);
+  bool	hangedUp(Server &server, DataToClient &toData);
+  bool	sendFile(Server &server, DataToClient &toData);
 
 };
 

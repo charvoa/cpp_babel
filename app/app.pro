@@ -12,6 +12,9 @@ QT+=concurrent
 HEADERS += Thread.hh
 HEADERS += Network/NetworkServerHandler.hh
 HEADERS += User/PTUser.hh
+HEADERS += Network/TCPProtocolHelper.hh
+
+SOURCES  += Network/TCPProtocolHelper.cpp
 SOURCES += main.cpp
 SOURCES += User/PTUser.cpp
 SOURCES += Network/NetworkServerHandler.cpp
