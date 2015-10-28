@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Mon Oct 26 17:38:20 2015 Nicolas Girardot
+// Last update Tue Oct 27 09:52:11 2015 Nicolas Girardot
 //
 
 #ifndef TCPCONNECTION_HPP_
@@ -84,15 +84,6 @@ private:
 	std::cout << "Streambuf size is " << _response.size() << std::endl;
 	ss << &_response;
 	std::string s = ss.str();
-	for (int i = 0; i <= 28; i++)
-	  {
-	    if (i % 2 == 1);
-	    else
-	      {
-		b_type = std::bitset<16>(s.at(i));
-		std::cout << "BYTE OF THING " << i << " : " << b_type.to_string() << std::endl;
-	      }
-	  }
 	std::cout << "Request is : " << s << "End of Request" << std::endl;
       	VerifyRequest *cost = new VerifyRequest(s);
 	(void) cost;

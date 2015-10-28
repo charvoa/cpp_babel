@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 21 15:38:43 2015 Nicolas Girardot
-// Last update Wed Oct 21 17:17:05 2015 Nicolas Girardot
+// Last update Tue Oct 27 10:53:05 2015 Nicolas Girardot
 //
 
 #ifndef ISOCKET_HPP_
@@ -13,8 +13,9 @@
 
 class ISocket
 {
-private:
+public:
   virtual ~ISocket() {};
+private:
 };
 
 #endif

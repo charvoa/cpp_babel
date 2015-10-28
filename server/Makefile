@@ -5,7 +5,7 @@
 ## Login   <girard_s@epitech.net>
 ##
 ## Started on  Mon Oct 19 11:47:59 2015 Nicolas Girardot
-## Last update Mon Oct 26 15:46:15 2015 Nicolas Girardot
+## Last update Tue Oct 27 10:48:14 2015 Nicolas Girardot
 ##
 
 MAIN		=	server
@@ -15,7 +15,8 @@ EXEC		=	$(MAIN)
 DCOMMON		=	Common
 
 SRC		=	VerifyRequest.cpp	\
-			DataFromClient.cpp
+			DataFromClient.cpp	\
+			Client.cpp		\
 
 SRC_MAIN	=	$(SRC) Common/main.cpp
 

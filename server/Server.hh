@@ -12,8 +12,8 @@ class				Server
 
   std::vector<Account*>		_allAccounts;
   std::vector<Call*>		_allCalls;
-  
-  
+
+
   boost::posix_time::ptime     	_date;
 
 };

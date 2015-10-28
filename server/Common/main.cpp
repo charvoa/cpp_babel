@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 20:40:02 2015 Nicolas Girardot
-// Last update Mon Oct 26 17:38:30 2015 Nicolas Girardot
+// Last update Wed Oct 28 10:16:34 2015 Nicolas Girardot
 //
 
 #include <ctime>
@@ -20,6 +20,6 @@ int main()
 {
   Network net;
   net.start();
-  std::cout << "";
+  //std::cout << "";
   return 0;
 }

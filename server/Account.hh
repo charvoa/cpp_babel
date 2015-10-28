@@ -4,48 +4,48 @@
 #include <string>
 #include <pair>
 
-class		        Account : PTObject
+class		        Account
 {
-  typedef enum		state
+  typedef enum		State
     {
-      CONNECTED,
-      AWAY,
-      ONCALL,
-      DISCONNECTED
-    }			state;
+      CONNECTED = 1,
+      AWAY = 2,
+      ONCALL = 3,
+      DISCONNECTED = 4
+    }			        State;
 
-  Account();
+  Account(short clientVersion);
   ~Account();
 
   void			setLogin(std::string login);
   void			setState(Account::state state);
-  void			setLogin(std::string login);
+  void			setLocation(std::string location);
 
-  std::string					&getLogin();
-  std::string					&getLocation();
-  std::string					&getPasswd();
+  std::string			        		&getUsername();
+  std::string		         			&getLocation();
+  std::string		         			&getPasswd();
   std::vector<Account*>				&getContactList();
-  Account::state				getState();
-  int						getFd();
+  Account::state		      		getState();
+  std::string   		      		getID();
+  short                       getClientVersion
+  Socket	              			getSocket();
+  bool                        removeContact(std::string &ID);
 
 private:
 
-  std::string					_login;
-  std::string					_passwd;
+  std::string			        		_username;
+  std::string					        _passwd;
   Account::state       				_state;
-  std::string					_location;
-
+  std::string					        _location;
   std::vector<std::pair<Account*:std::string>>	_nicknames;
-
   std::vector<Account*>				_contactsList;
   std::vector<Account*>				_favoritesList;
-  // std::vector<Call*>				_callsHistory;
-  // std::vector<Record*>				_records;
-  // std::vector<Mail*>				_mails;
+
+  std::string                 _id;
 
   Socket										_socket;
 
-  int						_clientVersion;
+  short						_clientVersion;
 
 };
 
