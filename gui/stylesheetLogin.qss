@@ -1,18 +1,14 @@
 QWidget {
-    background-color: #FFFFFF;
+    background-color: #1DAEF1;
 }
 
 QPushButton {
-    background-color: #F5FCFE;
-    border: 2px solid #1DAEF1;
-    border-bottom-color: #C2C7CB; /* same as the pane color */
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-radius:5px;
+    background-color: #12699F;
+    border-radius:15px;
     min-width: 8ex;
     font-family:"Avenir";
     text-transform: uppercase;
-    color: #1DAEF1;
+    color: #FFFFFF;
     padding: 2px;
     height: 30px;
     width: 180px;
@@ -22,18 +18,19 @@ QPushButton {
 QPushButton:hover {
     color: #FFFFFF;
     background-color: #1DAEF1;
+    cursor: pointer;
 }
 
 QLineEdit {
-    background-color: white;
+    background-color: rgba(200, 230, 255, 1.0);
     border:none;
-    border-bottom: 2px solid #1DAEF1;
+    width: 400px;
+    height: 30px;
 }
 
 QLineEdit:focus {
-    background-color: rgba(200,200,200,1.0);
+    background-color: rgba(255,255,255,1.0);
     border:none;
-    border-bottom: 2px solid #1DAEF1;
 }
 
 QTabWidget::pane { /* The tab widget frame */
