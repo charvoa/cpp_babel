@@ -5,16 +5,13 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Tue Oct 27 11:27:03 2015 Nicolas Charvoz
+// Last update Wed Oct 28 14:59:21 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
 
-Contact::Contact(MainWidget *main, QWidget *parent) : QWidget(parent), _main(main)
+Contact::Contact(QWidget *parent) : QWidget(parent)
 {
-  //  QLabel *fileNameLabel = new QLabel(tr("Contact"));
-
-  /* */
   this->displayContact();
 }
 
