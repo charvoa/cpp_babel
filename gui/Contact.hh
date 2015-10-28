@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Wed Oct 21 11:07:36 2015 Nicolas Charvoz
+// Last update Wed Oct 28 14:59:28 2015 Nicolas Charvoz
 //
 
 #ifndef CONTACT_HH_
@@ -34,7 +34,7 @@ class Contact : public QWidget {
 Q_OBJECT
 
 public:
-  explicit Contact(MainWidget*, QWidget *parent = 0);
+  explicit Contact(QWidget *parent = 0);
 
 public slots:
   void addTab();

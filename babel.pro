@@ -15,6 +15,9 @@ clean.commands += rm -f */*/*~
 clean.commands += rm -f */moc_*
 clean.commands += rm -f */*/moc_*
 
+servermake.target = servermake
+servermake.commands = cd ./server && make re
+QMAKE_EXTRA_TARGETS += servermake
 }
 
 win32 {
@@ -63,7 +66,7 @@ QMAKE_EXTRA_TARGETS += fclean
 
 re.target = re
 unix {
-re.commands = make clean
+re.commands = make clean servermake
 }
 win32 {
 re.commands = nmake clean
