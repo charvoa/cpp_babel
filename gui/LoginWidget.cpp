@@ -28,7 +28,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   setFixedSize(1024, 768);
   setWindowTitle(tr("Login to Spyke"));
 
-  QPixmap pix("./gui/img/spyke.png");
+  QPixmap pix("./gui/img/spyke_blue.png");
   QLabel *logo = new QLabel(this);
   logo->setPixmap(pix.scaled(250, 250, Qt::KeepAspectRatio));
 
@@ -92,7 +92,7 @@ void LoginWidget::refreshUI()
 
   _editUsername = new QLineEdit(this);
 
-  QPixmap pix("./gui/img/spyke.png");
+  QPixmap pix("./gui/img/spyke_blue.png");
   QLabel *logo = new QLabel(this);
   logo->setPixmap(pix.scaled(100, 100, Qt::KeepAspectRatio));
 
