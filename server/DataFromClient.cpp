@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:07:17 2015 Nicolas Girardot
-// Last update Mon Oct 26 20:14:54 2015 Nicolas Girardot
+// Last update Thu Oct 29 18:26:57 2015 Nicolas Girardot
 //
 
 #include "DataFromClient.hh"
@@ -34,8 +34,4 @@ void	DataFromClient::DetermineData(const std::string &request)
   std::string copy(request);
   copy.erase(0,3);
   boost::split(_data, copy, boost::is_any_of(";"));
-  for (std::vector<std::string>::iterator pos = _data.begin(); pos != _data.end(); ++pos)
-    {
-      std::cout << "Argument from data = " << *pos << std::endl;
-    }
 }

@@ -5,19 +5,21 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Wed Oct 28 14:52:21 2015 Nicolas Girardot
+// Last update Fri Oct 30 14:29:18 2015 Nicolas Girardot
 //
 
 #ifndef _ACCOUNT_HH
 # define _ACCOUNT_HH
 
 #include <string>
-#include <pair>
-#include "TCPConnection.hh"
+#include <utility>
+#include "Common/TCPConnection.hh"
 
+class			TCPConnection;
 
 class		        Account
 {
+public:
   typedef enum		State
     {
       CONNECTED = 1,
@@ -30,28 +32,35 @@ class		        Account
   Account(std::string username, std::string passwd, short profilePicture);
   ~Account();
 
-  void			setLogin(std::string login);
-  void			setState(Account::state state);
-  void			setLocation(std::string location);
+  void						setLogin(std::string login);
+  void						setState(Account::State state);
+  void						setLocation(std::string location);
 
-  std::string			        		&getUsername();
-  std::string		         			&getLocation();
-  std::string		         			&getPasswd();
+  std::string			        	&getUsername();
+  std::string		         		&getLocation();
+  std::string		         		&getPasswd();
   std::vector<Account*>				&getContactList();
-  Account::state		      		getState();
+  Account					*getContactByID(std::string &);
+  Account::State		      		getState();
+  bool						isAlreadyAContactOf(Account &);
+  bool						addContact(Account &);
   std::string   		      		getID();
-  bool                        removeContact(std::string ID);
+  bool						removeContact(std::string &ID);
+  bool						addToFavorite(Account &);
+  bool						removeFromFavorite(std::string &);
+  bool						operator==(Account &);
 
 private:
 
-  TCPConnection::pointer			_socket;
+  boost::shared_ptr<TCPConnection>			_socket;
   std::string			        		_username;
   std::string					        _passwd;
-  Account::state       				_state;
+  Account::State       				_state;
+  short						_profilePicture;
   std::string					        _location;
-  std::vector<std::pair<Account*:std::string>>	_nicknames;
-  std::vector<Account*>				_contactsList;
-  std::vector<Account*>				_favoritesList;
+  std::vector<std::pair<Account*,std::string> >	_nicknames;
+  std::vector<Account*>				_contactList;
+  std::vector<Account*>				_favoriteList;
   const std::string           _id;
 };
 

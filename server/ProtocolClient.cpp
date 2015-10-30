@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Wed Oct 28 15:53:03 2015 Nicolas Girardot
+// Last update Thu Oct 29 18:33:11 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -13,20 +13,20 @@
 bool	ProtocolClient::handshake(Server &server, DataFromClient &fromClient)
 {
   std::list<boost::asio::ip::tcp::socket>::iterator it;
-  it == server.getTCPServer().getList()->begin();
+  it = server.getTCPServer().getList()->begin();
   std::string handshake = fromClient._data.at(0);
   short version = handshake.substr(handshake.find("<"), handshake.find(">") - handshake.find("<"));
-
+  boost::asio::async_write((*it), boost::asio::buffer(""));
 }
 
 bool	ProtocolClient::success(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::error(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::signup(Server &server, DataFromClient &fromClient)
@@ -66,47 +66,47 @@ bool	ProtocolClient::signin(Server &server, DataFromClient &fromClient)
 
 bool	ProtocolClient::callRequest(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::hangUp(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::sendText(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::mute(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::addParticipantToCall(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::sendFile(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::pong(Server &server, DataFromClient &fromClient)
 {
-
+  return false
 }
 
 bool	ProtocolClient::acceptCall(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::declineCall(Server &server, DataFromClient &fromClient)
 {
-
+  return false;
 }
 
 bool	ProtocolClient::addContact(Server &server, DataFromClient &fromClient)
@@ -201,7 +201,7 @@ bool	ProtocolClient::modifyProfilePicture(Server &server, DataFromClient &fromCl
 
 bool	ProtocolClient::listenToMail(Server &server, DataFromClient &fromClient)
 {
-
+  false;
 }
 
 void ProtocolClient::initMethod()
