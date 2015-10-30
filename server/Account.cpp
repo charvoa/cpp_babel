@@ -1,3 +1,13 @@
+//
+// Account.cpp for babel in /home/nicolas/rendu/cpp_babel/server
+//
+// Made by Nicolas Girardot
+// Login   <girard_s@epitech.net>
+//
+// Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
+// Last update Thu Oct 29 17:36:44 2015 Nicolas Girardot
+//
+
 #include "Account.hh"
 
 Account::Account(std::string username, std::string passwd, short profilePicture)
@@ -13,27 +23,27 @@ Account::~Account()
 
 }
 
-std::string			        		Account::getUsername()
+std::string			        		&Account::getUsername()
 {
   return _username;
 }
 
-std::string		         			Account::getLocation()
+std::string		         			&Account::getLocation()
 {
   return _location;
 }
 
-std::string		         			Account::getPasswd()
+std::string		         			&Account::getPasswd()
 {
   return _passwd;
 }
 
-std::vector<Account*>				Account::getContactList()
+std::vector<Account*>				&Account::getContactList()
 {
-
+  return _contactList;
 }
 
-Account::state		      		Account::getState()
+Account::State		      		Account::getState()
 {
   return _state;
 }
@@ -43,62 +53,73 @@ std::string   		      		Account::getID()
   return _id;
 }
 
-Account                     &Account::getContactByID(std::string ID)
+Account                     *Account::getContactByID(std::string &ID)
 {
-  for (std::vector::iterator it = _contactsList.begin(); it != _contactsList.end(); ++it)
+  for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
-      if (it->getID() == ID)
-        return _contactsList.at(std::distance(_contactsList.begin(), it));
+      if ((*it)->getID() == ID)
+        return _contactList.at(std::distance(_contactList.begin(), it));
     }
   return NULL;
 }
 
-std::vector::iterator        Account::getContactIteratorByIDInVector(std::string ID, std::vector<Account*> _vector)
+bool				Account::operator==(Account &bis)
 {
-  for (std::vector::iterator it = _vector.begin(); it != _vector.end(); ++it)
-    {
-      if (it->getID() == ID)
-        return it;
-    }
-  return NULL;
+  if (this->getUsername() == bis.getUsername())
+    return true;
+  return false;
 }
 
-// Faire overload operator == pour Account
-bool                        Account::isAlreadyAContactOf(Account &contactAdded)
+bool   			Account::isAlreadyAContactOf(Account &contactAdded)
 {
-  for (std::vector::iterator it = _contactsList.begin(); it != _contactsList.end(); ++it)
+  for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
-      if (it == contactAdded)
+      if (*(*it) == contactAdded)
         return true;
     }
   return false;
 }
 
-bool                        Account::addContact(Account &contactAdded)
+bool				Account::addContact(Account &contactAdded)
 {
-  if !this.isAlreadyAContactOf(contactAdded)
+  if (!(this->isAlreadyAContactOf(contactAdded)))
     {
-      _contactsList.push_back(contactAdded);
+      _contactList.push_back(&contactAdded);
       return true;
     }
   return false;
 }
 
-bool                        Account::removeContact(std::string ID)
+bool				Account::removeContact(std::string &ID)
 {
-  _contactsList.erase(this.getContactIteratorByIDInVector(ID, _contactsList));
-  _favoritesList.erase(this.getContactIteratorByIDInVector(ID, _favoritesList));
+  for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
+    {
+      if ((*it)->getID() == ID)
+	{
+	  delete * it;
+	  it = _favoriteList.erase(it);
+	}
+    }
+  return true;
+  removeFromFavorite(ID);
   return true;
 }
 
-bool                        Account::addToFavorites(Account &favorited)
+bool                        Account::addToFavorite(Account &favorited)
 {
-  _favoritesList.push_back(favorited);
+  _favoriteList.push_back(&favorited);
   return true;
 }
 
-bool                        Account::removeFromFavorites(std::string ID)
+bool                        Account::removeFromFavorite(std::string &ID)
 {
-  _favoritesList.erase(this.getContactIteratorByIDInVector(ID, _favoritesList));
+  for (std::vector<Account*>::iterator it = _favoriteList.begin(); it != _favoriteList.end(); ++it)
+    {
+      if ((*it)->getID() == ID)
+	{
+	  delete * it;
+	  it = _favoriteList.erase(it);
+	}
+    }
   return true;
 }

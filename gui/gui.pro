@@ -8,7 +8,7 @@ unix {
 QMAKE_CXX = g++-4.9
 QMAKE_CXXFLAGS += -std=c++11
 }
-HEADERS = MainWidget.hh
+HEADERS += MainWidget.hh
 HEADERS += Home.hh
 HEADERS += UiContact.hh
 HEADERS += Conversation.hh
@@ -16,7 +16,7 @@ HEADERS += LoginWidget.hh
 HEADERS += SignupWidget.hh
 HEADERS += DataHandler.hh
 
-SOURCES = MainWidget.cpp
+SOURCES += MainWidget.cpp
 SOURCES += UiContact.cpp
 SOURCES += Home.cpp
 SOURCES += Conversation.cpp

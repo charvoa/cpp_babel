@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:37:12 2015 Nicolas Charvoz
+// Last update Wed Oct 28 15:54:44 2015 Nicolas Charvoz
 //
 
 #ifndef UICONTACT_HH_
@@ -32,6 +32,7 @@
 # include "../app/User/PTUser.hh"
 
 class UiContact : public QWidget {
+
 Q_OBJECT
 
 public:
