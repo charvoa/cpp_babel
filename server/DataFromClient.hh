@@ -27,8 +27,8 @@ public:
   void DetermineData(const std::string &);
 
 private:
-  //CommunicationType	_type;
   std::vector<std::string> _data;
+  std::string              _clientID;
 };
 
 #endif

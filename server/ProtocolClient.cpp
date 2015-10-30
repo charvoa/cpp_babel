@@ -10,6 +10,16 @@
 
 #include "ProtocolClient.hh"
 
+ProtocolClient::ProtocolClient()
+{
+
+}
+
+ProtocolClient::~ProtocolClient()
+{
+
+}
+
 bool	ProtocolClient::handshake(Server &server, DataFromClient &fromClient)
 {
   std::list<boost::asio::ip::tcp::socket>::iterator it;
@@ -238,7 +248,7 @@ void ProtocolClient::methodChecker(Server &server, DataFromClient &fromClient)
 {
   for (PointersOnFuncs::iterator it = _functions.begin(); it!=_functions.end(); ++it)
     {
-      if (it->first == _functions[std::distance(_functions.begin(), it)].first)
+      if ((*it)->first == _functions[std::distance(_functions.begin(), (*it))].first)
         (*it)(server, fromClient);
     }
 }

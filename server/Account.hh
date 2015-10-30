@@ -15,7 +15,6 @@
 #include <pair>
 #include "TCPConnection.hh"
 
-
 class		        Account
 {
   typedef enum		State
@@ -53,6 +52,7 @@ private:
   std::vector<Account*>				_contactsList;
   std::vector<Account*>				_favoritesList;
   const std::string           _id;
+  TCPConnection               _socket;
 };
 
 #endif /* !ACCOUNT_HH_ */
