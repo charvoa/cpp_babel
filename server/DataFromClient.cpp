@@ -17,7 +17,7 @@ DataFromClient::DataFromClient(const std::string &request)
   DetermineData(request);
   std::cout << "Request Manager Constructor End" << std::endl;
   ProtocolClient *proto = new ProtocolClient;
-  proto->methodChecker(g_Server, *this);
+  proto->methodChecker(*this);
 }
 
 DataFromClient::~DataFromClient() {}

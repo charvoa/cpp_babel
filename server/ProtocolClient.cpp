@@ -22,7 +22,6 @@ ProtocolClient::~ProtocolClient()
 
 void	ProtocolClient::handshake(DataFromClient &fromClient)
 {
-  (void) server;
   std::list<boost::shared_ptr<TCPConnection> >::iterator it;
   it = g_Server.getNetwork()->getServer()->getList()->begin();
   std::string handshake = fromClient.getData().at(0);
@@ -32,13 +31,11 @@ void	ProtocolClient::handshake(DataFromClient &fromClient)
 
 void	ProtocolClient::success(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::error(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
@@ -76,55 +73,46 @@ void	ProtocolClient::signin(DataFromClient &fromClient)
 
 void	ProtocolClient::callRequest(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::hangUp(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::sendText(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::mute(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::addParticipantToCall(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::sendFile(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::pong(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::acceptCall(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::declineCall(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
@@ -132,7 +120,6 @@ void	ProtocolClient::addContact(DataFromClient &fromClient)
 {
   std::string id = fromClient.getData().at(0);
   std::string loginAdded = fromClient.getData().at(1);
-  (void) server;
 }
 
 void	ProtocolClient::acceptInvitation(DataFromClient &fromClient)
@@ -147,7 +134,6 @@ void	ProtocolClient::declineInvitation(DataFromClient &fromClient)
 {
   std::string idReceiverInvitation = fromClient.getData().at(0);
   std::string idSenderInvitation = fromClient.getData().at(1);
-  (void) server;
 }
 
 void	ProtocolClient::modifyStatus(DataFromClient &fromClient)
@@ -156,7 +142,6 @@ void	ProtocolClient::modifyStatus(DataFromClient &fromClient)
   //Account::State state = (fromClient.getData().at(1));
 
   //g_Server.getAccountByID(id)->setState(state);
-  (void) server;
 }
 
 void	ProtocolClient::modifyLogin(DataFromClient &fromClient)
@@ -178,7 +163,6 @@ void	ProtocolClient::modifyLocation(DataFromClient &fromClient)
   std::string id = fromClient.getData().at(0);
   std::string newLocation = fromClient.getData().at(1);
   g_Server.getAccountByID(id)->setLocation(newLocation);
-  (void) server;
   (void) fromClient;
 }
 
@@ -187,7 +171,6 @@ void	ProtocolClient::addToFavorites(DataFromClient &fromClient)
   std::string id = fromClient.getData().at(0);
   std::string idFavorited = fromClient.getData().at(1);
   g_Server.getAccountByID(id)->addToFavorite(g_Server.getAccountByID(idFavorited));
-  (void) server;
   (void) fromClient;
 }
 
@@ -196,7 +179,6 @@ void	ProtocolClient::removeFromFavorites(DataFromClient &fromClient)
   std::string id = fromClient.getData().at(0);
   std::string idUnfavorited = fromClient.getData().at(1);
   g_Server.getAccountByID(id)->removeFromFavorite(idUnfavorited);
-  (void) server;
   (void) fromClient;
 }
 
@@ -206,14 +188,12 @@ void	ProtocolClient::addNickname(DataFromClient &fromClient)
   std::string idNicknamed = fromClient.getData().at(1);
   std::string newNickname = fromClient.getData().at(2);
   g_Server.getAccountByID(id)->getContactByID(idNicknamed)->setNickname(id, newNickname);
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::removeContact(DataFromClient &fromClient)
 {
   g_Server.getAccountByID(fromClient.getData().at(0))->removeContact(fromClient.getData().at(1));
-  (void) server;
 }
 
 void	ProtocolClient::modifyProfilePicture(DataFromClient &fromClient)
@@ -221,13 +201,11 @@ void	ProtocolClient::modifyProfilePicture(DataFromClient &fromClient)
   std::string id = fromClient.getData().at(0);
   short newProfilePicture = boost::lexical_cast<short>(fromClient.getData().at(1));
   g_Server.getAccountByID(id)->setProfilePicture(newProfilePicture);
-  (void) server;
   (void) fromClient;
 }
 
 void	ProtocolClient::listenToMail(DataFromClient &fromClient)
 {
-  (void) server;
   (void) fromClient;
 }
 
@@ -270,7 +248,7 @@ void ProtocolClient::methodChecker(DataFromClient &fromClient)
       std::cout << " First = " << (*it).first << " ;;  Second = " << fromClient.getType() << std::endl;
       if ((*it).first == fromClient.getType())
 	{
-	  (*this.*_functions[fromClient.getType()])(server, fromClient);
+	  (*this.*_functions[fromClient.getType()])(fromClient);
 	}
     }
 }
