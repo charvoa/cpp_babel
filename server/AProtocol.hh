@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:22:59 2015 Nicolas Girardot
-// Last update Sat Oct 31 14:21:46 2015 Nicolas Girardot
+// Last update Sat Oct 31 14:24:51 2015 Nicolas Girardot
 //
 
 #ifndef _APROTOCOL_HH
@@ -61,8 +61,9 @@ protected:
     S_SEND_FILE = 130
   }            CommunicationType;
 
-  AProcotol();
-  ~AProcotol();
+public:
+  AProtocol();
+  ~AProtocol();
 
   bool  initMethod();
   bool  methodChecker(Server &server, AData &data);
@@ -70,7 +71,7 @@ protected:
 private:
 
 protected:
-  typedef void(AProtocol::*funcs)(Server &server, AData &data);
+  typedef bool(AProtocol::*funcs)(Server &server, AData &data);
     funcs _ptr;
     typedef std::map<CommunicationType, funcs>PointersOnFuncs;
     PointersOnFuncs	        _functions;

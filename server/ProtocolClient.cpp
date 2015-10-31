@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sat Oct 31 14:17:26 2015 Nicolas Girardot
+// Last update Sat Oct 31 14:27:34 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -235,7 +235,7 @@ bool	ProtocolClient::addNickname(Server &server, DataFromClient &fromClient)
 
 bool	ProtocolClient::removeContact(Server &server, DataFromClient &fromClient)
 {
-  server.getAccountByID(fromClient.getData().at(0))->removeContact(fromClient.getData.at(1));
+  server.getAccountByID(fromClient.getData().at(0))->removeContact(fromClient.getData().at(1));
   (void) server;
   return true;
 }
@@ -289,7 +289,7 @@ void ProtocolClient::initMethod()
 
 void ProtocolClient::methodChecker(Server &server, DataFromClient &fromClient)
 {
-  for (::iterator it = _functions.begin(); it!=_functions.end(); ++it)
+  for (std::vector<CommunicationType, funcs>::iterator it = _functions.begin(); it!=_functions.end(); ++it)
     {
       if ((*it)->first == _functions(std::distance(_functions.begin(), (*it))].first)
         (*it)(server, fromClient);
