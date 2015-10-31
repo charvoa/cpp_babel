@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Thu Oct 29 17:36:44 2015 Nicolas Girardot
+// Last update Sat Oct 31 14:14:30 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -21,6 +21,16 @@ Account::Account(std::string username, std::string passwd, short profilePicture)
 Account::~Account()
 {
 
+}
+
+void							Account::setNickname(std::string &id, std::string &newNickName)
+{
+  this->_nicknames.push_back(std::make_pair(id, newNickName));;
+}
+
+void							Account::setProfilePicture(short pp)
+{
+  this->_profilePicture = pp;
 }
 
 std::string			        		&Account::getUsername()
@@ -70,21 +80,21 @@ bool				Account::operator==(Account &bis)
   return false;
 }
 
-bool   			Account::isAlreadyAContactOf(Account &contactAdded)
+bool   			Account::isAlreadyAContactOf(Account *contactAdded)
 {
   for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
-      if (*(*it) == contactAdded)
+      if ((*it) == contactAdded)
         return true;
     }
   return false;
 }
 
-bool				Account::addContact(Account &contactAdded)
+bool				Account::addContact(Account *contactAdded)
 {
   if (!(this->isAlreadyAContactOf(contactAdded)))
     {
-      _contactList.push_back(&contactAdded);
+      _contactList.push_back(contactAdded);
       return true;
     }
   return false;
@@ -105,9 +115,9 @@ bool				Account::removeContact(std::string &ID)
   return true;
 }
 
-bool                        Account::addToFavorite(Account &favorited)
+bool                        Account::addToFavorite(Account *favorited)
 {
-  _favoriteList.push_back(&favorited);
+  _favoriteList.push_back(favorited);
   return true;
 }
 

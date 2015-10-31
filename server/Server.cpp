@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Sat Oct 31 11:33:54 2015 Nicolas Girardot
+// Last update Sat Oct 31 12:09:24 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
@@ -63,4 +63,9 @@ Account   *Server::getAccountByUsername(std::string &username)
         return (*it);
     }
   return NULL;
+}
+
+Network	*Server::getNetwork()
+{
+  return (_net);
 }

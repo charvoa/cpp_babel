@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:07:17 2015 Nicolas Girardot
-// Last update Thu Oct 29 18:26:57 2015 Nicolas Girardot
+// Last update Sat Oct 31 12:30:11 2015 Nicolas Girardot
 //
 
 #include "DataFromClient.hh"
@@ -27,6 +27,11 @@ void	DataFromClient::DetermineType(const std::string &request)
   //  _type = static_cast<CommunicationType>(l_type);
   std::cout << "Displaying l_type in DataFromClient.cpp : " << l_type << std::endl;
   std::cout << "DataFromClient::DetermineType end" << std::endl;
+}
+
+std::vector<std::string> &DataFromClient::getData()
+{
+  return (_data);
 }
 
 void	DataFromClient::DetermineData(const std::string &request)

@@ -5,7 +5,7 @@
 ## Login   <girard_s@epitech.net>
 ##
 ## Started on  Mon Oct 19 11:47:59 2015 Nicolas Girardot
-## Last update Fri Oct 30 14:13:01 2015 Nicolas Girardot
+## Last update Sat Oct 31 11:49:15 2015 Nicolas Girardot
 ##
 
 MAIN		=	server
@@ -17,6 +17,7 @@ SRC		+=	VerifyRequest.cpp	\
 			Common/TCPConnection.cpp\
 			Server.cpp		\
 			Account.cpp		\
+			ProtocolClient.cpp
 
 SRC_MAIN	=	$(SRC) Common/main.cpp
 

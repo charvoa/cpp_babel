@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Sat Oct 31 11:21:02 2015 Nicolas Girardot
+// Last update Sat Oct 31 14:14:20 2015 Nicolas Girardot
 //
 
 #ifndef _ACCOUNT_HH
@@ -35,18 +35,19 @@ public:
   void						setLogin(std::string login);
   void						setState(Account::State state);
   void						setLocation(std::string location);
-
+  void						setNickname(std::string &id, std::string &nickname);
+  void						setProfilePicture(short);
   std::string			        	&getUsername();
   std::string		         		&getLocation();
   std::string		         		&getPasswd();
   std::vector<Account*>				&getContactList();
   Account					*getContactByID(std::string &);
   Account::State		      		getState();
-  bool						isAlreadyAContactOf(Account &);
-  bool						addContact(Account &);
+  bool						isAlreadyAContactOf(Account *);
+  bool						addContact(Account *);
   std::string   		      		getID();
   bool						removeContact(std::string &ID);
-  bool						addToFavorite(Account &);
+  bool						addToFavorite(Account *);
   bool						removeFromFavorite(std::string &);
   bool						operator==(Account &);
 
@@ -58,7 +59,7 @@ private:
   Account::State       				_state;
   short						_profilePicture;
   std::string					        _location;
-  std::vector<std::pair<Account*,std::string> >	_nicknames;
+  std::vector<std::pair<std::string,std::string> >	_nicknames;
   std::vector<Account*>				_contactList;
   std::vector<Account*>				_favoriteList;
   const std::string           _id;
