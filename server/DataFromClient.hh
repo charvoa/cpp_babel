@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:07:14 2015 Nicolas Girardot
-// Last update Mon Oct 26 20:14:14 2015 Nicolas Girardot
+// Last update Sat Oct 31 12:27:52 2015 Nicolas Girardot
 //
 
 #ifndef DATAFROMCLIENT_HH_
@@ -25,6 +25,7 @@ public:
   ~DataFromClient();
   void DetermineType(const std::string &);
   void DetermineData(const std::string &);
+  std::vector<std::string> &getData();
 
 private:
   std::vector<std::string> _data;

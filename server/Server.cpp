@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Fri Oct 30 18:06:25 2015 Nicolas Girardot
+// Last update Sat Oct 31 12:09:24 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
@@ -24,7 +24,7 @@ bool      Server::doesUsernameExist(std::string &username)
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
-      if ((*it)->getLogin() == username)
+      if ((*it)->getUsername() == username)
         return true;
     }
   return false;
@@ -34,7 +34,7 @@ bool      Server::isPasswdCorrectForAccount(std::string &username, std::string &
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
-      if ((*it)->getLogin() == username && (*it)->getPasswd() == passwd)
+      if ((*it)->getUsername() == username && (*it)->getPasswd() == passwd)
         return true;
     }
   return false;
@@ -50,24 +50,14 @@ Account   *Server::getAccountByID(std::string &ID)
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
       if ((*it)->getID() == ID)
-        return _allAccounts.at(std::distance(_allAccounts.begin(), (*it)));
-    }
-  return NULL;
-}
-
-Account   &Server::getAccountIteratorByID(std::string &ID)
-{
-  for (std::vector::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
-    {
-      if ((*it)->getID() == ID)
         return (*it);
     }
   return NULL;
 }
 
-Account   &Server::getAccountByUsername(std::string &username)
+Account   *Server::getAccountByUsername(std::string &username)
 {
-  for (std::vector::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
+  for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
       if ((*it)->getUsername() == username)
         return (*it);
@@ -75,12 +65,7 @@ Account   &Server::getAccountByUsername(std::string &username)
   return NULL;
 }
 
-Client   &Server::getClientBySocket(Socket &socket)
+Network	*Server::getNetwork()
 {
-  for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
-    {
-      if ((*it)->getSocket() == socket)
-        return _allClients.at(std::distance(_allClients.begin(), (*it)));
-    }
-  return NULL;
+  return (_net);
 }

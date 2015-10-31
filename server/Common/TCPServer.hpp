@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 22:15:25 2015 Nicolas Girardot
-// Last update Fri Oct 30 14:13:42 2015 Nicolas Girardot
+// Last update Sat Oct 31 12:21:36 2015 Nicolas Girardot
 //
 
 #ifndef TCPSERVER_HPP_
@@ -44,6 +44,11 @@ public:
   void readOnServer()
   {
     _newConnection->asyncRead();
+  }
+
+  std::list<TCPConnection::pointer> *getList()
+  {
+    return (&_TCPList);
   }
 
 private:
