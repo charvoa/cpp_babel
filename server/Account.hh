@@ -13,6 +13,7 @@
 
 #include <string>
 #include <utility>
+#include <map>
 #include "Common/TCPConnection.hh"
 
 class			TCPConnection;
@@ -29,7 +30,7 @@ public:
       DISCONNECTED = 5
     }			        State;
 
-  Account(std::string username, std::string passwd, short profilePicture);
+  Account(std::string login, std::string passwd, short profilePicture);
   ~Account();
 
   void						setLogin(std::string &login);
@@ -37,30 +38,35 @@ public:
   void						setLocation(std::string location);
   void						setNickname(std::string &id, std::string &nickname);
   void						setProfilePicture(short);
-  std::string			        	&getUsername();
+  std::string			        	&getLogin();
   std::string		         		&getLocation();
   std::string		         		&getPasswd();
   boost::shared_ptr<TCPConnection>  &getSocket();
   std::vector<Account*>				&getContactList();
+  std::map<std::string,std::string>	&getNicknames();
   Account					*getContactByID(std::string &);
   Account::State		      		getState();
   bool						isAlreadyAContactOf(Account *);
+  bool            isIDFavorited(std::string ID);
+  short			        		getProfilePictureID();
+  std::string &getNicknameIfExisting(Account *account);
   bool						addContact(Account *);
   std::string   		      		getID();
   bool						removeContact(std::string &ID);
   bool						addToFavorite(Account *);
   bool						removeFromFavorite(std::string &);
+  std::vector<std::string>                        &getFormatedContactList();
   bool						operator==(Account &);
 
 private:
 
   boost::shared_ptr<TCPConnection>			_socket;
-  std::string			        		_username;
+  std::string			        		_login;
   std::string					        _passwd;
   Account::State       				_state;
   short						_profilePicture;
   std::string					        _location;
-  std::vector<std::pair<std::string,std::string> >	_nicknames;
+  std::map<std::string,std::string>	_nicknames;
   std::vector<Account*>				_contactList;
   std::vector<Account*>				_favoriteList;
   const std::string           _id;

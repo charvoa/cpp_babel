@@ -27,7 +27,7 @@ bool      Server::doesUsernameExist(std::string &username)
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
-      if ((*it)->getUsername() == username)
+      if ((*it)->getLogin() == username)
         return true;
     }
   return false;
@@ -37,7 +37,7 @@ bool      Server::isPasswdCorrectForAccount(std::string &username, std::string &
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
-      if ((*it)->getUsername() == username && (*it)->getPasswd() == passwd)
+      if ((*it)->getLogin() == username && (*it)->getPasswd() == passwd)
         return true;
     }
   return false;
@@ -62,7 +62,7 @@ Account   *Server::getAccountByUsername(std::string &username)
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
-      if ((*it)->getUsername() == username)
+      if ((*it)->getLogin() == username)
         return (*it);
     }
   return NULL;

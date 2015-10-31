@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:16:36 2015 Serge Heitzler
-// Last update Sat Oct 31 16:46:02 2015 Serge Heitzler
+// Last update Sat Oct 31 21:46:03 2015 Serge Heitzler
 //
 
 #include "Response.hh"
@@ -31,18 +31,18 @@ void           Response::setResponse(ProtocolServer::CommunicationToClient answe
   std::bitset<16> bit(_sizeData);
 
 
-  _response.append<int>(answerType);
+  _response.push_back<int>(answerType);
   /* diviser la taille en deux octets
 
-  _response.append(firstBit);
-  _response.append(secondBit);
+  _response.push_back(firstBit);
+  _response.push_back(secondBit);
 
   */
 
   for (std::vector<std::string>::iterator it = data.begin(); it != data.end(); ++it)
     {
-      _response.append((*it));
-      _response.append(CHAR_SEPARATOR);
+      _response.push_back((*it));
+      _response.push_back(CHAR_SEPARATOR);
     }
     _response.pop_back();
 }
