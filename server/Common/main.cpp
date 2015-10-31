@@ -19,9 +19,9 @@ using boost::asio::ip::tcp;
 
 int main()
 {
-   Server	server;
-  Network net;
-  net.start();
+  Server	server;
+  // Network net;
+  // net.start();
   //std::cout << "";
   return 0;
 }

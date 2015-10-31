@@ -12,6 +12,7 @@
 
 Server::Server()
 {
+  _net.start();
 
 }
 
