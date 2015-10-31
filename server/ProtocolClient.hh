@@ -19,41 +19,54 @@
 
 class		        ProtocolClient : public AProtocol
 {
+
+  typedef enum CommunicationType {
+    C_HANDSHAKE = 1
+
+  }            CommunicationType;
+
 public:
   ProtocolClient();
   ~ProtocolClient();
 
-private:
-
-  bool	handshake(Server &server, DataFromClient &fromClient);
-  bool	signup(Server &server, DataFromClient &fromClient);
-  bool	signin(Server &server, DataFromClient &fromClient);
-  bool	callRequest(Server &server, DataFromClient &fromClient);
-  bool	hangUp(Server &server, DataFromClient &fromClient);
-  bool	sendText(Server &server, DataFromClient &fromClient);
-  bool	mute(Server &server, DataFromClient &fromClient);
-  bool	addParticipantToCall(Server &server, DataFromClient &fromClient);
-  bool	sendFile(Server &server, DataFromClient &fromClient);
-  bool	pong(Server &server, DataFromClient &fromClient);
-  bool	acceptCall(Server &server, DataFromClient &fromClient);
-  bool	declineCall(Server &server, DataFromClient &fromClient);
-  bool	addContact(Server &server, DataFromClient &fromClient);
-  bool	acceptInvitation(Server &server, DataFromClient &fromClient);
-  bool	declineInvitation(Server &server, DataFromClient &fromClient);
-  bool	modifyStatus(Server &server, DataFromClient &fromClient);
-  bool	modifyLogin(Server &server, DataFromClient &fromClient);
-  bool	modifyLocation(Server &server, DataFromClient &fromClient);
-  bool	addToFavorites(Server &server, DataFromClient &fromClient);
-  bool	removeFromFavorites(Server &server, DataFromClient &fromClient);
-  bool	addNickname(Server &server, DataFromClient &fromClient);
-  bool	removeContact(Server &server, DataFromClient &fromClient);
-  bool	modifyProfilePicture(Server &server, DataFromClient &fromClient);
-  bool	listenToMail(Server &server, DataFromClient &fromClient);
-  bool	success(Server &server, DataFromClient &fromClient);
-  bool  error(Server &server, DataFromClient &fromClient);
+  void	handshake(Server &server, DataFromClient &fromClient);
+  void	signup(Server &server, DataFromClient &fromClient);
+  void	signin(Server &server, DataFromClient &fromClient);
+  void	callRequest(Server &server, DataFromClient &fromClient);
+  void	hangUp(Server &server, DataFromClient &fromClient);
+  void	sendText(Server &server, DataFromClient &fromClient);
+  void	mute(Server &server, DataFromClient &fromClient);
+  void	addParticipantToCall(Server &server, DataFromClient &fromClient);
+  void	sendFile(Server &server, DataFromClient &fromClient);
+  void	pong(Server &server, DataFromClient &fromClient);
+  void	acceptCall(Server &server, DataFromClient &fromClient);
+  void	declineCall(Server &server, DataFromClient &fromClient);
+  void	addContact(Server &server, DataFromClient &fromClient);
+  void	acceptInvitation(Server &server, DataFromClient &fromClient);
+  void	declineInvitation(Server &server, DataFromClient &fromClient);
+  void	modifyStatus(Server &server, DataFromClient &fromClient);
+  void	modifyLogin(Server &server, DataFromClient &fromClient);
+  void	modifyLocation(Server &server, DataFromClient &fromClient);
+  void	addToFavorites(Server &server, DataFromClient &fromClient);
+  void	removeFromFavorites(Server &server, DataFromClient &fromClient);
+  void	addNickname(Server &server, DataFromClient &fromClient);
+  void	removeContact(Server &server, DataFromClient &fromClient);
+  void	modifyProfilePicture(Server &server, DataFromClient &fromClient);
+  void	listenToMail(Server &server, DataFromClient &fromClient);
+  void	success(Server &server, DataFromClient &fromClient);
+  void  error(Server &server, DataFromClient &fromClient);
 
   void	initMethod();
   void	methodChecker(Server &server, DataFromClient &fromClient);
+
+private:
+
+  // typedef void(ProtocolClient::*funcs)(Server &server, DataFromClient &data);
+  //   funcs _ptr;
+  //   typedef std::map<CommunicationType, funcs>PointersOnFuncs;
+  //   PointersOnFuncs	        _functions;
+
+
 };
 
 #endif /* !PROTOCOLCLIENT_HH_ */
