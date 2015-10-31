@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:07:14 2015 Nicolas Girardot
-// Last update Sat Oct 31 17:17:39 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:25:08 2015 Nicolas Girardot
 //
 
 #ifndef DATAFROMCLIENT_HH
@@ -18,6 +18,9 @@
 # include <boost/algorithm/string.hpp>
 # include <vector>
 # include "CommunicationEnum.hh"
+# include "ProtocolClient.hh"
+
+class ProtocolClient;
 
 class DataFromClient
 {

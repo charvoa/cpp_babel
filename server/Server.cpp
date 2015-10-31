@@ -5,10 +5,12 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Sat Oct 31 18:32:54 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:12:32 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
+
+Server g_Server;
 
 Server::Server()
 {

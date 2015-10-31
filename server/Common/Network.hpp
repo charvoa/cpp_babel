@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 20 15:52:59 2015 Nicolas Girardot
-// Last update Sat Oct 31 12:09:43 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:37:23 2015 Nicolas Girardot
 //
 
 #ifndef NETWORK_HH_
@@ -41,12 +41,11 @@ public:
 
   virtual void write(const std::string &message)
   {
-    _server->writeOnServer(message);
+    (void) message;
   }
 
   virtual void read()
   {
-    _server->readOnServer();
   }
 
   TCPServer	*getServer()
