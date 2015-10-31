@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 28 02:41:38 2015 Antoine Garcia
-// Last update Wed Oct 28 06:21:17 2015 Antoine Garcia
+// Last update Sat Oct 31 02:22:42 2015 Antoine Garcia
 //
 
 #include "ISoundDevice.hh"
