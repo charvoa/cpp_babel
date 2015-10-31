@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Fri Oct 30 12:07:00 2015 Nicolas Girardot
-// Last update Fri Oct 30 18:06:23 2015 Nicolas Girardot
+// Last update Sat Oct 31 11:18:51 2015 Nicolas Girardot
 //
 
 #ifndef _SERVER_HH_
@@ -15,7 +15,7 @@
 #include <iostream>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include "Account.hh"
-#include "Common/Network.hh"
+#include "Common/Network.hpp"
 
 class				Server
 {

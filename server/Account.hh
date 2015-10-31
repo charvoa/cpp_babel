@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Fri Oct 30 14:29:18 2015 Nicolas Girardot
+// Last update Sat Oct 31 11:21:02 2015 Nicolas Girardot
 //
 
 #ifndef _ACCOUNT_HH
@@ -62,7 +62,6 @@ private:
   std::vector<Account*>				_contactList;
   std::vector<Account*>				_favoriteList;
   const std::string           _id;
-  TCPConnection               _socket;
 };
 
 #endif /* !ACCOUNT_HH_ */

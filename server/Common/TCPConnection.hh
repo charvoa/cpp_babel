@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Fri Oct 30 14:02:23 2015 Nicolas Girardot
-// Last update Fri Oct 30 14:25:37 2015 Nicolas Girardot
+// Last update Sat Oct 31 11:21:34 2015 Nicolas Girardot
 //
 
 #ifndef TCPCONNECTION_HH_
@@ -20,6 +20,8 @@
 #include <boost/asio.hpp>
 #include "../VerifyRequest.hh"
 #include "../Account.hh"
+
+class Account;
 
 class TCPConnection : public boost::enable_shared_from_this<TCPConnection>
 {
