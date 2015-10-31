@@ -21,6 +21,7 @@ SOURCES += Audio/PTSoundOutput.cpp
 unix {
 LIBS += ../gui/libgui.a
 LIBS += ./libs/libportaudio.a
+LIBS += ./libs/libopus.a
 LIBS +=  -lasound -lpthread -lrt
 }
 win32 {
