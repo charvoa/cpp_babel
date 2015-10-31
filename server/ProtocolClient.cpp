@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sat Oct 31 14:27:34 2015 Nicolas Girardot
+// Last update Sat Oct 31 16:15:53 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -261,9 +261,9 @@ void ProtocolClient::initMethod()
 
 void ProtocolClient::methodChecker(Server &server, DataFromClient &fromClient)
 {
-  for (std::map<CommunicationType, funcs>::iterator it = _functions.begin(); it != _functions.end(); ++it)
+  for (std::map<CommunicationClient, funcs>::iterator it = _functions.begin(); it != _functions.end(); ++it)
     {
-      if ((*it)->first == _functions(std::distance(_functions.begin(), (*it))].first)
+      if ((*it).first == fromClient.getType())
         (*it)(server, fromClient);
     }
 }

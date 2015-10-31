@@ -31,19 +31,20 @@
  */
 
 /*
- * The text above constitutes the entire PortAudio license; however, 
+ * The text above constitutes the entire PortAudio license; however,
  * the PortAudio community also makes the following non-binding requests:
  *
  * Any person wishing to distribute modifications to the Software is
  * requested to send the modifications to the original developer so that
- * they can be incorporated into the canonical version. It is also 
- * requested that these non-binding requests be included along with the 
+ * they can be incorporated into the canonical version. It is also
+ * requested that these non-binding requests be included along with the
  * license above.
  */
 
 #include <stdio.h>
 #include <math.h>
 #include "portaudio.h"
+
 /*
 ** Note that many of the older ISA sound cards on PCs do NOT support
 ** full duplex audio (simultaneous record and playback).
@@ -116,7 +117,7 @@ static int fuzzCallback( const void *inputBuffer, void *outputBuffer,
             *out++ = *in++;          /* right - clean */
         }
     }
-    
+
     return paContinue;
 }
 

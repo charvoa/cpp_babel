@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:22:59 2015 Nicolas Girardot
-// Last update Sat Oct 31 14:21:46 2015 Nicolas Girardot
+// Last update Sat Oct 31 16:15:11 2015 Nicolas Girardot
 //
 
 #ifndef _APROTOCOL_HH
@@ -18,7 +18,7 @@
 
 class		        AProtocol
 {
-protected:
+public:
   typedef enum CommunicationType {
     C_HANDSHAKE = 1,
     C_SUCCESS = 2,

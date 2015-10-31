@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Sat Oct 31 11:51:56 2015 Nicolas Girardot
-// Last update Sat Oct 31 14:17:10 2015 Nicolas Girardot
+// Last update Sat Oct 31 17:17:45 2015 Nicolas Girardot
 //
 
 #ifndef _PROTOCOLCLIENT_HH
@@ -15,16 +15,10 @@
 #include <boost/lexical_cast.hpp>
 #include "DataFromClient.hh"
 #include "Server.hh"
-#include "AProtocol.hh"
+# include "CommunicationEnum.hh"
 
-class		        ProtocolClient : public AProtocol
+class		        ProtocolClient
 {
-
-  typedef enum CommunicationType {
-    C_HANDSHAKE = 1
-
-  }            CommunicationType;
-
 public:
   ProtocolClient();
   ~ProtocolClient();
@@ -60,11 +54,10 @@ public:
   void	methodChecker(Server &server, DataFromClient &fromClient);
 
 private:
-
-  // typedef void(ProtocolClient::*funcs)(Server &server, DataFromClient &data);
-  //   funcs _ptr;
-  //   typedef std::map<CommunicationType, funcs>PointersOnFuncs;
-  //   PointersOnFuncs	        _functions;
+  typedef void(ProtocolClient::*funcs)(Server &server, DataFromClient &data);
+  funcs _ptr;
+  typedef std::map<CommunicationClient, funcs>PointersOnFuncs;
+  PointersOnFuncs	        _functions;
 
 
 };
