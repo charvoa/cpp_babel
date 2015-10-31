@@ -30,90 +30,90 @@ SUBTARGETS    =  \
 
 sub-gui-qmake_all:  FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile
+	cd gui/ && $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile
 	cd gui/ && $(MAKE) -f Makefile qmake_all
 sub-gui: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile
 sub-gui-make_first-ordered: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile 
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile 
 sub-gui-make_first: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile 
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile 
 sub-gui-all-ordered: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile all
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile all
 sub-gui-all: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile all
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile all
 sub-gui-clean-ordered: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile clean
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile clean
 sub-gui-clean: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile clean
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile clean
 sub-gui-distclean-ordered: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-gui-distclean: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-gui-install_subtargets-ordered: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile install
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile install
 sub-gui-install_subtargets: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile install
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile install
 sub-gui-uninstall_subtargets-ordered: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-gui-uninstall_subtargets: FORCE
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-app-qmake_all: sub-gui-qmake_all FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile
+	cd app/ && $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile
 	cd app/ && $(MAKE) -f Makefile qmake_all
 sub-app: sub-gui FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile
 sub-app-make_first-ordered: sub-gui-make_first-ordered  FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile 
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile 
 sub-app-make_first: sub-gui-make_first FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile 
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile 
 sub-app-all-ordered: sub-gui-all-ordered  FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile all
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile all
 sub-app-all: sub-gui-all FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile all
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile all
 sub-app-clean-ordered: sub-gui-clean-ordered  FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile clean
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile clean
 sub-app-clean: sub-gui-clean FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile clean
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile clean
 sub-app-distclean-ordered: sub-gui-distclean-ordered  FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-app-distclean: sub-gui-distclean FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-app-install_subtargets-ordered: sub-gui-install_subtargets-ordered  FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile install
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile install
 sub-app-install_subtargets: sub-gui-install_subtargets FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile install
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile install
 sub-app-uninstall_subtargets-ordered: sub-gui-uninstall_subtargets-ordered  FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-app-uninstall_subtargets: sub-gui-uninstall_subtargets FORCE
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
 
 Makefile: babel.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
@@ -249,10 +249,10 @@ re:
 
 sub-gui-check_ordered:
 	@test -d gui/ || mkdir -p gui/
-	cd gui/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile check
+	cd gui/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/gui/gui.pro -o Makefile ) && $(MAKE) -f Makefile check
 sub-app-check_ordered: sub-gui-check_ordered 
 	@test -d app/ || mkdir -p app/
-	cd app/ && ( test -e Makefile || $(QMAKE) /home/antoinegarcia/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile check
+	cd app/ && ( test -e Makefile || $(QMAKE) /home/nicolas/rendu/cpp_babel/app/app.pro -o Makefile ) && $(MAKE) -f Makefile check
 check: sub-gui-check_ordered sub-app-check_ordered
 install: install_subtargets  FORCE
 

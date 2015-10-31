@@ -5,15 +5,15 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Sat Oct 31 12:09:24 2015 Nicolas Girardot
+// Last update Sat Oct 31 18:32:54 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
 
 Server::Server()
 {
-  _net.start();
-
+  _net = new Network();
+  _net->start();
 }
 
 Server::~Server()
