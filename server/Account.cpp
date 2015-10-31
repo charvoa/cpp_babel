@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Sat Oct 31 14:14:30 2015 Nicolas Girardot
+// Last update Sat Oct 31 17:46:37 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -137,4 +137,14 @@ bool                        Account::removeFromFavorite(std::string &ID)
 	}
     }
   return true;
+}
+
+void			Account::setLogin(std::string &login)
+{
+  _username = login;
+}
+
+void			Account::setLocation(std::string location)
+{
+  _location = location;
 }

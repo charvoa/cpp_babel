@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sat Oct 31 16:15:53 2015 Nicolas Girardot
+// Last update Sat Oct 31 17:42:46 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -152,8 +152,10 @@ void	ProtocolClient::declineInvitation(Server &server, DataFromClient &fromClien
 void	ProtocolClient::modifyStatus(Server &server, DataFromClient &fromClient)
 {
   std::string id = fromClient.getData().at(0);
-  Account::State state = boost::lexical_cast<Account::State>(fromClient.getData().at(1));
-  server.getAccountByID(id)->setState(state);
+  //Account::State state = (fromClient.getData().at(1));
+
+  //server.getAccountByID(id)->setState(state);
+  (void) server;
 }
 
 void	ProtocolClient::modifyLogin(Server &server, DataFromClient &fromClient)
@@ -167,7 +169,7 @@ void	ProtocolClient::modifyLogin(Server &server, DataFromClient &fromClient)
   else
     {
       server.getAccountByID(id)->setLogin(newLogin);
-        }
+    }
 }
 
 void	ProtocolClient::modifyLocation(Server &server, DataFromClient &fromClient)
@@ -264,6 +266,6 @@ void ProtocolClient::methodChecker(Server &server, DataFromClient &fromClient)
   for (std::map<CommunicationClient, funcs>::iterator it = _functions.begin(); it != _functions.end(); ++it)
     {
       if ((*it).first == fromClient.getType())
-        (*it)(server, fromClient);
+        (*this.*_functions[fromClient.getType()])(server, fromClient);
     }
 }

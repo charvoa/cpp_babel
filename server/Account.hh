@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Sat Oct 31 14:14:20 2015 Nicolas Girardot
+// Last update Sat Oct 31 17:46:32 2015 Nicolas Girardot
 //
 
 #ifndef _ACCOUNT_HH
@@ -32,7 +32,7 @@ public:
   Account(std::string username, std::string passwd, short profilePicture);
   ~Account();
 
-  void						setLogin(std::string login);
+  void						setLogin(std::string &login);
   void						setState(Account::State state);
   void						setLocation(std::string location);
   void						setNickname(std::string &id, std::string &nickname);
