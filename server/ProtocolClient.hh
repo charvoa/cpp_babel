@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Sat Oct 31 11:51:56 2015 Nicolas Girardot
-// Last update Sat Oct 31 17:17:45 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:25:40 2015 Nicolas Girardot
 //
 
 #ifndef _PROTOCOLCLIENT_HH
@@ -16,6 +16,8 @@
 #include "DataFromClient.hh"
 #include "Server.hh"
 # include "CommunicationEnum.hh"
+
+class			DataFromClient;
 
 class		        ProtocolClient
 {

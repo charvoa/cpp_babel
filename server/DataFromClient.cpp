@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:07:17 2015 Nicolas Girardot
-// Last update Sat Oct 31 17:20:34 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:27:02 2015 Nicolas Girardot
 //
 
 #include "DataFromClient.hh"
@@ -16,6 +16,8 @@ DataFromClient::DataFromClient(const std::string &request)
   DetermineType(request);
   DetermineData(request);
   std::cout << "Request Manager Constructor End" << std::endl;
+  ProtocolClient *proto = new ProtocolClient;
+  proto->methodChecker(g_Server, *this);
 }
 
 DataFromClient::~DataFromClient() {}

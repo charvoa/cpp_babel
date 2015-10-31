@@ -5,14 +5,13 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Fri Oct 30 14:25:35 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:54:30 2015 Nicolas Girardot
 //
 
 #include "TCPConnection.hh"
+#include "../VerifyRequest.hh"
 
-typedef boost::shared_ptr<TCPConnection> pointer;
-
-pointer TCPConnection::create(boost::asio::io_service& ios)
+TCPConnection::pointer TCPConnection::create(boost::asio::io_service& ios)
 {
   return pointer(new TCPConnection(ios));
 }
@@ -24,10 +23,14 @@ boost::asio::ip::tcp::socket& TCPConnection::getSocket()
 
 void	TCPConnection::asyncWrite(const std::string &message)
 {
+  std::cout << "Writing on Socket" << std::endl;
   boost::asio::async_write(_socket,
-			   boost::asio::buffer(message),
-			   boost::bind(&TCPConnection::handleWrite, shared_from_this(),
-				       boost::asio::placeholders::error));
+  			   boost::asio::buffer(message),
+  			   boost::bind(&TCPConnection::handleWrite, shared_from_this(),
+  				       boost::asio::placeholders::error));
+  //boost::asio::async_write(_socket,
+  //			   boost::asio::buffer(message),
+  //			   &TCPConnection::handleWrite);
 }
 
 void TCPConnection::asyncRead()

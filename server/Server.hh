@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Fri Oct 30 12:07:00 2015 Nicolas Girardot
-// Last update Sat Oct 31 17:36:57 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:10:36 2015 Nicolas Girardot
 //
 
 #ifndef _SERVER_HH_
@@ -40,5 +40,7 @@ public:
   Account	*getAccountByUsername(std::string &);
   Network	*getNetwork();
 };
+
+extern Server g_Server;
 
 #endif /* !SERVER_HH_ */

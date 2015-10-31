@@ -5,14 +5,14 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sat Oct 31 17:42:46 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:55:49 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
 
 ProtocolClient::ProtocolClient()
 {
-
+  initMethod();
 }
 
 ProtocolClient::~ProtocolClient()
@@ -22,12 +22,12 @@ ProtocolClient::~ProtocolClient()
 
 void	ProtocolClient::handshake(DataFromClient &fromClient)
 {
+  (void) server;
   std::list<boost::shared_ptr<TCPConnection> >::iterator it;
   it = g_Server.getNetwork()->getServer()->getList()->begin();
   std::string handshake = fromClient.getData().at(0);
-  short version = boost::lexical_cast<short>(handshake.substr(handshake.find("<"), handshake.find(">") - handshake.find("<")));
+  //short version = boost::lexical_cast<short>(handshake.substr(handshake.find("<"), handshake.find(">") - handshake.find("<")));
   (*it)->asyncWrite("BITE");
-  (void) version;
 }
 
 void	ProtocolClient::success(DataFromClient &fromClient)
@@ -264,9 +264,13 @@ void ProtocolClient::initMethod()
 
 void ProtocolClient::methodChecker(DataFromClient &fromClient)
 {
+  std::cout << "Going in methodChecker" << std::endl;
   for (std::map<CommunicationClient, funcs>::iterator it = _functions.begin(); it != _functions.end(); ++it)
     {
+      std::cout << " First = " << (*it).first << " ;;  Second = " << fromClient.getType() << std::endl;
       if ((*it).first == fromClient.getType())
-        (*this.*_functions[fromClient.getType()])(server, fromClient);
+	{
+	  (*this.*_functions[fromClient.getType()])(server, fromClient);
+	}
     }
 }

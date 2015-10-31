@@ -5,20 +5,20 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Fri Oct 30 14:02:23 2015 Nicolas Girardot
-// Last update Sat Oct 31 11:21:34 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:42:55 2015 Nicolas Girardot
 //
 
-#ifndef TCPCONNECTION_HH_
-#define TCPCONNECTION_HH_
+#ifndef TCPCONNECTION_HH
+#define TCPCONNECTION_HH
 
 #include <ctime>
+#include <bitset>
 #include <iostream>
 #include <string>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
-#include "../VerifyRequest.hh"
 #include "../Account.hh"
 
 class Account;
