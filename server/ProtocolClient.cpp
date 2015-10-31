@@ -66,6 +66,7 @@ void	ProtocolClient::signin(Server &server, DataFromClient &fromClient)
   if (server.doesUsernameExist(username) && server.isPasswdCorrectForAccount(username, passwd) && server.getAccountByUsername(username)->getState() == Account::DISCONNECTED)
     {
       // create success
+      server.getAccountByUsername(username).getFormatedContactList();
         }
   else
     {

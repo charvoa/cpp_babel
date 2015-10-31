@@ -38,6 +38,11 @@ std::string			        		&Account::getUsername()
   return _username;
 }
 
+short			        		Account::getProfilePictureID()
+{
+  return _profilePicture;
+}
+
 std::string		         			&Account::getLocation()
 {
   return _location;
@@ -56,6 +61,11 @@ boost::shared_ptr<TCPConnection>  &Account::getSocket()
 std::vector<Account*>				&Account::getContactList()
 {
   return _contactList;
+}
+
+std::vector<std::pair<std::string,std::string> >				&Account::getNicknames()
+{
+  return _nicknames;
 }
 
 Account::State		      		Account::getState()
@@ -137,6 +147,43 @@ bool                        Account::removeFromFavorite(std::string &ID)
 	}
     }
   return true;
+}
+
+
+bool &Account::isIDFavorited(std::string &ID)
+{
+  for (std::vector<Account*>::iterator it = _favoriteList.begin(); it != _favoriteList.end(); ++it)
+    {
+      if ((*it)->getID() == ID)
+        return true;
+    }
+  return false;
+}
+
+std::string &Account::getNicknameIfExisting(Accont &account)
+{
+  for (std::map<std::string, std::string>::iterator it = _nicknames.begin(); it != _nicknames.end(); ++it)
+    {
+      if ((*it)->first == account.getID())
+        return (*it)->second;
+    }
+  return account.getLogin();
+}
+
+std::vector<std::string> &Account::getFormatedContactList()
+{
+  std::vector<std::string> contactsInformations;
+
+  contactsInformations.append(_contactList.size);
+  for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
+    {
+      contactsInformations.append((*it)->getID());
+      contactsInformations.append(this.getNicknameIfExisting(*it));
+      contactsInformations.append((*it)->getLocation());
+      contactsInformations.append(std::to_string((*it)->getStatus()));
+      contactsInformations.append(std::to_string((*it)->getProfilePictureID()));
+      contactsInformations.append(this.isIDFavorited(*it->getID()));
+    }
 }
 
 void			Account::setLogin(std::string &login)

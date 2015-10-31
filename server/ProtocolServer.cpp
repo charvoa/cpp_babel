@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:51:03 2015 Serge Heitzler
-// Last update Sat Oct 31 16:51:06 2015 Serge Heitzler
+// Last update Sat Oct 31 21:08:53 2015 Serge Heitzler
 //
 
 #include "ProtocolServer.hh"
@@ -57,7 +57,7 @@ bool	ProtocolServer::ping(Server &server, DataToClient &toData)
 
 bool	ProtocolServer::contactList(Server &server, DataToClient &toData)
 {
-
+  
 }
 
 bool	ProtocolServer::contactInfo(Server &server, DataToClient &toData)

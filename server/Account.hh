@@ -13,6 +13,7 @@
 
 #include <string>
 #include <utility>
+#include <map>
 #include "Common/TCPConnection.hh"
 
 class			TCPConnection;
@@ -42,14 +43,18 @@ public:
   std::string		         		&getPasswd();
   boost::shared_ptr<TCPConnection>  &getSocket();
   std::vector<Account*>				&getContactList();
+  std::vector<std::pair<std::string,std::string> >	&getNicknames();
   Account					*getContactByID(std::string &);
   Account::State		      		getState();
   bool						isAlreadyAContactOf(Account *);
+  short			        		getProfilePictureID();
+  std::string &getNicknameIfExisting(Account &account);
   bool						addContact(Account *);
   std::string   		      		getID();
   bool						removeContact(std::string &ID);
   bool						addToFavorite(Account *);
   bool						removeFromFavorite(std::string &);
+  std::vector<std::string>                        &getFormatedContactList();
   bool						operator==(Account &);
 
 private:
@@ -60,7 +65,7 @@ private:
   Account::State       				_state;
   short						_profilePicture;
   std::string					        _location;
-  std::vector<std::pair<std::string,std::string> >	_nicknames;
+  std::map<std::string,std::string>	_nicknames;
   std::vector<Account*>				_contactList;
   std::vector<Account*>				_favoriteList;
   const std::string           _id;
