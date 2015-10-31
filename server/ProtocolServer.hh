@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:51:14 2015 Serge Heitzler
-// Last update Sat Oct 31 16:51:18 2015 Serge Heitzler
+// Last update Sat Oct 31 22:09:05 2015 Serge Heitzler
 //
 
 #ifndef _PROTOCOLSERVER_HH
@@ -22,14 +22,14 @@ class		        ProtocolServer : public AProtocol
 
 private:
 
-  bool	ping(Server &server, DataToClient &toData);
-  bool	contactList(Server &server, DataToClient &toData);
-  bool	contactInfo(Server &server, DataToClient &toData);
-  bool	contactRequest(Server &server, DataToClient &toData);
-  bool	callRequest(Server &server, DataToClient &toData);
-  bool	sendText(Server &server, DataToClient &toData);
-  bool	hangedUp(Server &server, DataToClient &toData);
-  bool	sendFile(Server &server, DataToClient &toData);
+  static bool	ping(DataToClient &toData);
+  static bool	contactList(DataToClient &toData);
+  static bool	contactInfo(DataToClient &toData);
+  static bool	contactRequest(DataToClient &toData);
+  static bool	callRequest(DataToClient &toData);
+  static bool	sendText(DataToClient &toData);
+  static bool	hangedUp(DataToClient &toData);
+  static bool	sendFile(DataToClient &toData);
 
 };
 
