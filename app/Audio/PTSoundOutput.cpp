@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 28 02:44:30 2015 Antoine Garcia
-// Last update Sat Oct 31 02:25:20 2015 Antoine Garcia
+// Last update Sat Oct 31 08:12:58 2015 Antoine Garcia
 //
 
 #include <iostream>
@@ -45,7 +45,6 @@ void PTSoundOutput::initOutput()
 
 void PTSoundOutput::start()
 {
-  std::cout << "coucou" << std::endl;
    PaError	err;
 
    err = Pa_OpenStream(&_stream, NULL, &_params, SoundDevice::sampleRate, 256, paClipOff, PTSoundOutput::playCallback,this);
@@ -64,5 +63,6 @@ void PTSoundOutput::stop()
 
 int PTSoundOutput::playCallback(const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags,void *userData)
 {
+  std::cout << "play Callback " << std::endl;
   return paContinue;
 }
