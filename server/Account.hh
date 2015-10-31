@@ -30,7 +30,7 @@ public:
       DISCONNECTED = 5
     }			        State;
 
-  Account(std::string username, std::string passwd, short profilePicture);
+  Account(std::string login, std::string passwd, short profilePicture);
   ~Account();
 
   void						setLogin(std::string &login);
@@ -38,17 +38,18 @@ public:
   void						setLocation(std::string location);
   void						setNickname(std::string &id, std::string &nickname);
   void						setProfilePicture(short);
-  std::string			        	&getUsername();
+  std::string			        	&getLogin();
   std::string		         		&getLocation();
   std::string		         		&getPasswd();
   boost::shared_ptr<TCPConnection>  &getSocket();
   std::vector<Account*>				&getContactList();
-  std::vector<std::pair<std::string,std::string> >	&getNicknames();
+  std::map<std::string,std::string>	&getNicknames();
   Account					*getContactByID(std::string &);
   Account::State		      		getState();
   bool						isAlreadyAContactOf(Account *);
+  bool            isIDFavorited(std::string ID);
   short			        		getProfilePictureID();
-  std::string &getNicknameIfExisting(Account &account);
+  std::string &getNicknameIfExisting(Account *account);
   bool						addContact(Account *);
   std::string   		      		getID();
   bool						removeContact(std::string &ID);
@@ -60,7 +61,7 @@ public:
 private:
 
   boost::shared_ptr<TCPConnection>			_socket;
-  std::string			        		_username;
+  std::string			        		_login;
   std::string					        _passwd;
   Account::State       				_state;
   short						_profilePicture;
