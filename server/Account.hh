@@ -62,6 +62,7 @@ private:
   std::vector<Account*>				_contactList;
   std::vector<Account*>				_favoriteList;
   const std::string           _id;
+  TCPConnection               _socket;
 };
 
 #endif /* !ACCOUNT_HH_ */

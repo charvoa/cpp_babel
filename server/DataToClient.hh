@@ -9,6 +9,7 @@ class			DataToClient : public AData
 
 private:
 
+  std::vector<std::string> _data;
 
 };
 

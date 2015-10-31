@@ -1,5 +1,15 @@
 #include "ProtocolServer.hh"
 
+ProtocolServer::ProtocolServer()
+{
+
+}
+
+ProtocolServer::~ProtocolServer()
+{
+
+}
+
 bool	ProtocolServer::successHandshake(Server &server, DataToClient &toData)
 {
 
@@ -92,7 +102,7 @@ void ProtocolServer::methodChecker(Server &server, DataToClient &toData)
 {
   for (PointersOnFuncs::iterator it = _functions.begin(); it!=_functions.end(); ++it)
     {
-      if (it->first == _functions[std::distance(_functions.begin(), it)].first)
+      if ((*it)->first == _functions[std::distance(_functions.begin(), (*it))].first)
         (*it)(server, toData);
     }
 }
