@@ -48,6 +48,11 @@ std::string		         			&Account::getPasswd()
   return _passwd;
 }
 
+boost::shared_ptr<TCPConnection>  &Account::getSocket()
+{
+  return _socket;
+}
+
 std::vector<Account*>				&Account::getContactList()
 {
   return _contactList;

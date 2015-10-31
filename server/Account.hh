@@ -40,6 +40,7 @@ public:
   std::string			        	&getUsername();
   std::string		         		&getLocation();
   std::string		         		&getPasswd();
+  boost::shared_ptr<TCPConnection>  &getSocket();
   std::vector<Account*>				&getContactList();
   Account					*getContactByID(std::string &);
   Account::State		      		getState();
