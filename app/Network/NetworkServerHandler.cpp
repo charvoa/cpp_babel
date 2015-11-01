@@ -5,8 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  1 11:27:01 2015 Nicolas Girardot
-// Last update Sun Nov  1 01:04:13 2015 Antoine Garcia
+// Last update Sun Nov  1 04:09:21 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -71,8 +70,10 @@ void	NetworkServerHandler::readyRead()
   std::cout << "Is reading" << std::endl;
   // while (_socket->canReadLine())
   //{
-  QString line = QString::fromUtf8(_socket->readLine());
-  std::cout << "Length is = " << line.length() << "  Content is = " << line.toUtf8().constData() << ";" << std::endl;
+  QByteArray array = _socket->readLine();
+  std::cout << array.size() << std::endl;
+  QString line = QString::fromUtf8(_socket->readLine()).trimmed();
+  std::cout << line.toUtf8().constData() << std::endl;
   //}
 }
 
