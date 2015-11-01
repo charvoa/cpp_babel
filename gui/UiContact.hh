@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:54:44 2015 Nicolas Charvoz
+// Last update Wed Oct 28 16:24:42 2015 Nicolas Charvoz
 //
 
 #ifndef UICONTACT_HH_
@@ -36,7 +36,7 @@ class UiContact : public QWidget {
 Q_OBJECT
 
 public:
-  explicit UiContact(QWidget *parent = 0);
+  explicit UiContact(MainWidget*, QWidget *parent = 0);
 
 public slots:
   void addTab();
