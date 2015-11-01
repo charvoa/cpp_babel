@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Sun Nov  1 16:00:03 2015 Nicolas Charvoz
+// Last update Sun Nov  1 07:37:08 2015 Antoine Garcia
 //
 
 #include "TCPProtocolHelper.hh"
@@ -48,7 +48,7 @@ QByteArray	TCPProtocolHelper::createHandshake()
   QDataStream	out(&block, QIODevice::WriteOnly);
 
   out.setVersion(QDataStream::Qt_4_3);
-  out << quint8(1) << quint16(str.size()) << QString(str.c_str());
+  out << quint8(1) << quint16(str.size());
   out.writeRawData(str.c_str(), str.size());
   return block;
 }

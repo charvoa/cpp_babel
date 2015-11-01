@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sun Nov  1 06:13:35 2015 Antoine Garcia
+// Last update Sun Nov  1 07:51:12 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -71,8 +71,6 @@ PTUser::User&	PTUser::currentUser()
 
 void	PTUser::logUser(const std::string &username, const std::string &password, const std::string &ip)
 {
-  (void)username;
-  (void)password;
   (void)ip;
   std::cout << "PROCESSING LOGIN USER..." << std::endl;
   server.type = 0;
@@ -83,8 +81,6 @@ void	PTUser::logUser(const std::string &username, const std::string &password, c
 
 void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &avatar)
 {
-  (void)username;
-  (void)password;
   (void)verify;
   (void)avatar;
   server.type = 1;
