@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Tue Oct 27 10:01:40 2015 Antoine Garcia
+// Last update Sun Nov  1 01:04:13 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -67,11 +67,11 @@ bool	NetworkServerHandler::getConnectionStatus() const
 
 void	NetworkServerHandler::readyRead()
 {
-  while (_socket->canReadLine())
-    {
+  // while (_socket->canReadLine())
+  //{
       QString line = QString::fromUtf8(_socket->readLine()).trimmed();
       std::cout << line.toUtf8().constData() << std::endl;
-    }
+      //}
 }
 
 void	NetworkServerHandler::connected()
