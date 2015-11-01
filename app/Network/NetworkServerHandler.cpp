@@ -5,8 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  1 03:00:15 2015 Antoine Garcia
-// Last update Sun Nov  1 01:04:13 2015 Antoine Garcia
+// Last update Sun Nov  1 04:09:21 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
