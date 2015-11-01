@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:21:39 2015 Serge Heitzler
-// Last update Sat Oct 31 16:22:04 2015 Serge Heitzler
+// Last update Sun Nov  1 13:30:38 2015 Serge Heitzler
 //
 
 #ifndef _SENDER_HH
@@ -16,12 +16,13 @@
 class			Sender
 {
 
-  Sender(AResponse &response);
+  Sender();
   ~Sender();
 
   // Abstraction Boost Asio Methods
 
-  static void		       	send();
+public:
+  static void		       	send(Response *response);
 
 private:
 

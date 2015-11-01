@@ -51,6 +51,7 @@ public:
   void	listenToMail(DataFromClient &fromClient);
   void	success(DataFromClient &fromClient);
   void  error(DataFromClient &fromClient);
+  void  affectTCPConnectionToAccountWithUsername(std::string username);
 
   void	initMethod();
   void	methodChecker(DataFromClient &fromClient);

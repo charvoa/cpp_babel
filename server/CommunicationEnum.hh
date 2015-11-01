@@ -40,4 +40,20 @@ typedef enum CommunicationClient {
   C_LISTEN_TO_MAIL = 31
 }            CommunicationClient;
 
+typedef enum CommunicationServer {
+  S_SUCCESS_HANDSHAKE = 101,
+  S_SUCCESS_ON_SIGN = 102,
+  S_ERROR_UNKNOWN = 103,
+  S_ERROR_SIGN = 104,
+  S_ERROR_CALL = 105,
+  S_ERROR_NOT_IMPLEMENTED = 106,
+  S_PING = 107,
+  S_CONTACT_REQUEST = 108,
+  S_CONTACT_INFO = 109,
+  S_CALL_REQUEST = 110,
+  S_SEND_TEXT = 111,
+  S_HANGED_UP = 112,
+  S_SEND_FILE = 130
+}            CommunicationServer;
+
 #endif

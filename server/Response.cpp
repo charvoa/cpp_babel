@@ -5,13 +5,15 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:16:36 2015 Serge Heitzler
-// Last update Sat Oct 31 21:46:03 2015 Serge Heitzler
+// Last update Sun Nov  1 12:26:29 2015 Serge Heitzler
 //
 
 #include "Response.hh"
+#include "CommunicationEnum.hh"
 
-Response::Response(ProtocolServer::CommunicationToClient answerType, std::vector<std::string> data)
+Response::Response(CommunicationServer answerType, Account *toClient, std::vector<std::string> data)
 {
+  _toClient = toClient;
   this.setSizeData(data);
   this.setResponse(answerType, data);
 }
@@ -26,12 +28,12 @@ void           Response::setSizeData(std::vector<std::string> data)
   _sizeData--;
 }
 
-void           Response::setResponse(ProtocolServer::CommunicationToClient answerType, std::vector<std::string> data)
+void           Response::setResponse(CommunicationServer answerType, std::vector<std::string> data)
 {
   std::bitset<16> bit(_sizeData);
 
 
-  _response.push_back<int>(answerType);
+  _response.push_back(std::to_string(boost::lexical_cast<char>(answerType));
   /* diviser la taille en deux octets
 
   _response.push_back(firstBit);

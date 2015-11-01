@@ -32,6 +32,8 @@ public:
   void	DetermineClientID(const std::string &);
   std::vector<std::string> &getData();
   CommunicationClient	getType();
+  std::string &getClientID();
+
 
 private:
   std::vector<std::string> _data;

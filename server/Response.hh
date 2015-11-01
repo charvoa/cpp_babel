@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:40:28 2015 Serge Heitzler
-// Last update Sat Oct 31 16:40:32 2015 Serge Heitzler
+// Last update Sun Nov  1 13:50:51 2015 Serge Heitzler
 //
 
 #ifndef _RESPONSE_HH
@@ -20,12 +20,16 @@
 class		        Response
 {
 
-  Response(ProtocolServer::CommunicationToClient answerType, std::vector<std::string> data);
+public:
+  Response(CommunicationServer answerType, Account *toClient, std::vector<std::string> data);
   ~Response();
+
+  void           setSizeData(std::vector<std::string> data);
+  void           setResponse(CommunicationServer answerType, std::vector<std::string> data);
 
 private:
 
-  Account               *_toClient;
+  Account               &_toClient;
   short                 _sizeData = 0;
   std::string           _response;
 };
