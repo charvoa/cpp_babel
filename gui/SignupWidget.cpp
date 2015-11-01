@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:26:00 2015 Nicolas Charvoz
+// Last update Wed Oct 28 16:44:03 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -139,7 +139,6 @@ void SignupWidget::clearLayout(QLayout *layout)
 void SignupWidget::validateSignup(int error)
 {
   QMessageBox msgBox;
-  bool _okClicked = false;
   LoginWidget *login;
   login = new LoginWidget();
 

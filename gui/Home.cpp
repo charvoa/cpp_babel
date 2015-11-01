@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:26:55 2015 Nicolas Charvoz
+// Last update Wed Oct 28 16:43:04 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
@@ -13,7 +13,7 @@
 Home::Home(QWidget *parent) : QWidget(parent)
 {
   /* MODIFY THIS PICTURE */
-  QPixmap profilPicture("./gui/img/miranda2.jpg");
+  QPixmap profilPicture("./gui/img/avatar1.png");
   QLabel *imgP = new QLabel(this);
   QLabel *currentName = new QLabel(this);
   QFont f("Calibri", 18, QFont::Bold);
@@ -48,7 +48,7 @@ void Home::canDisplayWeather()
 
   char const *pchar = _str.c_str();
 
-  _temp->setText(tr(pchar));
+  _temp->setText(tr(pchar) + "°C");
 
   _imgWeather->setPixmap(QPixmap::fromImage(_dH->getImg()));
 }

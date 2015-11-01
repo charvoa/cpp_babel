@@ -41,6 +41,7 @@ void	ProtocolClient::error(DataFromClient &fromClient)
 
 void	ProtocolClient::signup(DataFromClient &fromClient)
 {
+  std::list<boost::shared_ptr<TCPConnection> >::iterator it;
   std::string username = fromClient.getData().at(0);
   std::string passwd = fromClient.getData().at(1);
   short profilePicture = boost::lexical_cast<short>(fromClient.getData().at(2));
@@ -51,6 +52,12 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
   else
     {
       // create success
+      it = g_Server.getNetwork()->getServer()->getList()->begin();
+      g_Server.getAccountByUsername(username)->setSocket((*it));
+      g_Server.getNetwork()->getServer()->getList()->pop_front();
+
+
+
       g_Server.addAccount(username, passwd, profilePicture);
         }
   (void) profilePicture;
@@ -58,11 +65,18 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
 
 void	ProtocolClient::signin(DataFromClient &fromClient)
 {
+  std::list<boost::shared_ptr<TCPConnection> >::iterator it;
   std::string username = fromClient.getData().at(0);
   std::string passwd = fromClient.getData().at(1);
   if (g_Server.doesUsernameExist(username) && g_Server.isPasswdCorrectForAccount(username, passwd) && g_Server.getAccountByUsername(username)->getState() == Account::DISCONNECTED)
     {
       // create success
+      it = g_Server.getNetwork()->getServer()->getList()->begin();
+      g_Server.getAccountByUsername(username)->setSocket((*it));
+      g_Server.getNetwork()->getServer()->getList()->pop_front();
+
+
+
       g_Server.getAccountByUsername(username)->getFormatedContactList();
         }
   else

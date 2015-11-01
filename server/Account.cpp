@@ -33,6 +33,11 @@ void							Account::setProfilePicture(short pp)
   this->_profilePicture = pp;
 }
 
+void							Account::setSocket(boost::shared_ptr<TCPConnection> socket)
+{
+  this->_socket = socket;
+}
+
 std::string			        		&Account::getLogin()
 {
   return _login;

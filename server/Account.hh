@@ -40,6 +40,7 @@ public:
   void						setLocation(std::string location);
   void						setNickname(std::string &id, std::string &nickname);
   void						setProfilePicture(short);
+  void					  setSocket(boost::shared_ptr<TCPConnection> socket);
   std::string			        	&getLogin();
   std::string		         		&getLocation();
   std::string		         		&getPasswd();

@@ -18,6 +18,7 @@ SOURCES += main.cpp
 SOURCES += User/PTUser.cpp
 SOURCES += Network/NetworkServerHandler.cpp
 SOURCES += Audio/PTSoundOutput.cpp
+SOURCES += Mutex/Mutex.cpp
 unix {
 LIBS += ../gui/libgui.a
 LIBS += ./libs/libportaudio.a
