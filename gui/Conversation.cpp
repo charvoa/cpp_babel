@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sun Nov  1 14:35:41 2015 Nicolas Charvoz
+// Last update Sun Nov  1 14:50:41 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -83,7 +83,6 @@ void Conversation::functionText()
       _first = false;
     }
   _messageZone->append("\n" + time + "\n" + text + "\n");
-
 }
 
 void Conversation::functionCall()
