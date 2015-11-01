@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Sat Oct 31 22:20:27 2015 Nicolas Girardot
+// Last update Sun Nov  1 18:08:20 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -15,7 +15,7 @@ Account::Account(std::string login, std::string passwd, short profilePicture)
 {
   _login = login;
   _passwd = passwd;
-  _state = Account::CONNECTED;
+  _state = Account::DISCONNECTED;
   _profilePicture = profilePicture;
 }
 

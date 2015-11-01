@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Sat Oct 31 21:12:32 2015 Nicolas Girardot
+// Last update Sun Nov  1 18:04:03 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
@@ -27,6 +27,7 @@ bool      Server::doesUsernameExist(std::string &username)
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
+      std::cout << "First Username is " << username << " : Second username is " << (*it)->getLogin() << std::endl;
       if ((*it)->getLogin() == username)
         return true;
     }
