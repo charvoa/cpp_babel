@@ -5,18 +5,19 @@
 ## Login   <girard_s@epitech.net>
 ##
 ## Started on  Mon Oct 19 11:47:59 2015 Nicolas Girardot
-## Last update Tue Oct 27 10:48:14 2015 Nicolas Girardot
+## Last update Sat Oct 31 18:42:42 2015 Nicolas Girardot
 ##
 
 MAIN		=	server
 
 EXEC		=	$(MAIN)
 
-DCOMMON		=	Common
-
-SRC		=	VerifyRequest.cpp	\
+SRC		+=	VerifyRequest.cpp	\
 			DataFromClient.cpp	\
-			Client.cpp		\
+			Common/TCPConnection.cpp\
+			Server.cpp		\
+			Account.cpp		\
+			ProtocolClient.cpp
 
 SRC_MAIN	=	$(SRC) Common/main.cpp
 
@@ -35,13 +36,13 @@ all:		$(EXEC)
 		@printf "\r[\033[2;35mMAKE\033[0m] SPYKE_SERVER\n"
 
 $(MAIN):	$(OBJ_MAIN)
-		@$(CPP) -o $@ $^ $(LDFLAGS)
+		@$(CPP) -I /usr/local/include/ -o $@ $^
 
 %.o:            %.cpp
-		@$(CPP) -o $@ -c $< $(CPPFLAGS)
+		@$(CPP) -I /usr/local/include/ -o $@ -c $<
 
 clean:
-		@$(DEL_FILE) $(OBJ)
+		@$(DEL_FILE) $(OBJ_MAIN)
 		@printf "\r[\033[1;31mDELETE\033[0m] *.o\n"
 		@$(DEL_FILE)
 		@printf "\r[\033[1;31mDELETE\033[0m] *~\n"

@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:22:59 2015 Nicolas Girardot
-// Last update Mon Oct 26 11:23:01 2015 Nicolas Girardot
+// Last update Sat Oct 31 16:15:11 2015 Nicolas Girardot
 //
 
 #ifndef _APROTOCOL_HH
@@ -13,13 +13,12 @@
 
 #include <string>
 #include <vector>
-#include <distance>
 #include "Server.hh"
 #include "AData.hh"
 
-class		        AProcotol
+class		        AProtocol
 {
-
+public:
   typedef enum CommunicationType {
     C_HANDSHAKE = 1,
     C_SUCCESS = 2,
@@ -62,18 +61,20 @@ class		        AProcotol
     S_SEND_FILE = 130
   }            CommunicationType;
 
-  AProcotol();
-  ~AProcotol();
+  AProtocol();
+  ~AProtocol();
 
-  bool  initMethod();
-  bool  methodChecker(Server &server, AData &data);
+  void  initMethod();
+  void  methodChecker(Server &server, AData &data);
 
 private:
 
-  typedef void(AProtocol::*Funcs)(Server &server, AData &data);
-    Funcs _ptr;
-    typedef std::map<CommunicationType, Funcs>PointersOnFuncs;
-    PointersOnFuncs	        _functions;
+protected:
+
+  typedef void(AProtocol::*funcs)(Server &server, AData &data);
+  funcs _ptr;
+  typedef std::map<CommunicationType, funcs>PointersOnFuncs;
+  PointersOnFuncs	        _functions;
 
 };
 

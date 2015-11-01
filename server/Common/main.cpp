@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 20:40:02 2015 Nicolas Girardot
-// Last update Wed Oct 28 10:16:34 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:18:00 2015 Nicolas Girardot
 //
 
 #include <ctime>
@@ -13,13 +13,13 @@
 #include <string>
 #include <boost/asio.hpp>
 #include "Network.hpp"
+#include "../Server.hh"
 
 using boost::asio::ip::tcp;
 
 int main()
 {
-  Network net;
-  net.start();
-  //std::cout << "";
+  std::cout << "COPILED SUCCCCESS" << std::endl;
+  Server g_Server;
   return 0;
 }

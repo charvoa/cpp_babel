@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 20 15:52:59 2015 Nicolas Girardot
-// Last update Wed Oct 21 16:35:55 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:37:23 2015 Nicolas Girardot
 //
 
 #ifndef NETWORK_HH_
@@ -30,7 +30,7 @@ public:
     try
       {
 	boost::asio::io_service ioService;
-	server = new TCPServer(ioService);
+	_server = new TCPServer(ioService);
 	ioService.run();
       }
     catch (std::exception& e)
@@ -39,19 +39,22 @@ public:
       }
   }
 
-  virtual void write(Socket &sock, const std::string &message)
+  virtual void write(const std::string &message)
   {
-    (void) sock;
-    server->writeOnServer(message);
+    (void) message;
   }
 
   virtual void read()
   {
-    server->readOnServer();
+  }
+
+  TCPServer	*getServer()
+  {
+    return _server;
   }
 
 private:
-  TCPServer *server;
+  TCPServer *_server;
 };
 
 #endif

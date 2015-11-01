@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 28 02:44:30 2015 Antoine Garcia
-// Last update Wed Oct 28 06:25:45 2015 Antoine Garcia
+// Last update Sat Oct 31 08:12:58 2015 Antoine Garcia
 //
 
 #include <iostream>
@@ -40,13 +40,19 @@ void PTSoundOutput::initOutput()
   _params.channelCount = SoundDevice::channels;
   _params.sampleFormat = paFloat32;
   _params.suggestedLatency = Pa_GetDeviceInfo(_params.device)->defaultLowOutputLatency;
+  _params.hostApiSpecificStreamInfo = NULL;
 }
 
 void PTSoundOutput::start()
 {
    PaError	err;
 
-   err = Pa_OpenStream(&_stream, NULL, &_params, SoundDevice::sampleRate, 512, paClipOff, PTSoundOutput::playCallback,this);
+   err = Pa_OpenStream(&_stream, NULL, &_params, SoundDevice::sampleRate, 256, paClipOff, PTSoundOutput::playCallback,this);
+   if (err != paNoError)
+     std::cout <<  Pa_GetErrorText( err ) << std::endl;
+   err = Pa_StartStream(_stream);
+   if (err != paNoError)
+     std::cout <<  Pa_GetErrorText( err ) << std::endl;
 }
 
 void PTSoundOutput::stop()
@@ -57,5 +63,6 @@ void PTSoundOutput::stop()
 
 int PTSoundOutput::playCallback(const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags,void *userData)
 {
+  std::cout << "play Callback " << std::endl;
   return paContinue;
 }

@@ -1,8 +1,18 @@
+//
+// Account.cpp for babel in /home/nicolas/rendu/cpp_babel/server
+//
+// Made by Nicolas Girardot
+// Login   <girard_s@epitech.net>
+//
+// Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
+// Last update Sat Oct 31 17:46:37 2015 Nicolas Girardot
+//
+
 #include "Account.hh"
 
-Account::Account(std::string username, std::string passwd, short profilePicture)
+Account::Account(std::string login, std::string passwd, short profilePicture)
 {
-  _username = username;
+  _login = login;
   _passwd = passwd;
   _state = Account::CONNECTED;
   _profilePicture = profilePicture;
@@ -13,27 +23,57 @@ Account::~Account()
 
 }
 
-std::string			        		Account::getUsername()
+void							Account::setNickname(std::string &id, std::string &newNickName)
 {
-  return _username;
+  this->_nicknames.insert(std::make_pair(id, newNickName));;
 }
 
-std::string		         			Account::getLocation()
+void							Account::setProfilePicture(short pp)
+{
+  this->_profilePicture = pp;
+}
+
+void							Account::setSocket(boost::shared_ptr<TCPConnection> socket)
+{
+  this->_socket = socket;
+}
+
+std::string			        		&Account::getLogin()
+{
+  return _login;
+}
+
+short			        		Account::getProfilePictureID()
+{
+  return _profilePicture;
+}
+
+std::string		         			&Account::getLocation()
 {
   return _location;
 }
 
-std::string		         			Account::getPasswd()
+std::string		         			&Account::getPasswd()
 {
   return _passwd;
 }
 
-std::vector<Account*>				Account::getContactList()
+boost::shared_ptr<TCPConnection>  &Account::getSocket()
 {
-
+  return _socket;
 }
 
-Account::state		      		Account::getState()
+std::vector<Account*>				&Account::getContactList()
+{
+  return _contactList;
+}
+
+std::map<std::string,std::string>				&Account::getNicknames()
+{
+  return _nicknames;
+}
+
+Account::State		      		Account::getState()
 {
   return _state;
 }
@@ -43,62 +83,121 @@ std::string   		      		Account::getID()
   return _id;
 }
 
-Account                     &Account::getContactByID(std::string ID)
+Account                     *Account::getContactByID(std::string &ID)
 {
-  for (std::vector::iterator it = _contactsList.begin(); it != _contactsList.end(); ++it)
+  for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
-      if (it->getID() == ID)
-        return _contactsList.at(std::distance(_contactsList.begin(), it));
+      if ((*it)->getID() == ID)
+        return _contactList.at(std::distance(_contactList.begin(), it));
     }
   return NULL;
 }
 
-std::vector::iterator        Account::getContactIteratorByIDInVector(std::string ID, std::vector<Account*> _vector)
+bool				Account::operator==(Account &bis)
 {
-  for (std::vector::iterator it = _vector.begin(); it != _vector.end(); ++it)
-    {
-      if (it->getID() == ID)
-        return it;
-    }
-  return NULL;
+  if (this->getLogin() == bis.getLogin())
+    return true;
+  return false;
 }
 
-// Faire overload operator == pour Account
-bool                        Account::isAlreadyAContactOf(Account &contactAdded)
+bool   			Account::isAlreadyAContactOf(Account *contactAdded)
 {
-  for (std::vector::iterator it = _contactsList.begin(); it != _contactsList.end(); ++it)
+  for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
-      if (it == contactAdded)
+      if ((*it) == contactAdded)
         return true;
     }
   return false;
 }
 
-bool                        Account::addContact(Account &contactAdded)
+bool				Account::addContact(Account *contactAdded)
 {
-  if !this.isAlreadyAContactOf(contactAdded)
+  if (!(this->isAlreadyAContactOf(contactAdded)))
     {
-      _contactsList.push_back(contactAdded);
+      _contactList.push_back(contactAdded);
       return true;
     }
   return false;
 }
 
-bool                        Account::removeContact(std::string ID)
+bool				Account::removeContact(std::string &ID)
 {
-  _contactsList.erase(this.getContactIteratorByIDInVector(ID, _contactsList));
-  _favoritesList.erase(this.getContactIteratorByIDInVector(ID, _favoritesList));
+  for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
+    {
+      if ((*it)->getID() == ID)
+	{
+	  delete * it;
+	  it = _favoriteList.erase(it);
+	}
+    }
+  return true;
+  removeFromFavorite(ID);
   return true;
 }
 
-bool                        Account::addToFavorites(Account &favorited)
+bool                        Account::addToFavorite(Account *favorited)
 {
-  _favoritesList.push_back(favorited);
+  _favoriteList.push_back(favorited);
   return true;
 }
 
-bool                        Account::removeFromFavorites(std::string ID)
+bool                        Account::removeFromFavorite(std::string &ID)
 {
-  _favoritesList.erase(this.getContactIteratorByIDInVector(ID, _favoritesList));
+  for (std::vector<Account*>::iterator it = _favoriteList.begin(); it != _favoriteList.end(); ++it)
+    {
+      if ((*it)->getID() == ID)
+	{
+	  delete * it;
+	  it = _favoriteList.erase(it);
+	}
+    }
   return true;
+}
+
+
+bool Account::isIDFavorited(std::string ID)
+{
+  for (std::vector<Account*>::iterator it = _favoriteList.begin(); it != _favoriteList.end(); ++it)
+    {
+      if ((*it)->getID() == ID)
+        return true;
+    }
+  return false;
+}
+
+std::string &Account::getNicknameIfExisting(Account *account)
+{
+  for (std::map<std::string, std::string>::iterator it = _nicknames.begin(); it != _nicknames.end(); ++it)
+    {
+      if ((*it).first == account->getID())
+        return (*it).second;
+    }
+  return account->getLogin();
+}
+
+std::vector<std::string> &Account::getFormatedContactList()
+{
+  std::vector<std::string> contactsInformations;
+
+  contactsInformations.push_back(this->getID());
+  contactsInformations.push_back(std::to_string(_contactList.size()));
+  for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
+    {
+      contactsInformations.push_back((*it)->getID());
+      contactsInformations.push_back(this->getNicknameIfExisting((*it)));
+      contactsInformations.push_back((*it)->getLocation());
+      contactsInformations.push_back(std::to_string((*it)->getState()));
+      contactsInformations.push_back(std::to_string((*it)->getProfilePictureID()));
+      contactsInformations.push_back(std::to_string(this->isIDFavorited((*it)->getID())));
+    }
+}
+
+void			Account::setLogin(std::string &login)
+{
+  _login = login;
+}
+
+void			Account::setLocation(std::string location)
+{
+  _location = location;
 }

@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:07:17 2015 Nicolas Girardot
-// Last update Mon Oct 26 20:14:54 2015 Nicolas Girardot
+// Last update Sat Oct 31 21:27:02 2015 Nicolas Girardot
 //
 
 #include "DataFromClient.hh"
@@ -16,6 +16,8 @@ DataFromClient::DataFromClient(const std::string &request)
   DetermineType(request);
   DetermineData(request);
   std::cout << "Request Manager Constructor End" << std::endl;
+  ProtocolClient *proto = new ProtocolClient;
+  proto->methodChecker(*this);
 }
 
 DataFromClient::~DataFromClient() {}
@@ -24,9 +26,19 @@ void	DataFromClient::DetermineType(const std::string &request)
 {
   std::bitset<8> b_type(request.at(0));
   long	l_type = b_type.to_ulong();
-  //  _type = static_cast<CommunicationType>(l_type);
+  _type = static_cast<CommunicationClient>(l_type);
   std::cout << "Displaying l_type in DataFromClient.cpp : " << l_type << std::endl;
   std::cout << "DataFromClient::DetermineType end" << std::endl;
+}
+
+CommunicationClient	DataFromClient::getType()
+{
+  return _type;
+}
+
+std::vector<std::string> &DataFromClient::getData()
+{
+  return (_data);
 }
 
 void	DataFromClient::DetermineData(const std::string &request)
@@ -34,8 +46,4 @@ void	DataFromClient::DetermineData(const std::string &request)
   std::string copy(request);
   copy.erase(0,3);
   boost::split(_data, copy, boost::is_any_of(";"));
-  for (std::vector<std::string>::iterator pos = _data.begin(); pos != _data.end(); ++pos)
-    {
-      std::cout << "Argument from data = " << *pos << std::endl;
-    }
 }

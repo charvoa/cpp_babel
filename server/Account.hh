@@ -5,19 +5,22 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Wed Oct 28 14:52:21 2015 Nicolas Girardot
+// Last update Sat Oct 31 17:46:32 2015 Nicolas Girardot
 //
 
 #ifndef _ACCOUNT_HH
 # define _ACCOUNT_HH
 
 #include <string>
-#include <pair>
-#include "TCPConnection.hh"
+#include <utility>
+#include <map>
+#include "Common/TCPConnection.hh"
 
+class			TCPConnection;
 
 class		        Account
 {
+public:
   typedef enum		State
     {
       CONNECTED = 1,
@@ -27,31 +30,46 @@ class		        Account
       DISCONNECTED = 5
     }			        State;
 
-  Account(std::string username, std::string passwd, short profilePicture);
+  Account(std::string login, std::string passwd, short profilePicture);
   ~Account();
 
-  void			setLogin(std::string login);
-  void			setState(Account::state state);
-  void			setLocation(std::string location);
-
-  std::string			        		&getUsername();
-  std::string		         			&getLocation();
-  std::string		         			&getPasswd();
+  void						setLogin(std::string &login);
+  void						setState(Account::State state);
+  void						setLocation(std::string location);
+  void						setNickname(std::string &id, std::string &nickname);
+  void						setProfilePicture(short);
+  void					  setSocket(boost::shared_ptr<TCPConnection> socket);
+  std::string			        	&getLogin();
+  std::string		         		&getLocation();
+  std::string		         		&getPasswd();
+  boost::shared_ptr<TCPConnection>  &getSocket();
   std::vector<Account*>				&getContactList();
-  Account::state		      		getState();
+  std::map<std::string,std::string>	&getNicknames();
+  Account					*getContactByID(std::string &);
+  Account::State		      		getState();
+  bool						isAlreadyAContactOf(Account *);
+  bool            isIDFavorited(std::string ID);
+  short			        		getProfilePictureID();
+  std::string &getNicknameIfExisting(Account *account);
+  bool						addContact(Account *);
   std::string   		      		getID();
-  bool                        removeContact(std::string ID);
+  bool						removeContact(std::string &ID);
+  bool						addToFavorite(Account *);
+  bool						removeFromFavorite(std::string &);
+  std::vector<std::string>                        &getFormatedContactList();
+  bool						operator==(Account &);
 
 private:
 
-  TCPConnection::pointer			_socket;
-  std::string			        		_username;
+  boost::shared_ptr<TCPConnection>			_socket;
+  std::string			        		_login;
   std::string					        _passwd;
-  Account::state       				_state;
+  Account::State       				_state;
+  short						_profilePicture;
   std::string					        _location;
-  std::vector<std::pair<Account*:std::string>>	_nicknames;
-  std::vector<Account*>				_contactsList;
-  std::vector<Account*>				_favoritesList;
+  std::map<std::string,std::string>	_nicknames;
+  std::vector<Account*>				_contactList;
+  std::vector<Account*>				_favoriteList;
   const std::string           _id;
 };
 
