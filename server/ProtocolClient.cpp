@@ -1,11 +1,11 @@
-B1;3409;0c//
+//
 // ProtocolClient.cpp for babel in /home/nicolas/rendu/cpp_babel/server
 //
 // Made by Nicolas Girardot
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sun Nov  1 17:55:20 2015 Nicolas Girardot
+// Last update Sun Nov  1 17:59:19 2015 Nicolas Charvoz
 //
 
 #include "ProtocolClient.hh"
