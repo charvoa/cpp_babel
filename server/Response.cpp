@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:16:36 2015 Serge Heitzler
-// Last update Sun Nov  1 12:26:29 2015 Serge Heitzler
+// Last update Sun Nov  1 15:41:25 2015 Serge Heitzler
 //
 
 #include "Response.hh"
@@ -14,6 +14,13 @@
 Response::Response(CommunicationServer answerType, Account *toClient, std::vector<std::string> data)
 {
   _toClient = toClient;
+  this.setSizeData(data);
+  this.setResponse(answerType, data);
+}
+
+Response::Response(CommunicationServer answerType, std::list<boost::shared_ptr<TCPConnection> > *toSocket, std::vector<std::string> data)
+{
+  _toSocket = toSocket;
   this.setSizeData(data);
   this.setResponse(answerType, data);
 }
