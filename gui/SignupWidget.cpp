@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Nov  1 16:21:21 2015 Nicolas Charvoz
+// Last update Sun Nov  1 16:28:19 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -198,7 +198,7 @@ void SignupWidget::checkSignup()
 
       this->clearLayout(_mainLayout);
       _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
-      g_PTUser.signup(_userString, _passString, _cString);
+      g_PTUser.signup(_userString, _passString, _cString, cbString.back());
     }
   /* ADD AVATAR CHOICE IN THE FUNCTION */
 }
