@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:16:51 2015 Nicolas Charvoz
-// Last update Wed Oct 28 16:44:35 2015 Nicolas Charvoz
+// Last update Sun Nov  1 19:02:55 2015 Nicolas Charvoz
 //
 
 #include "DataHandler.hh"
@@ -96,14 +96,14 @@ int DataHandler::exec()
   //  QEventLoop eventLoop;
 
   // "quit()" the event-loop, when the network request "finished()"
-  _mgr = new QNetworkAccessManager(this);;
+  _mgr = new QNetworkAccessManager(this);
   //  QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
   QObject::connect(_mgr, SIGNAL(finished(QNetworkReply*)), this,
   		   SLOT(slotReadyRead(QNetworkReply*)));
 
   // the HTTP request
   QNetworkRequest req(QUrl(tr(query)));
-  //  QNetworkReply *reply = _mgr->get(req);
+  QNetworkReply *reply = _mgr->get(req);
 
   //  eventLoop.exec(); // blocks stack until "finished()" has been called
 

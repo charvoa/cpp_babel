@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Nov  1 17:04:19 2015 Nicolas Charvoz
+// Last update Sun Nov  1 18:14:54 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -20,6 +20,7 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
   /* COMBO BOX AVATAR */
   _avatarCombo = new QComboBox(this);
 
+  connect(&g_PTUser, SIGNAL(canDisplayHome(int)), this, SLOT(canDisplayHome(int)));
   std::stringstream ss;
   for (int i = 1; i < 8; i++)
     {
@@ -139,21 +140,21 @@ void SignupWidget::clearLayout(QLayout *layout)
 void SignupWidget::canDisplayHome(int error)
 {
   QMessageBox msgBox;
-  LoginWidget *login;
-  login = new LoginWidget();
+  MainWidget *main;
+  main = new MainWidget();
 
-  QFile File2("./gui/stylesheetLogin.qss");
+  QFile File2("./gui/stylesheet.qss");
   File2.open(QFile::ReadOnly);
   QString StyleSheet2 = QLatin1String(File2.readAll());
 
   /* Applying it */
-  login->setStyleSheet(StyleSheet2);
+  main->setStyleSheet(StyleSheet2);
 
   if (error == 1)
     {
       msgBox.setText("Yeah ! You're part of the team now :)");
       msgBox.exec();
-      login->show();
+      main->show();
       deleteLater();
     }
   else
