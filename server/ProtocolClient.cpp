@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sun Nov  1 17:59:19 2015 Nicolas Charvoz
+// Last update Sun Nov  1 18:04:54 2015 Nicolas Charvoz
 //
 
 #include "ProtocolClient.hh"
@@ -95,6 +95,7 @@ void	ProtocolClient::signin(DataFromClient &fromClient)
 {
   std::string username = fromClient.getData().at(0);
   std::string passwd = fromClient.getData().at(1);
+  std::cout << "USERNAME IS = " << username << std::endl;
   if (g_Server.doesUsernameExist(username) && g_Server.isPasswdCorrectForAccount(username, passwd) && g_Server.getAccountByUsername(username)->getState() == Account::DISCONNECTED)
     {
       g_Server.getAccountByUsername(username)->getFormatedContactList();
@@ -133,11 +134,12 @@ void	ProtocolClient::callRequest(DataFromClient &fromClient)
 
 void	ProtocolClient::hangUp(DataFromClient &fromClient)
 {
-  std::string sender = fromClient.getClientID();
-  std::string receiver = fromClient.getData().at(0);
+  (void) fromClient;
+  //std::string sender = fromClient.getClientID();
+  //std::string receiver = fromClient.getData().at(0);
 
-  Response *response = Response(CommunicationServer::S_HANGED_UP, g_Server.getAccountByID(receiver), data);
-  Sender::send(response);
+  //  Response *response = Response(CommunicationServer::S_HANGED_UP, g_Server.getAccountByID(receiver), data);
+  //Sender::send(response);
 }
 
 void	ProtocolClient::sendText(DataFromClient &fromClient)
