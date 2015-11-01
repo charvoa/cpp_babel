@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:40:28 2015 Serge Heitzler
-// Last update Sun Nov  1 15:50:05 2015 Serge Heitzler
+// Last update Sun Nov  1 15:51:32 2015 Serge Heitzler
 //
 
 #ifndef _RESPONSE_HH
@@ -13,6 +13,7 @@
 
 #include <string>
 #include "ProtocolServer.hh"
+#include <vector>
 #include "Account.hh"
 #include "Common/TCPConnection.hh"
 
@@ -20,7 +21,6 @@
 
 class		        Response
 {
-
 public:
   Response(CommunicationServer answerType, Account *toClient, std::vector<std::string> data);
   Response(CommunicationServer answerType, boost::shared_ptr<TCPConnection> toSocket, std::vector<std::string> data);

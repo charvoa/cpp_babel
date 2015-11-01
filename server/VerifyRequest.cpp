@@ -5,19 +5,19 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 22 21:48:58 2015 Nicolas Girardot
-// Last update Tue Oct 27 09:52:26 2015 Nicolas Girardot
+// Last update Sun Nov  1 15:07:51 2015 Nicolas Girardot
 //
 
 #include "VerifyRequest.hh"
 
-#define	HEADER_SIZE 3
+#define	HEADER_SIZE 7
 
 VerifyRequest::VerifyRequest(const std::string &request)
 {
   std::cout << "VerifyRequest Constructor Begining" << std::endl;
 
-  std::bitset<8> first8(request.at(1));
-  std::bitset<8> second8(request.at(2));
+  std::bitset<8> first8(request.at(5));
+  std::bitset<8> second8(request.at(6));
 
   std::bitset<16> whole(first8.to_string() + second8.to_string());
   std::cout << "Request official size = " << whole.to_ulong() << " ; Request Non Official size = " << request.length() - HEADER_SIZE << std::endl;

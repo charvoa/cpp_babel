@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  1 04:09:21 2015 Antoine Garcia
+// Last update Sun Nov  1 06:38:41 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -15,7 +15,7 @@
 #include <iostream>
 #include <vector>
 #define HEADER_LENGTH 3
-
+#define SEPARATOR ";"
 NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
 {
   _socket = new QTcpSocket(this);
@@ -23,6 +23,7 @@ NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
   connect(_socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
   connect(_socket, SIGNAL(connected()), this, SLOT(connected()));
   connect(_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(connectionError(QAbstractSocket::SocketError)));
+  connect(&_request, SIGNAL(handshakeSuccess()), this, SLOT(handshakeSuccess()));
 }
 
 NetworkServerHandler::~NetworkServerHandler()
@@ -68,22 +69,41 @@ bool	NetworkServerHandler::getConnectionStatus() const
 void	NetworkServerHandler::readyRead()
 {
   std::cout << "Is reading" << std::endl;
-  // while (_socket->canReadLine())
-  //{
   QByteArray array = _socket->readLine();
-  std::cout << array.size() << std::endl;
-  QString line = QString::fromUtf8(_socket->readLine()).trimmed();
-  std::cout << line.toUtf8().constData() << std::endl;
-  //}
+  _request.handleRequest(array[0]);
 }
 
 void	NetworkServerHandler::connected()
 {
     handShake();
-    emit userConnected(1);
+    //emit userConnected(1);
 }
 
 void	NetworkServerHandler::connectionError(QAbstractSocket::SocketError)
 {
   emit userConnected(0);
+}
+
+void	NetworkServerHandler::logUser()
+{
+  QByteArray	array;
+  QDataStream	out(&array, QIODevice::WriteOnly);
+  std::string str;
+  str += login;
+  str += SEPARATOR;
+  str += password;
+  out.setVersion(QDataStream::Qt_4_3);
+  out <<  quint8(5) /*<< quint64(0)*/ << quint16(str.size());
+  std::cout << "SIZE : " << str.size() << std::endl;
+  out.writeRawData(str.c_str(), str.size());
+  _socket->write(array);
+}
+
+void	NetworkServerHandler::handshakeSuccess()
+{
+  _connected = true;
+  if (type == 0)
+    {
+      logUser();
+    }
 }

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 28 14:15:12 2015 Nicolas Charvoz
+// Last update Sun Nov  1 13:57:42 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -189,11 +189,20 @@ void LoginWidget::checkLogin()
   _passString = pass.toUtf8().constData();
   _ipString = ip.toUtf8().constData();
 
-  _editPassword->clear();
+  if (_userString == "" || _passString == "" || _ipString == "")
+    {
+      QMessageBox *msgBox = new QMessageBox(this);
 
-  this->clearLayout(_mainLayout);
-  _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
-  Thread thread;
-  g_PTUser.logUser(_userString, _passString, _ipString);
+      msgBox->setText("Please fill the fields");
+      msgBox->exec();
+    }
+  else
+    {
+      _editPassword->clear();
 
+      this->clearLayout(_mainLayout);
+      _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
+
+      g_PTUser.logUser(_userString, _passString, _ipString);
+    }
 }

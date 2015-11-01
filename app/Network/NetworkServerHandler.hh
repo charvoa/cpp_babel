@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Tue Oct 27 08:28:45 2015 Antoine Garcia
+// Last update Sun Nov  1 06:24:18 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -31,6 +31,9 @@ private:
 signals:
   void	userConnected(int check);
 public:
+  int			type;
+  std::string		login;
+  std::string		password;
   NetworkServerHandler(QObject *parent = 0);
   ~NetworkServerHandler();
   int start(const std::string &host, unsigned int port);
@@ -38,12 +41,13 @@ public:
   void setPort(unsigned int);
   void write(const std::string &);
   void	handShake();
-  void	logUser();
   bool getConnectionStatus() const;
+  void	logUser();
 private slots:
   void	readyRead();
   void	connected();
   void	connectionError(QAbstractSocket::SocketError);
+  void	handshakeSuccess();
 };
 
 #endif
