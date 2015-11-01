@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:07:14 2015 Nicolas Girardot
-// Last update Sun Nov  1 14:59:21 2015 Nicolas Girardot
+// Last update Sun Nov  1 15:08:15 2015 Nicolas Girardot
 //
 
 #	include "DataFromClient.hh"
@@ -71,6 +71,6 @@ void	DataFromClient::DetermineClientID(const std::string &request)
 void	DataFromClient::DetermineData(const std::string &request)
 {
   std::string copy(request);
-  copy.erase(0,3);
+  copy.erase(0,7);
   boost::split(_data, copy, boost::is_any_of(";"));
 }

@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:16:36 2015 Serge Heitzler
-// Last update Sun Nov  1 12:26:29 2015 Serge Heitzler
+// Last update Sun Nov  1 15:06:29 2015 Nicolas Girardot
 //
 
 #include "Response.hh"
