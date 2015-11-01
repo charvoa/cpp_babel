@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:40:28 2015 Serge Heitzler
-// Last update Sun Nov  1 16:44:47 2015 Serge Heitzler
+// Last update Sun Nov  1 16:57:00 2015 Nicolas Girardot
 //
 
 #ifndef _RESPONSE_HH
@@ -31,7 +31,7 @@ public:
   void           setResponse(CommunicationServer answerType, std::vector<std::string> data);
 
   Account               *getClient();
-  boost::shared_ptr<TCPConnection> *getSocket();
+  TCPConnection::pointer &getSocket();
   std::string           &getResponse();
 
 private:
