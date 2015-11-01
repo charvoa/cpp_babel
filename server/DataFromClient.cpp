@@ -42,6 +42,11 @@ std::vector<std::string> &DataFromClient::getData()
   return (_data);
 }
 
+std::string &DataFromClient::getClientID()
+{
+  return _clientID;
+}
+
 void	DataFromClient::DetermineClientID(const std::string &request)
 {
   std::bitset<8> a(request.at(1));

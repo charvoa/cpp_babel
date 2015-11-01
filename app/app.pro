@@ -14,7 +14,7 @@ HEADERS += User/PTUser.hh
 HEADERS += Network/TCPProtocolHelper.hh
 HEADERS += Mutex/Mutex.hh
 
-SOURCES  += Network/TCPProtocolHelper.cpp
+SOURCES += Network/TCPProtocolHelper.cpp
 SOURCES += main.cpp
 SOURCES += User/PTUser.cpp
 SOURCES += Network/NetworkServerHandler.cpp

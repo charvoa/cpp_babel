@@ -9,6 +9,7 @@
 //
 
 #include "Account.hh"
+#include <boost/lexical_cast.hpp>
 
 Account::Account(std::string login, std::string passwd, short profilePicture)
 {
@@ -180,15 +181,15 @@ std::vector<std::string> Account::getFormatedContactList()
   std::vector<std::string> contactsInformations;
 
   contactsInformations.push_back(this->getID());
-  contactsInformations.push_back(std::to_string(_contactList.size()));
+  contactsInformations.push_back(std::to_string(boost::lexical_cast<char>((_contactList.size()))));
   for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
       contactsInformations.push_back((*it)->getID());
       contactsInformations.push_back(this->getNicknameIfExisting((*it)));
       contactsInformations.push_back((*it)->getLocation());
-      contactsInformations.push_back(std::to_string((*it)->getState()));
-      contactsInformations.push_back(std::to_string((*it)->getProfilePictureID()));
-      contactsInformations.push_back(std::to_string(this->isIDFavorited((*it)->getID())));
+      contactsInformations.push_back(std::to_string(boost::lexical_cast<char>(((*it)->getState()))));
+      contactsInformations.push_back(std::to_string(boost::lexical_cast<char>(((*it)->getProfilePictureID()))));
+      contactsInformations.push_back(std::to_string(boost::lexical_cast<char>((this->isIDFavorited((*it)->getID())))));
     }
   return contactsInformations;
 }

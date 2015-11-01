@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:25:39 2015 Antoine Garcia
-// Last update Tue Oct 27 03:14:56 2015 Antoine Garcia
+// Last update Sun Nov  1 05:07:52 2015 Antoine Garcia
 //
 
 #ifndef IProtocolHelper_HH_
