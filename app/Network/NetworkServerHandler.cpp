@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  1 08:31:28 2015 Antoine Garcia
+// Last update Sun Nov  1 17:52:53 2015 Nicolas Girardot
 //
 
 #include "NetworkServerHandler.hh"
@@ -77,8 +77,9 @@ void	NetworkServerHandler::readyRead()
 
 void	NetworkServerHandler::connected()
 {
+  if (_connected == false)
     handShake();
-    //emit userConnected(1);
+  //emit userConnected(1);
 }
 
 void	NetworkServerHandler::connectionError(QAbstractSocket::SocketError)
@@ -96,7 +97,7 @@ void	NetworkServerHandler::signUser()
   str += SEPARATOR;
   str += password;
   out.setVersion(QDataStream::Qt_4_3);
-  out << quint8(4) << << quint64(0) << quint16(str.size() + 2);
+  out << quint8(4) << quint32(0) << quint16(str.size() + 2);
   out.writeRawData(str.c_str(), str.size());
   out.writeRawData(";", strlen(";"));
   out << quint8(1);
@@ -112,7 +113,7 @@ void	NetworkServerHandler::logUser()
   str += SEPARATOR;
   str += password;
   out.setVersion(QDataStream::Qt_4_3);
-  out <<  quint8(5) << quint64(0) << quint16(str.size());
+  out <<  quint8(5) << quint32(0) << quint16(str.size());
   out.writeRawData(str.c_str(), str.size());
   _socket->write(array);
 }

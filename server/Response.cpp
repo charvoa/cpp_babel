@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:16:36 2015 Serge Heitzler
-// Last update Sun Nov  1 16:44:39 2015 Serge Heitzler
+// Last update Sun Nov  1 17:45:42 2015 Nicolas Girardot
 //
 
 #include <boost/lexical_cast.hpp>
@@ -15,23 +15,25 @@
 Response::Response(CommunicationServer answerType, Account *toClient, std::vector<std::string> data)
 {
   _toClient = toClient;
-  this->setSizeData(data);
+  //  this->setSizeData(data);
   this->setResponse(answerType, data);
 }
 
-Response::Response(CommunicationServer answerType, boost::shared_ptr<TCPConnection> *toSocket, std::vector<std::string> data)
+Response::Response(CommunicationServer answerType, boost::shared_ptr<TCPConnection> toSocket, std::vector<std::string> data)
 {
-  _toSocket = toSocket;
+  _toSocket = &toSocket;
   this->setSizeData(data);
   this->setResponse(answerType, data);
 }
 
 void           Response::setSizeData(std::vector<std::string> data)
 {
+  std::cout << "Cotsa" << std::endl;
   for (std::vector<std::string>::iterator it = data.begin(); it != data.end(); ++it)
     {
       _sizeData += (*it).length();
       _sizeData++;
+      std::cout << "COtssaa" << std::endl;
     }
   _sizeData--;
 }
@@ -63,9 +65,9 @@ Account           *Response::getClient()
   return _toClient;
 }
 
-boost::shared_ptr<TCPConnection>           *Response::getSocket()
+boost::shared_ptr<TCPConnection>           &Response::getSocket()
 {
-  return _toSocket;
+  return *_toSocket;
 }
 
 std::string           &Response::getResponse()

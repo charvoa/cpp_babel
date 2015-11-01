@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:40:28 2015 Serge Heitzler
-// Last update Sun Nov  1 16:57:00 2015 Nicolas Girardot
+// Last update Sun Nov  1 17:24:19 2015 Nicolas Girardot
 //
 
 #ifndef _RESPONSE_HH
@@ -24,7 +24,7 @@ class		        Response
 {
 public:
   Response(CommunicationServer answerType, Account *toClient, std::vector<std::string> data);
-  Response(CommunicationServer answerType, boost::shared_ptr<TCPConnection> *toSocket, std::vector<std::string> data);
+  Response(CommunicationServer answerType, boost::shared_ptr<TCPConnection> toSocket, std::vector<std::string> data);
   ~Response();
 
   void           setSizeData(std::vector<std::string> data);

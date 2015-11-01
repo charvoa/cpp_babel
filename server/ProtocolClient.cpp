@@ -1,11 +1,11 @@
-//
+B1;3409;0c//
 // ProtocolClient.cpp for babel in /home/nicolas/rendu/cpp_babel/server
 //
 // Made by Nicolas Girardot
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sun Nov  1 16:48:09 2015 Nicolas Girardot
+// Last update Sun Nov  1 17:55:20 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -29,17 +29,16 @@ void	ProtocolClient::handshake(DataFromClient &fromClient)
   it = g_Server.getNetwork()->getServer()->getList()->begin();
   std::string handshake = fromClient.getData().at(0);
   //short version = boost::lexical_cast<short>(handshake.substr(handshake.find("<"), handshake.find(">") - handshake.find("<")));
+  //std::vector<std::string> data;
+  //Response *response = new Response(CommunicationServer::S_SUCCESS_HANDSHAKE, (*it), data);
+  //  Sender::specialSending(response);
 
-  std::vector<std::string> data;
-  Response *response = new Response(CommunicationServer::S_SUCCESS_HANDSHAKE, (*it), data);
-  Sender::specialSending(response);
-
-  // std::vector<char> std;
-  // std.push_back(101);
-  // std.push_back(0);
-  // std.push_back(0);
-  // std::string str(std.begin(),std.end());
-  // (*it)->asyncWrite(str);
+  std::vector<char> std;
+  std.push_back(101);
+  std.push_back(0);
+  std.push_back(0);
+  std::string str(std.begin(),std.end());
+  (*it)->asyncWrite(str);
 
 
 
@@ -73,7 +72,7 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
 {
   std::string username = fromClient.getData().at(0);
   std::string passwd = fromClient.getData().at(1);
-  short profilePicture = boost::lexical_cast<short>(fromClient.getData().at(2));
+  //short profilePicture = boost::lexical_cast<short>(fromClient.getData().at(2));
   if (g_Server.doesUsernameExist(username))
     {
       std::list<boost::shared_ptr<TCPConnection> >::iterator it;
@@ -84,10 +83,11 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
     }
   else
     {
-      g_Server.addAccount(username, passwd, profilePicture);
+      g_Server.addAccount(username, passwd, 1);
       g_Server.getAccountByUsername(username)->getFormatedContactList();
       this->affectTCPConnectionToAccountWithUsername(username);
     }
+  std::cout << "Working Server Account" << std::endl;
 }
 
 void	ProtocolClient::signin(DataFromClient &fromClient)
@@ -101,6 +101,8 @@ void	ProtocolClient::signin(DataFromClient &fromClient)
     }
   else
     {
+      g_Server.getNetwork()->getServer()->getList()->pop_front();
+      std::cout << "Username does not exist" << std::endl;
       // create error
     }
 }

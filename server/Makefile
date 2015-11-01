@@ -5,7 +5,7 @@
 ## Login   <girard_s@epitech.net>
 ##
 ## Started on  Mon Oct 19 11:47:59 2015 Nicolas Girardot
-## Last update Sun Nov  1 15:10:49 2015 Nicolas Girardot
+## Last update Sun Nov  1 17:10:13 2015 Nicolas Girardot
 ##
 
 MAIN		=	server
@@ -38,10 +38,10 @@ all:		$(EXEC)
 		@printf "\r[\033[2;35mMAKE\033[0m] SPYKE_SERVER\n"
 
 $(MAIN):	$(OBJ_MAIN)
-		@$(CPP) -I /usr/local/include/ -o $@ $^
+		@$(CPP) -o $@ $^ $(LDFLAGS)
 
 %.o:            %.cpp
-		@$(CPP) -I /usr/local/include/ -o $@ -c $<
+		@$(CPP) -o $@ -c $< $(CPPFLAGS)
 
 clean:
 		@$(DEL_FILE) $(OBJ_MAIN)
