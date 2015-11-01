@@ -5,13 +5,15 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Sat Oct 31 17:46:32 2015 Nicolas Girardot
+// Last update Sat Oct 31 22:20:40 2015 Nicolas Girardot
 //
 
 #ifndef _ACCOUNT_HH
 # define _ACCOUNT_HH
 
 #include <string>
+#include <sstream>
+#include <iostream>
 #include <utility>
 #include <map>
 #include "Common/TCPConnection.hh"
@@ -56,7 +58,7 @@ public:
   bool						removeContact(std::string &ID);
   bool						addToFavorite(Account *);
   bool						removeFromFavorite(std::string &);
-  std::vector<std::string>                        &getFormatedContactList();
+  std::vector<std::string>                        getFormatedContactList();
   bool						operator==(Account &);
 
 private:

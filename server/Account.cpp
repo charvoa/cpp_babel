@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Sat Oct 31 17:46:37 2015 Nicolas Girardot
+// Last update Sat Oct 31 22:20:27 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -175,7 +175,7 @@ std::string &Account::getNicknameIfExisting(Account *account)
   return account->getLogin();
 }
 
-std::vector<std::string> &Account::getFormatedContactList()
+std::vector<std::string> Account::getFormatedContactList()
 {
   std::vector<std::string> contactsInformations;
 
@@ -190,6 +190,7 @@ std::vector<std::string> &Account::getFormatedContactList()
       contactsInformations.push_back(std::to_string((*it)->getProfilePictureID()));
       contactsInformations.push_back(std::to_string(this->isIDFavorited((*it)->getID())));
     }
+  return contactsInformations;
 }
 
 void			Account::setLogin(std::string &login)
