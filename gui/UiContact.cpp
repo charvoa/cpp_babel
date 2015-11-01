@@ -5,12 +5,13 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:36:18 2015 Nicolas Charvoz
+// Last update Wed Oct 28 16:24:30 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
 
-UiContact::UiContact(QWidget *parent) : QWidget(parent)
+UiContact::UiContact(MainWidget *main, QWidget *parent) : QWidget(parent),
+							  _main(main)
 {
   this->displayContact();
   connect(&g_PTUser, SIGNAL(contactAdded()), this, SLOT(refreshUI()));

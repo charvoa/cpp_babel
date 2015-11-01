@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:09:51 2015 Nicolas Charvoz
+// Last update Wed Oct 28 16:46:21 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -16,6 +16,8 @@ Conversation::Conversation(const std::string &contact,
 {
   QLabel *name = new QLabel(tr(contact.c_str()), this);
   QLineEdit *textZone = new QLineEdit(this);
+  QPushButton *callButton = new QPushButton;
+  QPushButton *hangupButton = new QPushButton;
 
   QPushButton *sendButton = new QPushButton(tr("Send"), this);
   QTextEdit *messageZoneTmp = new QTextEdit(this);
