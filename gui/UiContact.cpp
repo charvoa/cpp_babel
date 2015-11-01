@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 28 16:24:30 2015 Nicolas Charvoz
+// Last update Sun Nov  1 17:58:12 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -47,7 +47,7 @@ void UiContact::displayContact()
       imgP->setPixmap(profilPic->scaled(240, 240));
       imgP->setGeometry((30 * (i + 1) + 240 * i), (90 + 390 * j),
 			240, 240);
-      newConv = new QPushButton(tr("Chat"), this);
+      newConv = new QPushButton(tr(ss.str().c_str()), this);
       newConv->setGeometry((30 * (i + 1) + 240 * i), (330 + 390 * j),
 			   240, 60);
       newConv->setFocusPolicy(Qt::NoFocus);
@@ -89,7 +89,7 @@ void UiContact::refreshUI()
       imgP->setPixmap(profilPic->scaled(240, 240));
       imgP->setGeometry((30 * (i + 1) + 240 * i), (90 + 390 * j),
 			240, 240);
-      newConv = new QPushButton(tr("Chat"), this);
+      newConv = new QPushButton(tr(ss.str().c_str()), this);
       newConv->setGeometry((30 * (i + 1) + 240 * i), (330 + 390 * j),
 			   240, 60);
       newConv->setFocusPolicy(Qt::NoFocus);
