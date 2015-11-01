@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Mon Oct 12 12:24:36 2015 Nicolas Charvoz
+// Last update Sun Nov  1 14:18:09 2015 Nicolas Charvoz
 //
 
 #ifndef CONVERSATION_HH_
@@ -28,6 +28,7 @@
 # include <sstream>
 # include <iostream>
 # include <fstream>
+# include <ctime>
 
 class Conversation : public QWidget {
 Q_OBJECT
@@ -36,8 +37,15 @@ public:
   explicit Conversation(const std::string &contact, QWidget *parent = 0);
 
 public slots:
+  void functionCall();
+  void functionText();
 private:
+  QPushButton *_callButton;
   std::string _contact;
+  bool _call;
+  QLineEdit *_textZone;
+  QTextEdit *_messageZone;
+  bool _first;
 };
 
 
