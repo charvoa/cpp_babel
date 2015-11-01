@@ -36,10 +36,10 @@ all:		$(EXEC)
 		@printf "\r[\033[2;35mMAKE\033[0m] SPYKE_SERVER\n"
 
 $(MAIN):	$(OBJ_MAIN)
-		@$(CPP) -o $@ $^ $(LDFLAGS)
+		@$(CPP) -I /usr/local/include/ -o $@ $^
 
 %.o:            %.cpp
-		@$(CPP) -o $@ -c $< $(CPPFLAGS)
+		@$(CPP) -I /usr/local/include/ -o $@ -c $<
 
 clean:
 		@$(DEL_FILE) $(OBJ_MAIN)

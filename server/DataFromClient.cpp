@@ -41,6 +41,12 @@ std::vector<std::string> &DataFromClient::getData()
   return (_data);
 }
 
+std::string &DataFromClient::getClientID()
+{
+  return _clientID;
+}
+
+
 void	DataFromClient::DetermineData(const std::string &request)
 {
   std::string copy(request);
