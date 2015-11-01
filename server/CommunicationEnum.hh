@@ -41,18 +41,23 @@ typedef enum CommunicationClient {
 }            CommunicationClient;
 
 typedef enum CommunicationServer {
+  S_SUCCESS = 100,
   S_SUCCESS_HANDSHAKE = 101,
   S_SUCCESS_ON_SIGN = 102,
-  S_ERROR_UNKNOWN = 103,
-  S_ERROR_SIGN = 104,
-  S_ERROR_CALL = 105,
-  S_ERROR_NOT_IMPLEMENTED = 106,
-  S_PING = 107,
-  S_CONTACT_REQUEST = 108,
-  S_CONTACT_INFO = 109,
-  S_CALL_REQUEST = 110,
-  S_SEND_TEXT = 111,
-  S_HANGED_UP = 112,
+  S_ERROR = 103,
+  S_ERROR_HANDSHAKE = 104,
+  S_ERROR_UNKNOWN = 105,
+  S_ERROR_SIGN = 106,
+  S_ERROR_CALL = 107,
+  S_ERROR_NOT_IMPLEMENTED = 108,
+  S_PING = 109,
+  S_CONTACT_REQUEST = 110,
+  S_CONTACT_INFO = 111,
+  S_CALL_REQUEST = 112,
+  S_CALL_ACCEPTED = 113,
+  S_CALL_DECLINED = 114,
+  S_SEND_TEXT = 115,
+  S_HANGED_UP = 116,
   S_SEND_FILE = 130
 }            CommunicationServer;
 

@@ -71,6 +71,7 @@ void  ProtocolClient::affectTCPConnectionToAccountWithUsername(std::string usern
 
 void	ProtocolClient::signup(DataFromClient &fromClient)
 {
+  // CHECKER LA SIZE DU vector<std:string> et renvoyer error si pas la taille qu'il faut
   std::string username = fromClient.getData().at(0);
   std::string passwd = fromClient.getData().at(1);
   short profilePicture = boost::lexical_cast<short>(fromClient.getData().at(2));
@@ -130,7 +131,11 @@ void	ProtocolClient::callRequest(DataFromClient &fromClient)
 
 void	ProtocolClient::hangUp(DataFromClient &fromClient)
 {
-  (void) fromClient;
+  std::string sender = fromClient.getClientID();
+  std::string receiver = fromClient.getData().at(0);
+
+  Response *response = Response(CommunicationServer::S_HANGED_UP, g_Server.getAccountByID(receiver), data);
+  Sender::send(response);
 }
 
 void	ProtocolClient::sendText(DataFromClient &fromClient)
@@ -170,36 +175,36 @@ void	ProtocolClient::declineCall(DataFromClient &fromClient)
 
 void	ProtocolClient::addContact(DataFromClient &fromClient)
 {
-  std::string id = fromClient.getData().at(0);
-  std::string loginAdded = fromClient.getData().at(1);
+  std::string sender = fromClient.getClientID();
+  std::string loginAdded = fromClient.getData().at(0);
 }
 
 void	ProtocolClient::acceptInvitation(DataFromClient &fromClient)
 {
-  std::string idReceiverInvitation = fromClient.getData().at(0);
-  std::string idSenderInvitation = fromClient.getData().at(1);
+  std::string idReceiverInvitation = fromClient.getClientID();
+  std::string idSenderInvitation = fromClient.getData().at(0);
   g_Server.getAccountByID(idReceiverInvitation)->addContact(g_Server.getAccountByID(idSenderInvitation));
   g_Server.getAccountByID(idSenderInvitation)->addContact(g_Server.getAccountByID(idReceiverInvitation));
 }
 
 void	ProtocolClient::declineInvitation(DataFromClient &fromClient)
 {
-  std::string idReceiverInvitation = fromClient.getData().at(0);
-  std::string idSenderInvitation = fromClient.getData().at(1);
+  std::string idReceiverInvitation = fromClient.getClientID();
+  std::string idSenderInvitation = fromClient.getData().at(0);
 }
 
 void	ProtocolClient::modifyStatus(DataFromClient &fromClient)
 {
-  std::string id = fromClient.getData().at(0);
-  //Account::State state = (fromClient.getData().at(1));
+  std::string id = fromClient.getClientID();
+  //Account::State state = (fromClient.getData().at(0));
 
   //g_Server.getAccountByID(id)->setState(state);
 }
 
 void	ProtocolClient::modifyLogin(DataFromClient &fromClient)
 {
-  std::string id = fromClient.getData().at(0);
-  std::string newLogin = fromClient.getData().at(1);
+  std::string id = fromClient.getClientID();
+  std::string newLogin = fromClient.getData().at(0);
   if (g_Server.doesUsernameExist(newLogin))
     {
       // error
@@ -212,41 +217,42 @@ void	ProtocolClient::modifyLogin(DataFromClient &fromClient)
 
 void	ProtocolClient::modifyLocation(DataFromClient &fromClient)
 {
-  std::string id = fromClient.getData().at(0);
-  std::string newLocation = fromClient.getData().at(1);
+  std::string id = fromClient.getClientID();
+  std::string newLocation = fromClient.getData().at(0);
   g_Server.getAccountByID(id)->setLocation(newLocation);
 }
 
 void	ProtocolClient::addToFavorites(DataFromClient &fromClient)
 {
-  std::string id = fromClient.getData().at(0);
-  std::string idFavorited = fromClient.getData().at(1);
+  std::string id = fromClient.getClientID();
+  std::string idFavorited = fromClient.getData().at(0);
   g_Server.getAccountByID(id)->addToFavorite(g_Server.getAccountByID(idFavorited));
 }
 
 void	ProtocolClient::removeFromFavorites(DataFromClient &fromClient)
 {
-  std::string id = fromClient.getData().at(0);
-  std::string idUnfavorited = fromClient.getData().at(1);
+  std::string id = fromClient.getClientID();
+  std::string idUnfavorited = fromClient.getData().at(0);
   g_Server.getAccountByID(id)->removeFromFavorite(idUnfavorited);
 }
 
 void	ProtocolClient::addNickname(DataFromClient &fromClient)
 {
-  std::string id = fromClient.getData().at(0);
-  std::string idNicknamed = fromClient.getData().at(1);
-  std::string newNickname = fromClient.getData().at(2);
+  std::string id = fromClient.getClientID();
+  std::string idNicknamed = fromClient.getData().at(0);
+  std::string newNickname = fromClient.getData().at(1);
   g_Server.getAccountByID(id)->getContactByID(idNicknamed)->setNickname(id, newNickname);
 }
 
 void	ProtocolClient::removeContact(DataFromClient &fromClient)
 {
-  g_Server.getAccountByID(fromClient.getData().at(0))->removeContact(fromClient.getData().at(1));
+  std::string id = fromClient.getClientID();
+  g_Server.getAccountByID(id)->removeContact(fromClient.getData().at(0));
 }
 
 void	ProtocolClient::modifyProfilePicture(DataFromClient &fromClient)
 {
-  std::string id = fromClient.getData().at(0);
+  std::string id = fromClient.getClientID();
   short newProfilePicture = boost::lexical_cast<short>(fromClient.getData().at(1));
   g_Server.getAccountByID(id)->setProfilePicture(newProfilePicture);
   (void) fromClient;
