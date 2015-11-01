@@ -83,7 +83,6 @@ void	ProtocolClient::signin(DataFromClient &fromClient)
     {
       g_Server.getAccountByUsername(username)->getFormatedContactList();
       this->affectTCPConnectionToAccountWithUsername(username);
-        }
     }
   else
     {
