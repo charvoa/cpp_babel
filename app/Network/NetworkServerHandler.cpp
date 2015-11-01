@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  1 05:45:57 2015 Antoine Garcia
+// Last update Sun Nov  1 06:38:41 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -15,7 +15,7 @@
 #include <iostream>
 #include <vector>
 #define HEADER_LENGTH 3
-
+#define SEPARATOR ";"
 NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
 {
   _socket = new QTcpSocket(this);
@@ -76,7 +76,7 @@ void	NetworkServerHandler::readyRead()
 void	NetworkServerHandler::connected()
 {
     handShake();
-    emit userConnected(1);
+    //emit userConnected(1);
 }
 
 void	NetworkServerHandler::connectionError(QAbstractSocket::SocketError)
@@ -84,7 +84,26 @@ void	NetworkServerHandler::connectionError(QAbstractSocket::SocketError)
   emit userConnected(0);
 }
 
+void	NetworkServerHandler::logUser()
+{
+  QByteArray	array;
+  QDataStream	out(&array, QIODevice::WriteOnly);
+  std::string str;
+  str += login;
+  str += SEPARATOR;
+  str += password;
+  out.setVersion(QDataStream::Qt_4_3);
+  out <<  quint8(5) /*<< quint64(0)*/ << quint16(str.size());
+  std::cout << "SIZE : " << str.size() << std::endl;
+  out.writeRawData(str.c_str(), str.size());
+  _socket->write(array);
+}
+
 void	NetworkServerHandler::handshakeSuccess()
 {
   _connected = true;
+  if (type == 0)
+    {
+      logUser();
+    }
 }

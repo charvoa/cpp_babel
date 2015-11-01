@@ -29,13 +29,25 @@ void	ProtocolClient::handshake(DataFromClient &fromClient)
   it = g_Server.getNetwork()->getServer()->getList()->begin();
   std::string handshake = fromClient.getData().at(0);
   //short version = boost::lexical_cast<short>(handshake.substr(handshake.find("<"), handshake.find(">") - handshake.find("<")));
-  std::vector<char> std;
-  std.push_back(101);
-  std.push_back(0);
-  std.push_back(0);
-  std::string str(std.begin(),std.end());
-  std::cout << "Length = " << str.length() << std::endl;
-  (*it)->asyncWrite(str);
+
+  std::vector<std::string> data;
+  Response *response = new Response(CommunicationServer::S_SUCCESS_HANDSHAKE, (*it), data);
+  Sender::specialSending(response);
+
+  // std::vector<char> std;
+  // std.push_back(101);
+  // std.push_back(0);
+  // std.push_back(0);
+  // std::string str(std.begin(),std.end());
+  // (*it)->asyncWrite(str);
+
+
+
+//  std::cout << "Length = " << str.length() << std::endl;
+
+
+
+
 }
 
 void	ProtocolClient::success(DataFromClient &fromClient)
