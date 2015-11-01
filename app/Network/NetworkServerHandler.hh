@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Nov  1 06:24:18 2015 Antoine Garcia
+// Last update Sun Nov  1 07:37:46 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -43,6 +43,7 @@ public:
   void	handShake();
   bool getConnectionStatus() const;
   void	logUser();
+  void	signUser();
 private slots:
   void	readyRead();
   void	connected();

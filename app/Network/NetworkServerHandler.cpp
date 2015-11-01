@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  1 06:38:41 2015 Antoine Garcia
+// Last update Sun Nov  1 08:31:28 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -16,6 +16,7 @@
 #include <vector>
 #define HEADER_LENGTH 3
 #define SEPARATOR ";"
+
 NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
 {
   _socket = new QTcpSocket(this);
@@ -56,6 +57,7 @@ void	NetworkServerHandler::write(const std::string &str)
 
 void	NetworkServerHandler::handShake()
 {
+  std::cout << "HANDSHAKE" << std::endl;
   QByteArray	array =  _request.createRequest(HANDSHAKE);
 
   _socket->write(array);
@@ -84,6 +86,23 @@ void	NetworkServerHandler::connectionError(QAbstractSocket::SocketError)
   emit userConnected(0);
 }
 
+void	NetworkServerHandler::signUser()
+{
+  QByteArray	array;
+  QDataStream	out(&array, QIODevice::WriteOnly);
+  std::string str;
+
+  str += login;
+  str += SEPARATOR;
+  str += password;
+  out.setVersion(QDataStream::Qt_4_3);
+  out << quint8(4) << << quint64(0) << quint16(str.size() + 2);
+  out.writeRawData(str.c_str(), str.size());
+  out.writeRawData(";", strlen(";"));
+  out << quint8(1);
+  _socket->write(array);
+}
+
 void	NetworkServerHandler::logUser()
 {
   QByteArray	array;
@@ -93,17 +112,21 @@ void	NetworkServerHandler::logUser()
   str += SEPARATOR;
   str += password;
   out.setVersion(QDataStream::Qt_4_3);
-  out <<  quint8(5) /*<< quint64(0)*/ << quint16(str.size());
-  std::cout << "SIZE : " << str.size() << std::endl;
+  out <<  quint8(5) << quint64(0) << quint16(str.size());
   out.writeRawData(str.c_str(), str.size());
   _socket->write(array);
 }
 
 void	NetworkServerHandler::handshakeSuccess()
 {
+  std::cout << "HANDSHAKE SUCCESS" << std::endl;
+  emit userConnected(1);
   _connected = true;
   if (type == 0)
     {
       logUser();
     }
+  else {
+    signUser();
+  }
 }
