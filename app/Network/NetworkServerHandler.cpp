@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  1 10:43:56 2015 Nicolas Girardot
+// Last update Sun Nov  1 03:00:15 2015 Antoine Garcia
 // Last update Sun Nov  1 01:04:13 2015 Antoine Garcia
 //
 
@@ -71,6 +71,8 @@ void	NetworkServerHandler::readyRead()
   std::cout << "Is reading" << std::endl;
   // while (_socket->canReadLine())
   //{
+  QByteArray array = _socket->readLine();
+  std::cout << array.size() << std::endl;
   QString line = QString::fromUtf8(_socket->readLine()).trimmed();
   std::cout << line.toUtf8().constData() << std::endl;
   //}
