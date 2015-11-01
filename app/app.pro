@@ -21,6 +21,7 @@ SOURCES += Network/NetworkServerHandler.cpp
 SOURCES += Audio/PTSoundOutput.cpp
 SOURCES += Mutex/Mutex.cpp
 SOURCES += Mutex/MutexLocker.cpp
+SOURCES += Contact/Contact.cpp
 unix {
 LIBS += ../gui/libgui.a
 LIBS += ./libs/libportaudio.a
