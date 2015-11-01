@@ -1,20 +1,21 @@
 //
-// RequestManager.cpp for babel in /home/nicolas/rendu/cpp_babel/server
+// RequestManager.hh for babel in /home/nicolas/rendu/cpp_babel/server
 //
 // Made by Nicolas Girardot
 // Login   <girard_s@epitech.net>
 //
-// Started on  Mon Oct 26 11:07:17 2015 Nicolas Girardot
-// Last update Sat Oct 31 21:27:02 2015 Nicolas Girardot
+// Started on  Mon Oct 26 11:07:14 2015 Nicolas Girardot
+// Last update Sun Nov  1 12:07:02 2015 Nicolas Girardot
 //
 
-#include "DataFromClient.hh"
+#	include "DataFromClient.hh"
 
 DataFromClient::DataFromClient(const std::string &request)
 {
   std::cout << "Request Manager Constructor Beginning" << std::endl;
   DetermineType(request);
   DetermineData(request);
+  DetermineClientID(request);
   std::cout << "Request Manager Constructor End" << std::endl;
   ProtocolClient *proto = new ProtocolClient;
   proto->methodChecker(*this);
@@ -46,6 +47,10 @@ std::string &DataFromClient::getClientID()
   return _clientID;
 }
 
+void	DataFromClient::DetermineClientID(const std::string &request)
+{
+  (void) request;
+}
 
 void	DataFromClient::DetermineData(const std::string &request)
 {

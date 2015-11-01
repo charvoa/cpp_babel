@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:07:14 2015 Nicolas Girardot
-// Last update Sat Oct 31 21:25:08 2015 Nicolas Girardot
+// Last update Sun Nov  1 11:59:04 2015 Nicolas Girardot
 //
 
 #ifndef DATAFROMCLIENT_HH
@@ -29,6 +29,7 @@ public:
   ~DataFromClient();
   void DetermineType(const std::string &);
   void DetermineData(const std::string &);
+  void	DetermineClientID(const std::string &);
   std::vector<std::string> &getData();
   CommunicationClient	getType();
   std::string &getClientID();

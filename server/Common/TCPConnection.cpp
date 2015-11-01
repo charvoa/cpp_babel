@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Sat Oct 31 21:54:30 2015 Nicolas Girardot
+// Last update Sun Nov  1 11:47:59 2015 Nicolas Girardot
 //
 
 #include "TCPConnection.hh"
@@ -27,10 +27,8 @@ void	TCPConnection::asyncWrite(const std::string &message)
   boost::asio::async_write(_socket,
   			   boost::asio::buffer(message),
   			   boost::bind(&TCPConnection::handleWrite, shared_from_this(),
-  				       boost::asio::placeholders::error));
-  //boost::asio::async_write(_socket,
-  //			   boost::asio::buffer(message),
-  //			   &TCPConnection::handleWrite);
+  				       boost::asio::placeholders::error,
+				       boost::asio::placeholders::bytes_transferred));
 }
 
 void TCPConnection::asyncRead()
@@ -51,10 +49,11 @@ void TCPConnection::close()
 
 TCPConnection::TCPConnection(boost::asio::io_service &ioS) : _socket(ioS) {}
 
-void	TCPConnection::handleWrite(const boost::system::error_code& error)
+void	TCPConnection::handleWrite(const boost::system::error_code& error, std::size_t bytes_transferred)
 {
   if (!error)
     asyncRead();
+  std::cout << "Bytes Sent : " << bytes_transferred << std::endl;
 }
 
 void TCPConnection::handleRead(const boost::system::error_code& error)

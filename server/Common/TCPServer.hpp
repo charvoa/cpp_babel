@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 22:15:25 2015 Nicolas Girardot
-// Last update Sat Oct 31 21:56:42 2015 Nicolas Girardot
+// Last update Sun Nov  1 13:45:28 2015 Nicolas Girardot
 //
 
 #ifndef TCPSERVER_HPP_
@@ -66,7 +66,6 @@ private:
     std::cout << "I'm working 50/100" << std::endl;
     if (!error)
       {
-	newConnection->asyncWrite("Welcome to spyke again bitch");
 	std::cout << "Im working biatch" << std::endl;
 	_TCPList.push_back(newConnection);
 	newConnection->asyncRead();
