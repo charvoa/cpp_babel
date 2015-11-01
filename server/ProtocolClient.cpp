@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sun Nov  1 13:45:37 2015 Nicolas Girardot
+// Last update Sun Nov  1 16:48:09 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -76,15 +76,18 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
   short profilePicture = boost::lexical_cast<short>(fromClient.getData().at(2));
   if (g_Server.doesUsernameExist(username))
     {
-      // create error
-        }
+      std::list<boost::shared_ptr<TCPConnection> >::iterator it;
+      it = g_Server.getNetwork()->getServer()->getList()->begin();
+      std::vector<std::string> data;
+      Response *response = new Response(CommunicationServer::S_ERROR_SIGN, (*it), data);
+      Sender::specialSending(response);
+    }
   else
     {
-      // create success
       g_Server.addAccount(username, passwd, profilePicture);
+      g_Server.getAccountByUsername(username)->getFormatedContactList();
       this->affectTCPConnectionToAccountWithUsername(username);
-        }
-  (void) profilePicture;
+    }
 }
 
 void	ProtocolClient::signin(DataFromClient &fromClient)
