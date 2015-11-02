@@ -84,6 +84,7 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
   else
     {
       g_Server.addAccount(username, passwd, 1);
+      g_Server.getAccountByUsername(username)->generateRandomID(4);
       g_Server.getAccountByUsername(username)->getFormatedContactList();
       this->affectTCPConnectionToAccountWithUsername(username);
     }

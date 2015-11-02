@@ -215,3 +215,26 @@ void			Account::setLocation(std::string location)
 {
   _location = location;
 }
+
+void			Account::setID(std::string id)
+{
+  _id = id;
+}
+
+void       Account::generateRandomID(size_t length)
+{
+  std::srand(std::time(0));
+  int random = std::rand();
+  auto randchar = [random]() -> char
+    {
+        const char charset[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz";
+        const size_t maxIndex = (sizeof(charset) - 1);
+        return charset[random % maxIndex];
+    };
+    std::string str(length, 0);
+    std::generate_n(str.begin(), length, randchar);
+    this->setID(str);
+}
