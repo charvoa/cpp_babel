@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 22 21:37:09 2015 Nicolas Girardot
-// Last update Mon Oct 26 15:43:20 2015 Nicolas Girardot
+// Last update Mon Nov  2 16:45:25 2015 Nicolas Girardot
 //
 
 #ifndef VERIFYREQUEST_HH_
@@ -20,6 +20,7 @@ class VerifyRequest
 public:
   VerifyRequest(const std::string &);
   ~VerifyRequest();
+  void	verify(const std::string &request) const;
 };
 
 #endif
