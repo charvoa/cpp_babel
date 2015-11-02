@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:16:36 2015 Serge Heitzler
-// Last update Mon Nov  2 11:21:43 2015 Serge Heitzler
+// Last update Mon Nov  2 11:46:23 2015 Nicolas Girardot
 //
 
 #include <boost/lexical_cast.hpp>
@@ -15,7 +15,7 @@
 Response::Response(CommunicationServer answerType, Account *toClient, std::vector<std::string> data)
 {
   _toClient = toClient;
-  //  this->setSizeData(data);
+  this->setSizeData(data);
   this->setResponse(answerType, data);
 }
 
@@ -31,32 +31,35 @@ void           Response::setSizeData(std::vector<std::string> data)
   std::cout << "Cotsa" << std::endl;
   if (data.size() == 0)
     _sizeData = 0;
-  for (std::vector<std::string>::iterator it = data.begin(); it != data.end(); ++it)
+  else
     {
-      _sizeData += (*it).length();
-      _sizeData++;
-      std::cout << "COtssaa" << std::endl;
+      for (std::vector<std::string>::iterator it = data.begin(); it != data.end(); ++it)
+	{
+	  _sizeData += (*it).length();
+	  _sizeData++;
+	  std::cout << "COtssaa" << std::endl;
+	}
+      _sizeData--;
     }
-  _sizeData--;
 }
 
 void           Response::setResponse(CommunicationServer answerType, std::vector<std::string> data)
 {
   std::bitset<16> bit(_sizeData);
-  _response += boost::lexical_cast<char>(answerType);
+  _response += (char)(answerType);
   _response += boost::lexical_cast<char>(this->extractBitsetValue(0, 7, bit));
   _response += boost::lexical_cast<char>(this->extractBitsetValue(8, 15, bit));
   if (_sizeData == 0)
     ;
   else
-  {
-    for (std::vector<std::string>::iterator it = data.begin(); it != data.end(); ++it)
-      {
-        _response += (*it);
-        _response += CHAR_SEPARATOR;
-      }
+    {
+      for (std::vector<std::string>::iterator it = data.begin(); it != data.end(); ++it)
+	{
+	  _response += (*it);
+	  _response += CHAR_SEPARATOR;
+	}
       _response.pop_back();
-  }
+    }
 }
 
 
