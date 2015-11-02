@@ -59,7 +59,9 @@ public:
   bool						addToFavorite(Account *);
   bool						removeFromFavorite(std::string &);
   std::vector<std::string>                        getFormatedContactList();
+  void            generateRandomID(size_t length);
   bool						operator==(Account &);
+  void			      setID(std::string id);
 
 private:
 

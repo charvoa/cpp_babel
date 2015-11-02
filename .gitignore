@@ -30,3 +30,5 @@ ui_*.h
 #QtCtreator Qml
 *.qmlproject.user
 *.qmlproject.user.*
+
+./server/Makefile
