@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:35:19 2015 Nicolas Charvoz
+// Last update Wed Oct 28 16:43:28 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -19,7 +19,6 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
   QVBoxLayout *mainLayout = new QVBoxLayout;
   QTabBar *tb;
-  int conv = 3;
 
   _tabWidget = new QTabWidget;
   tb = _tabWidget->tabBar();
@@ -28,18 +27,10 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
   setWindowTitle(tr("Babel"));
 
   _tabWidget->addTab(new Home(), tr("Home"));
-  _tabWidget->addTab(new UiContact(), tr("Contact"));
+  _tabWidget->addTab(new UiContact(this), tr("Contact"));
 
   std::ostringstream oss;
-  while (conv >= 0)
-    {
-      oss.str("");
-      oss.clear();
-      oss << "Number" << conv;
-      std::string var = oss.str();
-      _tabWidget->addTab(new Conversation(var), tr(var.c_str()));
-      conv--;
-    }
+
   _tabWidget->setTabsClosable(true);
   connect(_tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 

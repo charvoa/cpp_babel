@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:51:14 2015 Serge Heitzler
-// Last update Sat Oct 31 22:09:05 2015 Serge Heitzler
+// Last update Sun Nov  1 13:07:19 2015 Serge Heitzler
 //
 
 #ifndef _PROTOCOLSERVER_HH
@@ -14,7 +14,7 @@
 #include <string>
 #include "DataToClient.hh"
 
-class		        ProtocolServer : public AProtocol
+class		        ProtocolServer
 {
 
   ProtocolServer();

@@ -1,19 +1,20 @@
 //
-// RequestManager.cpp for babel in /home/nicolas/rendu/cpp_babel/server
+// RequestManager.hh for babel in /home/nicolas/rendu/cpp_babel/server
 //
 // Made by Nicolas Girardot
 // Login   <girard_s@epitech.net>
 //
-// Started on  Mon Oct 26 11:07:17 2015 Nicolas Girardot
-// Last update Sat Oct 31 21:27:02 2015 Nicolas Girardot
+// Started on  Mon Oct 26 11:07:14 2015 Nicolas Girardot
+// Last update Sun Nov  1 17:35:29 2015 Nicolas Girardot
 //
 
-#include "DataFromClient.hh"
+#	include "DataFromClient.hh"
 
 DataFromClient::DataFromClient(const std::string &request)
 {
   std::cout << "Request Manager Constructor Beginning" << std::endl;
   DetermineType(request);
+  DetermineClientID(request);
   DetermineData(request);
   std::cout << "Request Manager Constructor End" << std::endl;
   ProtocolClient *proto = new ProtocolClient;
@@ -41,9 +42,35 @@ std::vector<std::string> &DataFromClient::getData()
   return (_data);
 }
 
+std::string &DataFromClient::getClientID()
+{
+  return _clientID;
+}
+
+void	DataFromClient::DetermineClientID(const std::string &request)
+{
+  std::bitset<8> a(request.at(1));
+  std::bitset<8> b(request.at(2));
+  std::bitset<8> c(request.at(3));
+  std::bitset<8> d(request.at(4));
+
+  unsigned long i = a.to_ulong();
+  unsigned char j = static_cast<unsigned char>(i);
+  _clientID += j;
+  i = b.to_ulong();
+  j = static_cast<unsigned char>(i);
+  _clientID += j;
+  i = c.to_ulong();
+  j = static_cast<unsigned char>(i);
+  _clientID += j;
+  i = d.to_ulong();
+  j = static_cast<unsigned char>(i);
+  _clientID += j;
+}
+
 void	DataFromClient::DetermineData(const std::string &request)
 {
   std::string copy(request);
-  copy.erase(0,3);
+  copy.erase(0,7);
   boost::split(_data, copy, boost::is_any_of(";"));
 }

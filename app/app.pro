@@ -12,12 +12,16 @@ HEADERS += Thread.hh
 HEADERS += Network/NetworkServerHandler.hh
 HEADERS += User/PTUser.hh
 HEADERS += Network/TCPProtocolHelper.hh
+HEADERS += Mutex/Mutex.hh
 
-SOURCES  += Network/TCPProtocolHelper.cpp
+SOURCES += Network/TCPProtocolHelper.cpp
 SOURCES += main.cpp
 SOURCES += User/PTUser.cpp
 SOURCES += Network/NetworkServerHandler.cpp
 SOURCES += Audio/PTSoundOutput.cpp
+SOURCES += Mutex/Mutex.cpp
+SOURCES += Mutex/MutexLocker.cpp
+SOURCES += Contact/Contact.cpp
 unix {
 LIBS += ../gui/libgui.a
 LIBS += ./libs/libportaudio.a

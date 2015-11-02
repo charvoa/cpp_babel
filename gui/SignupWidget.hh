@@ -5,7 +5,7 @@
 // Signup   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Sun Oct 25 01:22:25 2015 Nicolas Charvoz
+// Last update Sun Nov  1 17:00:49 2015 Nicolas Charvoz
 //
 
 #ifndef SIGNUPWIDGET_HH_
@@ -36,11 +36,12 @@ Q_OBJECT
 public:
   explicit SignupWidget(QWidget *parent = 0);
   void clearLayout(QLayout*);
-  void validateSignup(int);
   void displayButton();
   void refreshUI();
+
 public slots:
 
+  void canDisplayHome(int error);
   void checkSignup();
   void errorString(QString er) {
     std::cout << "Error : " << er.toUtf8().constData() << std::endl;

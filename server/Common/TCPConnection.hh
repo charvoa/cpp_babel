@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Fri Oct 30 14:02:23 2015 Nicolas Girardot
-// Last update Sat Oct 31 21:42:55 2015 Nicolas Girardot
+// Last update Sun Nov  1 11:44:54 2015 Nicolas Girardot
 //
 
 #ifndef TCPCONNECTION_HH
@@ -42,7 +42,7 @@ public:
 
 private:
   TCPConnection(boost::asio::io_service &ioS);
-  void	handleWrite(const boost::system::error_code &);
+  void	handleWrite(const boost::system::error_code &, std::size_t);
   void	handleRead(const boost::system::error_code &);
 };
 

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 28 15:26:00 2015 Nicolas Charvoz
+// Last update Sun Nov  1 18:14:54 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -20,6 +20,7 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
   /* COMBO BOX AVATAR */
   _avatarCombo = new QComboBox(this);
 
+  connect(&g_PTUser, SIGNAL(canDisplayHome(int)), this, SLOT(canDisplayHome(int)));
   std::stringstream ss;
   for (int i = 1; i < 8; i++)
     {
@@ -136,30 +137,29 @@ void SignupWidget::clearLayout(QLayout *layout)
     }
 }
 
-void SignupWidget::validateSignup(int error)
+void SignupWidget::canDisplayHome(int error)
 {
   QMessageBox msgBox;
-  bool _okClicked = false;
-  LoginWidget *login;
-  login = new LoginWidget();
+  MainWidget *main;
+  main = new MainWidget();
 
-  QFile File2("./gui/stylesheetLogin.qss");
+  QFile File2("./gui/stylesheet.qss");
   File2.open(QFile::ReadOnly);
   QString StyleSheet2 = QLatin1String(File2.readAll());
 
   /* Applying it */
-  login->setStyleSheet(StyleSheet2);
+  main->setStyleSheet(StyleSheet2);
 
   if (error == 1)
     {
       msgBox.setText("Yeah ! You're part of the team now :)");
       msgBox.exec();
-      login->show();
+      main->show();
       deleteLater();
     }
   else
     {
-      msgBox.setText("Oh no it didn't work :'(");
+      msgBox.setText("Oh no it didn't work ! Try again ! :'(");
       msgBox.exec();
     }
 }
@@ -179,14 +179,27 @@ void SignupWidget::checkSignup()
   _passString = pass.toUtf8().constData();
   _cString = c.toUtf8().constData();
 
-  _editPassword->clear();
-  _editC->clear();
+  if (_userString == ""|| _passString == "" || _cString == "")
+    {
+      QMessageBox *msgBox = new QMessageBox(this);
 
-  QString cb = _avatarCombo->currentText();
+      msgBox->setText("You must enter valid character in the fileds");
+      msgBox->exec();
+    }
+  else
+    {
+      _editPassword->clear();
+      _editC->clear();
 
-  this->clearLayout(_mainLayout);
-  _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
+      QString cb = _avatarCombo->currentText();
 
-  g_PTUser.signup(_userString, _passString, _cString);
+      std::string cbString = cb.toUtf8().constData();
+
+      std::cout << "He chose " << cbString.back() << std::endl;
+
+      this->clearLayout(_mainLayout);
+      _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
+      g_PTUser.signup(_userString, _passString, _cString);
+    }
   /* ADD AVATAR CHOICE IN THE FUNCTION */
 }
