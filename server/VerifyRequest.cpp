@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 22 21:48:58 2015 Nicolas Girardot
-// Last update Sun Nov  1 17:35:45 2015 Nicolas Girardot
+// Last update Mon Nov  2 16:48:49 2015 Nicolas Girardot
 //
 
 #include "VerifyRequest.hh"
@@ -14,28 +14,27 @@
 
 VerifyRequest::VerifyRequest(const std::string &request)
 {
-  std::cout << "VerifyRequest Constructor Begining" << std::endl;
-
-  std::bitset<8> first8(request.at(5));
-  std::bitset<8> second8(request.at(6));
-
-  std::bitset<16> whole(first8.to_string() + second8.to_string());
-  std::cout << "Request official size = " << whole.to_ulong() << " ; Request Non Official size = " << request.length() - HEADER_SIZE << std::endl;
-  if ((request.length() - HEADER_SIZE) == whole.to_ulong())
-    {
-      std::cout << "OK" << std::endl;
-      DataFromClient *manag = new DataFromClient(request);
-      (void) manag;
-    }
-  else
-    {
-      std::cout << "not OK" << std::endl;
-    }
-
-  std::cout << "VerifyRequest Constructor End" << std::endl;
+  verify(request);
 }
 
 VerifyRequest::~VerifyRequest()
 {
 
+}
+
+void	VerifyRequest::verify(const std::string &request) const
+{
+  std::bitset<8> first8(request.at(5));
+  std::bitset<8> second8(request.at(6));
+  std::bitset<16> whole(first8.to_string() + second8.to_string());
+
+  if ((request.length() - HEADER_SIZE) == whole.to_ulong())
+    {
+      DataFromClient *manag = new DataFromClient(request);
+      (void)manag;
+    }
+  else
+    {
+
+    }
 }

@@ -6,6 +6,11 @@ SUBDIRS += app
 app.depends = gui
 
 unix {
+QMAKE_CXX = g++.4.9
+}
+QMAKE_CXXFLAGS += -std=c++11
+
+unix {
 clean.target = clean
 clean.commands = rm -f */*.o
 clean.commands += rm -f */*/*.o

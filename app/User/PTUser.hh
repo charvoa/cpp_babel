@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Mon Nov  2 14:35:12 2015 Nicolas Charvoz
+// Last update Mon Nov  2 17:36:01 2015 Nicolas Charvoz
 //
 
 #ifndef PTUSER_HH_
@@ -15,6 +15,7 @@
 # include <iostream>
 # include <list>
 # include <string>
+# include <regex>
 # include "../Contact/Contact.hh"
 # include "../Network/NetworkServerHandler.hh"
 
@@ -59,6 +60,9 @@ public:
   void signup(const std::string &username, const std::string &password,
 	      const std::string &verify, const std::string &ip,
 	      char avatar = '1');
+private:
+  bool checkIP(std::string const&) const;
+
 };
 
 extern PTUser g_PTUser;
