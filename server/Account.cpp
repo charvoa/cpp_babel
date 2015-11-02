@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Mon Nov  2 16:39:52 2015 Nicolas Girardot
+// Last update Mon Nov  2 18:24:35 2015 Nicolas Charvoz
 //
 
 #include "Account.hh"
@@ -216,7 +216,7 @@ void			Account::setLocation(std::string location)
   _location = location;
 }
 
-void			Account::setID(std::string id)
+void			Account::setID(const std::string &id)
 {
   _id = id;
 }

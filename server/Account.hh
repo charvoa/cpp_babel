@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Sat Oct 31 22:20:40 2015 Nicolas Girardot
+// Last update Mon Nov  2 18:23:59 2015 Nicolas Charvoz
 //
 
 #ifndef _ACCOUNT_HH
@@ -61,7 +61,7 @@ public:
   std::vector<std::string>                        getFormatedContactList();
   void            generateRandomID(size_t length);
   bool						operator==(Account &);
-  void			      setID(std::string id);
+  void			      setID(const std::string &id);
 
 private:
 
@@ -74,7 +74,7 @@ private:
   std::map<std::string,std::string>	_nicknames;
   std::vector<Account*>				_contactList;
   std::vector<Account*>				_favoriteList;
-  const std::string           _id;
+  std::string           _id;
 };
 
 #endif /* !ACCOUNT_HH_ */

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Mon Nov  2 18:03:14 2015 Nicolas Charvoz
+// Last update Mon Nov  2 18:32:51 2015 Nicolas Charvoz
 //
 
 #ifndef PTUSER_HH_
@@ -22,6 +22,7 @@
 
 # define PASSWORD_DONT_MATCH 3001
 # define IP_PROBLEM 3002
+# define NO_ERROR 1
 
 
 class PTUser: public QObject

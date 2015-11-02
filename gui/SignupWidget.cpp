@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Nov  2 18:02:49 2015 Nicolas Charvoz
+// Last update Mon Nov  2 18:32:40 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -185,7 +185,7 @@ void SignupWidget::canDisplayHome(int error)
   /* Applying it */
   main->setStyleSheet(StyleSheet2);
 
-  if (error == 1)
+  if (error == NO_ERROR)
     {
       msgBox.setText("Yeah ! You're part of the team now :)");
       msgBox.exec();
