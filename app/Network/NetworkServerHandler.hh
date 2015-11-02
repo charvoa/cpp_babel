@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Mon Nov  2 02:47:36 2015 Antoine Garcia
+// Last update Mon Nov  2 07:49:19 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -51,6 +51,7 @@ private slots:
   void	connectionError(QAbstractSocket::SocketError);
   void	handshakeSuccess();
   void	loginSuccess();
+  void	loginError();
 };
 
 #endif
