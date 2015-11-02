@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Mon Nov  2 11:49:29 2015 Nicolas Girardot
+// Last update Mon Nov  2 13:55:36 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -60,7 +60,9 @@ void  ProtocolClient::affectTCPConnectionToAccountWithUsername(std::string usern
   std::list<boost::shared_ptr<TCPConnection> >::iterator it;
 
   it = g_Server.getNetwork()->getServer()->getList()->begin();
+  std::cout << "22" << std::endl;
   g_Server.getAccountByUsername(username)->setSocket((*it));
+  std::cout << "23" << std::endl;
   g_Server.getNetwork()->getServer()->getList()->pop_front();
 }
 
@@ -98,9 +100,14 @@ void	ProtocolClient::signin(DataFromClient &fromClient)
     {
       std::list<boost::shared_ptr<TCPConnection> >::iterator it;
       it = g_Server.getNetwork()->getServer()->getList()->begin();
+      std::cout << "In Signing IF1" << std::endl;
       this->affectTCPConnectionToAccountWithUsername(username);
+      std::cout << "In Signing IF2" << std::endl;
       Response *response = new Response(CommunicationServer::S_SUCCESS_ON_SIGN, (*it), g_Server.getAccountByUsername(username)->getFormatedContactList());
+      std::cout << "In Signing IF3" << std::endl;
       Sender::specialSending(response);
+      std::cout << "In Signing IF4" << std::endl;
+
     }
   else
     {

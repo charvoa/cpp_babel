@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Mon Nov  2 02:47:53 2015 Antoine Garcia
+// Last update Mon Nov  2 14:12:33 2015 Nicolas Girardot
 //
 
 #include "NetworkServerHandler.hh"
@@ -110,6 +110,7 @@ void	NetworkServerHandler::logUser()
   QByteArray	array;
   QDataStream	out(&array, QIODevice::WriteOnly);
   std::string str;
+  std::cout << "Log User is being called" << std::endl;
   str += login;
   str += SEPARATOR;
   str += password;
