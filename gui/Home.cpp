@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Wed Oct 28 16:43:04 2015 Nicolas Charvoz
+// Last update Mon Nov  2 11:44:04 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
@@ -77,7 +77,16 @@ void Home::addFriend()
   QString friendToAdd = _addFriend->text();
   std::string _friendString = friendToAdd.toUtf8().constData();
 
-  _addFriend->clear();
+  if (_friendString != "")
+    {
+      _addFriend->clear();
+      g_PTUser.currentUser().addContact();
+    }
+  else
+    {
+      QMessageBox msgBox;
 
-  g_PTUser.currentUser().addContact();
+      msgBox.setText("Oh oh, you must write a valid name in the box !");
+      msgBox.exec();
+    }
 }

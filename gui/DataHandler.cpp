@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Wed Oct 21 17:16:51 2015 Nicolas Charvoz
-// Last update Sun Nov  1 19:02:55 2015 Nicolas Charvoz
+// Last update Mon Nov  2 11:40:51 2015 Nicolas Charvoz
 //
 
 #include "DataHandler.hh"
@@ -103,7 +103,7 @@ int DataHandler::exec()
 
   // the HTTP request
   QNetworkRequest req(QUrl(tr(query)));
-  QNetworkReply *reply = _mgr->get(req);
+  _mgr->get(req);
 
   //  eventLoop.exec(); // blocks stack until "finished()" has been called
 

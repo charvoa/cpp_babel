@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Nov  1 18:14:54 2015 Nicolas Charvoz
+// Last update Mon Nov  2 14:35:08 2015 Nicolas Charvoz
 //
 
 #include "SignupWidget.hh"
@@ -17,10 +17,12 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
 {
   _buttons = new QDialogButtonBox(this);
 
+  _dispIp = false;
   /* COMBO BOX AVATAR */
   _avatarCombo = new QComboBox(this);
 
   connect(&g_PTUser, SIGNAL(canDisplayHome(int)), this, SLOT(canDisplayHome(int)));
+
   std::stringstream ss;
   for (int i = 1; i < 8; i++)
     {
@@ -39,7 +41,7 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
   _login = false;
   _mainLayout = new QGridLayout;
   setFixedSize(1024, 768);
-  setWindowTitle(tr("Signup to Babel"));
+  setWindowTitle(tr("Signup to Spyke"));
 
   _editUsername = new QLineEdit(this);
 
@@ -53,11 +55,17 @@ SignupWidget::SignupWidget(QWidget *parent) : QWidget(parent)
   _editC->setEchoMode(QLineEdit::Password);
   _editC->setPlaceholderText(tr("Confirm Password"));
 
+  _editIp = new QLineEdit(this);
+  _editIp->setText(tr("51.254.139.53:4040"));
+  _editIp->setPlaceholderText(tr("IP:Port"));
+
   _mainLayout->addWidget(_avatarCombo, 0, 0);
   _mainLayout->addWidget(_editUsername, 1, 0);
   _mainLayout->addWidget(_editPassword, 2, 0);
   _mainLayout->addWidget(_editC, 3, 0);
+  _mainLayout->addWidget(_editIp, 4, 0);
 
+  _editIp->hide();
   this->displayButton();
   setLayout(_mainLayout);
 }
@@ -95,27 +103,38 @@ void SignupWidget::refreshUI()
   _editPassword->setPlaceholderText(tr("Password"));
   _editC->setPlaceholderText(tr("Confirm Password"));
 
+  _editIp = new QLineEdit(this);
+  _editIp->setText(tr("51.254.139.53:4040"));
+  _editIp->setPlaceholderText(tr("IP:Port"));
+
   _mainLayout->addWidget(_avatarCombo, 0, 0);
   _mainLayout->addWidget(_editUsername, 1, 0);
   _mainLayout->addWidget(_editPassword, 2, 0);
   _mainLayout->addWidget(_editC, 3, 0);
+  _mainLayout->addWidget(_editIp, 4, 0);
 
+  _editIp->hide();
   this->displayButton();
 }
 
 void SignupWidget::displayButton()
 {
+  QPushButton *b = new QPushButton(tr("Expert mode"), this);
+
+  b->setStyleSheet("background-color: #1DAEF1");
   _buttons->addButton(QDialogButtonBox::Ok);
   _buttons->addButton(QDialogButtonBox::Cancel);
   _buttons->button(QDialogButtonBox::Ok)->setText(tr("Signup"));
   _buttons->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
+  _buttons->addButton(b, QDialogButtonBox::ActionRole);
 
+  connect(b, SIGNAL(released()), this, SLOT(displayIP()));
   connect(_buttons->button(QDialogButtonBox::Cancel), SIGNAL(released()),
 	  this, SLOT(close()));
   connect(_buttons->button(QDialogButtonBox::Ok), SIGNAL(released()),
 	  this, SLOT(checkSignup()));
 
-  _mainLayout->addWidget(_buttons, 4, 0, 1, 2);
+  _mainLayout->addWidget(_buttons, 5, 0, 1, 2);
 }
 
 void SignupWidget::clearLayout(QLayout *layout)
@@ -134,6 +153,22 @@ void SignupWidget::clearLayout(QLayout *layout)
 	delete item->widget();
       }
     delete item;
+    }
+}
+
+void SignupWidget::displayIP()
+{
+  if (_dispIp)
+    {
+      _editIp->hide();
+      _editIp->setText(tr("51.254.139.53:4040"));
+      _dispIp = false;
+    }
+  else
+    {
+      _editIp->setText(tr("51.254.139.53:4040"));
+      _editIp->show();
+      _dispIp = true;
     }
 }
 
@@ -157,18 +192,32 @@ void SignupWidget::canDisplayHome(int error)
       main->show();
       deleteLater();
     }
+  else if (error == PASSWORD_DONT_MATCH)
+    {
+      msgBox.setText("The password don't match !");
+      msgBox.exec();
+      this->refreshUI();
+      return;
+    }
   else
     {
       msgBox.setText("Oh no it didn't work ! Try again ! :'(");
       msgBox.exec();
+      this->refreshUI();
+      return;
     }
 }
 
 void SignupWidget::checkSignup()
 {
+  std::string _userString;
+  std::string _passString;
+  std::string _cString;
+  std::string _ipString;
   QString user = _editUsername->text();
   QString pass = _editPassword->text();
   QString c = _editC->text();
+  QString ip = _editIp->text();
   QMovie *movie = new QMovie("./gui/ring.gif");
   QLabel *processLabel = new QLabel(this);
 
@@ -178,8 +227,9 @@ void SignupWidget::checkSignup()
   _userString = user.toUtf8().constData();
   _passString = pass.toUtf8().constData();
   _cString = c.toUtf8().constData();
+  _ipString = ip.toUtf8().constData();
 
-  if (_userString == ""|| _passString == "" || _cString == "")
+  if (_userString == ""|| _passString == "" || _cString == "" || _ipString == "")
     {
       QMessageBox *msgBox = new QMessageBox(this);
 
@@ -199,7 +249,8 @@ void SignupWidget::checkSignup()
 
       this->clearLayout(_mainLayout);
       _mainLayout->addWidget(processLabel, 0, 0, Qt::AlignCenter);
-      g_PTUser.signup(_userString, _passString, _cString);
+      g_PTUser.signup(_userString, _passString, _cString, _ipString,
+		      cbString.back());
     }
   /* ADD AVATAR CHOICE IN THE FUNCTION */
 }

@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Mon Nov  2 02:27:24 2015 Antoine Garcia
+// Last update Mon Nov  2 05:22:33 2015 Antoine Garcia
 //
 
 #include "TCPProtocolHelper.hh"
@@ -19,7 +19,7 @@ TCPProtocolHelper::TCPProtocolHelper()
   functions[HANDSHAKE] = &TCPProtocolHelper::createHandshake;
   //handle Methods
   handleFunctions[HANDSHAKESUCCESS] = &TCPProtocolHelper::handleHandshake;
-  handleFunctions[ERRORLOGIN] = &TCPProtocolHelper::handleLogin;
+  handleFunctions[SUCCESSLOGIN] = &TCPProtocolHelper::handleLogin;
   //  _clientID = g_PTUser.currentUser().getID();
   _clientID = 4;
 }
