@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 26 07:24:39 2015 Antoine Garcia
-// Last update Sun Nov  1 16:20:06 2015 Nicolas Charvoz
+// Last update Mon Nov  2 10:49:29 2015 Nicolas Charvoz
 //
 
 #ifndef CONTACT_HH_
@@ -26,6 +26,15 @@ public:
   Contact(std::string username, std::string ip, std::string location,
 	  int status, int id, int fav = 0);
   ~Contact();
+  const Contact &getContact() const;
+  Contact &getContact();
+  std::string getName() const;
+  std::string getIP() const;
+  std::string getLocation() const;
+  int getStatus() const;
+  int getPic() const;
+  bool isFav() const;
+
 };
 
 #endif
