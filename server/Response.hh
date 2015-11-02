@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:40:28 2015 Serge Heitzler
-// Last update Sun Nov  1 17:24:19 2015 Nicolas Girardot
+// Last update Mon Nov  2 14:47:30 2015 Serge Heitzler
 //
 
 #ifndef _RESPONSE_HH
@@ -13,7 +13,6 @@
 
 #include <string>
 #include <vector>
-#include "ProtocolServer.hh"
 #include "Account.hh"
 #include "Common/TCPConnection.hh"
 #include "CommunicationEnum.hh"
@@ -33,6 +32,7 @@ public:
   Account               *getClient();
   TCPConnection::pointer &getSocket();
   std::string           &getResponse();
+  int extractBitsetValue(int startBit, int endBit, std::bitset<16> dataContainer);
 
 private:
 

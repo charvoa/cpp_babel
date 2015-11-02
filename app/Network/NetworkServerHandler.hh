@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Nov  1 07:37:46 2015 Antoine Garcia
+// Last update Mon Nov  2 02:47:36 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -28,6 +28,7 @@ private:
   unsigned int _port;
   bool		_connected;
   TCPProtocolHelper	_request;
+  QByteArray		_read;
 signals:
   void	userConnected(int check);
 public:
@@ -49,6 +50,7 @@ private slots:
   void	connected();
   void	connectionError(QAbstractSocket::SocketError);
   void	handshakeSuccess();
+  void	loginSuccess();
 };
 
 #endif

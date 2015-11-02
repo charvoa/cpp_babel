@@ -5,7 +5,7 @@
 // Login   <louis@epitech.net>
 //
 // Started on  Sun Nov  1 04:52:22 2015 Louis Audibert
-// Last update Sun Nov  1 18:03:16 2015 Louis Audibert
+// Last update Mon Nov  2 01:34:27 2015 Antoine Garcia
 //
 
 #include "NetworkClientHandler.hh"
@@ -16,14 +16,8 @@
 
 NetworkClientHandler::NetworkClientHandler(QObject *parent) : parent(parent)
 {
-  std::cout << "Entering NetworkClientHandler constructor" << std::endl;
   _socket = new QUdpSocket(this);
-  std::cout << "creating QUDP socket" << std::endl;
   _connected = false;
-  _socket->bind(QHostAddress::LocalHost, 1234);
-  std::cout << "binding socket" << std::endl;
-  connect(_socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
-  std::cout << "socket connected" << std::endl;
 }
 
 NetworkClientHandler::~NetworkClientHandler()
@@ -55,7 +49,8 @@ void NetworkClientHandler::readyRead()
 
 int NetworkClientHandler::start(const std::string &host, unsigned int port)
 {
-
+  _socket->bind(QHostAddress::Any, port);
+  connect(_socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 }
 
 void NetworkClientHandler::setHost(const std::string &host)

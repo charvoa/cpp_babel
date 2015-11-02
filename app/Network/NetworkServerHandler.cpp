@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  1 17:52:53 2015 Nicolas Girardot
+// Last update Mon Nov  2 05:24:13 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -25,6 +25,7 @@ NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
   connect(_socket, SIGNAL(connected()), this, SLOT(connected()));
   connect(_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(connectionError(QAbstractSocket::SocketError)));
   connect(&_request, SIGNAL(handshakeSuccess()), this, SLOT(handshakeSuccess()));
+  connect(&_request, SIGNAL(loginSuccess()), this, SLOT (loginSuccess()));
 }
 
 NetworkServerHandler::~NetworkServerHandler()
@@ -71,8 +72,8 @@ bool	NetworkServerHandler::getConnectionStatus() const
 void	NetworkServerHandler::readyRead()
 {
   std::cout << "Is reading" << std::endl;
-  QByteArray array = _socket->readLine();
-  _request.handleRequest(array[0]);
+  _read = _socket->readLine();
+  _request.handleRequest(_read[0]);
 }
 
 void	NetworkServerHandler::connected()
@@ -109,6 +110,7 @@ void	NetworkServerHandler::logUser()
   QByteArray	array;
   QDataStream	out(&array, QIODevice::WriteOnly);
   std::string str;
+  std::cout << "Log User is being called" << std::endl;
   str += login;
   str += SEPARATOR;
   str += password;
@@ -121,7 +123,6 @@ void	NetworkServerHandler::logUser()
 void	NetworkServerHandler::handshakeSuccess()
 {
   std::cout << "HANDSHAKE SUCCESS" << std::endl;
-  emit userConnected(1);
   _connected = true;
   if (type == 0)
     {
@@ -130,4 +131,9 @@ void	NetworkServerHandler::handshakeSuccess()
   else {
     signUser();
   }
+}
+
+void	NetworkServerHandler::loginSuccess()
+{
+    emit userConnected(1);
 }

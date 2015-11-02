@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Sun Nov  1 18:04:03 2015 Nicolas Girardot
+// Last update Mon Nov  2 13:58:55 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
@@ -25,9 +25,10 @@ Server::~Server()
 
 bool      Server::doesUsernameExist(std::string &username)
 {
+  if (_allAccounts.empty())
+    return false;
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
-      std::cout << "First Username is " << username << " : Second username is " << (*it)->getLogin() << std::endl;
       if ((*it)->getLogin() == username)
         return true;
     }
@@ -36,6 +37,8 @@ bool      Server::doesUsernameExist(std::string &username)
 
 bool      Server::isPasswdCorrectForAccount(std::string &username, std::string &passwd)
 {
+  if (_allAccounts.empty())
+    return false;
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
       if ((*it)->getLogin() == username && (*it)->getPasswd() == passwd)
@@ -50,8 +53,7 @@ void      Server::addAccount(std::string &login, std::string &passwd, short prof
 }
 
 Account   *Server::getAccountByID(std::string &ID)
-{
-  for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
+{ for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
       if ((*it)->getID() == ID)
         return (*it);
@@ -63,6 +65,7 @@ Account   *Server::getAccountByUsername(std::string &username)
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
+      std::cout << ";:;:;:;;:;::; Get login = " << (*it)->getLogin() << " ;; User is " << username << std::endl;
       if ((*it)->getLogin() == username)
         return (*it);
     }

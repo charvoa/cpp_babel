@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Sun Nov  1 18:08:20 2015 Nicolas Girardot
+// Last update Mon Nov  2 11:52:51 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -103,6 +103,8 @@ bool				Account::operator==(Account &bis)
 
 bool   			Account::isAlreadyAContactOf(Account *contactAdded)
 {
+  if (_contactList.empty())
+    return false;
   for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
       if ((*it) == contactAdded)
@@ -123,6 +125,8 @@ bool				Account::addContact(Account *contactAdded)
 
 bool				Account::removeContact(std::string &ID)
 {
+  if (_contactList.empty())
+    return false;
   for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
       if ((*it)->getID() == ID)
@@ -144,6 +148,8 @@ bool                        Account::addToFavorite(Account *favorited)
 
 bool                        Account::removeFromFavorite(std::string &ID)
 {
+  if (_favoriteList.empty())
+    return false;
   for (std::vector<Account*>::iterator it = _favoriteList.begin(); it != _favoriteList.end(); ++it)
     {
       if ((*it)->getID() == ID)
@@ -182,6 +188,9 @@ std::vector<std::string> Account::getFormatedContactList()
 
   contactsInformations.push_back(this->getID());
   contactsInformations.push_back(std::to_string(boost::lexical_cast<char>((_contactList.size()))));
+
+  if (_contactList.empty())
+    return contactsInformations;
   for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
       contactsInformations.push_back((*it)->getID());

@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Sun Nov  1 17:41:42 2015 Nicolas Girardot
+// Last update Mon Nov  2 05:22:33 2015 Antoine Garcia
 //
 
 #include "TCPProtocolHelper.hh"
@@ -18,7 +18,8 @@ TCPProtocolHelper::TCPProtocolHelper()
 {
   functions[HANDSHAKE] = &TCPProtocolHelper::createHandshake;
   //handle Methods
-  handleFunctions[HANDSHAKE] = &TCPProtocolHelper::handleHandshake;
+  handleFunctions[HANDSHAKESUCCESS] = &TCPProtocolHelper::handleHandshake;
+  handleFunctions[SUCCESSLOGIN] = &TCPProtocolHelper::handleLogin;
   //  _clientID = g_PTUser.currentUser().getID();
   _clientID = 4;
 }
@@ -34,8 +35,8 @@ QByteArray	TCPProtocolHelper::createRequest(ProtocolType type)
 
 void		TCPProtocolHelper::handleRequest(qint8	type)
 {
-  (void)type;
-  _handlePtr = handleFunctions[HANDSHAKE];
+  protocolClient	protocolType = static_cast<protocolClient>(type);
+  _handlePtr = handleFunctions[protocolType];
   return (this->*_handlePtr)();
 }
 
@@ -79,4 +80,9 @@ QByteArray	TCPProtocolHelper::acceptCallRequest()
 void	TCPProtocolHelper::handleHandshake()
 {
   emit handshakeSuccess();
+}
+
+void	TCPProtocolHelper::handleLogin()
+{
+  emit	loginSuccess();
 }

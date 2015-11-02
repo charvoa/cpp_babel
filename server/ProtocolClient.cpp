@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sun Nov  1 18:13:27 2015 Nicolas Girardot
+// Last update Mon Nov  2 13:55:36 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -29,24 +29,20 @@ void	ProtocolClient::handshake(DataFromClient &fromClient)
   it = g_Server.getNetwork()->getServer()->getList()->begin();
   std::string handshake = fromClient.getData().at(0);
   //short version = boost::lexical_cast<short>(handshake.substr(handshake.find("<"), handshake.find(">") - handshake.find("<")));
-  //std::vector<std::string> data;
-  //Response *response = new Response(CommunicationServer::S_SUCCESS_HANDSHAKE, (*it), data);
-  //  Sender::specialSending(response);
+  std::vector<std::string> data;
+  Response *response = new Response(CommunicationServer::S_SUCCESS_HANDSHAKE, (*it), data);
+  Sender::specialSending(response);
 
-  std::vector<char> std;
-  std.push_back(101);
-  std.push_back(0);
-  std.push_back(0);
-  std::string str(std.begin(),std.end());
-  (*it)->asyncWrite(str);
-
-
-
-//  std::cout << "Length = " << str.length() << std::endl;
+  // std::vector<char> std;
+  // std.push_back(101);
+  // std.push_back(0);
+  // std.push_back(0);
+  // std::string str(std.begin(),std.end());
+  // (*it)->asyncWrite(str);
 
 
 
-
+  //  std::cout << "Length = " << str.length() << std::endl;
 }
 
 void	ProtocolClient::success(DataFromClient &fromClient)
@@ -64,7 +60,9 @@ void  ProtocolClient::affectTCPConnectionToAccountWithUsername(std::string usern
   std::list<boost::shared_ptr<TCPConnection> >::iterator it;
 
   it = g_Server.getNetwork()->getServer()->getList()->begin();
+  std::cout << "22" << std::endl;
   g_Server.getAccountByUsername(username)->setSocket((*it));
+  std::cout << "23" << std::endl;
   g_Server.getNetwork()->getServer()->getList()->pop_front();
 }
 
@@ -81,6 +79,7 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
       std::vector<std::string> data;
       Response *response = new Response(CommunicationServer::S_ERROR_SIGN, (*it), data);
       Sender::specialSending(response);
+      g_Server.getNetwork()->getServer()->getList()->pop_front();
     }
   else
     {
@@ -97,16 +96,18 @@ void	ProtocolClient::signin(DataFromClient &fromClient)
   std::string passwd = fromClient.getData().at(1);
   std::cout << "USERNAME IS = " << username << std::endl;
 
-  if (g_Server.doesUsernameExist(username))
-    std::cout << "1 OK" << std::endl;
-  if (g_Server.isPasswdCorrectForAccount(username, passwd))
-    std::cout << "2 OK" << std::endl;
-  if (g_Server.getAccountByUsername(username)->getState() == Account::DISCONNECTED)
-    std::cout << "3 OK" << std::endl;
   if (g_Server.doesUsernameExist(username) && g_Server.isPasswdCorrectForAccount(username, passwd) && g_Server.getAccountByUsername(username)->getState() == Account::DISCONNECTED)
     {
-      g_Server.getAccountByUsername(username)->getFormatedContactList();
+      std::list<boost::shared_ptr<TCPConnection> >::iterator it;
+      it = g_Server.getNetwork()->getServer()->getList()->begin();
+      std::cout << "In Signing IF1" << std::endl;
       this->affectTCPConnectionToAccountWithUsername(username);
+      std::cout << "In Signing IF2" << std::endl;
+      Response *response = new Response(CommunicationServer::S_SUCCESS_ON_SIGN, (*it), g_Server.getAccountByUsername(username)->getFormatedContactList());
+      std::cout << "In Signing IF3" << std::endl;
+      Sender::specialSending(response);
+      std::cout << "In Signing IF4" << std::endl;
+
     }
   else
     {
