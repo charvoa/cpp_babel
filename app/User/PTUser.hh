@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Mon Nov  2 17:36:01 2015 Nicolas Charvoz
+// Last update Mon Nov  2 18:03:14 2015 Nicolas Charvoz
 //
 
 #ifndef PTUSER_HH_
@@ -16,10 +16,13 @@
 # include <list>
 # include <string>
 # include <regex>
+# include <vector>
 # include "../Contact/Contact.hh"
 # include "../Network/NetworkServerHandler.hh"
 
 # define PASSWORD_DONT_MATCH 3001
+# define IP_PROBLEM 3002
+
 
 class PTUser: public QObject
 {
@@ -45,6 +48,7 @@ private:
   User	_currentUser;
   NetworkServerHandler server;
   std::string _ipServer;
+  std::vector<std::string> _ipGroup;
 private slots:
   void userConnected(int check);
 signals:
@@ -61,8 +65,8 @@ public:
 	      const std::string &verify, const std::string &ip,
 	      char avatar = '1');
 private:
-  bool checkIP(std::string const&) const;
-
+  bool checkIP() const;
+  void getIPGroup(const std::string&);
 };
 
 extern PTUser g_PTUser;
