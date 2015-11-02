@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sun Nov  1 17:58:12 2015 Nicolas Charvoz
+// Last update Sun Nov  1 21:04:09 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -50,6 +50,7 @@ void UiContact::displayContact()
       newConv = new QPushButton(tr(ss.str().c_str()), this);
       newConv->setGeometry((30 * (i + 1) + 240 * i), (330 + 390 * j),
 			   240, 60);
+      newConv->setObjectName(ss.str().c_str());
       newConv->setFocusPolicy(Qt::NoFocus);
       connect(newConv, SIGNAL(released()), this, SLOT(addTab()));
 
@@ -92,6 +93,7 @@ void UiContact::refreshUI()
       newConv = new QPushButton(tr(ss.str().c_str()), this);
       newConv->setGeometry((30 * (i + 1) + 240 * i), (330 + 390 * j),
 			   240, 60);
+      newConv->setObjectName(ss.str().c_str());
       newConv->setFocusPolicy(Qt::NoFocus);
       connect(newConv, SIGNAL(released()), this, SLOT(addTab()));
 
@@ -103,5 +105,8 @@ void UiContact::refreshUI()
 
 void UiContact::addTab()
 {
-  _main->addTab("new");
+  QPushButton *b = dynamic_cast<QPushButton*>(sender());
+  std::cout << sender()->objectName().toUtf8().constData() << std::endl;
+  if (b != NULL)
+    _main->addTab(sender()->objectName().toUtf8().constData());
 }
