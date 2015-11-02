@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sun Nov  1 16:01:10 2015 Nicolas Charvoz
-// Last update Sun Nov  1 16:20:11 2015 Nicolas Charvoz
+// Last update Mon Nov  2 10:49:24 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
@@ -18,4 +18,48 @@ Contact::Contact(std::string username, std::string ip, std::string location,
 						      _fav(fav)
 {
   std::cout << "Contact created" << std::endl;
+}
+
+Contact::~Contact() {}
+
+const Contact &Contact::getContact() const
+{
+  return *this;
+}
+
+Contact &Contact::getContact()
+{
+  return *this;
+}
+
+std::string Contact::getName() const
+{
+  return _username;
+}
+
+std::string Contact::getIP() const
+{
+  return _ip;
+}
+
+std::string Contact::getLocation() const
+{
+  return _location;
+}
+
+int Contact::getStatus() const
+{
+  return _status;
+}
+
+int Contact::getPic() const
+{
+  return _idPic;
+}
+
+bool Contact::isFav() const
+{
+  if (_fav == 1)
+    return true;
+  return false;
 }

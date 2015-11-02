@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sun Nov  1 18:13:27 2015 Nicolas Girardot
+// Last update Mon Nov  2 10:59:22 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -97,12 +97,6 @@ void	ProtocolClient::signin(DataFromClient &fromClient)
   std::string passwd = fromClient.getData().at(1);
   std::cout << "USERNAME IS = " << username << std::endl;
 
-  if (g_Server.doesUsernameExist(username))
-    std::cout << "1 OK" << std::endl;
-  if (g_Server.isPasswdCorrectForAccount(username, passwd))
-    std::cout << "2 OK" << std::endl;
-  if (g_Server.getAccountByUsername(username)->getState() == Account::DISCONNECTED)
-    std::cout << "3 OK" << std::endl;
   if (g_Server.doesUsernameExist(username) && g_Server.isPasswdCorrectForAccount(username, passwd) && g_Server.getAccountByUsername(username)->getState() == Account::DISCONNECTED)
     {
       g_Server.getAccountByUsername(username)->getFormatedContactList();
