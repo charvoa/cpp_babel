@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Nov  1 13:57:42 2015 Nicolas Charvoz
+// Last update Mon Nov  2 11:07:44 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -128,13 +128,13 @@ void LoginWidget::displayIPFunction()
   if (_ipDisplayed)
     {
       _editIp->hide();
-      _editIp->setText(tr("51.254.139.53"));
+      _editIp->setText(tr("51.254.139.53:4040"));
       _ipDisplayed = false;
     }
   else
     {
       _editIp->show();
-      _editIp->setText(tr("51.254.139.53"));
+      _editIp->setText(tr("51.254.139.53:4040"));
       _ipDisplayed = true;
     }
 }

@@ -1,12 +1,24 @@
+//
+// PTUser.hh for  in /home/nicolaschr/rendu/cpp_babel/app/User
+//
+// Made by Nicolas Charvoz
+// Login   <nicolaschr@epitech.net>
+//
+// Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
+// Last update Mon Nov  2 14:35:12 2015 Nicolas Charvoz
+//
+
 #ifndef PTUSER_HH_
 # define PTUSER_HH_
 
-#include <cstdlib>
-#include <iostream>
-#include <list>
-#include <string>
-#include "../Contact/Contact.hh"
-#include "../Network/NetworkServerHandler.hh"
+# include <cstdlib>
+# include <iostream>
+# include <list>
+# include <string>
+# include "../Contact/Contact.hh"
+# include "../Network/NetworkServerHandler.hh"
+
+# define PASSWORD_DONT_MATCH 3001
 
 class PTUser: public QObject
 {
@@ -42,8 +54,11 @@ public:
   ~PTUser();
   User&		currentUser();
   int run(int, char**);
-  void logUser(const std::string &username, const std::string &password, const std::string &ip);
-  void signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &avatar = "1");
+  void logUser(const std::string &username,
+	       const std::string &password, const std::string &ip);
+  void signup(const std::string &username, const std::string &password,
+	      const std::string &verify, const std::string &ip,
+	      char avatar = '1');
 };
 
 extern PTUser g_PTUser;

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sun Nov  1 07:51:12 2015 Antoine Garcia
+// Last update Mon Nov  2 14:46:00 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -13,7 +13,6 @@
 #include "../../gui/MainWidget.hh"
 #include "../../gui/LoginWidget.hh"
 #include <iostream>
-
 
 PTUser g_PTUser;
 
@@ -79,14 +78,29 @@ void	PTUser::logUser(const std::string &username, const std::string &password, c
   server.start("localhost", 4040);
 }
 
-void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &avatar)
+void checkIP(std::string const &s, std::regex const &r)
 {
-  (void)verify;
-  (void)avatar;
-  server.type = 1;
-  server.login = username;
-  server.password = password;
-  server.start("localhost", 4040);
+  std::smatch match;
+  if (std::regex_search(s, match, r))
+    std::cout << "User Name: \"" << match[1]
+	      << "\", IP Address: \"" << match[2] << "\"\n";
+  else
+    std::cerr << s << "did not match\n";
+}
+
+void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &ip, char avatar)
+{
+  std::string ip;
+  std::string port;
+  if (password != verify)
+    emit canDisplayHome(PASSWORD_DONT_MATCH);
+  else
+    {
+      server.type = 1;
+      server.login = username;
+      server.password = password;
+      server.start("localhost", 4040);
+    }
 }
 
 void	PTUser::contactIsAdd()
