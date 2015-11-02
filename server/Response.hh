@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:40:28 2015 Serge Heitzler
-// Last update Mon Nov  2 11:21:23 2015 Serge Heitzler
+// Last update Mon Nov  2 14:47:30 2015 Serge Heitzler
 //
 
 #ifndef _RESPONSE_HH
@@ -13,7 +13,6 @@
 
 #include <string>
 #include <vector>
-#include "ProtocolServer.hh"
 #include "Account.hh"
 #include "Common/TCPConnection.hh"
 #include "CommunicationEnum.hh"
