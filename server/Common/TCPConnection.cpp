@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 14 00:10:50 2015 Nicolas Girardot
-// Last update Mon Nov  2 11:42:56 2015 Nicolas Girardot
+// Last update Mon Nov  2 14:20:42 2015 Nicolas Girardot
 //
 
 #include "TCPConnection.hh"
@@ -23,7 +23,7 @@ boost::asio::ip::tcp::socket& TCPConnection::getSocket()
 
 void	TCPConnection::asyncWrite(const std::string &message)
 {
-  std::cout << "Writing on Socket : " << message << std::endl;
+  std::cout << "Writing on Socket : " << message << "END OF REQUEST" << std::endl;
   boost::asio::async_write(_socket,
   			   boost::asio::buffer(message),
   			   boost::bind(&TCPConnection::handleWrite, shared_from_this(),

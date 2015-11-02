@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Mon Nov  2 11:52:51 2015 Nicolas Girardot
+// Last update Mon Nov  2 16:39:52 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -187,7 +187,10 @@ std::vector<std::string> Account::getFormatedContactList()
   std::vector<std::string> contactsInformations;
 
   contactsInformations.push_back(this->getID());
-  contactsInformations.push_back(std::to_string(boost::lexical_cast<char>((_contactList.size()))));
+  std::vector<char> std;
+  std.push_back(_contactList.size());
+  std::string str(std.begin(), std.end());
+  contactsInformations.push_back(str);
 
   if (_contactList.empty())
     return contactsInformations;
