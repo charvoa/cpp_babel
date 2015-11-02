@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Mon Nov  2 14:46:00 2015 Nicolas Charvoz
+// Last update Mon Nov  2 17:35:26 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -78,20 +78,29 @@ void	PTUser::logUser(const std::string &username, const std::string &password, c
   server.start("localhost", 4040);
 }
 
-void checkIP(std::string const &s, std::regex const &r)
+bool PTUser::checkIP(std::string const &stringToCheck) const
 {
-  std::smatch match;
-  if (std::regex_search(s, match, r))
-    std::cout << "User Name: \"" << match[1]
-	      << "\", IP Address: \"" << match[2] << "\"\n";
-  else
-    std::cerr << s << "did not match\n";
+  std::regex rgx("(\\d{1,3}(\\.\\d{1,3}){3})");
+
+  if (std::regex_match(stringToCheck, rgx))
+    return true;
+  return false;
 }
 
 void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &ip, char avatar)
 {
-  std::string ip;
-  std::string port;
+  std::string delimiter = ":";
+
+  std::string s(ip);
+  size_t pos = 0;
+  std::string token;
+  while ((pos = s.find(delimiter)) != std::string::npos) {
+    token = s.substr(0, pos);
+    std::cout << token << std::endl;
+    s.erase(0, pos + delimiter.length());
+  }
+  std::cout << s << std::endl;
+
   if (password != verify)
     emit canDisplayHome(PASSWORD_DONT_MATCH);
   else

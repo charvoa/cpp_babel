@@ -5,7 +5,7 @@
 // Signup   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Mon Nov  2 14:45:40 2015 Nicolas Charvoz
+// Last update Mon Nov  2 16:23:45 2015 Nicolas Charvoz
 //
 
 #ifndef SIGNUPWIDGET_HH_
@@ -61,10 +61,6 @@ private:
   QComboBox *_avatarCombo;
   QLineEdit *_editIp;
   bool _dispIp;
-
-  //Functions
-  void checkIP(std::string const&,
-	       std::regex const&);
 };
 
 #endif
