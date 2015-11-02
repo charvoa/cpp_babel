@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Mon Nov  2 02:47:53 2015 Antoine Garcia
+// Last update Mon Nov  2 05:24:13 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -110,6 +110,7 @@ void	NetworkServerHandler::logUser()
   QByteArray	array;
   QDataStream	out(&array, QIODevice::WriteOnly);
   std::string str;
+  std::cout << "Log User is being called" << std::endl;
   str += login;
   str += SEPARATOR;
   str += password;
@@ -122,7 +123,6 @@ void	NetworkServerHandler::logUser()
 void	NetworkServerHandler::handshakeSuccess()
 {
   std::cout << "HANDSHAKE SUCCESS" << std::endl;
-  emit userConnected(1);
   _connected = true;
   if (type == 0)
     {
@@ -135,5 +135,5 @@ void	NetworkServerHandler::handshakeSuccess()
 
 void	NetworkServerHandler::loginSuccess()
 {
-
+    emit userConnected(1);
 }
