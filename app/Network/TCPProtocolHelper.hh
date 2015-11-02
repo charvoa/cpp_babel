@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 19 13:34:10 2015 Antoine Garcia
-// Last update Sun Nov  1 15:48:41 2015 Nicolas Charvoz
+// Last update Mon Nov  2 02:26:52 2015 Antoine Garcia
 //
 
 #ifndef TCPProtocolHelper_HH_
@@ -19,6 +19,13 @@
 #include <map>
 #include "IProtocolHelper.hh"
 
+typedef enum handlerProtocol
+  {
+    HANDSHAKESUCCESS = 101,
+    SUCCESSLOGIN = 102,
+    ERRORLOGIN = 106
+  }	    protocolClient;
+
 class	TCPProtocolHelper: public QObject
 {
   Q_OBJECT
@@ -28,7 +35,7 @@ private:
   funcPtr	_ptr;
   handlePtr	_handlePtr;
   typedef std::map<ProtocolType, funcPtr>	map_funcs;
-  typedef std::map<ProtocolType, handlePtr>	handle_funcs;
+  typedef std::map<protocolClient, handlePtr>	handle_funcs;
   map_funcs	functions;
   handle_funcs	handleFunctions;
   int _clientID;
@@ -39,6 +46,7 @@ public:
   void	      handleRequest(qint8 type);
 signals:
   void handshakeSuccess();
+  void	loginSuccess();
   //createRequest Method
 private:
   QByteArray	createHandshake();
@@ -46,6 +54,7 @@ private:
   QByteArray	acceptCallRequest();
   //handleRequest Method
   void		handleHandshake();
+  void		handleLogin();
 };
 
 #endif
