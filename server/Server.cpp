@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Mon Nov  2 13:58:55 2015 Nicolas Girardot
+// Last update Mon Nov  2 16:56:35 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
@@ -74,5 +74,5 @@ Account   *Server::getAccountByUsername(std::string &username)
 
 Network	*Server::getNetwork()
 {
-  return (_net);
+  return (static_cast<Network *>(_net));
 }

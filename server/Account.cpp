@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Mon Nov  2 16:39:52 2015 Nicolas Girardot
+// Last update Mon Nov  2 17:57:43 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -216,14 +216,13 @@ void			Account::setLocation(std::string location)
   _location = location;
 }
 
-void			Account::setID(std::string id)
+void			Account::setID(const std::string &id)
 {
   _id = id;
 }
 
 void       Account::generateRandomID(size_t length)
 {
-  std::srand(std::time(0));
   int random = std::rand();
   auto randchar = [random]() -> char
     {
