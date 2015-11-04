@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Mon Nov  2 13:55:36 2015 Nicolas Girardot
+// Last update Wed Nov  4 17:04:16 2015 Serge Heitzler
 //
 
 #include "ProtocolClient.hh"
@@ -190,6 +190,17 @@ void	ProtocolClient::addContact(DataFromClient &fromClient)
 {
   std::string sender = fromClient.getClientID();
   std::string loginAdded = fromClient.getData().at(0);
+
+  if (g_Server.doesUsernameExist(loginAdded))
+    {
+      // Success
+    }
+  else
+    {
+
+    }
+
+
 }
 
 void	ProtocolClient::acceptInvitation(DataFromClient &fromClient)
@@ -204,6 +215,8 @@ void	ProtocolClient::declineInvitation(DataFromClient &fromClient)
 {
   std::string idReceiverInvitation = fromClient.getClientID();
   std::string idSenderInvitation = fromClient.getData().at(0);
+  g_Server.getAccountByID(idReceiverInvitation)->addContact(g_Server.getAccountByID(idSenderInvitation));
+  g_Server.getAccountByID(idSenderInvitation)->addContact(g_Server.getAccountByID(idReceiverInvitation));
 }
 
 void	ProtocolClient::modifyStatus(DataFromClient &fromClient)
