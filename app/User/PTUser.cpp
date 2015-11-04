@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Tue Nov  3 22:12:28 2015 Nicolas Charvoz
+// Last update Wed Nov  4 14:20:16 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -82,7 +82,6 @@ void	PTUser::logUser(const std::string &username, const std::string &password, c
       server.type = 0;
       server.login = username;
       server.password = password;
-      server.start("localhost", 4040);
       std::cout << "Starting a server on >> " << _ipGroup[0]
 		<< ":" << _ipGroup[1] << std::endl;
       server.start(_ipGroup[0].c_str(), atoi(_ipGroup[1].c_str()));
