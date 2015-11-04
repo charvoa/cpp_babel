@@ -32,7 +32,7 @@ ui_*.h
 *.qmlproject.user.*
 
 ./server/Makefile
-./Makefile
+Makefile
 ./server/server
 ./gui/Makefile
 ./app/Makefile
