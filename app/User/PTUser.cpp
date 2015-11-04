@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Mon Nov  2 18:28:01 2015 Nicolas Charvoz
+// Last update Tue Nov  3 22:12:28 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -70,18 +70,30 @@ PTUser::User&	PTUser::currentUser()
 
 void	PTUser::logUser(const std::string &username, const std::string &password, const std::string &ip)
 {
-  (void)ip;
   std::cout << "PROCESSING LOGIN USER..." << std::endl;
-  server.type = 0;
-  server.login = username;
-  server.password = password;
-  server.start("localhost", 4040);
+
+  this->getIPGroup(ip);
+  if (!(this->checkIP()))
+    {
+      emit canDisplayHome(IP_PROBLEM);
+    }
+  else
+    {
+      server.type = 0;
+      server.login = username;
+      server.password = password;
+      server.start("localhost", 4040);
+      std::cout << "Starting a server on >> " << _ipGroup[0]
+		<< ":" << _ipGroup[1] << std::endl;
+      server.start(_ipGroup[0].c_str(), atoi(_ipGroup[1].c_str()));
+    }
 }
 
 bool PTUser::checkIP() const
 {
   if (_ipGroup.size() != 2)
     {
+      std::cout << "Forgot the port" << std::endl;
       return false;
     }
   std::string stringToCheck(_ipGroup[0]);
@@ -89,6 +101,7 @@ bool PTUser::checkIP() const
 
   if (std::regex_match(stringToCheck, rgx))
     return true;
+  std::cout << "IP DONT MATCH" << std::endl;
   return false;
 }
 
@@ -122,7 +135,9 @@ void	PTUser::signup(const std::string &username, const std::string &password, co
       server.type = 1;
       server.login = username;
       server.password = password;
-      server.start("localhost", 4040);
+      std::cout << "Starting a server on >> " << _ipGroup[0]
+		<< ":" << _ipGroup[1] << std::endl;
+      server.start(_ipGroup[0].c_str(), atoi(_ipGroup[1].c_str()));
     }
 }
 
