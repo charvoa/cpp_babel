@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 19 13:34:10 2015 Antoine Garcia
-// Last update Mon Nov  2 02:26:52 2015 Antoine Garcia
+// Last update Mon Nov  2 07:48:24 2015 Antoine Garcia
 //
 
 #ifndef TCPProtocolHelper_HH_
@@ -47,6 +47,7 @@ public:
 signals:
   void handshakeSuccess();
   void	loginSuccess();
+  void	loginError();
   //createRequest Method
 private:
   QByteArray	createHandshake();
@@ -55,6 +56,7 @@ private:
   //handleRequest Method
   void		handleHandshake();
   void		handleLogin();
+  void		errorLogin();
 };
 
 #endif
