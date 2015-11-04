@@ -5,7 +5,8 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Mon Nov  2 17:46:47 2015 Nicolas Girardot
+// Last update Tue Nov  3 21:27:49 2015 Nicolas Girardot
+// Last update Mon Nov  2 18:23:59 2015 Nicolas Charvoz
 //
 
 #ifndef _ACCOUNT_HH

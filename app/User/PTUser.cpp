@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Mon Nov  2 17:35:26 2015 Nicolas Charvoz
+// Last update Mon Nov  2 18:28:01 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -78,8 +78,13 @@ void	PTUser::logUser(const std::string &username, const std::string &password, c
   server.start("localhost", 4040);
 }
 
-bool PTUser::checkIP(std::string const &stringToCheck) const
+bool PTUser::checkIP() const
 {
+  if (_ipGroup.size() != 2)
+    {
+      return false;
+    }
+  std::string stringToCheck(_ipGroup[0]);
   std::regex rgx("(\\d{1,3}(\\.\\d{1,3}){3})");
 
   if (std::regex_match(stringToCheck, rgx))
@@ -87,21 +92,30 @@ bool PTUser::checkIP(std::string const &stringToCheck) const
   return false;
 }
 
-void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &ip, char avatar)
+void PTUser::getIPGroup(const std::string &ip)
 {
   std::string delimiter = ":";
 
   std::string s(ip);
   size_t pos = 0;
   std::string token;
-  while ((pos = s.find(delimiter)) != std::string::npos) {
-    token = s.substr(0, pos);
-    std::cout << token << std::endl;
-    s.erase(0, pos + delimiter.length());
-  }
-  std::cout << s << std::endl;
+  while ((pos = s.find(delimiter)) != std::string::npos)
+    {
+      token = s.substr(0, pos);
+      _ipGroup.push_back(token);
+      s.erase(0, pos + delimiter.length());
+    }
+  _ipGroup.push_back(s);
+}
 
-  if (password != verify)
+void	PTUser::signup(const std::string &username, const std::string &password, const std::string &verify, const std::string &ip, char avatar)
+{
+  this->getIPGroup(ip);
+  if (!(this->checkIP()))
+    {
+      emit canDisplayHome(IP_PROBLEM);
+    }
+  else if (password != verify)
     emit canDisplayHome(PASSWORD_DONT_MATCH);
   else
     {
