@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Wed Nov  4 05:13:57 2015 Antoine Garcia
+// Last update Thu Nov  5 19:44:22 2015 Nicolas Charvoz
 //
 
 #include "NetworkServerHandler.hh"
@@ -125,7 +125,6 @@ void	NetworkServerHandler::handshakeSuccess()
   std::cout << "HANDSHAKE SUCCESS" << std::endl;
   emit userConnected(1);
   _connected = true;
-  emit userConnected(1);
   if (type == 0)
     {
       logUser();
