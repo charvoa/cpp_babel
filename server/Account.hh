@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Tue Nov  3 21:27:49 2015 Nicolas Girardot
+// Last update Thu Nov  5 11:07:41 2015 Nicolas Girardot
 // Last update Mon Nov  2 18:23:59 2015 Nicolas Charvoz
 //
 
@@ -41,6 +41,7 @@ public:
   void						setLocation(std::string location);
   void						setNickname(std::string &id, std::string &nickname);
   void						setProfilePicture(short);
+  std::vector<std::string>			getData() const;
   void					  setSocket(boost::shared_ptr<TCPConnection> socket);
   std::string			        	&getLogin();
   std::string		         		&getLocation();
