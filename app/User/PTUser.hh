@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Mon Nov  2 18:32:51 2015 Nicolas Charvoz
+// Last update Fri Nov  6 12:06:30 2015 Antoine Garcia
 //
 
 #ifndef PTUSER_HH_
@@ -35,7 +35,7 @@ private:
     friend class PTUser;
     std::string _username;
     std::string _password;
-    std::list<Contact *> _contact;
+    std::vector<Contact *> _contact;
   protected:
     std::string _objectId;
   public:
@@ -43,7 +43,7 @@ private:
     ~User();
     const std::string &getUsername() const;
     const std::string &getObjectId() const;
-    const std::list<Contact *>& getContacts() const;
+    const std::vector<Contact *>& getContacts() const;
     void		addContact();
   };
   User	_currentUser;

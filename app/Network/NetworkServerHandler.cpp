@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Thu Nov  5 19:44:22 2015 Nicolas Charvoz
+// Last update Fri Nov  6 13:27:31 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -26,6 +26,7 @@ NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
   connect(_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(connectionError(QAbstractSocket::SocketError)));
   connect(&_request, SIGNAL(handshakeSuccess()), this, SLOT(handshakeSuccess()));
   connect(&_request, SIGNAL(loginSuccess()), this, SLOT (loginSuccess()));
+  connect(&_request, SIGNAL(addContactSuccess()), this, SLOT (addContactSuccess()));
 }
 
 NetworkServerHandler::~NetworkServerHandler()
@@ -136,10 +137,16 @@ void	NetworkServerHandler::handshakeSuccess()
 
 void	NetworkServerHandler::loginSuccess()
 {
-    emit userConnected(1);
+  std::cout << _read[0] << std::endl;
+  emit userConnected(1);
 }
 
 void	NetworkServerHandler::loginError()
 {
   emit userConnected(0);
+}
+
+void	NetworkServerHandler::addContactSuccess()
+{
+
 }
