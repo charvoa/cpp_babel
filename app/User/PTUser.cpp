@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Wed Nov  4 14:20:16 2015 Nicolas Charvoz
+// Last update Thu Nov  5 19:43:33 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -128,7 +128,9 @@ void	PTUser::signup(const std::string &username, const std::string &password, co
       emit canDisplayHome(IP_PROBLEM);
     }
   else if (password != verify)
-    emit canDisplayHome(PASSWORD_DONT_MATCH);
+    {
+      emit canDisplayHome(PASSWORD_DONT_MATCH);
+    }
   else
     {
       server.type = 1;

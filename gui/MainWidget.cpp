@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 28 16:43:28 2015 Nicolas Charvoz
+// Last update Thu Nov  5 19:33:01 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -19,6 +19,10 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
   QVBoxLayout *mainLayout = new QVBoxLayout;
   QTabBar *tb;
+
+  UiContact *contact = new UiContact(this);
+  QScrollArea *contactScrollArea = new QScrollArea();
+  contactScrollArea->setWidget(contact);
 
   _tabWidget = new QTabWidget;
   tb = _tabWidget->tabBar();
