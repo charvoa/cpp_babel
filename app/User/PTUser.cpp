@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Thu Nov  5 19:43:33 2015 Nicolas Charvoz
+// Last update Fri Nov  6 22:29:39 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -144,6 +144,7 @@ void	PTUser::signup(const std::string &username, const std::string &password, co
 
 void	PTUser::contactIsAdd()
 {
+
   emit contactAdded();
 }
 //Nested Class User
