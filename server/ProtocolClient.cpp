@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Fri Nov  6 15:13:20 2015 Nicolas Girardot
+// Last update Fri Nov  6 21:16:57 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -86,6 +86,8 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
       g_Server.addAccount(username, passwd, 1);
       g_Server.getAccountByUsername(username)->generateRandomID(4);
       g_Server.getAccountByUsername(username)->getFormatedContactList();
+      std::list<boost::shared_ptr<TCPConnection> >::iterator it;
+      it = g_Server.getNetwork()->getServer()->getList()->begin();
       this->affectTCPConnectionToAccountWithUsername(username);
       Response *response = new Response(CommunicationServer::S_SUCCESS_ON_SIGN, (*it), g_Server.getAccountByUsername(username)->getFormatedContactList());
       Sender::specialSending(response);
