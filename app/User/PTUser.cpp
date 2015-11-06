@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Thu Nov  5 19:43:33 2015 Nicolas Charvoz
+// Last update Fri Nov  6 12:06:47 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -172,7 +172,7 @@ const std::string	&PTUser::User::getObjectId() const
   return (_objectId);
 }
 
-const std::list<Contact *>	&PTUser::User::getContacts() const
+const std::vector<Contact *>	&PTUser::User::getContacts() const
 {
   return (_contact);
 }
