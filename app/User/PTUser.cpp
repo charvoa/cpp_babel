@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Fri Nov  6 13:37:23 2015 Antoine Garcia
+// Last update Fri Nov  6 13:38:43 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -155,6 +155,7 @@ void	PTUser::addToList(const std::string &user)
 
 void	PTUser::contactIsAdd()
 {
+
   emit contactAdded();
 }
 //Nested Class User
