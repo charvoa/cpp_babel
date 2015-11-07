@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Fri Nov  6 13:38:43 2015 Antoine Garcia
+// Last update Sat Nov  7 06:42:35 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -151,6 +151,11 @@ bool	PTUser::isTabOpen(const std::string & user) const
 void	PTUser::addToList(const std::string &user)
 {
   _tabs.push_back(user);
+}
+
+void	PTUser::removeAtIndex(int index)
+{
+  _tabs.erase(_tabs.begin() + index);
 }
 
 void	PTUser::contactIsAdd()
