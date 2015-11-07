@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Fri Nov  6 13:27:31 2015 Antoine Garcia
+// Last update Fri Nov  6 22:51:13 2015 Nicolas Charvoz
 //
 
 #include "NetworkServerHandler.hh"
@@ -148,5 +148,17 @@ void	NetworkServerHandler::loginError()
 
 void	NetworkServerHandler::addContactSuccess()
 {
+}
 
+void NetworkServerHandler::addContact(const std::string &c)
+{
+  QByteArray	array;
+  QDataStream	out(&array, QIODevice::WriteOnly);
+  std::string str;
+
+  str += c;
+  out.setVersion(QDataStream::Qt_4_3);
+  out <<  quint8(12) << quint32(0) << quint16(str.size());
+  out.writeRawData(str.c_str(), str.size());
+  _socket->write(array);
 }
