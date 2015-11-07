@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Sat Nov  7 15:39:43 2015 Nicolas Girardot
+// Last update Sat Nov  7 17:19:00 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
@@ -53,7 +53,8 @@ void      Server::addAccount(std::string &login, std::string &passwd, short prof
 }
 
 Account   *Server::getAccountByID(std::string &ID)
-{ for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
+{
+  for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
       if ((*it)->getID() == ID)
         return (*it);

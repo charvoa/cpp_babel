@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sat Nov  7 16:15:50 2015 Nicolas Charvoz
+// Last update Sat Nov  7 16:56:24 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
@@ -82,7 +82,7 @@ void Home::addFriend()
   if (_friendString != "")
     {
       _addFriend->clear();
-      g_PTUser.currentUser().addContact();
+      g_PTUser.currentUser().addContact(_friendString);
     }
   else
     {

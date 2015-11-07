@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sat Nov  7 16:52:33 2015 Nicolas Girardot
+// Last update Sat Nov  7 17:03:15 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -60,18 +60,17 @@ void  ProtocolClient::affectTCPConnectionToAccountWithUsername(std::string usern
   std::list<boost::shared_ptr<TCPConnection> >::iterator it;
 
   it = g_Server.getNetwork()->getServer()->getList()->begin();
-  std::cout << "22" << std::endl;
   g_Server.getAccountByUsername(username)->setSocket((*it));
-  std::cout << "23" << std::endl;
   g_Server.getNetwork()->getServer()->getList()->pop_front();
 }
 
 void	ProtocolClient::signup(DataFromClient &fromClient)
 {
+  char profilePicture;
   // CHECKER LA SIZE DU vector<std:string> et renvoyer error si pas la taille qu'il faut
   std::string username = fromClient.getData().at(0);
   std::string passwd = fromClient.getData().at(1);
-  //= boost::lexical_cast<short>(fromClient.getData().at(2));
+  profilePicture = boost::lexical_cast<char>(fromClient.getData().at(2));
   if (g_Server.doesUsernameExist(username))
     {
       std::list<boost::shared_ptr<TCPConnection> >::iterator it;
@@ -83,7 +82,7 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
     }
   else
     {
-      g_Server.addAccount(username, passwd, 1);
+      g_Server.addAccount(username, passwd, profilePicture);
       g_Server.getAccountByUsername(username)->generateRandomID(4);
       g_Server.getAccountByUsername(username)->getFormatedContactList();
       std::list<boost::shared_ptr<TCPConnection> >::iterator it;

@@ -1,11 +1,11 @@
-B1;3409;0c//
+//
 // PTUser.cpp for  in /home/nicolaschr/rendu/cpp_babel/app/User
 //
 // Made by Nicolas Charvoz
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sat Nov  7 07:52:46 2015 Antoine Garcia
+// Last update Sat Nov  7 08:00:23 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -183,7 +183,7 @@ PTUser::User::~User()
 
 void	PTUser::User::addContact(const std::string &username)
 {
-  _server.addContact(username);
+  server.addContact(username);
 }
 
 const std::string	&PTUser::User::getUsername() const
