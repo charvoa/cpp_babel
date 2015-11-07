@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Fri Nov  6 22:34:38 2015 Nicolas Charvoz
+// Last update Fri Nov  6 13:38:43 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -140,6 +140,17 @@ void	PTUser::signup(const std::string &username, const std::string &password, co
 		<< ":" << _ipGroup[1] << std::endl;
       server.start(_ipGroup[0].c_str(), atoi(_ipGroup[1].c_str()));
     }
+}
+
+bool	PTUser::isTabOpen(const std::string & user) const
+{
+  bool found = (std::find(_tabs.begin(), _tabs.end(), user) != _tabs.end());
+  return (found);
+}
+
+void	PTUser::addToList(const std::string &user)
+{
+  _tabs.push_back(user);
 }
 
 void	PTUser::contactIsAdd()
