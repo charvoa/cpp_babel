@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sat Nov  7 08:02:40 2015 Antoine Garcia
+// Last update Sat Nov  7 08:10:16 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -68,6 +68,10 @@ PTUser::User&	PTUser::currentUser()
   return (_currentUser);
 }
 
+NetworkServerHandler&	PTUser::getServer()
+{
+  return (server);
+}
 void		PTUser::setUsername(const std::string &username)
 {
   _currentUser._username = username;
@@ -183,7 +187,7 @@ PTUser::User::~User()
 
 void	PTUser::User::addContact(const std::string &username)
 {
-  PTUser::server.addContact(username);
+  g_PTUser.getServer().addContact(username);
 }
 
 const std::string	&PTUser::User::getUsername() const

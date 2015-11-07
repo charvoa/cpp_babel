@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Sat Nov  7 07:48:19 2015 Antoine Garcia
+// Last update Sat Nov  7 08:13:10 2015 Antoine Garcia
 //
 
 #ifndef PTUSER_HH_
@@ -29,7 +29,6 @@ class PTUser: public QObject
 {
 Q_OBJECT
 private:
-  void	contactIsAdd();
   class User
   {
     friend class PTUser;
@@ -60,7 +59,9 @@ signals:
 public:
   PTUser();
   ~PTUser();
+  void	contactIsAdd();
   User&		currentUser();
+  NetworkServerHandler&	getServer();
   int run(int, char**);
   void logUser(const std::string &username,
 	       const std::string &password, const std::string &ip);
