@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Fri Nov  6 22:50:36 2015 Nicolas Charvoz
+// Last update Sat Nov  7 07:51:02 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -45,6 +45,7 @@ public:
   bool getConnectionStatus() const;
   void	logUser();
   void	signUser();
+  void	addContact(const std::string &);
 private slots:
   void	readyRead();
   void	connected();
@@ -53,7 +54,6 @@ private slots:
   void	loginSuccess();
   void	loginError();
   void	addContactSuccess();
-  void	addContact(const std::string &);
 };
 
 #endif
