@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Fri Nov  6 13:38:43 2015 Antoine Garcia
+// Last update Sat Nov  7 16:08:16 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -114,9 +114,11 @@ void PTUser::getIPGroup(const std::string &ip)
   while ((pos = s.find(delimiter)) != std::string::npos)
     {
       token = s.substr(0, pos);
+      std::cout << token << std::endl;;
       _ipGroup.push_back(token);
       s.erase(0, pos + delimiter.length());
     }
+  std::cout << s << std::endl;
   _ipGroup.push_back(s);
 }
 

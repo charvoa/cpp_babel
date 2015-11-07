@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sun Nov  1 21:04:09 2015 Nicolas Charvoz
+// Last update Sat Nov  7 15:25:58 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -58,6 +58,7 @@ void UiContact::displayContact()
       ss.clear();
       i++;
     }
+  setMinimumSize(270*7,420*(15/7+1));
 }
 
 void UiContact::refreshUI()
@@ -96,7 +97,6 @@ void UiContact::refreshUI()
       newConv->setObjectName(ss.str().c_str());
       newConv->setFocusPolicy(Qt::NoFocus);
       connect(newConv, SIGNAL(released()), this, SLOT(addTab()));
-
       ss.str("");
       ss.clear();
       i++;
@@ -105,8 +105,14 @@ void UiContact::refreshUI()
 
 void UiContact::addTab()
 {
-  QPushButton *b = dynamic_cast<QPushButton*>(sender());
+  //  QPushButton *b = dynamic_cast<QPushButton*>(sender());
   std::cout << sender()->objectName().toUtf8().constData() << std::endl;
-  if (b != NULL)
-    _main->addTab(sender()->objectName().toUtf8().constData());
+  if (sender() != NULL)
+    {
+      if (!(g_PTUser.isTabOpen(sender()->objectName().toUtf8().constData())))
+	{
+	  _main->addTab(sender()->objectName().toUtf8().constData());
+	  g_PTUser.addToList(sender()->objectName().toUtf8().constData());
+	}
+    }
 }

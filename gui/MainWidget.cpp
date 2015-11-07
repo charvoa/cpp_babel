@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sat Nov  7 10:24:27 2015 Nicolas Charvoz
+// Last update Sat Nov  7 15:30:01 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -49,6 +49,7 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 
 void MainWidget::closeTab(int index)
 {
+  //remove At Index PTUSER
   _tabWidget->removeTab(index);
 }
 
