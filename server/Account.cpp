@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Fri Nov  6 21:12:58 2015 Nicolas Girardot
+// Last update Sat Nov  7 15:57:51 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -50,47 +50,47 @@ void							Account::setSocket(boost::shared_ptr<TCPConnection> socket)
   this->_socket = socket;
 }
 
-std::string			        		&Account::getLogin()
+const std::string			        		&Account::getLogin() const
 {
   return _login;
 }
 
-short			        		Account::getProfilePictureID()
+short			        		Account::getProfilePictureID() const
 {
   return _profilePicture;
 }
 
-std::string		         			&Account::getLocation()
+const std::string		         			&Account::getLocation() const
 {
   return _location;
 }
 
-std::string		         			&Account::getPasswd()
+const std::string		         			&Account::getPasswd() const
 {
   return _passwd;
 }
 
-boost::shared_ptr<TCPConnection>  &Account::getSocket()
+const boost::shared_ptr<TCPConnection>  &Account::getSocket() const
 {
   return _socket;
 }
 
-std::vector<Account*>				&Account::getContactList()
+const std::vector<Account*>				&Account::getContactList() const
 {
   return _contactList;
 }
 
-std::map<std::string,std::string>				&Account::getNicknames()
+const std::map<std::string,std::string>				&Account::getNicknames() const
 {
   return _nicknames;
 }
 
-Account::State		      		Account::getState()
+Account::State		      		Account::getState() const
 {
   return _state;
 }
 
-std::string   		      		Account::getID()
+const std::string   		      		&Account::getID() const
 {
   return _id;
 }
@@ -183,7 +183,7 @@ bool Account::isIDFavorited(std::string ID)
   return false;
 }
 
-std::string &Account::getNicknameIfExisting(Account *account)
+const std::string &Account::getNicknameIfExisting(Account *account)
 {
   for (std::map<std::string, std::string>::iterator it = _nicknames.begin(); it != _nicknames.end(); ++it)
     {

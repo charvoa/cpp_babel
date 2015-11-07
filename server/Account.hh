@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Fri Nov  6 21:13:09 2015 Nicolas Girardot
+// Last update Sat Nov  7 16:45:23 2015 Nicolas Girardot
 // Last update Mon Nov  2 18:23:59 2015 Nicolas Charvoz
 //
 
@@ -43,20 +43,20 @@ public:
   void						setProfilePicture(short);
   std::vector<std::string>			getData() const;
   void					  setSocket(boost::shared_ptr<TCPConnection> socket);
-  std::string			        	&getLogin();
-  std::string		         		&getLocation();
-  std::string		         		&getPasswd();
-  boost::shared_ptr<TCPConnection>  &getSocket();
-  std::vector<Account*>				&getContactList();
-  std::map<std::string,std::string>	&getNicknames();
+  const std::string			        	&getLogin() const;
+  const std::string		         		&getLocation() const;
+  const std::string		         		&getPasswd() const;
+  const boost::shared_ptr<TCPConnection>		&getSocket() const;
+  const std::vector<Account*>				&getContactList() const;
+  const std::map<std::string,std::string>	&getNicknames() const;
   Account					*getContactByID(std::string &);
-  Account::State		      		getState();
+  Account::State		      		getState() const;
   bool						isAlreadyAContactOf(Account *);
   bool            isIDFavorited(std::string ID);
-  short			        		getProfilePictureID();
-  std::string &getNicknameIfExisting(Account *account);
+  short			        		getProfilePictureID() const;
+  const std::string					&getNicknameIfExisting(Account *account);
   bool						addContact(Account *);
-  std::string   		      		getID();
+  const std::string   		      		&getID() const;
   bool						removeContact(std::string &ID);
   bool						addToFavorite(Account *);
   bool						removeFromFavorite(std::string &);
@@ -71,7 +71,7 @@ private:
   std::string			        		_login;
   std::string					        _passwd;
   Account::State       				_state;
-  short						_profilePicture;
+  char						_profilePicture;
   std::string					        _location;
   std::map<std::string,std::string>	_nicknames;
   std::vector<Account*>				_contactList;
