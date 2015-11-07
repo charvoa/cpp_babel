@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Fri Nov  6 13:33:13 2015 Antoine Garcia
+// Last update Sat Nov  7 06:59:54 2015 Antoine Garcia
 //
 
 #ifndef PTUSER_HH_
@@ -33,11 +33,11 @@ private:
   class User
   {
     friend class PTUser;
-    std::string _username;
     std::string _password;
     std::vector<Contact *> _contact;
   protected:
     std::string _objectId;
+    std::string _username;
   public:
     User();
     ~User();
@@ -51,7 +51,7 @@ private:
   NetworkServerHandler server;
   std::string _ipServer;
   std::vector<std::string> _ipGroup;
-  std::list<std::string>	   _tabs;
+  std::vector<std::string>	   _tabs;
 private slots:
   void userConnected(int check);
 signals:
@@ -69,6 +69,8 @@ public:
 	      char avatar = '1');
   bool		isTabOpen(const std::string &) const;
   void		addToList(const std::string &);
+  void		removeAtIndex(int index);
+  void	setUsername(const std::string &);
 private:
   bool checkIP() const;
   void getIPGroup(const std::string&);

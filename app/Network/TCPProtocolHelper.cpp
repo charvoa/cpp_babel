@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Fri Nov  6 13:26:47 2015 Antoine Garcia
+// Last update Sat Nov  7 06:32:48 2015 Antoine Garcia
 //
 
 #include "TCPProtocolHelper.hh"
@@ -23,7 +23,6 @@ TCPProtocolHelper::TCPProtocolHelper()
   handleFunctions[ERRORLOGIN] = &TCPProtocolHelper::errorLogin;
   handleFunctions[ADDCONTACTSUCCESS] = &TCPProtocolHelper::handleContactSuccess;
   //  _clientID = g_PTUser.currentUser().getID();
-  _clientID = 4;
 }
 
 TCPProtocolHelper::~TCPProtocolHelper()
@@ -40,6 +39,32 @@ void		TCPProtocolHelper::handleRequest(qint8	type)
   protocolClient	protocolType = static_cast<protocolClient>(type);
   _handlePtr = handleFunctions[protocolType];
   return (this->*_handlePtr)();
+}
+
+void	TCPProtocolHelper::parseLoginSuccess(QByteArray &array)
+{
+  QDataStream	io(array);
+  quint16 sizeData;
+  quint8   type;
+  quint8   nbContacts;
+
+  //type
+  io >> type;
+  //sizeData
+  io >> sizeData;
+  //ClientID
+  char	temp[4];
+  io.readRawData(temp, 4);
+  _clientID.append(temp, 4);
+  //nbContacts
+  io >> nbContacts;
+  if (nbContacts == ';'){
+    io >> nbContacts;
+    }
+  if (nbContacts != 0)
+    {
+      std::cout << "O CONTACTS" << std::endl;
+    }
 }
 
 //private create Method

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sat Nov  7 16:08:16 2015 Nicolas Charvoz
+// Last update Sat Nov  7 16:12:33 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -66,6 +66,11 @@ int PTUser::run(int ac, char **av)
 PTUser::User&	PTUser::currentUser()
 {
   return (_currentUser);
+}
+
+void		PTUser::setUsername(const std::string &username)
+{
+  _currentUser._username = username;
 }
 
 void	PTUser::logUser(const std::string &username, const std::string &password, const std::string &ip)
@@ -153,6 +158,11 @@ bool	PTUser::isTabOpen(const std::string & user) const
 void	PTUser::addToList(const std::string &user)
 {
   _tabs.push_back(user);
+}
+
+void	PTUser::removeAtIndex(int index)
+{
+  _tabs.erase(_tabs.begin() + index);
 }
 
 void	PTUser::contactIsAdd()
