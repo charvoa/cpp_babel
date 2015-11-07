@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Sat Nov  7 16:45:23 2015 Nicolas Girardot
+// Last update Sat Nov  7 16:58:47 2015 Serge Heitzler
 // Last update Mon Nov  2 18:23:59 2015 Nicolas Charvoz
 //
 
@@ -33,7 +33,7 @@ public:
       DISCONNECTED = 5
     }			        State;
 
-  Account(std::string login, std::string passwd, short profilePicture);
+  Account(std::string login, std::string passwd, char profilePicture);
   ~Account();
 
   void						setLogin(std::string &login);
