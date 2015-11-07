@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Fri Nov  6 21:16:57 2015 Nicolas Girardot
+// Last update Sat Nov  7 14:34:44 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -198,8 +198,6 @@ void	ProtocolClient::addContact(DataFromClient &fromClient)
     {
 
     }
-
-
 }
 
 void	ProtocolClient::acceptInvitation(DataFromClient &fromClient)
