@@ -1,3 +1,13 @@
 \select@language {english}
 \contentsline {section}{\numberline {1}About}{2}
-\contentsline {section}{\numberline {2}GUI}{3}
+\contentsline {section}{\numberline {2}Client}{3}
+\contentsline {subsection}{\numberline {2.1}Libraries chosen}{3}
+\contentsline {subsection}{\numberline {2.2}Design choices}{6}
+\contentsline {subsection}{\numberline {2.3}Conception}{8}
+\contentsline {subsubsection}{\numberline {2.3.1}Architectural Patterns}{8}
+\contentsline {subsubsection}{\numberline {2.3.2}TCP Connection}{9}
+\contentsline {subsubsection}{\numberline {2.3.3}UDP Connection}{10}
+\contentsline {section}{\numberline {3}Server}{11}
+\contentsline {subsection}{\numberline {3.1}Libraries choosen}{11}
+\contentsline {subsection}{\numberline {3.2}Conception}{12}
+\contentsline {subsection}{\numberline {3.3}A typicall request example}{14}
