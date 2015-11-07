@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Mon Nov  2 18:24:35 2015 Nicolas Charvoz
+// Last update Fri Nov  6 21:12:58 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -23,6 +23,17 @@ Account::~Account()
 {
 
 }
+
+std::vector<std::string>				Account::getData() const
+{
+  std::vector<std::string> data;
+  data.push_back(_login);
+  data.push_back(_location);
+  data.push_back(std::to_string(_state));
+  data.push_back(std::to_string(_profilePicture));
+  return data;
+}
+
 
 void							Account::setNickname(std::string &id, std::string &newNickName)
 {
@@ -190,6 +201,7 @@ std::vector<std::string> Account::getFormatedContactList()
   std::vector<char> std;
   std.push_back(_contactList.size());
   std::string str(std.begin(), std.end());
+  std::cout << "STR IN GET FORMATED CONTACT LIST = " << std::endl;
   contactsInformations.push_back(str);
 
   if (_contactList.empty())
@@ -223,7 +235,6 @@ void			Account::setID(const std::string &id)
 
 void       Account::generateRandomID(size_t length)
 {
-  std::srand(std::time(0));
   int random = std::rand();
   auto randchar = [random]() -> char
     {

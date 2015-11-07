@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Fri Oct 30 12:07:00 2015 Nicolas Girardot
-// Last update Sat Oct 31 21:10:36 2015 Nicolas Girardot
+// Last update Mon Nov  2 16:56:20 2015 Nicolas Girardot
 //
 
 #ifndef _SERVER_HH_
@@ -26,7 +26,7 @@ public:
 
 private:
   std::vector<Account*>		_allAccounts;
-  Network			*_net;
+  INetwork			*_net;
   //std::vector<Client*>		_allClients;
   //std::vector<Call*>		_allCalls;
 

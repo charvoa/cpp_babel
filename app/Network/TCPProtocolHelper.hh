@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 19 13:34:10 2015 Antoine Garcia
-// Last update Mon Nov  2 07:48:24 2015 Antoine Garcia
+// Last update Fri Nov  6 13:25:43 2015 Antoine Garcia
 //
 
 #ifndef TCPProtocolHelper_HH_
@@ -23,7 +23,8 @@ typedef enum handlerProtocol
   {
     HANDSHAKESUCCESS = 101,
     SUCCESSLOGIN = 102,
-    ERRORLOGIN = 106
+    ERRORLOGIN = 106,
+    ADDCONTACTSUCCESS = 111
   }	    protocolClient;
 
 class	TCPProtocolHelper: public QObject
@@ -48,6 +49,7 @@ signals:
   void handshakeSuccess();
   void	loginSuccess();
   void	loginError();
+  void	addContactSuccess();
   //createRequest Method
 private:
   QByteArray	createHandshake();
@@ -57,6 +59,7 @@ private:
   void		handleHandshake();
   void		handleLogin();
   void		errorLogin();
+  void		handleContactSuccess();
 };
 
 #endif

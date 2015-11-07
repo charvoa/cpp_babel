@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Wed Nov  4 14:20:16 2015 Nicolas Charvoz
+// Last update Fri Nov  6 13:38:43 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -128,7 +128,9 @@ void	PTUser::signup(const std::string &username, const std::string &password, co
       emit canDisplayHome(IP_PROBLEM);
     }
   else if (password != verify)
-    emit canDisplayHome(PASSWORD_DONT_MATCH);
+    {
+      emit canDisplayHome(PASSWORD_DONT_MATCH);
+    }
   else
     {
       server.type = 1;
@@ -140,8 +142,20 @@ void	PTUser::signup(const std::string &username, const std::string &password, co
     }
 }
 
+bool	PTUser::isTabOpen(const std::string & user) const
+{
+  bool found = (std::find(_tabs.begin(), _tabs.end(), user) != _tabs.end());
+  return (found);
+}
+
+void	PTUser::addToList(const std::string &user)
+{
+  _tabs.push_back(user);
+}
+
 void	PTUser::contactIsAdd()
 {
+
   emit contactAdded();
 }
 //Nested Class User
@@ -170,7 +184,7 @@ const std::string	&PTUser::User::getObjectId() const
   return (_objectId);
 }
 
-const std::list<Contact *>	&PTUser::User::getContacts() const
+const std::vector<Contact *>	&PTUser::User::getContacts() const
 {
   return (_contact);
 }

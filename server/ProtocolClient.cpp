@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Wed Nov  4 17:12:44 2015 Serge Heitzler
+// Last update Sat Nov  7 14:41:29 2015 Serge Heitzler
 //
 
 #include "ProtocolClient.hh"
@@ -86,7 +86,11 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
       g_Server.addAccount(username, passwd, 1);
       g_Server.getAccountByUsername(username)->generateRandomID(4);
       g_Server.getAccountByUsername(username)->getFormatedContactList();
+      std::list<boost::shared_ptr<TCPConnection> >::iterator it;
+      it = g_Server.getNetwork()->getServer()->getList()->begin();
       this->affectTCPConnectionToAccountWithUsername(username);
+      Response *response = new Response(CommunicationServer::S_SUCCESS_ON_SIGN, (*it), g_Server.getAccountByUsername(username)->getFormatedContactList());
+      Sender::specialSending(response);
     }
   std::cout << "Working Server Account" << std::endl;
 }
@@ -101,14 +105,9 @@ void	ProtocolClient::signin(DataFromClient &fromClient)
     {
       std::list<boost::shared_ptr<TCPConnection> >::iterator it;
       it = g_Server.getNetwork()->getServer()->getList()->begin();
-      std::cout << "In Signing IF1" << std::endl;
       this->affectTCPConnectionToAccountWithUsername(username);
-      std::cout << "In Signing IF2" << std::endl;
       Response *response = new Response(CommunicationServer::S_SUCCESS_ON_SIGN, (*it), g_Server.getAccountByUsername(username)->getFormatedContactList());
-      std::cout << "In Signing IF3" << std::endl;
       Sender::specialSending(response);
-      std::cout << "In Signing IF4" << std::endl;
-
     }
   else
     {
@@ -137,7 +136,7 @@ void	ProtocolClient::callRequest(DataFromClient &fromClient)
   data.push_back(fromClient.getClientID());
   data.push_back(ipWithoutDot); // ip.sender
 
-  Response *response = new Response(CommunicationServer::S_CONTACT_REQUEST, g_Server.getAccountByID(receiver), data);
+  Response *response = new Response(CommunicationServer::S_CALL_REQUEST, g_Server.getAccountByID(receiver), data);
   Sender::send(response);
 }
 
@@ -212,6 +211,10 @@ void	ProtocolClient::acceptInvitation(DataFromClient &fromClient)
   std::string idSenderInvitation = fromClient.getData().at(0);
   g_Server.getAccountByID(idReceiverInvitation)->addContact(g_Server.getAccountByID(idSenderInvitation));
   g_Server.getAccountByID(idSenderInvitation)->addContact(g_Server.getAccountByID(idReceiverInvitation));
+  Response *response = new Response(CommunicationServer::S_CONTACT_INFO, g_Server.getAccountByID(idReceiverInvitation), g_Server.getAccountByID(idSenderInvitation)->getData());
+  Sender::specialSending(response);
+  Response *response1 = new Response(CommunicationServer::S_CONTACT_INFO, g_Server.getAccountByID(idSenderInvitation), g_Server.getAccountByID(idReceiverInvitation)->getData());
+  Sender::specialSending(response1);
 }
 
 void	ProtocolClient::declineInvitation(DataFromClient &fromClient)

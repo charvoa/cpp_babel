@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Wed Nov  4 05:13:57 2015 Antoine Garcia
+// Last update Fri Nov  6 22:51:13 2015 Nicolas Charvoz
 //
 
 #include "NetworkServerHandler.hh"
@@ -26,6 +26,7 @@ NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
   connect(_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(connectionError(QAbstractSocket::SocketError)));
   connect(&_request, SIGNAL(handshakeSuccess()), this, SLOT(handshakeSuccess()));
   connect(&_request, SIGNAL(loginSuccess()), this, SLOT (loginSuccess()));
+  connect(&_request, SIGNAL(addContactSuccess()), this, SLOT (addContactSuccess()));
 }
 
 NetworkServerHandler::~NetworkServerHandler()
@@ -125,7 +126,6 @@ void	NetworkServerHandler::handshakeSuccess()
   std::cout << "HANDSHAKE SUCCESS" << std::endl;
   emit userConnected(1);
   _connected = true;
-  emit userConnected(1);
   if (type == 0)
     {
       logUser();
@@ -137,10 +137,28 @@ void	NetworkServerHandler::handshakeSuccess()
 
 void	NetworkServerHandler::loginSuccess()
 {
-    emit userConnected(1);
+  std::cout << _read[0] << std::endl;
+  emit userConnected(1);
 }
 
 void	NetworkServerHandler::loginError()
 {
   emit userConnected(0);
+}
+
+void	NetworkServerHandler::addContactSuccess()
+{
+}
+
+void NetworkServerHandler::addContact(const std::string &c)
+{
+  QByteArray	array;
+  QDataStream	out(&array, QIODevice::WriteOnly);
+  std::string str;
+
+  str += c;
+  out.setVersion(QDataStream::Qt_4_3);
+  out <<  quint8(12) << quint32(0) << quint16(str.size());
+  out.writeRawData(str.c_str(), str.size());
+  _socket->write(array);
 }

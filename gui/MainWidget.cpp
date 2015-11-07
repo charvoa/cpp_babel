@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Wed Oct 28 16:43:28 2015 Nicolas Charvoz
+// Last update Sat Nov  7 10:24:27 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -17,17 +17,21 @@ class QTabBar;
 
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
+  setFixedSize(1920, 1200);
+  setWindowTitle(tr("Babel"));
+
   QVBoxLayout *mainLayout = new QVBoxLayout;
   QTabBar *tb;
+
+  UiContact *contact = new UiContact(this);
+  QScrollArea *contactScrollArea = new QScrollArea();
+  contactScrollArea->setWidget(contact);
 
   _tabWidget = new QTabWidget;
   tb = _tabWidget->tabBar();
 
-  setFixedSize(1920, 1200);
-  setWindowTitle(tr("Babel"));
-
   _tabWidget->addTab(new Home(), tr("Home"));
-  _tabWidget->addTab(new UiContact(this), tr("Contact"));
+  _tabWidget->addTab(contactScrollArea, tr("Contact"));
 
   std::ostringstream oss;
 
