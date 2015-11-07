@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sat Nov  7 06:59:26 2015 Antoine Garcia
+// Last update Sat Nov  7 07:20:52 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -125,7 +125,6 @@ void	NetworkServerHandler::logUser()
 void	NetworkServerHandler::handshakeSuccess()
 {
   std::cout << "HANDSHAKE SUCCESS" << std::endl;
-  emit userConnected(1);
   _connected = true;
   if (type == 0)
     {
@@ -140,6 +139,7 @@ void	NetworkServerHandler::loginSuccess()
 {
   _request.parseLoginSuccess(_read);
   g_PTUser.setUsername(login);
+  std::cout << "MY LOGIN ="<< g_PTUser.currentUser().getUsername() << std::endl;
   emit userConnected(1);
 }
 
