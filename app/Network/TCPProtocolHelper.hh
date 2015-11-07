@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 19 13:34:10 2015 Antoine Garcia
-// Last update Fri Nov  6 13:25:43 2015 Antoine Garcia
+// Last update Sat Nov  7 07:45:44 2015 Antoine Garcia
 //
 
 #ifndef TCPProtocolHelper_HH_
@@ -39,12 +39,13 @@ private:
   typedef std::map<protocolClient, handlePtr>	handle_funcs;
   map_funcs	functions;
   handle_funcs	handleFunctions;
-  int _clientID;
 public:
+  QByteArray	 _clientID;
   TCPProtocolHelper();
   ~TCPProtocolHelper();
   QByteArray  createRequest(ProtocolType type);
   void	      handleRequest(qint8 type);
+  void	      parseLoginSuccess(QByteArray &array);
 signals:
   void handshakeSuccess();
   void	loginSuccess();
@@ -55,6 +56,7 @@ private:
   QByteArray	createHandshake();
   QByteArray	createCallRequest();
   QByteArray	acceptCallRequest();
+  QByteArray	addContactRequest();
   //handleRequest Method
   void		handleHandshake();
   void		handleLogin();
