@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sat Nov  7 14:34:44 2015 Nicolas Girardot
+// Last update Sat Nov  7 14:45:07 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -187,16 +187,19 @@ void	ProtocolClient::declineCall(DataFromClient &fromClient)
 
 void	ProtocolClient::addContact(DataFromClient &fromClient)
 {
+  std::vector<std::string> data;
   std::string sender = fromClient.getClientID();
   std::string loginAdded = fromClient.getData().at(0);
 
   if (g_Server.doesUsernameExist(loginAdded))
     {
-      // Success
+      data.push_back(fromClient.getClientID());
+      Response *response = new Response(CommunicationServer::S_CONTACT_REQUEST, g_Server.getAccountByUsername(loginAdded), data);
+      Sender::specialSending(response);
     }
   else
     {
-
+      // Create Error Response With Error Enum for non-existing username
     }
 }
 
