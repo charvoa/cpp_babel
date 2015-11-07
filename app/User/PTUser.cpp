@@ -1,11 +1,11 @@
-B1;3409;0c//
+//
 // PTUser.cpp for  in /home/nicolaschr/rendu/cpp_babel/app/User
 //
 // Made by Nicolas Charvoz
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sat Nov  7 07:52:46 2015 Antoine Garcia
+// Last update Sat Nov  7 07:58:57 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
