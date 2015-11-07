@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sat Nov  7 06:42:35 2015 Antoine Garcia
+// Last update Sat Nov  7 06:57:42 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -66,6 +66,11 @@ int PTUser::run(int ac, char **av)
 PTUser::User&	PTUser::currentUser()
 {
   return (_currentUser);
+}
+
+void		PTUser::setUsername(const std::string &username)
+{
+  _currentUser._username = username;
 }
 
 void	PTUser::logUser(const std::string &username, const std::string &password, const std::string &ip)

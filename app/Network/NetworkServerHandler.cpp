@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sat Nov  7 06:19:41 2015 Antoine Garcia
+// Last update Sat Nov  7 06:59:26 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -14,6 +14,7 @@
 #include <QAbstractSocket>
 #include <iostream>
 #include <vector>
+#include "../User/PTUser.hh"
 #define HEADER_LENGTH 3
 #define SEPARATOR ";"
 
@@ -138,6 +139,7 @@ void	NetworkServerHandler::handshakeSuccess()
 void	NetworkServerHandler::loginSuccess()
 {
   _request.parseLoginSuccess(_read);
+  g_PTUser.setUsername(login);
   emit userConnected(1);
 }
 
