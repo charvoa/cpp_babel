@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Sat Nov  7 16:58:45 2015 Serge Heitzler
+// Last update Sat Nov  7 18:32:11 2015 Nicolas Girardot
 //
 
 #include "Account.hh"

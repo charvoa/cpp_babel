@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:16:36 2015 Serge Heitzler
-// Last update Mon Nov  2 11:46:23 2015 Nicolas Girardot
+// Last update Sat Nov  7 18:28:25 2015 Nicolas Girardot
 //
 
 #include <boost/lexical_cast.hpp>
@@ -21,14 +21,13 @@ Response::Response(CommunicationServer answerType, Account *toClient, std::vecto
 
 Response::Response(CommunicationServer answerType, boost::shared_ptr<TCPConnection> toSocket, std::vector<std::string> data)
 {
-  _toSocket = &toSocket;
+  _toSocket = toSocket;
   this->setSizeData(data);
   this->setResponse(answerType, data);
 }
 
 void           Response::setSizeData(std::vector<std::string> data)
 {
-  std::cout << "Cotsa" << std::endl;
   if (data.size() == 0)
     _sizeData = 0;
   else
@@ -37,7 +36,6 @@ void           Response::setSizeData(std::vector<std::string> data)
 	{
 	  _sizeData += (*it).length();
 	  _sizeData++;
-	  std::cout << "COtssaa" << std::endl;
 	}
       _sizeData--;
     }
@@ -60,6 +58,7 @@ void           Response::setResponse(CommunicationServer answerType, std::vector
 	}
       _response.pop_back();
     }
+  std::cout << "Olié Oliahhé" << std::endl;
 }
 
 
@@ -68,9 +67,9 @@ Account           *Response::getClient()
   return _toClient;
 }
 
-boost::shared_ptr<TCPConnection>           &Response::getSocket()
+boost::shared_ptr<TCPConnection>           Response::getSocket()
 {
-  return *_toSocket;
+  return _toSocket;
 }
 
 std::string           &Response::getResponse()

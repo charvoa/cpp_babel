@@ -5,14 +5,14 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:40:20 2015 Serge Heitzler
-// Last update Sun Nov  1 16:58:11 2015 Nicolas Girardot
+// Last update Sat Nov  7 17:53:41 2015 Nicolas Girardot
 //
 
 #include "Sender.hh"
 
 Sender::Sender()
 {
-
+  std::cout << "Passing in Sender" << std::endl;
 }
 
 Sender::~Sender()
@@ -27,5 +27,6 @@ void Sender::send(Response *response)
 
 void Sender::specialSending(Response *response)
 {
+
   response->getSocket()->asyncWrite(response->getResponse());
 }
