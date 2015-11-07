@@ -1,12 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.17)  18 OCT 2015 15:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.1)  7 NOV 2015 17:03
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **TechDoc.tex
 (./TechDoc.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+Babel <3.9m> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -23,7 +22,9 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (/home/nicolaschr/texmf/tex/latex/listings/listings.sty (/home/nicolaschr/texmf/tex/latex/graphics/keyval.sty
+)
+(/home/louis/texmf/tex/latex/listings/listings.sty
+(/home/louis/texmf/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
@@ -39,103 +40,312 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \lst@newlines=\count91
 \lst@lineno=\count92
 \lst@maxwidth=\dimen106
- (/home/nicolaschr/texmf/tex/latex/listings/lstmisc.sty
+
+(/home/louis/texmf/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count93
 \lst@skipnumbers=\count94
 \lst@framebox=\box27
-) (/home/nicolaschr/texmf/tex/latex/listings/listings.cfg
+)
+(/home/louis/texmf/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
- (/home/nicolaschr/texmf/tex/generic/babel/babel.sty
+
+(/home/louis/texmf/tex/generic/babel/babel.sty
 Package: babel 2015/08/03 3.9m The Babel package
- (/home/nicolaschr/texmf/tex/generic/babel/switch.def
-File: switch.def 2015/08/03 3.9m Babel switching mechanism
-) (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2012/08/20 v3.3p English support from the babel system
- (/home/nicolaschr/texmf/tex/generic/babel/babel.def
+
+(/home/louis/texmf/tex/generic/babel/babel.def
 File: babel.def 2015/08/03 3.9m Babel common definitions
 \babel@savecnt=\count95
 \U@D=\dimen107
 )
-\l@british = a dialect from \language\l@english 
-\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
-)) (/home/nicolaschr/texmf/tex/latex/graphics/color.sty
+))
+(/home/louis/texmf/tex/latex/graphics/color.sty
 Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
- (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 142.
- (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
- (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count96
-)) (/home/nicolaschr/texmf/tex/latex/listings/lstlang1.sty
+))
+(/home/louis/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/home/louis/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+(/home/louis/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+)
+\Gin@req@height=\dimen108
+\Gin@req@width=\dimen109
+)
+(/home/louis/texmf/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./TechDoc.aux)
 \openout1 = `TechDoc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 \c@lstlisting=\count97
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count98
-\scratchdimen=\dimen108
+\scratchdimen=\dimen110
 \scratchbox=\box28
 \nofMPsegments=\count99
 \nofMParguments=\count100
 \everyMPshowfont=\toks16
 \MPscratchCnt=\count101
-\MPscratchDim=\dimen109
+\MPscratchDim=\dimen111
 \MPnumerator=\count102
 \makeMPintoPDFobject=\count103
 \everyMPtoPDFconversion=\toks17
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 36.
+(Font)              <12> on input line 38.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 36.
+(Font)              <8> on input line 38.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 36.
- (./TechDoc.toc)
+(Font)              <6> on input line 38.
+
+(./TechDoc.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+)
 \tf@toc=\write3
 \openout3 = `TechDoc.toc'.
 
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] (./TechDoc.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+[3] [4] [5] <img/loginScreen.png, id=24, 514.92375pt x 413.545pt>
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.157   \includegraphics[width=350]{loginScreen}
+                                                
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.157   \includegraphics[width=350]{loginScreen}
+                                                
+? 
+File: img/loginScreen.png Graphic file (type png)
+<use img/loginScreen.png>
+Package pdftex.def Info: img/loginScreen.png used on input line 157.
+(pdftex.def)             Requested size: 350.0pt x 281.0996pt.
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 157--158
+[][] 
+ []
+
+[6 <./img/loginScreen.png>]
+<img/loggedScreen.png, id=28, 962.59625pt x 627.34375pt>
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.170   \includegraphics[width=350]{loggedScreen}
+                                                 
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.170   \includegraphics[width=350]{loggedScreen}
+                                                 
+? 
+File: img/loggedScreen.png Graphic file (type png)
+<use img/loggedScreen.png>
+Package pdftex.def Info: img/loggedScreen.png used on input line 170.
+(pdftex.def)             Requested size: 350.0pt x 228.09311pt.
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 170--171
+[][] 
+ []
+
+[7 <./img/loggedScreen.png>] [8]
+! Misplaced alignment tab character &.
+l.225  The method int start(const std::string &
+                                               host, unsigned int port) init...
+
+? 
+! Misplaced alignment tab character &.
+l.226  The method void write(const std::string &
+                                                request) sends the data to t...
+
+? 
+
+Overfull \hbox (9.16713pt too wide) in paragraph at lines 230--233
+[]\OT1/cmr/m/n/10 The TCP-Pro-to-col-Helper class cre-ates re-quest with the cr
+e-ateRequest() method
+ []
+
+
+Overfull \hbox (16.32477pt too wide) in paragraph at lines 230--233
+\OT1/cmr/m/n/10 and trans-late data with han-dleRequest(). QByteAr-ray cre-ateR
+equest(ProtocolType
+ []
+
+[9]
+! Misplaced alignment tab character &.
+l.265 ...he methods void write(const std::string &
+                                                  request) and void readyRea...
+
+? 
+
+Overfull \hbox (6.75052pt too wide) in paragraph at lines 264--267
+[]\OT1/cmr/m/n/10 The Net-work-Clien-tHandler is sim-i-lar to the Net-work-Serv
+er-Han-dler seen above.
+ []
+
+[10] [11]
+! Misplaced alignment tab character &.
+l.325 ...nection, const boost::system::errorcode &
+                                                  error) methods in order to...
+
+? 
+
+Overfull \hbox (32.63951pt too wide) in paragraph at lines 325--326
+[]\OT1/cmr/m/n/10 The TCPServer class has a list of TCP-Con-nec-tion and a boos
+t::asio::ip::tcp::acceptor
+ []
+
+
+Overfull \hbox (18.58406pt too wide) in paragraph at lines 325--326
+\OT1/cmr/m/n/10 for at-tribute, a void star-tAc-cept() and a void han-dleAc-cep
+t(TCPConnection::pointer
+ []
+
+! Misplaced alignment tab character &.
+l.328 ...thods void asyncWrite(const std::string &
+                                                  message) and void asyncRea...
+
+? 
+! Misplaced alignment tab character &.
+l.331 ...e method: void verify(const std::string &
+                                                  request) const. If the req...
+
+? 
+! Misplaced alignment tab character &.
+l.344 ...ethod void methodChecker(DataFromClient &
+                                                  fromClient) from the Proto...
+
+? 
+
+Overfull \hbox (1.0561pt too wide) in paragraph at lines 344--346
+[]\OT1/cmr/m/n/10 Once the re-quest iden-ti-fied, the DataFrom-Client con-struc
+-tor calls the method
+ []
+
+
+Overfull \hbox (0.38956pt too wide) in paragraph at lines 344--346
+\OT1/cmr/m/n/10 void method-Checker(DataFromClient from-Client) from the Pro-to
+-col-Client class.
+ []
+
+[12] [13] [14] (./TechDoc.aux) ) 
 Here is how much of TeX's memory you used:
- 2760 strings out of 495028
- 37735 string characters out of 6181496
- 143721 words of memory out of 5000000
- 5985 multiletter control sequences out of 15000+600000
- 8054 words of font info for 29 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 26i,6n,40p,198b,1041s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on TechDoc.pdf (4 pages, 76961 bytes).
+ 3296 strings out of 493301
+ 46494 string characters out of 6139893
+ 144573 words of memory out of 5000000
+ 6729 multiletter control sequences out of 15000+600000
+ 8361 words of font info for 30 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 37i,6n,40p,462b,1029s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on TechDoc.pdf (14 pages, 142129 bytes).
 PDF statistics:
- 41 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 76 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
