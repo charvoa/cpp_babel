@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Fri Nov  6 22:51:13 2015 Nicolas Charvoz
+// Last update Sat Nov  7 06:19:41 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -137,7 +137,7 @@ void	NetworkServerHandler::handshakeSuccess()
 
 void	NetworkServerHandler::loginSuccess()
 {
-  std::cout << _read[0] << std::endl;
+  _request.parseLoginSuccess(_read);
   emit userConnected(1);
 }
 
