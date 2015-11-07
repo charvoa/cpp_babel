@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sat Nov  7 08:28:56 2015 Antoine Garcia
+// Last update Sat Nov  7 08:31:51 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -160,7 +160,7 @@ void NetworkServerHandler::addContact(const std::string &c)
 
   str += c;
   out.setVersion(QDataStream::Qt_4_3);
-  out <<  quint8(ADD_CONTACT) << _request._clientID.constData();
+  out <<  quint8(ADD_CONTACT);
   out.writeRawData(_request._clientID.constData(), 4);
   out << quint16(str.size());
   out.writeRawData(str.c_str(), str.size());
