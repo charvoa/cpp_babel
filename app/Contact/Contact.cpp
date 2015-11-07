@@ -5,13 +5,13 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sun Nov  1 16:01:10 2015 Nicolas Charvoz
-// Last update Mon Nov  2 10:49:24 2015 Nicolas Charvoz
+// Last update Sat Nov  7 18:33:17 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
 
-Contact::Contact(std::string username, std::string ip, std::string location,
-		 int status, int id, int fav) : _username(username), _ip(ip),
+Contact::Contact(std::string username, std::string location,
+		 int status, int id, int fav) : _username(username),
 						      _location(location),
 						      _status(status),
 						      _idPic(id),
@@ -35,11 +35,6 @@ Contact &Contact::getContact()
 std::string Contact::getName() const
 {
   return _username;
-}
-
-std::string Contact::getIP() const
-{
-  return _ip;
 }
 
 std::string Contact::getLocation() const
