@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Sat Nov  7 06:59:54 2015 Antoine Garcia
+// Last update Sat Nov  7 07:48:19 2015 Antoine Garcia
 //
 
 #ifndef PTUSER_HH_
@@ -45,7 +45,7 @@ private:
     const std::string &getObjectId() const;
     const std::vector<Contact *>& getContacts() const;
 
-    void		addContact();
+    void		addContact(const std::string &);
   };
   User	_currentUser;
   NetworkServerHandler server;

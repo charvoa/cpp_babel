@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sat Nov  7 07:46:02 2015 Antoine Garcia
+// Last update Sat Nov  7 07:52:39 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -149,6 +149,7 @@ void	NetworkServerHandler::loginError()
 
 void	NetworkServerHandler::addContactSuccess()
 {
+  g_PTUser.contactIsAdd();
 }
 
 void NetworkServerHandler::addContact(const std::string &c)
