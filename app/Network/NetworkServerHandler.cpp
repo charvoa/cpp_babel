@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  8 09:22:13 2015 Antoine Garcia
+// Last update Sun Nov  8 09:30:38 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -195,5 +195,6 @@ void	NetworkServerHandler::receiveCall()
   in.readRawData(data, size);
   buffer.append(data, size);
   QList<QByteArray> token = buffer.split(';');
+  std::cout << "NAME CALL " << token[0].constData() << std::endl;
   emit callReceived(token[0].constData());
 }

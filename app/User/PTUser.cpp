@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sun Nov  8 09:22:44 2015 Antoine Garcia
+// Last update Sun Nov  8 09:30:36 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -66,7 +66,7 @@ int PTUser::run(int ac, char **av)
 
 void	PTUser::callReceived(const std::string &user)
 {
-  std::cout << "USER CALL RECEIVED" << std::endl;
+  std::cout << "USER CALL RECEIVED " << user <<  std::endl;
   emit receivedCall(user);
 }
 
