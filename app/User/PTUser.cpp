@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sat Nov  7 09:44:09 2015 Antoine Garcia
+// Last update Sun Nov  8 03:32:13 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -177,7 +177,25 @@ void	PTUser::contactIsAdd()
 
 void	PTUser::User::addServerContact(QByteArray&	array)
 {
-  std::cout << "ADD CONTACT COUNT: " << array.count() << std::endl;
+  QDataStream	io(array);
+  quint8	type;
+  quint16	sizeData;
+  QByteArray	clientId;
+  QByteArray	bufferData;
+  char		tmp[4];
+
+  io >> type;
+  io >> sizeData;
+  char	data[sizeData];
+  io.readRawData(tmp, 4);
+  clientId.append(tmp, 4);
+  io.readRawData(data, array.count() - 3);
+  bufferData.append(data, array.count() - 3);
+  QList<QByteArray> token = bufferData.split(';');
+  //create contact and Add to the list
+  Contact	*userFriend = new Contact(token[1].constData(),token[2].constData(), 1, 1);
+  _contact.push_back(userFriend);
+  delete userFriend;
 }
 
 //Nested Class User

@@ -5,12 +5,12 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sun Nov  1 16:01:10 2015 Nicolas Charvoz
-// Last update Sat Nov  7 18:33:17 2015 Nicolas Charvoz
+// Last update Sun Nov  8 03:29:15 2015 Antoine Garcia
 //
 
 #include "Contact.hh"
 
-Contact::Contact(std::string username, std::string location,
+Contact::Contact(const std::string &username, const std::string &location,
 		 int status, int id, int fav) : _username(username),
 						      _location(location),
 						      _status(status),
