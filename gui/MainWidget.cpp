@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sun Nov  8 18:26:15 2015 Nicolas Charvoz
+// Last update Sun Nov  8 19:37:28 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -65,6 +65,7 @@ void MainWidget::receivedCall(const std::string &name)
 void MainWidget::closeTab(int index)
 {
   //remove At Index PTUSER
+  g_PTUser.removeAtIndex(index - 2);
   _tabWidget->removeTab(index);
 }
 
