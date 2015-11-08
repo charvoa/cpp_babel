@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Sun Nov  8 13:55:07 2015 Nicolas Girardot
+// Last update Sun Nov  8 19:09:24 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -56,7 +56,7 @@ const std::string			        		&Account::getLogin() const
   return _login;
 }
 
-short			        		Account::getProfilePictureID() const
+char			        		Account::getProfilePictureID() const
 {
   return _profilePicture;
 }
