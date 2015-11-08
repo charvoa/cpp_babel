@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  8 18:53:05 2015 Nicolas Charvoz
+// Last update Sun Nov  8 21:10:27 2015 Nicolas Charvoz
 //
 
 #include "NetworkServerHandler.hh"
@@ -191,7 +191,8 @@ void	NetworkServerHandler::receiveCall()
   std::cout << "RECEIVE CALL NETWORK" << std::endl;
   in >> type;
   in >> size;
-  char	*data = (char*)malloc(size * sizeof(char));
+
+  char data[size];
   in.readRawData(data, size);
   buffer.append(data, size);
   QList<QByteArray> token = buffer.split(';');
