@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:48:39 2015 Nicolas Charvoz
-// Last update Sun Oct 25 12:24:01 2015 Nicolas Charvoz
+// Last update Sun Nov  8 18:14:28 2015 Nicolas Charvoz
 //
 
 #ifndef MAINWIDGET_HH_
@@ -45,6 +45,7 @@ public:
 
 public slots:
   void closeTab(int);
+  void receivedCall(const std::string&);
 private:
   QTabWidget *_tabWidget;
 };

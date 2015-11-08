@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Sat Nov  7 15:30:01 2015 Nicolas Charvoz
+// Last update Sun Nov  8 18:26:15 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -43,8 +43,23 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 
   _tabWidget->setFocusPolicy(Qt::NoFocus);
 
+  connect(&g_PTUser, SIGNAL(receivedCall(const std::string&)), this, SLOT(receivedCall(const std::string&)));
   mainLayout->addWidget(_tabWidget);
   setLayout(mainLayout);
+}
+
+void MainWidget::receivedCall(const std::string &name)
+{
+  QMessageBox msgBox;
+
+  std::stringstream ss;
+
+  ss << name << " is calling you !" << std::endl;
+  msgBox.setText(ss.str().c_str());
+  msgBox.addButton(QMessageBox::Yes);
+  msgBox.addButton(QMessageBox::No);
+  msgBox.exec();
+  std::cout << "Receiving call by " << name;
 }
 
 void MainWidget::closeTab(int index)
