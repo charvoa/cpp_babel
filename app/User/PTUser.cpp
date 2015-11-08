@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sat Nov  7 08:10:16 2015 Antoine Garcia
+// Last update Sat Nov  7 09:44:09 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -174,6 +174,12 @@ void	PTUser::contactIsAdd()
 
   emit contactAdded();
 }
+
+void	PTUser::User::addServerContact(QByteArray&	array)
+{
+  std::cout << "ADD CONTACT COUNT: " << array.count() << std::endl;
+}
+
 //Nested Class User
 PTUser::User::User()
 {

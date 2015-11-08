@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sat Nov  7 15:25:58 2015 Nicolas Charvoz
+// Last update Sat Nov  7 18:20:16 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -16,6 +16,7 @@ UiContact::UiContact(MainWidget *main, QWidget *parent) : QWidget(parent),
   this->displayContact();
   connect(&g_PTUser, SIGNAL(contactAdded()), this, SLOT(refreshUI()));
 }
+
 
 void UiContact::displayContact()
 {
@@ -28,7 +29,13 @@ void UiContact::displayContact()
   int j = 0;
   int i = 0;
 
-  for (int tmp = 0; tmp < 15; tmp++)
+  if (g_PTUser.currentUser().getContacts().size() < 1)
+    {
+      _noContactLabel = new QLabel(this);
+      _noContactLabel->setText(tr("You have no friends"));
+      _noContactLabel->setGeometry(900, 510 - 120, 240, 60);
+    }
+  for (int tmp = 0; tmp < g_PTUser.currentUser().getContacts().size(); tmp++)
     {
       if (i % 7 == 0 && i != 0)
 	{
@@ -72,7 +79,13 @@ void UiContact::refreshUI()
   int j = 0;
   int i = 0;
 
-  for (int tmp = 0; tmp < 16; tmp++)
+  if (g_PTUser.currentUser().getContacts().size() < 1)
+    {
+      _noContactLabel = new QLabel(this);
+      _noContactLabel->setText(tr("You have no friends"));
+      _noContactLabel->setGeometry(900, 510 - 120, 120 * 2, 60);
+    }
+  for (int tmp = 0; tmp < g_PTUser.currentUser().getContacts().size(); tmp++)
     {
       if (i % 7 == 0 && i != 0)
 	{

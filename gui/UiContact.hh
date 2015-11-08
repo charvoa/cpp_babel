@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Wed Oct 28 16:24:42 2015 Nicolas Charvoz
+// Last update Sat Nov  7 17:48:46 2015 Nicolas Charvoz
 //
 
 #ifndef UICONTACT_HH_
@@ -42,9 +42,9 @@ public slots:
   void addTab();
   void displayContact();
   void refreshUI();
-
 private:
   MainWidget *_main;
+  QLabel *_noContactLabel;
 
 };
 

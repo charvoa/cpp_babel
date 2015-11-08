@@ -19,6 +19,7 @@ SOURCES += main.cpp
 SOURCES += User/PTUser.cpp
 SOURCES += Network/NetworkServerHandler.cpp
 SOURCES += Audio/PTSoundOutput.cpp
+SOURCES += Audio/PTSoundInput.cpp
 SOURCES += Mutex/Mutex.cpp
 SOURCES += Mutex/MutexLocker.cpp
 SOURCES += Contact/Contact.cpp
