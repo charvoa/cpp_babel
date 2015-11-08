@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sun Nov  8 14:17:05 2015 Nicolas Girardot
+// Last update Sun Nov  8 14:59:53 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -187,6 +187,7 @@ void	ProtocolClient::declineCall(DataFromClient &fromClient)
 void	ProtocolClient::addContact(DataFromClient &fromClient)
 {
   std::vector<std::string> data;
+  std::vector<std::string> data2;
   std::string idReceiverInvitation = fromClient.getClientID();
   std::string idSenderInvitation = fromClient.getData().at(0);
   std::string loginAdded = fromClient.getData().at(0);
@@ -204,8 +205,16 @@ void	ProtocolClient::addContact(DataFromClient &fromClient)
       Response *response = new Response(CommunicationServer::S_CONTACT_INFO, g_Server.getAccountByUsername(loginAdded)->getSocket(), data);
       std::cout << "TESTING" << std::endl;
       Sender::specialSending(response);
-      g_Server.getAccountByID(idReceiverInvitation)->addContact(g_Server.getAccountByID(idSenderInvitation));
-      g_Server.getAccountByUsername(idSenderInvitation)->addContact(g_Server.getAccountByUsername(idReceiverInvitation));
+      data2.push_back(g_Server.getAccountByUsername(loginAdded)->getID());
+      data2.push_back(loginAdded);
+      data2.push_back("Nice");
+      data2.push_back(add);
+      data2.push_back(add);
+      Response *response2 = new Response(CommunicationServer::S_CONTACT_INFO, g_Server.getAccountByID(idReceiverInvitation)->getSocket(), data2);
+      std::cout << "TESTING" << std::endl;
+      Sender::specialSending(response2);
+      g_Server.getAccountByID(idReceiverInvitation)->addContact(g_Server.getAccountByUsername(loginAdded));
+      g_Server.getAccountByUsername(loginAdded)->addContact(g_Server.getAccountByID(idReceiverInvitation));
     }
   else
     {
