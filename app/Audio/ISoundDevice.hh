@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 28 01:57:52 2015 Antoine Garcia
-// Last update Wed Oct 28 06:47:00 2015 Antoine Garcia
+// Last update Sun Nov  8 02:23:32 2015 Antoine Garcia
 //
 
 #ifndef ISOUNDDEVICE_HH_
@@ -16,7 +16,8 @@
 typedef float SAMPLE;
 namespace SoundDevice {
   const unsigned int channels = 2;
-  const double sampleRate = 44100;
+  const double sampleRate = 48000;
+  const unsigned int frame_size = 480;
 }
 
 class	ISoundDevice

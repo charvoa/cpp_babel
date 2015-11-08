@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sat Oct 31 03:14:05 2015 Antoine Garcia
-// Last update Sat Oct 31 03:20:17 2015 Antoine Garcia
+// Last update Sun Nov  8 02:25:48 2015 Antoine Garcia
 //
 
 #ifndef PTENCODER_HH_
@@ -15,6 +15,7 @@
 class	PTEncoder : public IEncoder
 {
   OpusEncoder	*_encode;
+  OpusDecoder	*_decode;
 public:
   PTEncoder();
   ~PTEncoder();
