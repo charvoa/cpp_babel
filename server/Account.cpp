@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Sat Nov  7 21:32:48 2015 Nicolas Girardot
+// Last update Sun Nov  8 13:55:07 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
@@ -93,6 +93,7 @@ Account::State		      		Account::getState() const
 
 const std::string   		      		&Account::getID() const
 {
+  std::cout << "ID IS " << _id;
   return _id;
 }
 
@@ -205,16 +206,31 @@ std::vector<std::string> Account::getFormatedContactList()
   std::cout << "STR IN GET FORMATED CONTACT LIST = " << std::endl;
   contactsInformations.push_back(str);
 
+
   if (_contactList.empty())
     return contactsInformations;
+  std::cout << "TOTO" << std::endl;
   for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
-      contactsInformations.push_back((*it)->getID());
-      contactsInformations.push_back(this->getNicknameIfExisting((*it)));
-      contactsInformations.push_back((*it)->getLocation());
-      contactsInformations.push_back(std::to_string(boost::lexical_cast<char>(((*it)->getState()))));
-      contactsInformations.push_back(std::to_string(boost::lexical_cast<char>(((*it)->getProfilePictureID()))));
-      contactsInformations.push_back(std::to_string(boost::lexical_cast<char>((this->isIDFavorited((*it)->getID())))));
+      if ((*it) == NULL)
+	{
+	  std::cout << "NILL WTF" << std::endl;
+	}
+      else
+	{
+	  contactsInformations.push_back((*it)->getID());
+	  std::cout << "-2" << std::endl;
+	  contactsInformations.push_back(this->getNicknameIfExisting((*it)));
+	  std::cout << "-1" << std::endl;
+	  contactsInformations.push_back((*it)->getLocation());
+	  std::cout << "0" << std::endl;
+	  contactsInformations.push_back(std::to_string(static_cast<char>(((*it)->getState()))));
+	  std::cout << "1" << std::endl;
+	  contactsInformations.push_back(std::to_string(static_cast<char>(((*it)->getProfilePictureID()))));
+	  std::cout << "2" << std::endl;
+	  contactsInformations.push_back(std::to_string(static_cast<char>((this->isIDFavorited((*it)->getID())))));
+	  std::cout << "CACA BITE" << std::endl;
+	}
     }
   return contactsInformations;
 }
