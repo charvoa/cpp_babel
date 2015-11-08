@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sat Nov  7 18:20:16 2015 Nicolas Charvoz
+// Last update Sun Nov  8 14:42:45 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -28,14 +28,15 @@ void UiContact::displayContact()
   std::stringstream ss;
   int j = 0;
   int i = 0;
+  _noContactLabel = new QLabel(this);
 
   if (g_PTUser.currentUser().getContacts().size() < 1)
     {
-      _noContactLabel = new QLabel(this);
       _noContactLabel->setText(tr("You have no friends"));
       _noContactLabel->setGeometry(900, 510 - 120, 240, 60);
     }
-  for (int tmp = 0; tmp < g_PTUser.currentUser().getContacts().size(); tmp++)
+  for (unsigned int tmp = 0; tmp < g_PTUser.currentUser().getContacts().size();
+       tmp++)
     {
       if (i % 7 == 0 && i != 0)
 	{
@@ -76,30 +77,33 @@ void UiContact::refreshUI()
   QPixmap *profilPic;
 
   std::stringstream ss;
+  std::stringstream pp;
   int j = 0;
   int i = 0;
 
-  if (g_PTUser.currentUser().getContacts().size() < 1)
+  std::vector<Contact> contactList = g_PTUser.currentUser().getContacts();
+
+  if (g_PTUser.currentUser().getContacts().size() > 1)
     {
-      _noContactLabel = new QLabel(this);
-      _noContactLabel->setText(tr("You have no friends"));
-      _noContactLabel->setGeometry(900, 510 - 120, 120 * 2, 60);
+      _noContactLabel->hide();
     }
-  for (int tmp = 0; tmp < g_PTUser.currentUser().getContacts().size(); tmp++)
+  for (unsigned int tmp = 0; tmp < g_PTUser.currentUser().getContacts().size(); tmp++)
     {
       if (i % 7 == 0 && i != 0)
 	{
 	  i = 0;
 	  j++;
 	}
-      ss << "Username " << tmp;
+
+      ss << contactList.at(tmp).getName();
 
       name = new QLabel(tr(ss.str().c_str()), this);
       name->setAlignment(Qt::AlignCenter);
 
       name->setGeometry((30 * (i + 1) + 240 * i), (30 + 390 * j),
 			240, 60);
-      profilPic = new QPixmap("./gui/img/avatar1.png");
+      pp << "./gui/img/avatar" << contactList.at(tmp).getPic() << ".png";
+      profilPic = new QPixmap(pp.str().c_str());
       imgP = new QLabel(this);
       imgP->setPixmap(profilPic->scaled(240, 240));
       imgP->setGeometry((30 * (i + 1) + 240 * i), (90 + 390 * j),
@@ -112,6 +116,8 @@ void UiContact::refreshUI()
       connect(newConv, SIGNAL(released()), this, SLOT(addTab()));
       ss.str("");
       ss.clear();
+      pp.str("");
+      pp.clear();
       i++;
     }
 }

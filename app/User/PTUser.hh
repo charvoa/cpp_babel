@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Sun Nov  8 05:16:26 2015 Antoine Garcia
+// Last update Sun Nov  8 14:42:05 2015 Nicolas Charvoz
 //
 
 #ifndef PTUSER_HH_
@@ -45,6 +45,7 @@ private:
     const std::vector<Contact>& getContacts() const;
     void		addServerContact(QByteArray &array);
     void		addContact(const std::string &);
+    const Contact &getContactFromName(const std::string&) const;
   };
   User	_currentUser;
   NetworkServerHandler server;
@@ -71,7 +72,7 @@ public:
   bool		isTabOpen(const std::string &) const;
   void		addToList(const std::string &);
   void		removeAtIndex(int index);
-  void	setUsername(const std::string &);
+  void		setUsername(const std::string &);
 private:
   bool checkIP() const;
   void getIPGroup(const std::string&);
