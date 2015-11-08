@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sun Nov  8 15:08:17 2015 Nicolas Charvoz
+// Last update Sun Nov  8 21:34:06 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -34,7 +34,7 @@ void UiContact::displayContact()
 
   if (g_PTUser.currentUser().getContacts().size() < 1)
     {
-      _noContactLabel->setText(tr("You have no friends"));
+      //      _noContactLabel->setText(tr("You have no friends"));
       _noContactLabel->setGeometry(900, 510 - 120, 240, 60);
     }
   for (unsigned int tmp = 0; tmp < g_PTUser.currentUser().getContacts().size();
