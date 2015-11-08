@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 22:15:25 2015 Nicolas Girardot
-// Last update Sun Nov  1 13:45:28 2015 Nicolas Girardot
+// Last update Sun Nov  8 21:20:53 2015 Nicolas Girardot
 //
 
 #ifndef TCPSERVER_HPP_
@@ -63,15 +63,13 @@ private:
 
   void handleAccept(TCPConnection::pointer newConnection, const boost::system::error_code& error)
   {
-    std::cout << "I'm working 50/100" << std::endl;
     if (!error)
       {
-	std::cout << "Im working biatch" << std::endl;
+	std::cout << "New Connection" << std::endl;
 	_TCPList.push_back(newConnection);
 	newConnection->asyncRead();
 	startAccept();
       }
-    std::cout << "Error is " << error.message() << std::endl;
   }
 };
 

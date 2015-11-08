@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Sun Nov  8 14:52:10 2015 Nicolas Girardot
+// Last update Sun Nov  8 21:18:03 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
@@ -56,7 +56,6 @@ Account   *Server::getAccountByID(std::string &ID)
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
-      std::cout << "is Same ? ::::" << ID << "   :   " << (*it)->getID() << std::endl;
       if ((*it)->getID() == ID)
 	{
 	  return (*it);
@@ -69,7 +68,6 @@ Account   *Server::getAccountByUsername(std::string &username)
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
-      std::cout << ";:;:;:;;:;::; Get login = " << (*it)->getLogin() << " ;; User is " << username << std::endl;
       if ((*it)->getLogin() == username)
         return (*it);
     }

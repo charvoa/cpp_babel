@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:16:36 2015 Serge Heitzler
-// Last update Sun Nov  8 11:27:14 2015 Nicolas Girardot
+// Last update Sun Nov  8 21:24:28 2015 Nicolas Girardot
 //
 
 #include <boost/lexical_cast.hpp>
@@ -39,18 +39,14 @@ void           Response::setSizeData(std::vector<std::string> data)
 	}
       _sizeData--;
     }
-  std::cout << "Data size is " << _sizeData << std::endl;
 }
 
 void           Response::setResponse(CommunicationServer answerType, std::vector<std::string> data)
 {
   std::bitset<16> bit(_sizeData);
   _response += (char)(answerType);
-  std::cout << "Setting response szie is " << data.size() << std::endl;
   _response += static_cast<char>(this->extractBitsetValue(0, 7, bit));
-  std::cout << "Setting response" << std::endl;
   _response += static_cast<char>(this->extractBitsetValue(8, 15, bit));
-  std::cout << "Setting response" << std::endl;
   if (_sizeData == 0)
     ;
   else
@@ -62,7 +58,6 @@ void           Response::setResponse(CommunicationServer answerType, std::vector
 	}
       _response.pop_back();
     }
-  std::cout << "Olié Oliahhé" << std::endl;
 }
 
 
@@ -92,7 +87,6 @@ int Response::extractBitsetValue(int startBit, int endBit, std::bitset<16> dataC
     }
   dataContainer.operator &=(mask);
   dataContainer.operator >>=(moveBitNr);
-  std::cout << "It is working value is : " << dataContainer.to_ulong() << std::endl;
   return dataContainer.to_ulong();
 }
 

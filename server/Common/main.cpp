@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Tue Oct 13 20:40:02 2015 Nicolas Girardot
-// Last update Mon Nov  2 18:00:00 2015 Nicolas Girardot
+// Last update Sun Nov  8 21:20:04 2015 Nicolas Girardot
 //
 
 #include <ctime>
@@ -20,7 +20,6 @@ using boost::asio::ip::tcp;
 int main()
 {
   std::srand(std::time(NULL));
-  std::cout << "COPILED SUCCCCESS" << std::endl;
   Server g_Server;
   return 0;
 }
