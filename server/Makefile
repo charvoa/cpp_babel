@@ -5,7 +5,7 @@
 ## Login   <girard_s@epitech.net>
 ##
 ## Started on  Mon Oct 19 11:47:59 2015 Nicolas Girardot
-## Last update Sat Nov  7 17:20:34 2015 Nicolas Girardot
+## Last update Sun Nov  8 14:25:33 2015 Nicolas Girardot
 ## Last update Mon Nov  2 18:26:32 2015 Nicolas Charvoz
 ##
 
@@ -13,7 +13,7 @@ MAIN		=	server
 
 EXEC		=	$(MAIN)
 
-SRC		+=	VerifyRequest.cpp	\
+SRC		=	VerifyRequest.cpp	\
 			DataFromClient.cpp	\
 			Common/TCPConnection.cpp\
 			Server.cpp		\
@@ -31,7 +31,7 @@ LDFLAGS		=	-lboost_system		\
 CPPFLAGS	=	-Wall -Wextra -Werror
 
 ifeq ($(OS),Windows_NT)
-	CPP	=	 cl
+	CPP	=	cl
 else
 	OS := $(shell uname)
 	CPP	=	g++ -std=c++11
