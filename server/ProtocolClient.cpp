@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sat Nov  7 18:37:20 2015 Nicolas Girardot
+// Last update Sun Nov  8 11:27:24 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -189,10 +189,17 @@ void	ProtocolClient::addContact(DataFromClient &fromClient)
   std::vector<std::string> data;
   std::string sender = fromClient.getClientID();
   std::string loginAdded = fromClient.getData().at(0);
+  std::string add;
 
   if (g_Server.doesUsernameExist(loginAdded))
     {
       data.push_back(fromClient.getClientID());
+      data.push_back(g_Server.getAccountByUsername(loginAdded)->getLogin());
+      data.push_back("Nice");
+      char a = 1;
+      add += a;
+      data.push_back(add);
+      data.push_back(add);
       Response *response = new Response(CommunicationServer::S_CONTACT_INFO, g_Server.getAccountByUsername(loginAdded)->getSocket(), data);
       std::cout << "TESTING" << std::endl;
       Sender::specialSending(response);
