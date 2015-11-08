@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Wed Oct 28 10:45:59 2015 Nicolas Girardot
-// Last update Sat Nov  7 16:58:47 2015 Serge Heitzler
+// Last update Sun Nov  8 18:58:42 2015 Nicolas Girardot
 // Last update Mon Nov  2 18:23:59 2015 Nicolas Charvoz
 //
 
@@ -53,7 +53,7 @@ public:
   Account::State		      		getState() const;
   bool						isAlreadyAContactOf(Account *);
   bool            isIDFavorited(std::string ID);
-  short			        		getProfilePictureID() const;
+  char						getProfilePictureID() const;
   const std::string					&getNicknameIfExisting(Account *account);
   bool						addContact(Account *);
   const std::string   		      		&getID() const;
