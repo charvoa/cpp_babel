@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Sun Nov  8 19:06:31 2015 Nicolas Charvoz
+// Last update Sun Nov  8 21:10:39 2015 Nicolas Charvoz
 //
 
 #include "TCPProtocolHelper.hh"
@@ -61,7 +61,8 @@ void	TCPProtocolHelper::parseLoginSuccess(QByteArray &array)
   _clientID.append(temp, 4);
   //nbContacts
   io >> nbContacts;
-  char	*data = (char*)malloc(sizeData * sizeof(char));
+
+  char data[sizeData];
   if (nbContacts == ';'){
     io >> nbContacts;
     }

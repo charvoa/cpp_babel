@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sun Nov  8 19:23:34 2015 Nicolas Charvoz
+// Last update Sun Nov  8 21:10:33 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -194,7 +194,8 @@ void	PTUser::User::addServerContact(QByteArray&	array)
 
   io >> type;
   io >> sizeData;
-  char	*data = (char*)malloc(sizeData * sizeof(char));
+
+  char data[sizeData];
   io.readRawData(tmp, 4);
   clientId.append(tmp, 4);
   io.readRawData(data, array.count() - 3);
