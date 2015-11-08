@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Mon Nov  2 18:32:51 2015 Nicolas Charvoz
+// Last update Sun Nov  8 20:40:36 2015 Nicolas Charvoz
 //
 
 #ifndef PTUSER_HH_
@@ -22,49 +22,61 @@
 
 # define PASSWORD_DONT_MATCH 3001
 # define IP_PROBLEM 3002
-# define NO_ERROR 1
+# define ERROR_TEST 1
 
 
 class PTUser: public QObject
 {
 Q_OBJECT
 private:
-  void	contactIsAdd();
   class User
   {
     friend class PTUser;
-    std::string _username;
     std::string _password;
-    std::list<Contact *> _contact;
+    std::vector<Contact> _contact;
   protected:
     std::string _objectId;
+    std::string _username;
   public:
     User();
     ~User();
     const std::string &getUsername() const;
     const std::string &getObjectId() const;
-    const std::list<Contact *>& getContacts() const;
-    void		addContact();
+    const std::vector<Contact>& getContacts() const;
+    void		addServerContact(QByteArray &array);
+    void		addContact(const std::string &);
+    void		addContact(Contact &contact);
+    void		callUser(const std::string &);
+    const Contact &getContactFromName(const std::string&) const;
   };
   User	_currentUser;
   NetworkServerHandler server;
   std::string _ipServer;
   std::vector<std::string> _ipGroup;
+  std::vector<std::string>	   _tabs;
 private slots:
   void userConnected(int check);
+  void	callReceived(const std::string &);
 signals:
   void canDisplayHome(int check);
   void	contactAdded();
+  void	receivedCall(const std::string &);
 public:
   PTUser();
   ~PTUser();
+  void	contactIsAdd();
   User&		currentUser();
+  NetworkServerHandler&	getServer();
   int run(int, char**);
   void logUser(const std::string &username,
 	       const std::string &password, const std::string &ip);
   void signup(const std::string &username, const std::string &password,
 	      const std::string &verify, const std::string &ip,
 	      char avatar = '1');
+  bool		isTabOpen(const std::string &) const;
+  void		addToList(const std::string &);
+  void		removeAtIndex(int index);
+  void		setUsername(const std::string &);
 private:
   bool checkIP() const;
   void getIPGroup(const std::string&);

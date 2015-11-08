@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Mon Nov  2 11:07:44 2015 Nicolas Charvoz
+// Last update Sat Nov  7 16:10:21 2015 Nicolas Charvoz
 //
 
 #include "LoginWidget.hh"
@@ -39,7 +39,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent)
   _editIp = new QLineEdit(this);
   _editIp->setPlaceholderText(tr("IP:port"));
 
-  _editIp->setText(tr("51.254.139.53"));
+  _editIp->setText(tr("51.254.139.53:4040"));
 
   logo->setGeometry(387, -75, 250, 250);
   _mainLayout->addWidget(_editUsername, 0, 0);
@@ -86,7 +86,7 @@ void LoginWidget::refreshUI()
   _editPassword->setEchoMode(QLineEdit::Password);
 
   _editIp = new QLineEdit(this);
-  _editIp->setText(tr("51.254.139.53"));
+  _editIp->setText(tr("51.254.139.53:4040"));
 
   logo->setGeometry(387, -75, 250, 250);
   _mainLayout->addWidget(_editUsername, 0, 0);

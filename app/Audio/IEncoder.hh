@@ -5,16 +5,25 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sat Oct 31 03:00:38 2015 Antoine Garcia
-// Last update Sat Oct 31 03:13:50 2015 Antoine Garcia
+// Last update Sun Nov  8 02:21:32 2015 Antoine Garcia
 //
 
 #ifndef IENCODER_HH_
 # define IENCODER_HH_
 
 #include "../libs/opus.h"
+#include <vector>
+typedef struct soundEncoded
+{
+  std::vector<unsigned char> buffer;
+  int			     size;
+}		soundEncoded;
+typedef struct soundDecoded
+{
+  std::vector<float> buffer;
+  int			     size;
+}		soundDecoded;
 
-namespace Encoder {
-}
 class	IEncoder
 {
 public:

@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Thu Nov  5 19:44:22 2015 Nicolas Charvoz
+// Last update Sun Nov  8 21:10:27 2015 Nicolas Charvoz
 //
 
 #include "NetworkServerHandler.hh"
@@ -14,6 +14,7 @@
 #include <QAbstractSocket>
 #include <iostream>
 #include <vector>
+#include "../User/PTUser.hh"
 #define HEADER_LENGTH 3
 #define SEPARATOR ";"
 
@@ -26,6 +27,8 @@ NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
   connect(_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(connectionError(QAbstractSocket::SocketError)));
   connect(&_request, SIGNAL(handshakeSuccess()), this, SLOT(handshakeSuccess()));
   connect(&_request, SIGNAL(loginSuccess()), this, SLOT (loginSuccess()));
+  connect(&_request, SIGNAL(addContactSuccess()), this, SLOT (addContactSuccess()));
+  connect(&_request, SIGNAL(receiveCall()), this, SLOT (receiveCall()));
 }
 
 NetworkServerHandler::~NetworkServerHandler()
@@ -41,7 +44,7 @@ int	NetworkServerHandler::start(const std::string &host, unsigned int port)
 }
 
 void	NetworkServerHandler::setHost(const std::string &host)
-{
+ {
   _host = host;
 }
 
@@ -101,7 +104,7 @@ void	NetworkServerHandler::signUser()
   out << quint8(4) << quint32(0) << quint16(str.size() + 2);
   out.writeRawData(str.c_str(), str.size());
   out.writeRawData(";", strlen(";"));
-  out << quint8(1);
+  out << quint8(avatar);
   _socket->write(array);
 }
 
@@ -123,7 +126,6 @@ void	NetworkServerHandler::logUser()
 void	NetworkServerHandler::handshakeSuccess()
 {
   std::cout << "HANDSHAKE SUCCESS" << std::endl;
-  emit userConnected(1);
   _connected = true;
   if (type == 0)
     {
@@ -136,10 +138,64 @@ void	NetworkServerHandler::handshakeSuccess()
 
 void	NetworkServerHandler::loginSuccess()
 {
-    emit userConnected(1);
+  _request.parseLoginSuccess(_read);
+  g_PTUser.setUsername(login);
+  emit userConnected(1);
+}
+
+void NetworkServerHandler::callRequest(const std::string &name)
+{
+  QByteArray    block;
+  QDataStream   out(&block, QIODevice::WriteOnly);
+
+  out.setVersion(QDataStream::Qt_4_3);
+  out << quint8(6);
+  out.writeRawData(_request.getClientID().constData(), 4);
+  out << quint16(name.size());
+  out.writeRawData(name.c_str(), name.size());
+  _socket->write(block);
 }
 
 void	NetworkServerHandler::loginError()
 {
   emit userConnected(0);
+}
+
+void	NetworkServerHandler::addContactSuccess()
+{
+  g_PTUser.currentUser().addServerContact(_read);
+  g_PTUser.contactIsAdd();
+}
+
+void NetworkServerHandler::addContact(const std::string &c)
+{
+  QByteArray	array;
+  QDataStream	out(&array, QIODevice::WriteOnly);
+  std::string str;
+
+  str += c;
+  out.setVersion(QDataStream::Qt_4_3);
+  out <<  quint8(ADD_CONTACT);
+  out.writeRawData(_request.getClientID().constData(), 4);
+  out << quint16(str.size());
+  out.writeRawData(str.c_str(), str.size());
+  _socket->write(array);
+}
+
+void	NetworkServerHandler::receiveCall()
+{
+  QDataStream in(_read);
+  quint8	type;
+  quint16	size;
+  QByteArray	buffer;
+  std::cout << "RECEIVE CALL NETWORK" << std::endl;
+  in >> type;
+  in >> size;
+
+  char data[size];
+  in.readRawData(data, size);
+  buffer.append(data, size);
+  QList<QByteArray> token = buffer.split(';');
+  std::cout << "NAME CALL " << token[0].constData() << std::endl;
+  emit callReceived(token[0].constData());
 }

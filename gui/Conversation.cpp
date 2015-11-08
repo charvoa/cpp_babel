@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sun Nov  1 14:50:41 2015 Nicolas Charvoz
+// Last update Sun Nov  8 16:58:32 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -32,7 +32,12 @@ Conversation::Conversation(const std::string &contact,
   _messageZone->setReadOnly(true);
 
   /* Image */
-  QPixmap profilPicture("./gui/img/avatar1.png");
+  std::stringstream pp;
+
+  pp << "./gui/img/avatar"
+     << g_PTUser.currentUser().getContactFromName(contact).getPic()
+     << ".png";
+  QPixmap profilPicture(pp.str().c_str());
   QLabel *imgP = new QLabel(this);
 
   imgP->setPixmap(profilPicture.scaled(432, 432, Qt::KeepAspectRatio));
@@ -92,6 +97,7 @@ void Conversation::functionCall()
       std::cout << "Making call" << std::endl;
       _callButton->setIcon(QIcon("./gui/img/phone59.png"));
       _callButton->setIconSize(QSize(120, 120));
+      g_PTUser.currentUser().callUser(_contact);
       _call = true;
     }
   else

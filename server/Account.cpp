@@ -5,24 +5,36 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 15:28:27 2015 Nicolas Girardot
-// Last update Mon Nov  2 18:24:35 2015 Nicolas Charvoz
+// Last update Sun Nov  8 21:25:55 2015 Nicolas Girardot
 //
 
 #include "Account.hh"
 #include <boost/lexical_cast.hpp>
 
-Account::Account(std::string login, std::string passwd, short profilePicture)
+Account::Account(std::string login, std::string passwd, char profilePicture)
 {
   _login = login;
   _passwd = passwd;
   _state = Account::DISCONNECTED;
   _profilePicture = profilePicture;
+  _location = "Nice";
 }
 
 Account::~Account()
 {
 
 }
+
+std::vector<std::string>				Account::getData() const
+{
+  std::vector<std::string> data;
+  data.push_back(_login);
+  data.push_back(_location);
+  data.push_back(std::to_string(_state));
+  data.push_back(std::to_string(_profilePicture));
+  return data;
+}
+
 
 void							Account::setNickname(std::string &id, std::string &newNickName)
 {
@@ -39,47 +51,47 @@ void							Account::setSocket(boost::shared_ptr<TCPConnection> socket)
   this->_socket = socket;
 }
 
-std::string			        		&Account::getLogin()
+const std::string			        		&Account::getLogin() const
 {
   return _login;
 }
 
-short			        		Account::getProfilePictureID()
+char			        		Account::getProfilePictureID() const
 {
   return _profilePicture;
 }
 
-std::string		         			&Account::getLocation()
+const std::string		         			&Account::getLocation() const
 {
   return _location;
 }
 
-std::string		         			&Account::getPasswd()
+const std::string		         			&Account::getPasswd() const
 {
   return _passwd;
 }
 
-boost::shared_ptr<TCPConnection>  &Account::getSocket()
+const boost::shared_ptr<TCPConnection>  &Account::getSocket() const
 {
   return _socket;
 }
 
-std::vector<Account*>				&Account::getContactList()
+const std::vector<Account*>				&Account::getContactList() const
 {
   return _contactList;
 }
 
-std::map<std::string,std::string>				&Account::getNicknames()
+const std::map<std::string,std::string>				&Account::getNicknames() const
 {
   return _nicknames;
 }
 
-Account::State		      		Account::getState()
+Account::State		      		Account::getState() const
 {
   return _state;
 }
 
-std::string   		      		Account::getID()
+const std::string   		      		&Account::getID() const
 {
   return _id;
 }
@@ -172,7 +184,7 @@ bool Account::isIDFavorited(std::string ID)
   return false;
 }
 
-std::string &Account::getNicknameIfExisting(Account *account)
+const std::string &Account::getNicknameIfExisting(Account *account)
 {
   for (std::map<std::string, std::string>::iterator it = _nicknames.begin(); it != _nicknames.end(); ++it)
     {
@@ -192,16 +204,23 @@ std::vector<std::string> Account::getFormatedContactList()
   std::string str(std.begin(), std.end());
   contactsInformations.push_back(str);
 
+
   if (_contactList.empty())
     return contactsInformations;
   for (std::vector<Account*>::iterator it = _contactList.begin(); it != _contactList.end(); ++it)
     {
-      contactsInformations.push_back((*it)->getID());
-      contactsInformations.push_back(this->getNicknameIfExisting((*it)));
-      contactsInformations.push_back((*it)->getLocation());
-      contactsInformations.push_back(std::to_string(boost::lexical_cast<char>(((*it)->getState()))));
-      contactsInformations.push_back(std::to_string(boost::lexical_cast<char>(((*it)->getProfilePictureID()))));
-      contactsInformations.push_back(std::to_string(boost::lexical_cast<char>((this->isIDFavorited((*it)->getID())))));
+      if ((*it) == NULL)
+	{
+	}
+      else
+	{
+	  contactsInformations.push_back((*it)->getID());
+	  contactsInformations.push_back(this->getNicknameIfExisting((*it)));
+	  contactsInformations.push_back((*it)->getLocation());
+	  contactsInformations.push_back(std::to_string(static_cast<char>(((*it)->getState()))));
+	  contactsInformations.push_back(std::to_string(static_cast<char>(((*it)->getProfilePictureID()))));
+	  contactsInformations.push_back(std::to_string(static_cast<char>((this->isIDFavorited((*it)->getID())))));
+	}
     }
   return contactsInformations;
 }
@@ -223,7 +242,6 @@ void			Account::setID(const std::string &id)
 
 void       Account::generateRandomID(size_t length)
 {
-  std::srand(std::time(0));
   int random = std::rand();
   auto randchar = [random]() -> char
     {

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Mon Nov  2 11:44:04 2015 Nicolas Charvoz
+// Last update Sat Nov  7 16:56:24 2015 Nicolas Charvoz
 //
 
 #include "Home.hh"
@@ -23,7 +23,9 @@ Home::Home(QWidget *parent) : QWidget(parent)
   imgP->setPixmap(profilPicture.scaled(120, 120, Qt::KeepAspectRatio));
 
   /* MODIFY THIS TEXT */
-  currentName->setText(tr("Miranda Kerr"));
+  std::string userName = g_PTUser.currentUser().getUsername();
+  std::cout << "Username : " << userName << std::endl;
+  currentName->setText(tr(userName.c_str()));
   imgP->setGeometry(0, 0, 120, 120);
   currentName->setFont(f);
   currentName->setGeometry(130, 0, 300, 60);
@@ -80,7 +82,7 @@ void Home::addFriend()
   if (_friendString != "")
     {
       _addFriend->clear();
-      g_PTUser.currentUser().addContact();
+      g_PTUser.currentUser().addContact(_friendString);
     }
   else
     {

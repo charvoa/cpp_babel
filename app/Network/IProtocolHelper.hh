@@ -16,7 +16,7 @@ typedef enum ProtocolType
   {
     HANDSHAKE = 1,
     SUCCESS = 2,
-    ERROR = 3,
+    ERROR_PROTO = 3,
     SIGNUP = 4,
     SIGNIN = 5,
     CALL_REQUEST = 6,

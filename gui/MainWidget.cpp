@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sat Apr  4 20:51:15 2015 Nicolas Charvoz
-// Last update Thu Nov  5 19:33:01 2015 Nicolas Charvoz
+// Last update Sun Nov  8 19:37:28 2015 Nicolas Charvoz
 //
 
 #include "UiContact.hh"
@@ -17,6 +17,9 @@ class QTabBar;
 
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
+  setFixedSize(1920, 1200);
+  setWindowTitle(tr("Babel"));
+
   QVBoxLayout *mainLayout = new QVBoxLayout;
   QTabBar *tb;
 
@@ -27,11 +30,8 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
   _tabWidget = new QTabWidget;
   tb = _tabWidget->tabBar();
 
-  setFixedSize(1920, 1200);
-  setWindowTitle(tr("Babel"));
-
   _tabWidget->addTab(new Home(), tr("Home"));
-  _tabWidget->addTab(new UiContact(this), tr("Contact"));
+  _tabWidget->addTab(contactScrollArea, tr("Contact"));
 
   std::ostringstream oss;
 
@@ -43,12 +43,29 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 
   _tabWidget->setFocusPolicy(Qt::NoFocus);
 
+  connect(&g_PTUser, SIGNAL(receivedCall(const std::string&)), this, SLOT(receivedCall(const std::string&)));
   mainLayout->addWidget(_tabWidget);
   setLayout(mainLayout);
 }
 
+void MainWidget::receivedCall(const std::string &name)
+{
+  QMessageBox msgBox;
+
+  std::stringstream ss;
+
+  ss << name << " is calling you !" << std::endl;
+  msgBox.setText(ss.str().c_str());
+  msgBox.addButton(QMessageBox::Yes);
+  msgBox.addButton(QMessageBox::No);
+  msgBox.exec();
+  std::cout << "Receiving call by " << name;
+}
+
 void MainWidget::closeTab(int index)
 {
+  //remove At Index PTUSER
+  g_PTUser.removeAtIndex(index - 2);
   _tabWidget->removeTab(index);
 }
 

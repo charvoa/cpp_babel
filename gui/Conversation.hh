@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:50:07 2015 Nicolas Charvoz
-// Last update Sun Nov  1 14:18:09 2015 Nicolas Charvoz
+// Last update Sun Nov  8 14:51:15 2015 Nicolas Charvoz
 //
 
 #ifndef CONVERSATION_HH_
@@ -29,6 +29,7 @@
 # include <iostream>
 # include <fstream>
 # include <ctime>
+# include "../app/User/PTUser.hh"
 
 class Conversation : public QWidget {
 Q_OBJECT

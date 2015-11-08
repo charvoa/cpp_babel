@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Thu Nov  5 19:43:33 2015 Nicolas Charvoz
+// Last update Sun Nov  8 21:10:33 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -20,6 +20,7 @@ PTUser::PTUser()
 {
   std::cout << "PTUSER CREATED" << std::endl;
   connect(&server, SIGNAL(userConnected(int)), this, SLOT(userConnected(int)));
+  connect(&server, SIGNAL(callReceived(const std::string &)), this, SLOT(callReceived(const std::string &)));
 }
 
 void	PTUser::userConnected(int check)
@@ -63,9 +64,24 @@ int PTUser::run(int ac, char **av)
   return app.exec();
 }
 
+void	PTUser::callReceived(const std::string &user)
+{
+  std::cout << "USER CALL RECEIVED " << user <<  std::endl;
+  emit receivedCall(user);
+}
+
 PTUser::User&	PTUser::currentUser()
 {
   return (_currentUser);
+}
+
+NetworkServerHandler&	PTUser::getServer()
+{
+  return (server);
+}
+void		PTUser::setUsername(const std::string &username)
+{
+  _currentUser._username = username;
 }
 
 void	PTUser::logUser(const std::string &username, const std::string &password, const std::string &ip)
@@ -114,9 +130,11 @@ void PTUser::getIPGroup(const std::string &ip)
   while ((pos = s.find(delimiter)) != std::string::npos)
     {
       token = s.substr(0, pos);
+      std::cout << token << std::endl;;
       _ipGroup.push_back(token);
       s.erase(0, pos + delimiter.length());
     }
+  std::cout << s << std::endl;
   _ipGroup.push_back(s);
 }
 
@@ -136,16 +154,58 @@ void	PTUser::signup(const std::string &username, const std::string &password, co
       server.type = 1;
       server.login = username;
       server.password = password;
+      server.avatar = avatar;
       std::cout << "Starting a server on >> " << _ipGroup[0]
 		<< ":" << _ipGroup[1] << std::endl;
       server.start(_ipGroup[0].c_str(), atoi(_ipGroup[1].c_str()));
     }
 }
 
+bool	PTUser::isTabOpen(const std::string & user) const
+{
+  bool found = (std::find(_tabs.begin(), _tabs.end(), user) != _tabs.end());
+  return (found);
+}
+
+void	PTUser::addToList(const std::string &user)
+{
+  _tabs.push_back(user);
+}
+
+void	PTUser::removeAtIndex(int index)
+{
+  _tabs.erase(_tabs.begin() + index);
+}
+
 void	PTUser::contactIsAdd()
 {
+
   emit contactAdded();
 }
+
+void	PTUser::User::addServerContact(QByteArray&	array)
+{
+  QDataStream	io(array);
+  quint8	type;
+  quint16	sizeData;
+  QByteArray	clientId;
+  QByteArray	bufferData;
+  char		tmp[4];
+
+  io >> type;
+  io >> sizeData;
+
+  char data[sizeData];
+  io.readRawData(tmp, 4);
+  clientId.append(tmp, 4);
+  io.readRawData(data, array.count() - 3);
+  bufferData.append(data, array.count() - 3);
+  QList<QByteArray> token = bufferData.split(';');
+  //create contact and Add to the list
+  Contact	userFriend(token[1].constData(),token[2].constData(), 1, 1);
+  _contact.push_back(userFriend);
+}
+
 //Nested Class User
 PTUser::User::User()
 {
@@ -157,9 +217,14 @@ PTUser::User::~User()
   std::cout << "Destroy User" << std::endl;
 }
 
-void	PTUser::User::addContact()
+void	PTUser::User::addContact(const std::string &username)
 {
-  g_PTUser.contactIsAdd();
+  g_PTUser.getServer().addContact(username);
+}
+
+void	PTUser::User::addContact(Contact &contact)
+{
+  _contact.push_back(contact);
 }
 
 const std::string	&PTUser::User::getUsername() const
@@ -167,12 +232,30 @@ const std::string	&PTUser::User::getUsername() const
   return (_username);
 }
 
+const Contact &PTUser::User::getContactFromName(const std::string &name) const
+{
+  std::vector<Contact>::const_iterator itToReturn = _contact.begin();
+
+  for (std::vector<Contact>::const_iterator it = _contact.begin();
+       it != _contact.end(); ++it)
+    {
+      if ((*it).getName() == name)
+	return *it;
+    }
+  return *itToReturn;
+}
+
 const std::string	&PTUser::User::getObjectId() const
 {
   return (_objectId);
 }
 
-const std::list<Contact *>	&PTUser::User::getContacts() const
+const std::vector<Contact>	&PTUser::User::getContacts() const
 {
   return (_contact);
+}
+
+void	PTUser::User::callUser(const std::string &user)
+{
+  g_PTUser.getServer().callRequest(user);
 }

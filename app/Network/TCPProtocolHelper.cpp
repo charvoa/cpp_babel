@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Mon Nov  2 07:48:51 2015 Antoine Garcia
+// Last update Sun Nov  8 21:10:39 2015 Nicolas Charvoz
 //
 
 #include "TCPProtocolHelper.hh"
@@ -21,8 +21,9 @@ TCPProtocolHelper::TCPProtocolHelper()
   handleFunctions[HANDSHAKESUCCESS] = &TCPProtocolHelper::handleHandshake;
   handleFunctions[SUCCESSLOGIN] = &TCPProtocolHelper::handleLogin;
   handleFunctions[ERRORLOGIN] = &TCPProtocolHelper::errorLogin;
+  handleFunctions[ADDCONTACTSUCCESS] = &TCPProtocolHelper::handleContactSuccess;
+  handleFunctions[CALLING] = &TCPProtocolHelper::handleCall;
   //  _clientID = g_PTUser.currentUser().getID();
-  _clientID = 4;
 }
 
 TCPProtocolHelper::~TCPProtocolHelper()
@@ -39,6 +40,56 @@ void		TCPProtocolHelper::handleRequest(qint8	type)
   protocolClient	protocolType = static_cast<protocolClient>(type);
   _handlePtr = handleFunctions[protocolType];
   return (this->*_handlePtr)();
+}
+
+void	TCPProtocolHelper::parseLoginSuccess(QByteArray &array)
+{
+  QDataStream	io(array);
+  quint16 sizeData;
+  quint8   type;
+  quint8   nbContacts;
+  QByteArray	bufferData;
+  int	i = 0;
+
+  //type
+  io >> type;
+  //sizeData
+  io >> sizeData;
+  //ClientID
+  char	temp[4];
+  io.readRawData(temp, 4);
+  _clientID.append(temp, 4);
+  //nbContacts
+  io >> nbContacts;
+
+  char data[sizeData];
+  if (nbContacts == ';'){
+    io >> nbContacts;
+    }
+  io.readRawData(data, sizeData);
+  bufferData.append(data, sizeData);
+  if (nbContacts != 0)
+    {
+      int	start = 2;
+      std::cout << "I HAVE CONTACT" << (int)nbContacts << std::endl;
+      QList<QByteArray> token = bufferData.split(';');
+      while (i < nbContacts)
+	{
+	  std::string username = token[start].constData();
+	  start++;
+	  std::string location = token[start].constData();
+	  start++;
+	  std::string status = token[start].constData();
+	  start++;
+	  std::string profilePicture  = token[start].constData();
+	  std::cout << "id pic : " << profilePicture << std::endl;
+	  Contact	contact(username, location, 1, atoi(profilePicture.c_str())
+				, 0);
+	  g_PTUser.currentUser().addContact(contact);
+	  start += 3;
+	  i++;
+	}
+    }
 }
 
 //private create Method
@@ -77,6 +128,7 @@ QByteArray	TCPProtocolHelper::acceptCallRequest()
   return block;
 }
 
+
 //handleRequest	Methods
 void	TCPProtocolHelper::handleHandshake()
 {
@@ -91,4 +143,14 @@ void	TCPProtocolHelper::handleLogin()
 void	TCPProtocolHelper::errorLogin()
 {
   emit loginError();
+}
+
+void	TCPProtocolHelper::handleContactSuccess()
+{
+  emit addContactSuccess();
+}
+
+void	TCPProtocolHelper::handleCall()
+{
+  emit receiveCall();
 }

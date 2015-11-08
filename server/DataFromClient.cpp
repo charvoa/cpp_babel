@@ -5,18 +5,16 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:07:14 2015 Nicolas Girardot
-// Last update Sun Nov  1 17:35:29 2015 Nicolas Girardot
+// Last update Sun Nov  8 21:24:00 2015 Nicolas Girardot
 //
 
 #	include "DataFromClient.hh"
 
 DataFromClient::DataFromClient(const std::string &request)
 {
-  std::cout << "Request Manager Constructor Beginning" << std::endl;
   DetermineType(request);
   DetermineClientID(request);
   DetermineData(request);
-  std::cout << "Request Manager Constructor End" << std::endl;
   ProtocolClient *proto = new ProtocolClient;
   proto->methodChecker(*this);
 }
@@ -28,8 +26,6 @@ void	DataFromClient::DetermineType(const std::string &request)
   std::bitset<8> b_type(request.at(0));
   long	l_type = b_type.to_ulong();
   _type = static_cast<CommunicationClient>(l_type);
-  std::cout << "Displaying l_type in DataFromClient.cpp : " << l_type << std::endl;
-  std::cout << "DataFromClient::DetermineType end" << std::endl;
 }
 
 CommunicationClient	DataFromClient::getType()

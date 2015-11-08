@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Wed Nov  4 17:04:16 2015 Serge Heitzler
+// Last update Sun Nov  8 21:23:44 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -28,21 +28,9 @@ void	ProtocolClient::handshake(DataFromClient &fromClient)
   std::list<boost::shared_ptr<TCPConnection> >::iterator it;
   it = g_Server.getNetwork()->getServer()->getList()->begin();
   std::string handshake = fromClient.getData().at(0);
-  //short version = boost::lexical_cast<short>(handshake.substr(handshake.find("<"), handshake.find(">") - handshake.find("<")));
   std::vector<std::string> data;
   Response *response = new Response(CommunicationServer::S_SUCCESS_HANDSHAKE, (*it), data);
   Sender::specialSending(response);
-
-  // std::vector<char> std;
-  // std.push_back(101);
-  // std.push_back(0);
-  // std.push_back(0);
-  // std::string str(std.begin(),std.end());
-  // (*it)->asyncWrite(str);
-
-
-
-  //  std::cout << "Length = " << str.length() << std::endl;
 }
 
 void	ProtocolClient::success(DataFromClient &fromClient)
@@ -60,18 +48,17 @@ void  ProtocolClient::affectTCPConnectionToAccountWithUsername(std::string usern
   std::list<boost::shared_ptr<TCPConnection> >::iterator it;
 
   it = g_Server.getNetwork()->getServer()->getList()->begin();
-  std::cout << "22" << std::endl;
   g_Server.getAccountByUsername(username)->setSocket((*it));
-  std::cout << "23" << std::endl;
   g_Server.getNetwork()->getServer()->getList()->pop_front();
 }
 
 void	ProtocolClient::signup(DataFromClient &fromClient)
 {
-  // CHECKER LA SIZE DU vector<std:string> et renvoyer error si pas la taille qu'il faut
+  char profilePicture;
+
   std::string username = fromClient.getData().at(0);
   std::string passwd = fromClient.getData().at(1);
-  //short profilePicture = boost::lexical_cast<short>(fromClient.getData().at(2));
+  profilePicture = boost::lexical_cast<char>(fromClient.getData().at(2));
   if (g_Server.doesUsernameExist(username))
     {
       std::list<boost::shared_ptr<TCPConnection> >::iterator it;
@@ -83,39 +70,32 @@ void	ProtocolClient::signup(DataFromClient &fromClient)
     }
   else
     {
-      g_Server.addAccount(username, passwd, 1);
+      g_Server.addAccount(username, passwd, profilePicture);
       g_Server.getAccountByUsername(username)->generateRandomID(4);
       g_Server.getAccountByUsername(username)->getFormatedContactList();
+      std::list<boost::shared_ptr<TCPConnection> >::iterator it;
+      it = g_Server.getNetwork()->getServer()->getList()->begin();
       this->affectTCPConnectionToAccountWithUsername(username);
+      Response *response = new Response(CommunicationServer::S_SUCCESS_ON_SIGN, (*it), g_Server.getAccountByUsername(username)->getFormatedContactList());
+      Sender::specialSending(response);
     }
-  std::cout << "Working Server Account" << std::endl;
 }
 
 void	ProtocolClient::signin(DataFromClient &fromClient)
 {
   std::string username = fromClient.getData().at(0);
   std::string passwd = fromClient.getData().at(1);
-  std::cout << "USERNAME IS = " << username << std::endl;
 
   if (g_Server.doesUsernameExist(username) && g_Server.isPasswdCorrectForAccount(username, passwd) && g_Server.getAccountByUsername(username)->getState() == Account::DISCONNECTED)
     {
       std::list<boost::shared_ptr<TCPConnection> >::iterator it;
       it = g_Server.getNetwork()->getServer()->getList()->begin();
-      std::cout << "In Signing IF1" << std::endl;
       this->affectTCPConnectionToAccountWithUsername(username);
-      std::cout << "In Signing IF2" << std::endl;
       Response *response = new Response(CommunicationServer::S_SUCCESS_ON_SIGN, (*it), g_Server.getAccountByUsername(username)->getFormatedContactList());
-      std::cout << "In Signing IF3" << std::endl;
       Sender::specialSending(response);
-      std::cout << "In Signing IF4" << std::endl;
-
     }
   else
-    {
-      g_Server.getNetwork()->getServer()->getList()->pop_front();
-      std::cout << "Username does not exist" << std::endl;
-      // create error
-    }
+    g_Server.getNetwork()->getServer()->getList()->pop_front();
 }
 
 void	ProtocolClient::callRequest(DataFromClient &fromClient)
@@ -130,25 +110,17 @@ void	ProtocolClient::callRequest(DataFromClient &fromClient)
   std::string ipWithoutDot;
 
   for (std::vector<std::string>::iterator it = ipVector.begin(); it != ipVector.end(); ++it)
-    {
-      ipWithoutDot.push_back(boost::lexical_cast<char>(std::stoi(*it)));
-    }
+    ipWithoutDot.push_back(static_cast<char>(std::stoi(*it)));
+  data.push_back(g_Server.getAccountByID(fromClient.getClientID())->getLogin());
+  data.push_back(ipWithoutDot);
 
-  data.push_back(fromClient.getClientID());
-  data.push_back(ipWithoutDot); // ip.sender
-
-  Response *response = new Response(CommunicationServer::S_CONTACT_REQUEST, g_Server.getAccountByID(receiver), data);
+  Response *response = new Response(CommunicationServer::S_CALL_REQUEST, g_Server.getAccountByUsername(receiver), data);
   Sender::send(response);
 }
 
 void	ProtocolClient::hangUp(DataFromClient &fromClient)
 {
   (void) fromClient;
-  //std::string sender = fromClient.getClientID();
-  //std::string receiver = fromClient.getData().at(0);
-
-  //  Response *response = Response(CommunicationServer::S_HANGED_UP, g_Server.getAccountByID(receiver), data);
-  //Sender::send(response);
 }
 
 void	ProtocolClient::sendText(DataFromClient &fromClient)
@@ -188,19 +160,53 @@ void	ProtocolClient::declineCall(DataFromClient &fromClient)
 
 void	ProtocolClient::addContact(DataFromClient &fromClient)
 {
-  std::string sender = fromClient.getClientID();
+  std::vector<std::string> data;
+  std::vector<std::string> data2;
+  std::string idReceiverInvitation = fromClient.getClientID();
+  std::string idSenderInvitation = fromClient.getData().at(0);
   std::string loginAdded = fromClient.getData().at(0);
+  std::string add;
 
   if (g_Server.doesUsernameExist(loginAdded))
     {
-      // Success
+      if (g_Server.getAccountByID(idReceiverInvitation)->getLogin() == idSenderInvitation)
+	{
+	}
+      else if (g_Server.getAccountByID(idReceiverInvitation)->isAlreadyAContactOf(g_Server.getAccountByUsername(idSenderInvitation)))
+	{
+
+	}
+      else
+	{
+	  data.push_back(g_Server.getAccountByID(idReceiverInvitation)->getID());
+	  data.push_back(g_Server.getAccountByID(idReceiverInvitation)->getLogin());
+	  data.push_back("Nice");
+	  add += 1;
+	  data.push_back(add);
+	  add.clear();
+	  add += g_Server.getAccountByID(idReceiverInvitation)->getProfilePictureID();
+	  data.push_back(add);
+	  Response *response = new Response(CommunicationServer::S_CONTACT_INFO, g_Server.getAccountByUsername(loginAdded)->getSocket(), data);
+	  Sender::specialSending(response);
+	  data2.push_back(g_Server.getAccountByUsername(loginAdded)->getID());
+	  data2.push_back(loginAdded);
+	  data2.push_back("Nice");
+	  add.clear();
+	  add += 1;
+	  data2.push_back(add);
+	  add.clear();
+	  add += g_Server.getAccountByUsername(loginAdded)->getProfilePictureID();
+	  data2.push_back(add);
+	  Response *response2 = new Response(CommunicationServer::S_CONTACT_INFO, g_Server.getAccountByID(idReceiverInvitation)->getSocket(), data2);
+	  Sender::specialSending(response2);
+	  g_Server.getAccountByID(idReceiverInvitation)->addContact(g_Server.getAccountByUsername(loginAdded));
+	  g_Server.getAccountByUsername(loginAdded)->addContact(g_Server.getAccountByID(idReceiverInvitation));
+	}
     }
   else
     {
-
+      // Create Error Response With Error Enum for non-existing username
     }
-
-
 }
 
 void	ProtocolClient::acceptInvitation(DataFromClient &fromClient)
@@ -209,6 +215,10 @@ void	ProtocolClient::acceptInvitation(DataFromClient &fromClient)
   std::string idSenderInvitation = fromClient.getData().at(0);
   g_Server.getAccountByID(idReceiverInvitation)->addContact(g_Server.getAccountByID(idSenderInvitation));
   g_Server.getAccountByID(idSenderInvitation)->addContact(g_Server.getAccountByID(idReceiverInvitation));
+  Response *response = new Response(CommunicationServer::S_CONTACT_INFO, g_Server.getAccountByID(idReceiverInvitation), g_Server.getAccountByID(idSenderInvitation)->getData());
+  Sender::specialSending(response);
+  Response *response1 = new Response(CommunicationServer::S_CONTACT_INFO, g_Server.getAccountByID(idSenderInvitation), g_Server.getAccountByID(idReceiverInvitation)->getData());
+  Sender::specialSending(response1);
 }
 
 void	ProtocolClient::declineInvitation(DataFromClient &fromClient)
@@ -222,9 +232,6 @@ void	ProtocolClient::declineInvitation(DataFromClient &fromClient)
 void	ProtocolClient::modifyStatus(DataFromClient &fromClient)
 {
   std::string id = fromClient.getClientID();
-  //Account::State state = (fromClient.getData().at(0));
-
-  //g_Server.getAccountByID(id)->setState(state);
 }
 
 void	ProtocolClient::modifyLogin(DataFromClient &fromClient)
@@ -234,7 +241,7 @@ void	ProtocolClient::modifyLogin(DataFromClient &fromClient)
   if (g_Server.doesUsernameExist(newLogin))
     {
       // error
-        }
+    }
   else
     {
       g_Server.getAccountByID(id)->setLogin(newLogin);

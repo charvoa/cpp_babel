@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Thu Oct 29 17:45:35 2015 Nicolas Girardot
-// Last update Mon Nov  2 13:58:55 2015 Nicolas Girardot
+// Last update Sun Nov  8 21:18:03 2015 Nicolas Girardot
 //
 
 #include "Server.hh"
@@ -53,10 +53,13 @@ void      Server::addAccount(std::string &login, std::string &passwd, short prof
 }
 
 Account   *Server::getAccountByID(std::string &ID)
-{ for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
+{
+  for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
       if ((*it)->getID() == ID)
-        return (*it);
+	{
+	  return (*it);
+	}
     }
   return NULL;
 }
@@ -65,14 +68,13 @@ Account   *Server::getAccountByUsername(std::string &username)
 {
   for (std::vector<Account *>::iterator it = _allAccounts.begin(); it != _allAccounts.end(); ++it)
     {
-      std::cout << ";:;:;:;;:;::; Get login = " << (*it)->getLogin() << " ;; User is " << username << std::endl;
       if ((*it)->getLogin() == username)
         return (*it);
     }
   return NULL;
 }
 
-Network	*Server::getNetwork()
+Network	*Server::getNetwork() const
 {
-  return (_net);
+  return (static_cast<Network *>(_net));
 }

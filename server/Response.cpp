@@ -5,7 +5,7 @@
 // Login   <heitzl_s@epitech.eu>
 //
 // Started on  Sat Oct 31 16:16:36 2015 Serge Heitzler
-// Last update Mon Nov  2 11:46:23 2015 Nicolas Girardot
+// Last update Sun Nov  8 21:24:28 2015 Nicolas Girardot
 //
 
 #include <boost/lexical_cast.hpp>
@@ -21,14 +21,13 @@ Response::Response(CommunicationServer answerType, Account *toClient, std::vecto
 
 Response::Response(CommunicationServer answerType, boost::shared_ptr<TCPConnection> toSocket, std::vector<std::string> data)
 {
-  _toSocket = &toSocket;
+  _toSocket = toSocket;
   this->setSizeData(data);
   this->setResponse(answerType, data);
 }
 
 void           Response::setSizeData(std::vector<std::string> data)
 {
-  std::cout << "Cotsa" << std::endl;
   if (data.size() == 0)
     _sizeData = 0;
   else
@@ -37,7 +36,6 @@ void           Response::setSizeData(std::vector<std::string> data)
 	{
 	  _sizeData += (*it).length();
 	  _sizeData++;
-	  std::cout << "COtssaa" << std::endl;
 	}
       _sizeData--;
     }
@@ -47,8 +45,8 @@ void           Response::setResponse(CommunicationServer answerType, std::vector
 {
   std::bitset<16> bit(_sizeData);
   _response += (char)(answerType);
-  _response += boost::lexical_cast<char>(this->extractBitsetValue(0, 7, bit));
-  _response += boost::lexical_cast<char>(this->extractBitsetValue(8, 15, bit));
+  _response += static_cast<char>(this->extractBitsetValue(0, 7, bit));
+  _response += static_cast<char>(this->extractBitsetValue(8, 15, bit));
   if (_sizeData == 0)
     ;
   else
@@ -68,9 +66,9 @@ Account           *Response::getClient()
   return _toClient;
 }
 
-boost::shared_ptr<TCPConnection>           &Response::getSocket()
+boost::shared_ptr<TCPConnection>           Response::getSocket()
 {
-  return *_toSocket;
+  return _toSocket;
 }
 
 std::string           &Response::getResponse()
@@ -80,17 +78,16 @@ std::string           &Response::getResponse()
 
 int Response::extractBitsetValue(int startBit, int endBit, std::bitset<16> dataContainer)
 {
-	int maskLength = endBit - startBit + 1;
-	int moveBitNr = startBit;
-	std::bitset<16> mask;
-	for(int k = 0; k < maskLength; k++)
-	{
-		mask.set(startBit + k, 1);
-	}
-
-	dataContainer.operator &=(mask);
-	dataContainer.operator >>=(moveBitNr);
-	return dataContainer.to_ulong();
+  int maskLength = endBit - startBit + 1;
+  int moveBitNr = startBit;
+  std::bitset<16> mask;
+  for(int k = 0; k < maskLength; k++)
+    {
+      mask.set(startBit + k, 1);
+    }
+  dataContainer.operator &=(mask);
+  dataContainer.operator >>=(moveBitNr);
+  return dataContainer.to_ulong();
 }
 
 
