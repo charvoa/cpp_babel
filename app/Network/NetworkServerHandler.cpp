@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  8 08:48:48 2015 Antoine Garcia
+// Last update Sun Nov  8 09:18:05 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -28,6 +28,7 @@ NetworkServerHandler::NetworkServerHandler(QObject *parent) :parent(parent)
   connect(&_request, SIGNAL(handshakeSuccess()), this, SLOT(handshakeSuccess()));
   connect(&_request, SIGNAL(loginSuccess()), this, SLOT (loginSuccess()));
   connect(&_request, SIGNAL(addContactSuccess()), this, SLOT (addContactSuccess()));
+  connect(&_request, SIGNAL(receiveCall()), this, SLOT (receiveCall()));
 }
 
 NetworkServerHandler::~NetworkServerHandler()
@@ -179,4 +180,20 @@ void NetworkServerHandler::addContact(const std::string &c)
   out << quint16(str.size());
   out.writeRawData(str.c_str(), str.size());
   _socket->write(array);
+}
+
+void	NetworkServerHandler::receiveCall()
+{
+  QDataStream in(_read);
+  quint8	type;
+  quint16	size;
+  QByteArray	buffer;
+
+  in >> type;
+  in >> size;
+  char	data[size];
+  in.readRawData(data, size);
+  buffer.append(data, size);
+  QList<QByteArray> token = buffer.split(';');
+  emit callReceived(token[0].constData());
 }

@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sun Nov  8 17:01:51 2015 Nicolas Charvoz
+// Last update Sun Nov  8 09:16:30 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -20,6 +20,7 @@ PTUser::PTUser()
 {
   std::cout << "PTUSER CREATED" << std::endl;
   connect(&server, SIGNAL(userConnected(int)), this, SLOT(userConnected(int)));
+  connect(&server, SIGNAL(callReceived(const std::string &)), this, SLOT(callReceived(const std::string &)));
 }
 
 void	PTUser::userConnected(int check)
@@ -61,6 +62,11 @@ int PTUser::run(int ac, char **av)
   login->show();
 
   return app.exec();
+}
+
+void	PTUser::callReceived(const std::string &user)
+{
+  emit receivedCall(user);
 }
 
 PTUser::User&	PTUser::currentUser()

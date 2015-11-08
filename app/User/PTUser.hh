@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Nov  2 13:57:49 2015 Nicolas Charvoz
-// Last update Sun Nov  8 07:49:50 2015 Antoine Garcia
+// Last update Sun Nov  8 09:17:28 2015 Antoine Garcia
 //
 
 #ifndef PTUSER_HH_
@@ -56,9 +56,11 @@ private:
   std::vector<std::string>	   _tabs;
 private slots:
   void userConnected(int check);
+  void	callReceived(const std::string &);
 signals:
   void canDisplayHome(int check);
   void	contactAdded();
+  void	receivedCall(const std::string &);
 public:
   PTUser();
   ~PTUser();

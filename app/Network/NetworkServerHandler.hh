@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Nov  8 17:04:28 2015 Nicolas Charvoz
+// Last update Sun Nov  8 09:00:46 2015 Antoine Garcia
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -31,6 +31,7 @@ private:
   QByteArray		_read;
 signals:
   void	userConnected(int check);
+  void	callReceived(const std::string &);
 public:
   int			type;
   std::string		login;
@@ -55,6 +56,7 @@ private slots:
   void	loginSuccess();
   void	loginError();
   void	addContactSuccess();
+  void	receiveCall();
 };
 
 #endif

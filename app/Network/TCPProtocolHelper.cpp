@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Sun Nov  8 08:51:02 2015 Antoine Garcia
+// Last update Sun Nov  8 09:12:15 2015 Antoine Garcia
 //
 
 #include "TCPProtocolHelper.hh"
@@ -145,5 +145,5 @@ void	TCPProtocolHelper::handleContactSuccess()
 
 void	TCPProtocolHelper::handleCall()
 {
-  std::cout << "RECEIVE A CALL" << std::endl;
+  emit receiveCall();
 }
