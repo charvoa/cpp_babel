@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sun Nov  8 16:53:53 2015 Nicolas Girardot
+// Last update Sun Nov  8 18:00:30 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -129,7 +129,7 @@ void	ProtocolClient::callRequest(DataFromClient &fromClient)
 
   for (std::vector<std::string>::iterator it = ipVector.begin(); it != ipVector.end(); ++it)
     ipWithoutDot.push_back(static_cast<char>(std::stoi(*it)));
-  data.push_back(fromClient.getClientID());
+  data.push_back(g_Server.getAccountByID(fromClient.getClientID())->getLogin());
   data.push_back(ipWithoutDot); // ip.sender
 
   Response *response = new Response(CommunicationServer::S_CALL_REQUEST, g_Server.getAccountByUsername(receiver), data);
