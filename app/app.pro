@@ -18,15 +18,11 @@ SOURCES += Network/TCPProtocolHelper.cpp
 SOURCES += main.cpp
 SOURCES += User/PTUser.cpp
 SOURCES += Network/NetworkServerHandler.cpp
-SOURCES += Audio/PTSoundOutput.cpp
-SOURCES += Audio/PTSoundInput.cpp
 SOURCES += Mutex/Mutex.cpp
 SOURCES += Mutex/MutexLocker.cpp
 SOURCES += Contact/Contact.cpp
 unix {
 LIBS += ../gui/libgui.a
-LIBS += ./libs/libportaudio.a
-LIBS += ./libs/libopus.a
 LIBS +=  -lasound -lpthread -lrt
 }
 win32 {

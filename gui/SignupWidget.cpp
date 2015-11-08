@@ -185,7 +185,7 @@ void SignupWidget::canDisplayHome(int error)
   /* Applying it */
   main->setStyleSheet(StyleSheet2);
 
-  if (error == NO_ERROR)
+  if (error == ERROR_TEST)
     {
       msgBox.setText("Yeah ! You're part of the team now :)");
       msgBox.exec();
