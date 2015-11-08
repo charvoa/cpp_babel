@@ -5,10 +5,12 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sun Nov  1 16:01:10 2015 Nicolas Charvoz
-// Last update Sun Nov  8 19:00:58 2015 Nicolas Charvoz
+// Last update Sun Nov  8 19:32:50 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
+#include <cstdlib>
+#include <ctime>
 
 Contact::Contact(const std::string &username, const std::string &location,
 		 int status, int id, int fav) : _username(username),
@@ -17,7 +19,8 @@ Contact::Contact(const std::string &username, const std::string &location,
 						      _idPic(id),
 						      _fav(fav)
 {
-  std::cout << "id pic : " << id << std::endl;
+  int random_variable = std::rand() % 8 + 1;
+  _idPic = random_variable;
   std::cout << "Contact created" << std::endl;
 }
 
