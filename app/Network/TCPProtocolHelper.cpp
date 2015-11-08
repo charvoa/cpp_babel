@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Sun Nov  8 06:57:01 2015 Antoine Garcia
+// Last update Sun Nov  8 08:33:13 2015 Antoine Garcia
 //
 
 #include "TCPProtocolHelper.hh"
@@ -22,6 +22,7 @@ TCPProtocolHelper::TCPProtocolHelper()
   handleFunctions[SUCCESSLOGIN] = &TCPProtocolHelper::handleLogin;
   handleFunctions[ERRORLOGIN] = &TCPProtocolHelper::errorLogin;
   handleFunctions[ADDCONTACTSUCCESS] = &TCPProtocolHelper::handleContactSuccess;
+  handleFunctions[CALLING] = &TCPProtocolHelper::handleContactSuccess;
   //  _clientID = g_PTUser.currentUser().getID();
 }
 
@@ -140,4 +141,9 @@ void	TCPProtocolHelper::errorLogin()
 void	TCPProtocolHelper::handleContactSuccess()
 {
   emit addContactSuccess();
+}
+
+void	TCPProtocolHelper::handleCall()
+{
+  std::cout << "RECEIVE A CALL" << std::endl;
 }

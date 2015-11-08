@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  8 17:07:40 2015 Nicolas Charvoz
+// Last update Sun Nov  8 08:40:05 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -148,7 +148,9 @@ void NetworkServerHandler::callRequest(const std::string &name)
   QDataStream   out(&block, QIODevice::WriteOnly);
 
   out.setVersion(QDataStream::Qt_4_3);
-  out << quint8(6) << _request.getClientID() << 4 << name.c_str();
+  out << quint8(6);
+  out.writeRawData(_request.getClientID().constData(), 4);
+  out.writeRawData(name.c_str(), name.size());
   _socket->write(block);
 }
 
