@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Sun Nov  1 16:01:10 2015 Nicolas Charvoz
-// Last update Sun Nov  8 03:29:15 2015 Antoine Garcia
+// Last update Sun Nov  8 19:00:58 2015 Nicolas Charvoz
 //
 
 #include "Contact.hh"
@@ -17,6 +17,7 @@ Contact::Contact(const std::string &username, const std::string &location,
 						      _idPic(id),
 						      _fav(fav)
 {
+  std::cout << "id pic : " << id << std::endl;
   std::cout << "Contact created" << std::endl;
 }
 

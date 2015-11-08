@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Wed Oct 14 06:40:54 2015 Antoine Garcia
-// Last update Sun Nov  8 09:00:46 2015 Antoine Garcia
+// Last update Sun Nov  8 18:52:17 2015 Nicolas Charvoz
 //
 
 #ifndef NETWORKHANDLER_HH_
@@ -36,6 +36,7 @@ public:
   int			type;
   std::string		login;
   std::string		password;
+  char avatar;
   NetworkServerHandler(QObject *parent = 0);
   ~NetworkServerHandler();
   int start(const std::string &host, unsigned int port);

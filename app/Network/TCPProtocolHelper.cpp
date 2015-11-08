@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Sun Nov  8 09:12:15 2015 Antoine Garcia
+// Last update Sun Nov  8 19:06:31 2015 Nicolas Charvoz
 //
 
 #include "TCPProtocolHelper.hh"
@@ -77,7 +77,13 @@ void	TCPProtocolHelper::parseLoginSuccess(QByteArray &array)
 	  std::string username = token[start].constData();
 	  start++;
 	  std::string location = token[start].constData();
-	  Contact	contact(username, location, 1, 1, 0);
+	  start++;
+	  std::string status = token[start].constData();
+	  start++;
+	  std::string profilePicture  = token[start].constData();
+	  std::cout << "id pic : " << profilePicture << std::endl;
+	  Contact	contact(username, location, 1, atoi(profilePicture.c_str())
+				, 0);
 	  g_PTUser.currentUser().addContact(contact);
 	  start += 3;
 	  i++;

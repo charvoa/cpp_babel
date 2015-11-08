@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  8 09:30:38 2015 Antoine Garcia
+// Last update Sun Nov  8 18:53:05 2015 Nicolas Charvoz
 //
 
 #include "NetworkServerHandler.hh"
@@ -104,7 +104,7 @@ void	NetworkServerHandler::signUser()
   out << quint8(4) << quint32(0) << quint16(str.size() + 2);
   out.writeRawData(str.c_str(), str.size());
   out.writeRawData(";", strlen(";"));
-  out << quint8(1);
+  out << quint8(avatar);
   _socket->write(array);
 }
 
