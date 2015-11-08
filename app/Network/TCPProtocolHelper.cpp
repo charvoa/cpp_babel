@@ -61,7 +61,7 @@ void	TCPProtocolHelper::parseLoginSuccess(QByteArray &array)
   _clientID.append(temp, 4);
   //nbContacts
   io >> nbContacts;
-  char	data[sizeData];
+  char	*data = (char*)malloc(sizeData * sizeof(char));
   if (nbContacts == ';'){
     io >> nbContacts;
     }

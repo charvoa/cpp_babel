@@ -191,7 +191,7 @@ void	NetworkServerHandler::receiveCall()
   std::cout << "RECEIVE CALL NETWORK" << std::endl;
   in >> type;
   in >> size;
-  char	data[size];
+  char	*data = (char*)malloc(size * sizeof(char));
   in.readRawData(data, size);
   buffer.append(data, size);
   QList<QByteArray> token = buffer.split(';');

@@ -22,7 +22,7 @@
 
 # define PASSWORD_DONT_MATCH 3001
 # define IP_PROBLEM 3002
-# define NO_ERROR 1
+# define ERROR_TEST 1
 
 
 class PTUser: public QObject

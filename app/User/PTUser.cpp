@@ -194,7 +194,7 @@ void	PTUser::User::addServerContact(QByteArray&	array)
 
   io >> type;
   io >> sizeData;
-  char	data[sizeData];
+  char	*data = (char*)malloc(sizeData * sizeof(char));
   io.readRawData(tmp, 4);
   clientId.append(tmp, 4);
   io.readRawData(data, array.count() - 3);
