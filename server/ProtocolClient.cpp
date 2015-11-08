@@ -5,7 +5,7 @@
 // Login   <girard_s@epitech.net>
 //
 // Started on  Mon Oct 26 11:19:15 2015 Nicolas Girardot
-// Last update Sun Nov  8 14:59:53 2015 Nicolas Girardot
+// Last update Sun Nov  8 16:53:53 2015 Nicolas Girardot
 //
 
 #include "ProtocolClient.hh"
@@ -128,14 +128,11 @@ void	ProtocolClient::callRequest(DataFromClient &fromClient)
   std::string ipWithoutDot;
 
   for (std::vector<std::string>::iterator it = ipVector.begin(); it != ipVector.end(); ++it)
-    {
-      ipWithoutDot.push_back(boost::lexical_cast<char>(std::stoi(*it)));
-    }
-
+    ipWithoutDot.push_back(static_cast<char>(std::stoi(*it)));
   data.push_back(fromClient.getClientID());
   data.push_back(ipWithoutDot); // ip.sender
 
-  Response *response = new Response(CommunicationServer::S_CALL_REQUEST, g_Server.getAccountByID(receiver), data);
+  Response *response = new Response(CommunicationServer::S_CALL_REQUEST, g_Server.getAccountByUsername(receiver), data);
   Sender::send(response);
 }
 
