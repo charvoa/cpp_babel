@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sun Nov  8 05:17:30 2015 Antoine Garcia
+// Last update Sun Nov  8 14:47:19 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -216,6 +216,19 @@ void	PTUser::User::addContact(const std::string &username)
 const std::string	&PTUser::User::getUsername() const
 {
   return (_username);
+}
+
+const Contact &PTUser::User::getContactFromName(const std::string &name) const
+{
+  std::vector<Contact>::const_iterator itToReturn = _contact.begin();
+
+  for (std::vector<Contact>::const_iterator it = _contact.begin();
+       it != _contact.end(); ++it)
+    {
+      if ((*it).getName() == name)
+	return *it;
+    }
+  return *itToReturn;
 }
 
 const std::string	&PTUser::User::getObjectId() const
