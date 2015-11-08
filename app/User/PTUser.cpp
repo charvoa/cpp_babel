@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sun Nov  8 08:00:04 2015 Antoine Garcia
+// Last update Sun Nov  8 17:01:51 2015 Nicolas Charvoz
 //
 
 #include "PTUser.hh"
@@ -248,5 +248,5 @@ const std::vector<Contact>	&PTUser::User::getContacts() const
 
 void	PTUser::User::callUser(const std::string &user)
 {
-  g_PTUser.getServer()..callRequest(user);
+  g_PTUser.getServer().callRequest(user);
 }
