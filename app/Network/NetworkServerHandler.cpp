@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  8 09:18:05 2015 Antoine Garcia
+// Last update Sun Nov  8 09:22:13 2015 Antoine Garcia
 //
 
 #include "NetworkServerHandler.hh"
@@ -188,7 +188,7 @@ void	NetworkServerHandler::receiveCall()
   quint8	type;
   quint16	size;
   QByteArray	buffer;
-
+  std::cout << "RECEIVE CALL NETWORK" << std::endl;
   in >> type;
   in >> size;
   char	data[size];
