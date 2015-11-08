@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Mon Oct 19 18:25:42 2015 Nicolas Charvoz
-// Last update Sun Nov  8 03:32:13 2015 Antoine Garcia
+// Last update Sun Nov  8 05:02:05 2015 Antoine Garcia
 //
 
 #include "PTUser.hh"
@@ -194,6 +194,7 @@ void	PTUser::User::addServerContact(QByteArray&	array)
   QList<QByteArray> token = bufferData.split(';');
   //create contact and Add to the list
   Contact	*userFriend = new Contact(token[1].constData(),token[2].constData(), 1, 1);
+  std::cout << userFriend->getName() << std::endl;
   _contact.push_back(userFriend);
   delete userFriend;
 }
