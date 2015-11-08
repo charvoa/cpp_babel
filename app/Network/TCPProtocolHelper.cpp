@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Sun Nov  8 03:52:40 2015 Antoine Garcia
+// Last update Sun Nov  8 06:57:01 2015 Antoine Garcia
 //
 
 #include "TCPProtocolHelper.hh"
@@ -47,6 +47,8 @@ void	TCPProtocolHelper::parseLoginSuccess(QByteArray &array)
   quint16 sizeData;
   quint8   type;
   quint8   nbContacts;
+  QByteArray	bufferData;
+  int	i = 0;
 
   //type
   io >> type;
@@ -58,13 +60,27 @@ void	TCPProtocolHelper::parseLoginSuccess(QByteArray &array)
   _clientID.append(temp, 4);
   //nbContacts
   io >> nbContacts;
+  char	data[sizeData];
   if (nbContacts == ';'){
     io >> nbContacts;
     }
-  std::cout << "NB CONTACTS: " << nbContacts << std::endl;
+  io.readRawData(data, sizeData);
+  bufferData.append(data, sizeData);
   if (nbContacts != 0)
     {
-      std::cout << "O CONTACTS" << std::endl;
+      int	start = 2;
+      std::cout << "I HAVE CONTACT" << (int)nbContacts << std::endl;
+      QList<QByteArray> token = bufferData.split(';');
+      while (i < nbContacts)
+	{
+	  std::string username = token[start].constData();
+	  start++;
+	  std::string location = token[start].constData();
+	  Contact	contact(username, location, 1, 1, 0);
+	  g_PTUser.currentUser().addContact(contact);
+	  start += 3;
+	  i++;
+	}
     }
 }
 
