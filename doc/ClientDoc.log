@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.1)  8 NOV 2015 13:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.1)  8 NOV 2015 13:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**TechDoc.tex
-(./TechDoc.tex
+**ClientDoc.tex
+(./ClientDoc.tex
 LaTeX2e <2011/06/27>
 Babel <3.9m> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -105,8 +105,14 @@ Package graphics Info: Driver file: pdftex.def on input line 94.
 )
 (/home/louis/texmf/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) (./TechDoc.aux)
-\openout1 = `TechDoc.aux'.
+)
+(/home/louis/texmf/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/home/louis/texmf/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+) (./ClientDoc.aux)
+\openout1 = `ClientDoc.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
@@ -190,185 +196,151 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 38.
 
-(./TechDoc.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 4.
-)
+(./ClientDoc.toc)
 \tf@toc=\write3
-\openout3 = `TechDoc.toc'.
+\openout3 = `ClientDoc.toc'.
 
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-[3] [4] [5] <img/loginScreen.png, id=24, 514.92375pt x 413.545pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (28.08398pt too wide) in paragraph at lines 47--48
+\OT1/cmr/m/n/10 How-ever, if you want to go fur-ther and ask ques-tions, please
+ email us at info@spyke.com 
+ []
+
+[2] <img/loginGuide.png, id=14, 514.92375pt x 413.545pt>
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \relax 
-l.157   \includegraphics[width=350]{loginScreen}
-                                                
+l.53   \includegraphics[width=350]{loginGuide}
+                                              
 ? 
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \relax 
-l.157   \includegraphics[width=350]{loginScreen}
-                                                
+l.53   \includegraphics[width=350]{loginGuide}
+                                              
 ? 
-File: img/loginScreen.png Graphic file (type png)
-<use img/loginScreen.png>
-Package pdftex.def Info: img/loginScreen.png used on input line 157.
+File: img/loginGuide.png Graphic file (type png)
+<use img/loginGuide.png>
+Package pdftex.def Info: img/loginGuide.png used on input line 53.
 (pdftex.def)             Requested size: 350.0pt x 281.0996pt.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 157--158
-[][] 
+Overfull \hbox (5.0pt too wide) in paragraph at lines 53--54
+[] 
  []
 
-[6 <./img/loginScreen.png>]
-<img/loggedScreen.png, id=28, 962.59625pt x 627.34375pt>
+[3 <./img/loginGuide.png>]
+<img/signupGuide.png, id=18, 511.9125pt x 412.54124pt>
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \relax 
-l.170   \includegraphics[width=350]{loggedScreen}
-                                                 
+l.76   \includegraphics[width=350]{signupGuide}
+                                               
 ? 
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \relax 
-l.170   \includegraphics[width=350]{loggedScreen}
-                                                 
+l.76   \includegraphics[width=350]{signupGuide}
+                                               
 ? 
-File: img/loggedScreen.png Graphic file (type png)
-<use img/loggedScreen.png>
-Package pdftex.def Info: img/loggedScreen.png used on input line 170.
+File: img/signupGuide.png Graphic file (type png)
+<use img/signupGuide.png>
+Package pdftex.def Info: img/signupGuide.png used on input line 76.
+(pdftex.def)             Requested size: 350.0pt x 282.06027pt.
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 76--77
+[] 
+ []
+
+[4 <./img/signupGuide.png>]
+<img/homeGuide.png, id=22, 962.59625pt x 627.34375pt>
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.99   \includegraphics[width=350]{homeGuide}
+                                             
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.99   \includegraphics[width=350]{homeGuide}
+                                             
+? 
+File: img/homeGuide.png Graphic file (type png)
+<use img/homeGuide.png>
+Package pdftex.def Info: img/homeGuide.png used on input line 99.
 (pdftex.def)             Requested size: 350.0pt x 228.09311pt.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 170--171
-[][] 
+Overfull \hbox (5.0pt too wide) in paragraph at lines 99--100
+[] 
  []
 
-[7 <./img/loggedScreen.png>] [8]
-! Misplaced alignment tab character &.
-l.225  The method int start(const std::string &
-                                               host, unsigned int port) init...
-
-? 
-! Misplaced alignment tab character &.
-l.226  The method void write(const std::string &
-                                                request) sends the data to t...
-
-? 
-
-Overfull \hbox (9.16713pt too wide) in paragraph at lines 230--233
-[]\OT1/cmr/m/n/10 The TCP-Pro-to-col-Helper class cre-ates re-quest with the cr
-e-ateRequest() method
- []
-
-
-Overfull \hbox (16.32477pt too wide) in paragraph at lines 230--233
-\OT1/cmr/m/n/10 and trans-late data with han-dleRequest(). QByteAr-ray cre-ateR
-equest(ProtocolType
- []
-
-[9]
-! Misplaced alignment tab character &.
-l.265 ...he methods void write(const std::string &
-                                                  request) and void readyRea...
-
-? 
-
-Overfull \hbox (6.75052pt too wide) in paragraph at lines 264--267
-[]\OT1/cmr/m/n/10 The Net-work-Clien-tHandler is sim-i-lar to the Net-work-Serv
-er-Han-dler seen above.
- []
-
-[10] [11]
-! Misplaced alignment tab character &.
-l.325 ...nection, const boost::system::errorcode &
-                                                  error) methods in order to...
-
-? 
-
-Overfull \hbox (32.63951pt too wide) in paragraph at lines 325--326
-[]\OT1/cmr/m/n/10 The TCPServer class has a list of TCP-Con-nec-tion and a boos
-t::asio::ip::tcp::acceptor
- []
-
-
-Overfull \hbox (18.58406pt too wide) in paragraph at lines 325--326
-\OT1/cmr/m/n/10 for at-tribute, a void star-tAc-cept() and a void han-dleAc-cep
-t(TCPConnection::pointer
- []
-
-! Misplaced alignment tab character &.
-l.328 ...thods void asyncWrite(const std::string &
-                                                  message) and void asyncRea...
-
-? 
-! Misplaced alignment tab character &.
-l.331 ...e method: void verify(const std::string &
-                                                  request) const. If the req...
-
-? 
-! Misplaced alignment tab character &.
-l.344 ...ethod void methodChecker(DataFromClient &
-                                                  fromClient) from the Proto...
-
-? 
-
-Overfull \hbox (1.0561pt too wide) in paragraph at lines 344--346
-[]\OT1/cmr/m/n/10 Once the re-quest iden-ti-fied, the DataFrom-Client con-struc
--tor calls the method
- []
-
-
-Overfull \hbox (0.38956pt too wide) in paragraph at lines 344--346
-\OT1/cmr/m/n/10 void method-Checker(DataFromClient from-Client) from the Pro-to
--col-Client class.
- []
-
-[12] [13] <img/Sequence.png, id=52, 654.445pt x 443.6575pt>
+[5 <./img/homeGuide.png>]
+<img/contactGuide.png, id=26, 961.5925pt x 628.3475pt>
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \relax 
-l.384   \includegraphics[width=350]{Sequence}
-                                             
+l.119   \includegraphics[width=350]{contactGuide}
+                                                 
 ? 
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \relax 
-l.384   \includegraphics[width=350]{Sequence}
-                                             
+l.119   \includegraphics[width=350]{contactGuide}
+                                                 
 ? 
-File: img/Sequence.png Graphic file (type png)
-<use img/Sequence.png>
-Package pdftex.def Info: img/Sequence.png used on input line 384.
-(pdftex.def)             Requested size: 350.0pt x 237.26979pt.
+File: img/contactGuide.png Graphic file (type png)
+<use img/contactGuide.png>
+Package pdftex.def Info: img/contactGuide.png used on input line 119.
+(pdftex.def)             Requested size: 350.0pt x 228.70734pt.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 384--385
-[][] 
+Overfull \hbox (5.0pt too wide) in paragraph at lines 119--120
+[] 
  []
 
-[14 <./img/Sequence.png>] (./TechDoc.aux) ) 
+[6 <./img/contactGuide.png>]
+<img/ownContactGuide.png, id=30, 961.5925pt x 629.35126pt>
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.133 ...cludegraphics[width=350]{ownContactGuide}
+                                                  
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.133 ...cludegraphics[width=350]{ownContactGuide}
+                                                  
+? 
+File: img/ownContactGuide.png Graphic file (type png)
+<use img/ownContactGuide.png>
+Package pdftex.def Info: img/ownContactGuide.png used on input line 133.
+(pdftex.def)             Requested size: 350.0pt x 229.0727pt.
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 133--134
+[] 
+ []
+
+[7 <./img/ownContactGuide.png>] (./ClientDoc.aux) ) 
 Here is how much of TeX's memory you used:
- 3301 strings out of 493301
- 46589 string characters out of 6139893
- 144573 words of memory out of 5000000
- 6733 multiletter control sequences out of 15000+600000
- 8361 words of font info for 30 fonts, out of 8000000 for 9000
+ 3213 strings out of 493301
+ 45975 string characters out of 6139893
+ 129837 words of memory out of 5000000
+ 6641 multiletter control sequences out of 15000+600000
+ 7588 words of font info for 27 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,6n,40p,462b,1029s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.p
-fb>
-Output written on TechDoc.pdf (14 pages, 150650 bytes).
+ 37i,6n,58p,235b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr17.pfb>
+Output written on ClientDoc.pdf (7 pages, 214120 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 53 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

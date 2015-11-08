@@ -42,8 +42,8 @@
   \newpage
   \section{About}
     This document is a technical documentation about Spyke.
-    Spyke is a software developped by the La Pintade team, based in Nice.
-    The team developped a Skype-like product in a month for the Epitech's Babel project.
+    Spyke is a software developed by the La Pintade team, based in Nice.
+    The team developed a Skype-like product in a month for the Epitech's Babel project.
  \bigskip
 
   We will firstly explain the project conception: it is divided in 2 parts. There is the Server and the Client. The server receives data from a client and transfers it to the others. Clients sends request to the server and get datas in order to call other clients.
@@ -189,7 +189,7 @@
  The controller is the PTUser class: it accepts input and converts it to commands for the model or view.
  \bigskip
 
- Secondly, we used the Observer pattern with Qt. The GUI classes sends signals for every event that is happening to the slots from the PTUser class.
+ Secondly, we used the Observer pattern with Qt. The GUI classes and the PTUser class communicate with signals and slots.
 
  \bigskip
 
@@ -376,5 +376,11 @@
 
   \bigskip
   The request Modify Status has now been treated, your status has changed.
+
+  \bigskip
+  This is a sequence diagram following the path of a request.
+
+  \bigskip
+  \includegraphics[width=350]{Sequence}
 
 \end{document}

@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Tue Oct 27 02:58:48 2015 Antoine Garcia
-// Last update Sat Nov  7 07:57:22 2015 Antoine Garcia
+// Last update Sun Nov  8 03:52:40 2015 Antoine Garcia
 //
 
 #include "TCPProtocolHelper.hh"
@@ -61,6 +61,7 @@ void	TCPProtocolHelper::parseLoginSuccess(QByteArray &array)
   if (nbContacts == ';'){
     io >> nbContacts;
     }
+  std::cout << "NB CONTACTS: " << nbContacts << std::endl;
   if (nbContacts != 0)
     {
       std::cout << "O CONTACTS" << std::endl;

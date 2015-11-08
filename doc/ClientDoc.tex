@@ -29,106 +29,119 @@
   tabsize=3
 }
 
-\title{Spyke (Babel Project)}
+\title{Spyke (Babel Project) - User's Guide}
 \author{La Pintade}
-\date{5 Octobre 2015 - 8 Novembre 2015}
+\date{5 October 2015 - 8 November 2015}
 
 \begin{document}
 
   \maketitle
   \tableofcontents
 
+  \newpage
+
+  \section{About}
+  This document is a documentation for Users about Spyke. Spyke is a software developed by the La Pintade team. The team developed a Skype-like product in a month for the Epitech's Babel project.
+
+  \bigskip
+  This guide provides you a complete explanation over the Spyke program. However, if you want to go further and ask questions, please email us at info@spyke.com
 
   \newpage
-  \section{CLIENT}
-  \subsection{GUI}
-    \begin{lstlisting}
-  class PTUser
-  {
-    private:
-      class User
-      {
-        std::string _username;
-        std::string _password;
-        std::string _objectId;
-        std::list<Contact*> _contactList;
-      public:
-        User();
-        ~User();
-        const std::string &getUsername() const;// Get the username of the current user
-        const std::string &getPassword() const; // Get the password of the current user
-        const std::string &getObjectId() const; // Get the objectId of the current user
-        void setUsername(); // Set the username of a new user
-        void setPassword(); // Set the password of a new user
-        void setObjectId(); .// Set the object ID gotten from the server
-        std::list<Contact*> getContactList() const; // Return the contact list of the current user
-        const std::string &getLocation() const; // Return the location info of the current user
-        void addContact(Contact&); // Add a new contact to the contact list of the current user
-      };
-      User	_currentUser;
-      NetworkServerHandler server;
-      std::string _ipServer;
-    public:
-      PTUser();
-      ~PTUser();
-      User&		currentUser();
-      template<typename T>
-      void signUp(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &i);
-      void logUser(T &obj, void(T::*call)(int), const std::string &username, const std::string &password, const std::string &ip);
-        // The function logUser will call the server to check if the user exist, if not it will call the callback function with an error value set to 1, else it will call with an error value set to 0.
-      }
-  };
-      extern PTUser g_PTUser;
-\end{lstlisting}
 
-\newpage
+  \section{Sign in}
+  \bigskip
+  \includegraphics[width=350]{loginGuide}
 
-\subsection{NETWORK}
+  \bigskip
+  You just launched Spyke ! This is the Login window.
 
-\begin{lstlisting}
+  \bigskip
+  In green, you can see the usual fields: Username and Password.
 
-  class NetworkServerHandler : public QObject
-  {
-    Q_OBJECT
-  private:
-    QObject *parent;
-    QTcpSocket *_socket;
-    std::string _host;
-    unsigned int _port;
-  public:
-    NetworkServerHandler(QObject *parent = 0);
-    ~NetworkServerHandler();
-    int start(const std::string &host, unsigned int port); // Launch the connection between server and client /\ Return -1 if failed, 0 if success.
-    void setHost(const std::string &); // Set the host of the server
-    void setPort(unsigned int); // Set the port of the server
-    const std::string &readSocket(); // Read data from server
-    void writeSocker(const std::string&); // Write data on server
-  private slots:
-    void	readyRead(); // Callback function from QT /\
-    void	connected(); // Callback function from QT /\ Is called when connection has succeed
-  };
+  \bigskip
+  In blue, there are 4 buttons:
 
-\end{lstlisting}
-\newpage
-\subsection{Network Client Handler}
-\subsection{Audio Encoder}
-\subsection{Audio Handler}
-\subsection{Thread}
-\subsection{Contact}
-\newpage
-\section{SERVER}
+  Login: to validate your username / password. This opens the Home window.
 
-\subsection{LoginWidget}
-  \includegraphics[width=350]{LoginWidget}
+  Cancel: to cancel your login. This closes Spyke.
+
+  Sign Up: to register to Spyke. This opens the Signup window.
+
+  Expert Mode: this allows you to chose the ip of the server you want to connect to. (Warning ! This is for expert, if you accidently changed the default value, just relaunch the program.)
+
   \newpage
-\subsection{MainWidget}
-  \includegraphics[width=350]{TabsBabel}
+
+  \section{Signup}
+  \bigskip
+  \includegraphics[width=350]{signupGuide}
+
+  \bigskip
+  This is the Signup window. You are here because you want to register to Spyke.
+
+  \bigskip
+  In red, you have a dropdown menu to chose between 8 avatars.
+
+  \bigskip
+  In green, the same fields that the Login window + the confirm password field.
+
+  \bigskip
+  In blue, there are 3 buttons:
+
+  Login: to login to Spyke. This opens the Home window.
+
+  Cancel: to cancel registering. This closes Spyke.
+
+  Expert Mode: this allows you to chose the ip of the server you want to connect to. (Warning ! This is for expert, if you accidently changed the default value, just relaunch the program.)
+
   \newpage
-\subsection{SignupWidget}
-\subsection{Home}
-\subsection{Contact}
-\subsection{Conversation}
-  \includegraphics[width=350]{ConversationWidget}
-\subsection{Notifications}
+  \section{Home}
+  \bigskip
+  \includegraphics[width=350]{homeGuide}
+
+  \bigskip
+  This is the Home window. You are now logged into Spyke !
+
+  \bigskip
+  In blue, you have your Avatar and your login (chosen on signup).
+
+  \bigskip
+  In green, you have the field to add a contact: you can type here the login of the friend you want to add.
+
+  \bigskip
+  In red, you have the meteo of your city. (Go outside take some fresh air !)
+
+  \bigskip
+  Finally in yellow, you have 2 buttons to switch to the Contact window or the Home window.
+
+  \newpage
+  \section{Contact}
+  \bigskip
+  \includegraphics[width=350]{contactGuide}
+
+  \bigskip
+  This is the Contact window.
+
+  \bigskip
+  In this window, you can see every contact that you have.
+
+  \bigskip
+  In red, this is a button to access the Call window. You can have a Call window for every contact you have.
+
+  \newpage
+  \section{Call}
+  \bigskip
+  \includegraphics[width=350]{ownContactGuide}
+
+  \bigskip
+  This is the Call window.
+
+  \bigskip
+  In red, this is the button to Call your friend.
+
+  \bigskip
+  In blue, this is the field to chat with your contact. You can type your message and click on Send to send it.
+
+  \bigskip
+  In green, a new button appeared. This is the button to access the call window with your friend.
 
 \end{document}

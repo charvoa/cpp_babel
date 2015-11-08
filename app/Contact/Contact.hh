@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Mon Oct 26 07:24:39 2015 Antoine Garcia
-// Last update Sat Nov  7 18:33:33 2015 Nicolas Charvoz
+// Last update Sun Nov  8 03:28:59 2015 Antoine Garcia
 //
 
 #ifndef CONTACT_HH_
@@ -22,7 +22,7 @@ class	Contact
   int		_idPic;
   int		_fav;
 public:
-  Contact(std::string username, std::string location,
+  Contact(const std::string &username, const std::string &location,
 	  int status, int id, int fav = 0);
   ~Contact();
   const Contact &getContact() const;
