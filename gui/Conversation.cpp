@@ -5,7 +5,7 @@
 // Login   <nicolaschr@epitech.net>
 //
 // Started on  Tue Sep 29 16:55:30 2015 Nicolas Charvoz
-// Last update Sun Nov  8 14:55:23 2015 Nicolas Charvoz
+// Last update Sun Nov  8 16:58:32 2015 Nicolas Charvoz
 //
 
 #include "Conversation.hh"
@@ -97,6 +97,7 @@ void Conversation::functionCall()
       std::cout << "Making call" << std::endl;
       _callButton->setIcon(QIcon("./gui/img/phone59.png"));
       _callButton->setIconSize(QSize(120, 120));
+      g_PTUser.currentUser().callUser(_contact);
       _call = true;
     }
   else

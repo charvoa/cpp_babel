@@ -5,7 +5,7 @@
 // Login   <antoinegarcia@epitech.net>
 //
 // Started on  Sun Oct 18 00:42:17 2015 Antoine Garcia
-// Last update Sun Nov  8 02:18:51 2015 Antoine Garcia
+// Last update Sun Nov  8 17:07:40 2015 Nicolas Charvoz
 //
 
 #include "NetworkServerHandler.hh"
@@ -142,6 +142,16 @@ void	NetworkServerHandler::loginSuccess()
   emit userConnected(1);
 }
 
+void NetworkServerHandler::callRequest(const std::string &name)
+{
+  QByteArray    block;
+  QDataStream   out(&block, QIODevice::WriteOnly);
+
+  out.setVersion(QDataStream::Qt_4_3);
+  out << quint8(6) << _request.getClientID() << 4 << name.c_str();
+  _socket->write(block);
+}
+
 void	NetworkServerHandler::loginError()
 {
   emit userConnected(0);
@@ -162,7 +172,7 @@ void NetworkServerHandler::addContact(const std::string &c)
   str += c;
   out.setVersion(QDataStream::Qt_4_3);
   out <<  quint8(ADD_CONTACT);
-  out.writeRawData(_request._clientID.constData(), 4);
+  out.writeRawData(_request.getClientID().constData(), 4);
   out << quint16(str.size());
   out.writeRawData(str.c_str(), str.size());
   _socket->write(array);

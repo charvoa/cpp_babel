@@ -70,12 +70,15 @@ fclean.commands += del babelUI
 QMAKE_EXTRA_TARGETS += fclean
 
 re.target = re
+
 unix {
 re.commands = make clean
 }
+
 win32 {
 re.commands = nmake clean
 }
+
 re.commands += all
 
 QMAKE_EXTRA_TARGETS += re
